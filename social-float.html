@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Social Floating Buttons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --sf-size:56px;
+      --sf-gap:14px;
+      --sf-right:16px;
+      --sf-bottom:110px;
+    }
+    .social-float{
+      position:fixed; right:var(--sf-right); bottom:var(--sf-bottom);
+      display:flex; flex-direction:column; gap:var(--sf-gap);
+      z-index:9999; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .sf-btn{
+      position:relative;
+      width:var(--sf-size); height:var(--sf-size);
+      display:grid; place-items:center;
+      border-radius:9999px; color:#fff; text-decoration:none;
+      box-shadow:0 10px 20px rgba(0,0,0,.25);
+      transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      will-change:transform, filter;
+    }
+    .sf-btn:hover{ transform:translateY(-2px) scale(1.05); filter:brightness(1.05); }
+    .sf-fb{ background:linear-gradient(135deg,#1877f2,#0d5bd6); }
+    .sf-call{ background:linear-gradient(135deg,#2ecc71,#19ad5a); }
+    .sf-tt{ background:linear-gradient(135deg,#000,#3a3a3a); }
+
+    .sf-btn svg{ width:28px; height:28px; fill:#fff }
+    .sf-tip{
+      position:absolute; right:calc(100% + 10px); top:50%; transform:translateY(-50%) translateX(6px);
+      background:#111; color:#fff; font-size:12px; padding:6px 10px; border-radius:8px;
+      white-space:nowrap; opacity:0; pointer-events:none; transition:all .2s ease;
+      box-shadow:0 6px 16px rgba(0,0,0,.2);
+    }
+    .sf-btn:hover .sf-tip{ opacity:1; transform:translateY(-50%) translateX(0); }
+
+    /* Mobile: nhỏ hơn, kê sát đáy hơn */
+    @media (max-width:640px){
+      :root{ --sf-size:50px; --sf-gap:12px; --sf-right:12px; --sf-bottom:90px; }
+      .sf-tip{ display:none }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Thanh MXH nổi (copy khối này dán vào cuối <body> trang khác cũng được) -->
+  <div class="social-float" aria-label="Liên hệ nhanh">
+    <!-- Facebook -->
+    <a class="sf-btn sf-fb" href="https://www.facebook.com/share/1BPYo7KFTa/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+      <!-- icon -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.49 17.52 2 11.95 2S2 6.49 2 12.06c0 5.02 3.66 9.19 8.44 9.98v-7.06H7.9v-2.92h2.54V9.41c0-2.51 1.5-3.9 3.8-3.9 1.1 0 2.25.2 2.25.2v2.47h-1.27c-1.25 0-1.64.78-1.64 1.58v1.9h2.79l-.45 2.92h-2.34v7.06C18.34 21.25 22 17.08 22 12.06z"/></svg>
+      <span class="sf-tip">Facebook</span>
+    </a>
+
+    <!-- Gọi điện -->
+    <a class="sf-btn sf-call" href="tel:0365231819" aria-label="Gọi điện">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.464 15.464 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.11.37 2.3.57 3.53.57a1 1 0 011 1V21a1 1 0 01-1 1C10.42 22 2 13.58 2 3a1 1 0 011-1h3.5a1 1 0 011 1c0 1.23.2 2.42.57 3.53a1 1 0 01-.25 1.01l-2.2 2.25z"/></svg>
+      <span class="sf-tip">Gọi 0979 308 924</span>
+    </a>
+
+    <!-- TikTok -->
+    <a class="sf-btn sf-tt" href="https://www.tiktok.com/@mitsayvutru" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8.5c-2.15 0-4.08-1.23-4.99-3.1V16a6 6 0 11-6-6c.18 0 .36.01.53.03v3.06a3 3 0 10.53 1.71V2h3.04a5.01 5.01 0 004.89 3.97V8.5z"/></svg>
+      <span class="sf-tip">TikTok</span>
+    </a>
+  </div>
+
+</body>
+</html>
