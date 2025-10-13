@@ -1,89 +1,101 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Theo dõi đơn hàng • Mít Sấy Vũ Trụ</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="images/logo.png">
-
-  <style>
-    .tab-btn{position:relative;}
-    .tab-active{color:#7c3aed!important;}
-    .tab-active::after{
-      content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;
-      background:#7c3aed;border-radius:2px;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theo dõi đơn hàng | Mít Sấy Vũ Trụ</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-white text-gray-900">
 
-  <header class="sticky top-0 bg-white border-b z-40">
-    <div class="max-w-3xl mx-auto px-4 py-3">
-      <div class="flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-3">
-          <img src="images/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
-          <span class="font-semibold text-lg">Mít Sấy Vũ Trụ</span>
-        </a>
-      </div>
+  <main class="max-w-3xl mx-auto px-4 py-10">
+    <h1 class="text-2xl font-bold text-center text-amber-600 mb-6">Tra cứu đơn hàng</h1>
 
-      <div class="mt-3 flex gap-8 border-b" role="tablist">
-        <a href="index.html#cart" role="tab"
-           class="tab-btn text-gray-500 hover:text-gray-800 py-2">Giỏ hàng</a>
-        <button role="tab"
-           class="tab-btn tab-active text-purple-600 font-semibold py-2">Theo dõi đơn</button>
-      </div>
-    </div>
-  </header>
+    <!-- Form tra cứu -->
+    <form id="orderTrackForm" class="space-y-4">
+      <input id="orderTrackInput" type="text"
+        placeholder="Nhập mã đơn hàng hoặc email"
+        class="border border-gray-300 rounded-lg w-full p-3 focus:ring-2 focus:ring-amber-400 focus:outline-none" />
 
-  <main class="max-w-3xl mx-auto px-4 py-8">
-    <div class="rounded-xl border p-4 sm:p-6">
-      <h1 class="text-xl sm:text-2xl font-bold mb-4">Theo dõi đơn hàng</h1>
-      <p class="text-gray-600 mb-6">Nhập <b>mã đơn hàng</b> hoặc <b>email</b> để xem trạng thái.</p>
+      <button type="submit"
+        class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 rounded-lg transition-colors">
+        Tra cứu
+      </button>
+    </form>
 
-      <form id="orderTrackForm" class="flex gap-2 mb-3">
-        <input id="orderTrackInput" type="text"
-               placeholder="VD: MSV12345 hoặc email@domain.com"
-               class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-               required />
-        <button type="submit"
-                class="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700">
-          Xem
-        </button>
-      </form>
-
-      <div id="orderTrackResult" class="hidden rounded-lg bg-gray-50 p-4 leading-7"></div>
-      <p class="text-xs text-gray-500 mt-2">Mẹo: nếu quên mã đơn, hãy nhập email dùng khi đặt hàng.</p>
-    </div>
+    <!-- Kết quả hiển thị -->
+    <div id="orderTrackResult" class="hidden mt-6"></div>
   </main>
 
-  <footer class="text-center text-xs text-gray-500 py-10">© 2025 Mít Sấy Vũ Trụ</footer>
+  <footer class="text-center text-xs text-gray-500 py-10">
+    © 2025 Mít Sấy Vũ Trụ
+  </footer>
 
   <script>
-  const ORDER_STORE_KEY='msv_orders';
-  function getOrders(){try{return JSON.parse(localStorage.getItem(ORDER_STORE_KEY))||[]}catch(e){return[]}}
-  function saveOrders(l){localStorage.setItem(ORDER_STORE_KEY,JSON.stringify(l))}
-  (function seedDemo(){
-    const has=getOrders();if(has.length===0){
-      saveOrders([
-        {id:'MSV12345',email:'demo@mitsayvutru.space',status:'processing',ordered_at:'12/10/2025',tracking:''},
-        {id:'MSV88888',email:'khach@example.com',status:'shipping',ordered_at:'10/10/2025',tracking:'#GHN-A1B2C3'},
-        {id:'MSV77777',email:'user@domain.com',status:'delivered',ordered_at:'05/10/2025',tracking:'#VTP-778899'}
-      ])
-    }
-  })();
-  function toStatusText(s){const m={pending:'Đang xử lý',processing:'Đang xử lý',shipping:'Đang giao',delivered:'Hoàn tất'};return m[String(s||'').toLowerCase()]||s||'Đang xử lý'}
-  function lookupOrder(q){const v=(q||'').trim().toLowerCase();if(!v)return null;return getOrders().find(o=>String(o.id||'').toLowerCase()===v||String(o.email||'').toLowerCase()===v)||null}
-  (function init(){
-    const f=document.getElementById('orderTrackForm'),i=document.getElementById('orderTrackInput'),b=document.getElementById('orderTrackResult');
-    f.addEventListener('submit',e=>{
-      e.preventDefault();const q=i.value.trim();const o=lookupOrder(q);
-      if(!o){b.innerHTML=`<div class='bg-red-50 border border-red-300 text-red-700 p-3 rounded'>Không tìm thấy đơn hàng. Hãy kiểm tra mã đơn hoặc email.</div>`;}
-      else{b.innerHTML=`<div><p><b>Tình trạng:</b> ${toStatusText(o.status)}</p><p><b>Ngày đặt:</b> ${o.ordered_at}</p><p><b>Mã vận đơn:</b> ${o.tracking||'-'}</p><p class='text-gray-500 mt-1 text-sm'>Đơn #${o.id} — ${o.email}</p></div>`;}
-      b.classList.remove('hidden');
+  // === DÁN LINK API CỦA BẠN Ở ĐÂY ===
+  const TRACK_API = 'https://script.google.com/macros/s/AKfycbxCrJ1Q9IaPHAKgPIgAmPmnW3T9Ul801myXhmWQNeoHpjlApHsw2nvBKmiy45ECYcIS/exec'; // ← thay bằng link Web App URL bạn có
+
+  // Hàm gọi API
+  async function lookupOrder(q){
+    const res = await fetch(`${TRACK_API}?q=${encodeURIComponent(q)}`, {
+      headers: { 'Accept': 'application/json' }
     });
-    const usp=new URLSearchParams(location.search);const q=usp.get('q');if(q){i.value=q;f.dispatchEvent(new Event('submit'));}
-  })();
+    const json = await res.json();
+    return json.ok ? json.order : null;
+  }
+
+  // Chuyển trạng thái
+  function toStatusText(s){
+    const raw = String(s || '').toLowerCase();
+    if (raw.includes('xác nhận')) return '✅ Đã xác nhận';
+    if (raw.includes('chuẩn bị')) return '📦 Đang chuẩn bị đơn';
+    if (raw.includes('giao hàng')) return '🚚 Đang giao hàng';
+    if (raw.includes('hoàn thành')) return '🎉 Hoàn thành đơn hàng';
+    return s || '⏳ Đang xử lý';
+  }
+
+  // Form xử lý tra cứu
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const form = document.getElementById('orderTrackForm');
+    const input = document.getElementById('orderTrackInput');
+    const box = document.getElementById('orderTrackResult');
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) return;
+
+      box.innerHTML = `<p class="text-gray-500">Đang tra cứu...</p>`;
+
+      const o = await lookupOrder(q);
+      if (!o){
+        box.innerHTML = `
+          <div class="bg-red-50 border border-red-300 text-red-700 p-3 rounded">
+            Không tìm thấy đơn hàng. Vui lòng kiểm tra lại mã đơn hàng hoặc email.
+          </div>`;
+      } else {
+        box.innerHTML = `
+          <div class="bg-green-50 border border-green-300 text-gray-800 p-3 rounded leading-7">
+            <p><b>Tình trạng:</b> ${toStatusText(o.status)}</p>
+            <p><b>Ngày đặt:</b> ${o.ordered_at || '-'}</p>
+            <p><b>Mã vận đơn:</b> ${o.tracking || '-'}</p>
+            <p class="text-sm text-gray-500 mt-1">Đơn <b>#${o.id}</b> — ${o.email || ''}</p>
+          </div>`;
+      }
+
+      box.classList.remove('hidden');
+    });
+
+    // Nếu có ?q= trong URL thì tự tra
+    const usp = new URLSearchParams(location.search);
+    const q0 = usp.get('q');
+    if (q0){
+      input.value = q0;
+      form.dispatchEvent(new Event('submit'));
+    }
+  });
   </script>
 </body>
 </html>
