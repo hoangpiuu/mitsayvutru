@@ -174,19 +174,20 @@
     }
 
     // ====== Gửi đơn sang Google Sheet ======
-    async function pushOrderToSheet(order){
-      try{
-        const res = await fetch(TRACK_API, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ key: API_KEY, ...order })
-        });
-        return await res.json(); // {ok:true}
-      }catch(err){
-        console.error('Lỗi gửi Sheet:', err);
-        return { ok:false, error:String(err) };
-      }
-    }
+async function pushOrderToSheet(order){
+  try{
+    const res = await fetch(TRACK_API, {
+      method: 'POST',
+      // ✅ Đổi application/json -> text/plain để tránh lỗi CORS
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({ key: API_KEY, ...order })
+    });
+    return await res.json(); // {ok:true}
+  }catch(err){
+    console.error('Lỗi gửi Sheet:', err);
+    return { ok:false, error:String(err) };
+  }
+}
 
     // ====== Gửi email qua EmailJS + ghi vào Sheet ======
     (function(){ if(EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY') emailjs.init(EMAILJS_PUBLIC_KEY); })();
