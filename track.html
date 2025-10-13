@@ -4,46 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Theo dõi đơn hàng • Mít Sấy Vũ Trụ</title>
-
-  <!-- Tailwind: giữ đúng phong cách hiện tại -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="theme-color" content="#000000" />
-  <link rel="icon" href="images/favicon.png" />
+  <link rel="icon" href="images/logo.png">
 
   <style>
-    /* Style gạch tím dưới tab */
-    .tab-btn{ position:relative; }
-    .tab-active{ color:#7c3aed !important; }
+    .tab-btn{position:relative;}
+    .tab-active{color:#7c3aed!important;}
     .tab-active::after{
-      content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
-      background:#7c3aed; border-radius:2px;
+      content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;
+      background:#7c3aed;border-radius:2px;
     }
   </style>
 </head>
 <body class="bg-white text-gray-900">
-  <!-- Header nhỏ + tabs giống panel -->
-  <header class="sticky top-0 z-40 bg-white border-b">
+
+  <header class="sticky top-0 bg-white border-b z-40">
     <div class="max-w-3xl mx-auto px-4 py-3">
-      <div class="flex items-center justify-between">
+      <div class="flex justify-between items-center">
         <a href="index.html" class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-black grid place-items-center overflow-hidden">
-            <img data-brand-logo alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
-          </div>
-          <span class="font-semibold">Mít Sấy Vũ Trụ</span>
+          <img src="images/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
+          <span class="font-semibold text-lg">Mít Sấy Vũ Trụ</span>
         </a>
       </div>
 
-      <!-- Tabs -->
-      <div class="mt-3 flex gap-8" role="tablist" aria-label="Cart Tabs">
-        <a href="index.html#cart" role="tab" aria-selected="false"
+      <div class="mt-3 flex gap-8 border-b" role="tablist">
+        <a href="index.html#cart" role="tab"
            class="tab-btn text-gray-500 hover:text-gray-800 py-2">Giỏ hàng</a>
-        <button role="tab" aria-selected="true"
+        <button role="tab"
            class="tab-btn tab-active text-purple-600 font-semibold py-2">Theo dõi đơn</button>
       </div>
     </div>
   </header>
 
-  <!-- Nội dung chính -->
   <main class="max-w-3xl mx-auto px-4 py-8">
     <div class="rounded-xl border p-4 sm:p-6">
       <h1 class="text-xl sm:text-2xl font-bold mb-4">Theo dõi đơn hàng</h1>
@@ -67,105 +59,31 @@
 
   <footer class="text-center text-xs text-gray-500 py-10">© 2025 Mít Sấy Vũ Trụ</footer>
 
-  <!-- Auto chọn logo: ưu tiên images/Logo.* -->
   <script>
-  (function () {
-    const candidates = [
-      'images/Logo.png','images/Logo.jpg','images/Logo.jpeg',
-      'images/logo.png','images/logo.jpg','images/logo.jpeg'
-    ];
-    async function pick() {
-      for (const p of candidates) {
-        try { const r = await fetch(p, {method:'HEAD', cache:'no-store'}); if (r.ok) return p; } catch(e){}
-      }
-      return null;
-    }
-    document.addEventListener('DOMContentLoaded', async () => {
-      const src = await pick();
-      document.querySelectorAll('img[data-brand-logo]').forEach(img => { if (src) img.src = src; });
-    });
-  })();
-  </script>
-
-  <!-- Logic theo dõi đơn: LocalStorage demo, dễ thay bằng API -->
-  <script>
-  const ORDER_STORE_KEY = 'msv_orders';
-
-  function getOrders(){ try { return JSON.parse(localStorage.getItem(ORDER_STORE_KEY)) || []; } catch(e){ return []; } }
-  function saveOrders(list){ localStorage.setItem(ORDER_STORE_KEY, JSON.stringify(list)); }
-
-  // DEMO seed (xóa khi có dữ liệu thật)
+  const ORDER_STORE_KEY='msv_orders';
+  function getOrders(){try{return JSON.parse(localStorage.getItem(ORDER_STORE_KEY))||[]}catch(e){return[]}}
+  function saveOrders(l){localStorage.setItem(ORDER_STORE_KEY,JSON.stringify(l))}
   (function seedDemo(){
-    const has = getOrders();
-    if (has.length === 0) {
+    const has=getOrders();if(has.length===0){
       saveOrders([
-        { id:'MSV12345', email:'demo@mitsayvutru.space', status:'processing', ordered_at:'12/10/2025', tracking:'' },
-        { id:'MSV88888', email:'khach@example.com',       status:'shipping',   ordered_at:'10/10/2025', tracking:'#GHN-A1B2C3' },
-        { id:'MSV77777', email:'user@domain.com',         status:'delivered',  ordered_at:'05/10/2025', tracking:'#VTP-778899' }
-      ]);
+        {id:'MSV12345',email:'demo@mitsayvutru.space',status:'processing',ordered_at:'12/10/2025',tracking:''},
+        {id:'MSV88888',email:'khach@example.com',status:'shipping',ordered_at:'10/10/2025',tracking:'#GHN-A1B2C3'},
+        {id:'MSV77777',email:'user@domain.com',status:'delivered',ordered_at:'05/10/2025',tracking:'#VTP-778899'}
+      ])
     }
   })();
-
-  function toStatusText(s){
-    const map = { pending:'Đang xử lý', processing:'Đang xử lý', shipping:'Đang giao', delivered:'Hoàn tất' };
-    const key = String(s||'').toLowerCase();
-    return map[key] || s || 'Đang xử lý';
-  }
-
-  function lookupOrder(q){
-    const v = (q||'').trim().toLowerCase(); if(!v) return null;
-    const list = getOrders();
-    return list.find(o =>
-      String(o.id||'').toLowerCase()===v ||
-      String(o.email||'').toLowerCase()===v
-    ) || null;
-  }
-
-  (function initForm(){
-    const form = document.getElementById('orderTrackForm');
-    const input = document.getElementById('orderTrackInput');
-    const box   = document.getElementById('orderTrackResult');
-    if(!form || !input || !box) return;
-
-    // Prefill từ ?q=
-    const usp = new URLSearchParams(location.search);
-    const q = usp.get('q') || '';
-    if (q) input.value = q;
-
-    function renderNotFound(qv){
-      box.innerHTML = `<div class="text-red-600">
-        <p><b>Không tìm thấy đơn hàng.</b></p>
-        <p>Hãy kiểm tra <i>mã đơn</i> hoặc <i>email</i>: <span class="text-gray-700">${qv}</span></p>
-      </div>`;
-      box.classList.remove('hidden');
-    }
-    function renderOrder(o){
-      box.innerHTML = `<div class="text-gray-800">
-        <p><b>Tình trạng:</b> ${toStatusText(o.status)}</p>
-        <p><b>Ngày đặt:</b> ${o.ordered_at || '-'}</p>
-        <p><b>Mã vận đơn:</b> ${o.tracking || '-'}</p>
-        <p class="text-gray-500 mt-1">Đơn <b>#${o.id}</b> — ${o.email || ''}</p>
-      </div>`;
-      box.classList.remove('hidden');
-    }
-    function submit(qv){
-      const val = (qv ?? input.value).trim();
-      if(!val) return;
-      const found = lookupOrder(val);
-      if (!found) renderNotFound(val); else renderOrder(found);
-    }
-
-    form.addEventListener('submit', e=>{ e.preventDefault(); submit(); });
-    if (q) submit(q);
+  function toStatusText(s){const m={pending:'Đang xử lý',processing:'Đang xử lý',shipping:'Đang giao',delivered:'Hoàn tất'};return m[String(s||'').toLowerCase()]||s||'Đang xử lý'}
+  function lookupOrder(q){const v=(q||'').trim().toLowerCase();if(!v)return null;return getOrders().find(o=>String(o.id||'').toLowerCase()===v||String(o.email||'').toLowerCase()===v)||null}
+  (function init(){
+    const f=document.getElementById('orderTrackForm'),i=document.getElementById('orderTrackInput'),b=document.getElementById('orderTrackResult');
+    f.addEventListener('submit',e=>{
+      e.preventDefault();const q=i.value.trim();const o=lookupOrder(q);
+      if(!o){b.innerHTML=`<div class='bg-red-50 border border-red-300 text-red-700 p-3 rounded'>Không tìm thấy đơn hàng. Hãy kiểm tra mã đơn hoặc email.</div>`;}
+      else{b.innerHTML=`<div><p><b>Tình trạng:</b> ${toStatusText(o.status)}</p><p><b>Ngày đặt:</b> ${o.ordered_at}</p><p><b>Mã vận đơn:</b> ${o.tracking||'-'}</p><p class='text-gray-500 mt-1 text-sm'>Đơn #${o.id} — ${o.email}</p></div>`;}
+      b.classList.remove('hidden');
+    });
+    const usp=new URLSearchParams(location.search);const q=usp.get('q');if(q){i.value=q;f.dispatchEvent(new Event('submit'));}
   })();
-
-  // Gợi ý tích hợp thực tế:
-  // 1) Khi checkout xong, push đơn vào LocalStorage để test:
-  // const os = getOrders(); os.push({id:'MSV2025-0001', email:'user@domain.com', status:'pending',
-  // ordered_at:new Date().toLocaleDateString('vi-VN'), tracking:''}); saveOrders(os);
-  //
-  // 2) Khi có API/Google Sheet: thay lookupOrder(q) bằng fetch('/api/track?q='+encodeURIComponent(q))
-  //    trả về { id, email, status, ordered_at, tracking } rồi renderOrder().
   </script>
 </body>
 </html>
