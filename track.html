@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Theo dõi đơn hàng • Mít Sấy Vũ Trụ</title>
+
+  <!-- Dùng đúng phong cách hiện tại: Tailwind CDN (giống index) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- favicon tùy chọn -->
+  <link rel="icon" href="images/favicon.png" />
+  <meta name="theme-color" content="#000000" />
+</head>
+<body class="bg-white text-gray-900">
+  <!-- Header gọn: bấm logo về trang chủ -->
+  <header class="sticky top-0 z-40 bg-black text-white">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-black grid place-items-center overflow-hidden">
+          <img data-brand-logo alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
+        </div>
+        <span class="font-semibold">Mít Sấy Vũ Trụ</span>
+      </a>
+      <nav class="hidden sm:flex items-center gap-6 text-sm">
+        <a href="index.html" class="hover:text-yellow-400">Trang chủ</a>
+        <a href="products.html" class="hover:text-yellow-400">Sản phẩm</a>
+        <span class="text-yellow-400">Theo dõi đơn</span>
+        <a href="wholesale.html" class="hover:text-yellow-400">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Nội dung chính -->
+  <main class="max-w-xl mx-auto px-4 py-10">
+    <h1 class="text-2xl sm:text-3xl font-bold text-center mb-6">Theo dõi đơn hàng</h1>
+    <p class="text-gray-600 text-center mb-8">
+      Nhập <b>mã đơn hàng</b> hoặc <b>email</b> để xem trạng thái.
+    </p>
+
+    <form id="orderTrackForm" class="flex gap-2 mb-4">
+      <input
+        id="orderTrackInput"
+        type="text"
+        placeholder="VD: MSV12345 hoặc email@domain.com"
+        class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        aria-label="Nhập mã đơn hàng hoặc email"
+        required
+      />
+      <button
+        type="submit"
+        class="px-4 py-2 rounded-lg bg-yellow-500 text-white hover:bg-yellow-600"
+      >
+        Xem
+      </button>
+    </form>
+
+    <!-- Kết quả -->
+    <div id="orderTrackResult" class="hidden rounded-lg bg-gray-50 p-4 leading-7"></div>
+
+    <p class="text-xs text-gray-500 mt-3">
+      Mẹo: nếu quên mã đơn, hãy nhập email dùng khi đặt hàng.
+    </p>
+  </main>
+
+  <!-- Footer ngắn -->
+  <footer class="text-center text-xs text-gray-500 py-8">
+    © 2025 Mít Sấy Vũ Trụ
+  </footer>
+
+  <!-- Logo auto: ưu tiên images/Logo.* -->
+  <script>
+  (function () {
+    const candidates = [
+      'images/Logo.png','images/Logo.jpg','images/Logo.jpeg',
+      'images/logo.png','images/logo.jpg','images/logo.jpeg'
+    ];
+    async function pickLogo() {
+      for (const p of candidates) {
+        try { const r = await fetch(p, {method:'HEAD', cache:'no-store'}); if (r.ok) return p; } catch(e){}
+      }
+      return null;
+    }
+    document.addEventListener('DOMContentLoaded', async () => {
+      const src = await pickLogo();
+      document.querySelectorAll('img[data-brand-logo]').forEach(img => { if (src) img.src = src; });
+    });
+  })();
+  </script>
+
+  <!-- Logic theo dõi đơn: LocalStorage demo + dễ thay bằng API -->
+  <script>
+  const ORDER_STORE_KEY = 'msv_orders';
+
+  function getOrders() {
+    try { return JSON.parse(localStorage.getItem(ORDER_STORE_KEY)) || []; }
+    catch(e){ return []; }
+  }
+  function saveOrders(list) { localStorage.setItem(ORDER_STORE_KEY, JSON.stringify(list)); }
+
+  // DEMO seed — có thể xóa khi lên production
+  (function seedDemo(){
+    const has = getOrders();
+    if (has.length === 0) {
+      saveOrders([
+        { id:'MSV12345', email:'demo@mitsayvutru.space', status:'processing', ordered_at:'12/10/2025', tracking:'' },
+        { id:'MSV88888', email:'khach@example.com',       status:'shipping',   ordered_at:'10/10/2025', tracking:'#GHN-A1B2C3' },
+        { id:'MSV77777', email:'user@domain.com',         status:'delivered',  ordered_at:'05/10/2025', tracking:'#VTP-778899' }
+      ]);
+    }
+  })();
+
+  function toStatusText(s){
+    const map = { pending:'Đang xử lý', processing:'Đang xử lý', shipping:'Đang giao', delivered:'Hoàn tất' };
+    const key = String(s||'').toLowerCase();
+    return map[key] || s || 'Đang xử lý';
+  }
+
+  function lookupOrder(q){
+    const value = (q||'').trim().toLowerCase();
+    if (!value) return null;
+    const list = getOrders();
+    return list.find(o =>
+      String(o.id||'').toLowerCase() === value ||
+      String(o.email||'').toLowerCase() === value
+    ) || null;
+  }
+
+  (function initForm(){
+    const form = document.getElementById('orderTrackForm');
+    const input = document.getElementById('orderTrackInput');
+    const box = document.getElementById('orderTrackResult');
+    if (!form || !input || !box) return;
+
+    // Prefill từ query ?q=
+    const usp = new URLSearchParams(location.search);
+    const q = usp.get('q') || '';
+    if (q) input.value = q;
+
+    function renderNotFound(q){
+      box.innerHTML = `
+        <div class="text-red-600">
+          <p><b>Không tìm thấy đơn hàng.</b></p>
+          <p>Hãy kiểm tra lại <i>mã đơn</i> hoặc <i>email</i>: <span class="text-gray-700">${q}</span></p>
+        </div>`;
+      box.classList.remove('hidden');
+    }
+
+    function renderOrder(o){
+      box.innerHTML = `
+        <div class="text-gray-800">
+          <p><b>Tình trạng:</b> ${toStatusText(o.status)}</p>
+          <p><b>Ngày đặt:</b> ${o.ordered_at || '-'}</p>
+          <p><b>Mã vận đơn:</b> ${o.tracking || '-'}</p>
+          <p class="text-gray-500 mt-1">Đơn <b>#${o.id}</b> — ${o.email || ''}</p>
+        </div>`;
+      box.classList.remove('hidden');
+    }
+
+    function submit(qv){
+      const q = qv ?? input.value.trim();
+      if (!q) return;
+      const found = lookupOrder(q);
+      if (!found) renderNotFound(q);
+      else renderOrder(found);
+    }
+
+    form.addEventListener('submit', (e)=>{ e.preventDefault(); submit(); });
+
+    // Tự tra nếu có ?q=
+    if (q) submit(q);
+  })();
+
+  // 🔄 Gợi ý: khi checkout xong, bạn push đơn mới vào LocalStorage:
+  // const orders = getOrders();
+  // orders.push({ id:'MSV2025-0001', email:'user@domain.com', status:'pending', ordered_at:new Date().toLocaleDateString('vi-VN'), tracking:'' });
+  // saveOrders(orders);
+
+  // 🔌 Nếu sau này dùng API/Google Sheet/Firebase:
+  // - Thay lookupOrder(q) = fetch('/api/track?q='+encodeURIComponent(q)).then(r=>r.json())
+  //   để trả về { id, email, status, ordered_at, tracking }
+  </script>
+</body>
+</html>
