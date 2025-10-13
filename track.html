@@ -38,13 +38,12 @@
   const TRACK_API = 'https://script.google.com/macros/s/AKfycbw8VpYMMNkXT5v_6Jw2wvcfBoWNCquPNNuqxSrEmpWm7IFPQNBQIjybF-ivX-hQFrRo/exec'; // ← thay bằng link Web App URL bạn có
 
   // Hàm gọi API
-  async function lookupOrder(q){
-    const res = await fetch(`${TRACK_API}?q=${encodeURIComponent(q)}`, {
-      headers: { 'Accept': 'application/json' }
-    });
-    const json = await res.json();
-    return json.ok ? json.order : null;
-  }
+async function lookupOrder(q){
+  const url = TRACK_API + '?q=' + encodeURIComponent(q);
+  const res = await fetch(url); // không headers
+  const json = await res.json();
+  return json.ok ? json.order : null;
+}
 
   // Chuyển trạng thái
   function toStatusText(s){
