@@ -139,6 +139,17 @@
         <span class="font-semibold">Tổng cộng:</span>
         <span id="cartTotal" class="font-bold text-lg text-amber-600">0₫</span>
       </div>
+      <!-- === Thông tin khách hàng === -->
+<div class="space-y-3 mt-4">
+  <input id="cusName" type="text" placeholder="Họ tên"
+         class="w-full border border-gray-300 rounded-lg px-3 py-2" />
+  <input id="cusPhone" type="tel" placeholder="Số điện thoại"
+         class="w-full border border-gray-300 rounded-lg px-3 py-2" />
+  <input id="cusEmail" type="email" placeholder="Email (nếu có)"
+         class="w-full border border-gray-300 rounded-lg px-3 py-2" />
+  <textarea id="cusAddr" rows="2" placeholder="Địa chỉ nhận hàng"
+         class="w-full border border-gray-300 rounded-lg px-3 py-2"></textarea>
+</div>
       <button id="checkoutBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-lg font-semibold transition-colors disabled:opacity-50" disabled>Thanh toán</button>
       <div class="mt-4 text-center text-sm">
   <a href="track.html" class="inline-flex items-center gap-2 text-gray-700 hover:text-black">
@@ -667,18 +678,84 @@ document.getElementById('checkoutBtn').addEventListener('click',()=>{
 
   // Khởi tạo giỏ hàng
   updateCartUI();
-  // ===== Liên kết quay lại giỏ hàng khi từ track.html =====
-document.addEventListener('DOMContentLoaded', ()=>{
-  if(location.hash==='#cart'){
-    // Nếu bạn có hàm mở giỏ hàng
-    if (typeof window.openCart === 'function') {
-      window.openCart();
-    } else {
-      // Hoặc click nút giỏ hàng (thêm id cho nút giỏ nếu chưa có)
-      document.getElementById('btn-open-cart')?.click();
+ // ===== Liên kết quay lại giỏ hàng khi từ track.html =====
+  document.addEventListener('DOMContentLoaded', ()=>{
+    if(location.hash==='#cart'){
+      if(typeof window.openCart==='function'){
+        window.openCart();
+      } else {
+        document.getElementById('btn-open-cart')?.click();
+      }
+    }
+  });
+
+  // ======== GỬI ĐƠN HÀNG VỀ GOOGLE SHEET ========
+  const TRACK_API = 'https://script.google.com/macros/s/AKfycb________/exec'; // 🔗 Dán Web App URL của bạn
+  const API_KEY   = 'CHANGE_ME_123'; // 🔑 Phải trùng với API_SECRET trong Apps Script
+
+  // Hàm lấy tóm tắt giỏ hàng
+  function getCartSummary() {
+    const total = document.getElementById('cartTotal')?.textContent?.replace(/[^\d]/g,'') || '0';
+    let items = [];
+
+    document.querySelectorAll('[data-cart-item]').forEach(el => {
+      const name = el.dataset.name || el.querySelector('.name')?.textContent || 'Sản phẩm';
+      const qty  = el.dataset.qty  || el.querySelector('.qty')?.textContent || '1';
+      items.push(`${name} x${qty}`);
+    });
+
+    return {
+      itemsText: items.join('; ') || 'Giỏ hàng',
+      totalVND: Number(total)
+    };
+  }
+
+  // Hàm gửi đơn về Google Sheet
+  async function pushOrderToSheet(order) {
+    try {
+      const res = await fetch(TRACK_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: API_KEY, ...order })
+      });
+      return await res.json();
+    } catch (err) {
+      console.error('Lỗi gửi đơn về Sheet:', err);
+      return { ok: false };
     }
   }
-});
+
+  // Bắt sự kiện nhấn nút Thanh toán
+  document.getElementById('checkoutBtn').addEventListener('click', async ()=>{
+    const name  = document.getElementById('cusName')?.value.trim()  || 'Khách';
+    const phone = document.getElementById('cusPhone')?.value.trim() || '';
+    const email = document.getElementById('cusEmail')?.value.trim() || '';
+    const addr  = document.getElementById('cusAddr')?.value.trim()  || '';
+
+    const orderId = 'MSV' + Date.now();
+    const { itemsText, totalVND } = getCartSummary();
+
+    const order = {
+      id: orderId,
+      name,
+      phone,
+      email,
+      address: addr,
+      ordered_at: new Date().toLocaleString('vi-VN'),
+      items: itemsText,
+      price: totalVND,
+      status: 'đã xác nhận'
+    };
+
+    const result = await pushOrderToSheet(order);
+
+    if (result.ok) {
+      alert('✅ Đặt hàng thành công! Mã đơn của bạn: ' + orderId);
+      location.href = 'track.html?q=' + encodeURIComponent(orderId);
+    } else {
+      alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
+    }
+  });
 </script>
 </body>
 </html>
