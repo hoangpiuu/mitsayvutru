@@ -659,6 +659,18 @@ document.getElementById('checkoutBtn').addEventListener('click',()=>{
 
   // Khởi tạo giỏ hàng
   updateCartUI();
+  // ===== Liên kết quay lại giỏ hàng khi từ track.html =====
+document.addEventListener('DOMContentLoaded', ()=>{
+  if(location.hash==='#cart'){
+    // Nếu bạn có hàm mở giỏ hàng
+    if (typeof window.openCart === 'function') {
+      window.openCart();
+    } else {
+      // Hoặc click nút giỏ hàng (thêm id cho nút giỏ nếu chưa có)
+      document.getElementById('btn-open-cart')?.click();
+    }
+  }
+});
 </script>
 </body>
 </html>
