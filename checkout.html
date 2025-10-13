@@ -178,11 +178,10 @@ async function pushOrderToSheet(order){
   try{
     const res = await fetch(TRACK_API, {
       method: 'POST',
-      // ✅ Đổi application/json -> text/plain để tránh lỗi CORS
-      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, // tránh preflight
       body: JSON.stringify({ key: API_KEY, ...order })
     });
-    return await res.json(); // {ok:true}
+    return await res.json();
   }catch(err){
     console.error('Lỗi gửi Sheet:', err);
     return { ok:false, error:String(err) };
