@@ -723,37 +723,40 @@ async function pushOrderToSheet(order) {
   }
 }
 
-  // Bắt sự kiện nhấn nút Thanh toán
-  document.getElementById('checkoutBtn').addEventListener('click', async ()=>{
-    const name  = document.getElementById('cusName')?.value.trim()  || 'Khách';
-    const phone = document.getElementById('cusPhone')?.value.trim() || '';
-    const email = document.getElementById('cusEmail')?.value.trim() || '';
-    const addr  = document.getElementById('cusAddr')?.value.trim()  || '';
+// BẮT SỰ KIỆN NHẤN NÚT THANH TOÁN
+document.getElementById('checkoutBtn').addEventListener('click', async () => {
+  // ---- validate nhanh, thiếu thì dừng, KHÔNG gọi API
+  const name  = document.getElementById('cusName')?.value.trim()  || '';
+  const phone = document.getElementById('cusPhone')?.value.trim() || '';
+  const email = document.getElementById('cusEmail')?.value.trim() || '';
+  const addr  = document.getElementById('cusAddress')?.value.trim() || '';
+  if (!name || !phone || !addr) {
+    alert('Vui lòng điền Họ tên, SĐT và Địa chỉ trước khi thanh toán.');
+    return;
+  }
 
-    const orderId = 'MSV' + Date.now();
-    const { itemsText, totalVND } = getCartSummary();
+  const orderId = 'MSV' + Date.now();
+  const { itemsText, totalVND } = getCartSummary();
 
-    const order = {
-      id: orderId,
-      name,
-      phone,
-      email,
-      address: addr,
-      ordered_at: new Date().toLocaleString('vi-VN'),
-      items: itemsText,
-      price: totalVND,
-      status: 'đã xác nhận'
-    };
+  const order = {
+    id: orderId,
+    name, phone, email, address: addr,
+    ordered_at: new Date().toLocaleString('vi-VN'),
+    items: itemsText,
+    price: totalVND,
+    status: 'đã xác nhận'
+  };
 
-    const result = await pushOrderToSheet(order);
+  const result = await pushOrderToSheet(order);
 
-    if (result.ok) {
-      alert('✅ Đặt hàng thành công! Mã đơn của bạn: ' + orderId);
-      location.href = 'track.html?q=' + encodeURIComponent(orderId);
-    } else {
-      alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
-    }
-  });
+  if (result?.ok) {
+    alert('✅ Đặt hàng thành công! Mã đơn của bạn: ' + orderId);
+    location.href = 'track.html?q=' + encodeURIComponent(orderId);
+  } else {
+    // nếu silent (đang rời trang) thì đừng báo gì
+    if (!result?.silent) alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
+  }
+});
 </script>
 </body>
 </html>
