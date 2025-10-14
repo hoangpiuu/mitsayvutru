@@ -676,27 +676,6 @@ document.getElementById('checkoutBtn').addEventListener('click',()=>{
     }
   });
 
-  // ======== GỬI ĐƠN HÀNG VỀ GOOGLE SHEET ========
-  const TRACK_API = 'https://script.google.com/macros/s/AKfycbwwhrxUnBLNApHZ85wlbV9pH48xSRKme2XEaYrk2NPeusMZzyMvcbbuqFd9ixoqD_Eb/exec'; // 🔗 Dán Web App URL của bạn
-  const API_KEY   = 'CHANGE_ME_123'; // 🔑 Phải trùng với API_SECRET trong Apps Script
-
-  // Hàm lấy tóm tắt giỏ hàng
-  function getCartSummary() {
-    const total = document.getElementById('cartTotal')?.textContent?.replace(/[^\d]/g,'') || '0';
-    let items = [];
-
-    document.querySelectorAll('[data-cart-item]').forEach(el => {
-      const name = el.dataset.name || el.querySelector('.name')?.textContent || 'Sản phẩm';
-      const qty  = el.dataset.qty  || el.querySelector('.qty')?.textContent || '1';
-      items.push(`${name} x${qty}`);
-    });
-
-    return {
-      itemsText: items.join('; ') || 'Giỏ hàng',
-      totalVND: Number(total)
-    };
-  }
-
   // Hàm gửi đơn về Google Sheet
 // đặt trên cùng file (ngoài hàm) – để biết user đã rời trang chưa
 let pageHidden = false;
