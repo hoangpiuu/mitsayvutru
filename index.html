@@ -727,5 +727,17 @@ document.getElementById('checkoutBtn').addEventListener('click', async () => {
   }
 });
 </script>
+<script>
+  // Tự động đọc file logo.html vào các thẻ có data-include
+  document.querySelectorAll('[data-include]').forEach(async el => {
+    const file = el.getAttribute('data-include');
+    try {
+      const res = await fetch(file, { cache: 'no-cache' });
+      if (res.ok) el.innerHTML = await res.text();
+    } catch (e) {
+      console.error('Không tải được file include:', file, e);
+    }
+  });
+</script>
 </body>
 </html>
