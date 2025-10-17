@@ -103,22 +103,33 @@
     <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden">
-  <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
-</div>
-<div>
-  <h1 class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
-  <p class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
-</div>
+          <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
+          <p class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
+        </div>
       </div>
-      <button id="cartToggle" class="relative bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors">
-        <span class="flex items-center space-x-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
-          <span>Giỏ hàng</span>
-        </span>
-        <span id="cartBadge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 grid place-items-center">0</span>
-      </button>
+
+      <!-- ADD: Link Sản phẩm trong nav -->
+      <div class="flex items-center gap-4">
+        <a href="san-pham.html" class="hidden sm:inline-block text-slate-700 hover:text-black font-medium">
+          Sản phẩm
+        </a>
+
+        <!-- Nút giỏ giữ nguyên -->
+        <button id="cartToggle" class="relative bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors">
+          <span class="flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+            <span>Giỏ hàng</span>
+          </span>
+          <span id="cartBadge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 grid place-items-center">0</span>
+        </button>
+      </div>
+      <!-- /ADD -->
     </nav>
   </header>
+
   <!-- Mini Cart -->
   <div id="miniCart" class="mini-cart fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 overflow-y-auto">
     <div class="p-4 border-b">
@@ -139,16 +150,17 @@
       </div>
       <button id="checkoutBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-lg font-semibold transition-colors disabled:opacity-50" disabled>Thanh toán</button>
       <div class="mt-4 text-center text-sm">
-  <a href="track.html" class="inline-flex items-center gap-2 text-gray-700 hover:text-black">
-    <span class="underline">Theo dõi đơn hàng</span>
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-    </svg>
-  </a>
-</div>
+        <a href="track.html" class="inline-flex items-center gap-2 text-gray-700 hover:text-black">
+          <span class="underline">Theo dõi đơn hàng</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
   <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
   <!-- Hero -->
   <section class="bg-gradient-to-br from-yellow-50 to-amber-50 py-12 lg:py-20">
     <div class="container mx-auto px-4">
@@ -166,12 +178,12 @@
           </div>
         </div>
         <div class="fade-in">
-          <!-- CHỈNH: SVG -> IMG -->
           <img src="images/hero.jpg" alt="Mít sấy giòn rụm" class="w-full h-auto rounded-lg shadow-lg bg-white">
         </div>
       </div>
     </div>
   </section>
+
   <!-- Ưu điểm nổi bật -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
@@ -200,12 +212,12 @@
       </div>
     </div>
   </section>
+
   <!-- Giới thiệu quy trình -->
   <section class="py-16 bg-yellow-50">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="fade-in">
-          <!-- CHỈNH: SVG -> IMG -->
           <img src="images/quytrinh.jpg" alt="Mít sấy cao cấp" class="w-full h-auto rounded-lg shadow-lg bg-white">
         </div>
         <div class="fade-in">
@@ -220,6 +232,7 @@
       </div>
     </div>
   </section>
+
   <!-- Thông tin dinh dưỡng & thành phần -->
   <section id="nutrition" class="py-16 bg-white">
     <div class="container mx-auto px-4">
@@ -253,6 +266,7 @@
       </div>
     </div>
   </section>
+
   <!-- Sản phẩm & giá -->
   <section id="products" class="py-16 bg-yellow-50">
     <div class="container mx-auto px-4">
@@ -262,7 +276,6 @@
         <!-- 100g -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
           <div class="relative">
-            <!-- CHỈNH: IMG -->
             <img src="images/goi-100g.jpg" alt="Mít sấy gói 100g" class="w-full h-48 object-cover">
           </div>
           <div class="p-6">
@@ -276,6 +289,7 @@
                     data-id="100g" data-name="Mít Sấy 100g" data-price="35000">Thêm vào giỏ</button>
           </div>
         </div>
+
         <!-- 200g -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in relative">
           <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">Bán chạy</div>
@@ -314,83 +328,85 @@
       </div>
     </div>
   </section>
-<!-- Cảm nhận khách hàng -->
-<section class="py-16 bg-white">
-  <div class="container mx-auto px-4">
-    <h3 class="text-3xl font-bold text-center text-slate-800 mb-12 fade-in">Cảm nhận khách hàng</h3>
-    <div class="max-w-4xl mx-auto">
-      <div id="reviewCarousel" class="relative">
 
-        <!-- Slide 1 (hiện) -->
-        <div class="review-slide">
-          <div class="bg-yellow-50 p-8 rounded-lg text-center">
-            <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
-            <p class="text-slate-600 mb-4 italic">"Mít sấy rất giòn và ngọt tự nhiên, con tôi rất thích ăn! Không bị ngấy như các loại snack khác."</p>
-            <div class="font-semibold text-slate-800">Nguyễn Thị Lan</div>
-            <div class="text-sm text-slate-500">Mẹ của bé 5 tuổi</div>
+  <!-- Cảm nhận khách hàng -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center text-slate-800 mb-12 fade-in">Cảm nhận khách hàng</h3>
+      <div class="max-w-4xl mx-auto">
+        <div id="reviewCarousel" class="relative">
+
+          <!-- Slide 1 (hiện) -->
+          <div class="review-slide">
+            <div class="bg-yellow-50 p-8 rounded-lg text-center">
+              <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
+              <p class="text-slate-600 mb-4 italic">"Mít sấy rất giòn và ngọt tự nhiên, con tôi rất thích ăn! Không bị ngấy như các loại snack khác."</p>
+              <div class="font-semibold text-slate-800">Nguyễn Thị Lan</div>
+              <div class="text-sm text-slate-500">Mẹ của bé 5 tuổi</div>
+            </div>
           </div>
+
+          <!-- Slide 2 -->
+          <div class="review-slide hidden">
+            <div class="bg-yellow-50 p-8 rounded-lg text-center">
+              <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
+              <p class="text-slate-600 mb-4 italic">"Đóng gói đẹp, giòn tan, vị ngọt vừa. Mình mua lặp lại nhiều lần rồi."</p>
+              <div class="font-semibold text-slate-800">Trần Văn Minh</div>
+              <div class="text-sm text-slate-500">Nhân viên văn phòng</div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="review-slide hidden">
+            <div class="bg-yellow-50 p-8 rounded-lg text-center">
+              <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
+              <p class="text-slate-600 mb-4 italic">"Món healthy cứu đói buổi chiều, ăn xong không sợ nhiều dầu mỡ."</p>
+              <div class="font-semibold text-slate-800">Lê Thị Hương</div>
+              <div class="text-sm text-slate-500">Huấn luyện viên yoga</div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="review-slide hidden">
+            <div class="bg-yellow-50 p-8 rounded-lg text-center">
+              <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
+              <p class="text-slate-600 mb-4 italic">"Giao nhanh, ăn giòn rụm, vị mít rõ. Trẻ con nhà mình mê tít."</p>
+              <div class="font-semibold text-slate-800">Phạm Thu Trang</div>
+              <div class="text-sm text-slate-500">Mẹ bỉm 2 con</div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="review-slide hidden">
+            <div class="bg-yellow-50 p-8 rounded-lg text-center">
+              <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
+              <p class="text-slate-600 mb-4 italic">"Giá hợp lý, chất lượng ổn định. Sẽ tiếp tục ủng hộ."</p>
+              <div class="font-semibold text-slate-800">Ngô Quốc Bảo</div>
+              <div class="text-sm text-slate-500">Kinh doanh tự do</div>
+            </div>
+          </div>
+
+          <!-- Nút điều hướng -->
+          <button id="prevReview" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50">
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button id="nextReview" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50">
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
 
-        <!-- Slide 2 -->
-        <div class="review-slide hidden">
-          <div class="bg-yellow-50 p-8 rounded-lg text-center">
-            <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
-            <p class="text-slate-600 mb-4 italic">"Đóng gói đẹp, giòn tan, vị ngọt vừa. Mình mua lặp lại nhiều lần rồi."</p>
-            <div class="font-semibold text-slate-800">Trần Văn Minh</div>
-            <div class="text-sm text-slate-500">Nhân viên văn phòng</div>
-          </div>
+        <!-- Dots -->
+        <div id="reviewDots" class="flex justify-center mt-6 space-x-2">
+          <button class="review-dot w-3 h-3 rounded-full bg-amber-500" data-slide="0"></button>
+          <button class="review-dot w-3 h-3 rounded-full bg-gray-300" data-slide="1"></button>
+          <button class="review-dot w-3 h-3 rounded-full bg-gray-300" data-slide="2"></button>
+          <button class="review-dot w-3 h-3 rounded-full bg-gray-300" data-slide="3"></button>
+          <button class="review-dot w-3 h-3 rounded-full bg-gray-300" data-slide="4"></button>
         </div>
-
-        <!-- Slide 3 -->
-        <div class="review-slide hidden">
-          <div class="bg-yellow-50 p-8 rounded-lg text-center">
-            <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
-            <p class="text-slate-600 mb-4 italic">"Món healthy cứu đói buổi chiều, ăn xong không sợ nhiều dầu mỡ."</p>
-            <div class="font-semibold text-slate-800">Lê Thị Hương</div>
-            <div class="text-sm text-slate-500">Huấn luyện viên yoga</div>
-          </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="review-slide hidden">
-          <div class="bg-yellow-50 p-8 rounded-lg text-center">
-            <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
-            <p class="text-slate-600 mb-4 italic">"Giao nhanh, ăn giòn rụm, vị mít rõ. Trẻ con nhà mình mê tít."</p>
-            <div class="font-semibold text-slate-800">Phạm Thu Trang</div>
-            <div class="text-sm text-slate-500">Mẹ bỉm 2 con</div>
-          </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="review-slide hidden">
-          <div class="bg-yellow-50 p-8 rounded-lg text-center">
-            <div class="flex justify-center mb-4"><span class="text-yellow-400 text-2xl">★★★★★</span></div>
-            <p class="text-slate-600 mb-4 italic">"Giá hợp lý, chất lượng ổn định. Sẽ tiếp tục ủng hộ."</p>
-            <div class="font-semibold text-slate-800">Ngô Quốc Bảo</div>
-            <div class="text-sm text-slate-500">Kinh doanh tự do</div>
-          </div>
-        </div>
-
-        <!-- Nút điều hướng -->
-        <button id="prevReview" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50">
-          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button id="nextReview" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50">
-          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-
-      <!-- Dots (chấm tròn) — số lượng = số slide -->
-      <div id="reviewDots" class="flex justify-center mt-6 space-x-2">
-        <button class="review-dot w-3 h-3 rounded-full bg-amber-500" data-slide="0"></button>
-        <button class="review-dot w-3 h-3 rounded-full bg-gray-300" data-slide="1"></button>
-        <button class="review-dot w-3 h-3 rounded-full bg-gray-300" data-slide="2"></button>
-        <button class="review-dot w-3 h-3 rounded-full bg-gray-300" data-slide="3"></button>
-        <button class="review-dot w-3 h-3 rounded-full bg-gray-300" data-slide="4"></button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
   <!-- Câu hỏi thường gặp -->
   <section class="py-16 bg-yellow-50">
     <div class="container mx-auto px-4">
@@ -450,6 +466,7 @@
       </div>
     </div>
   </section>
+
   <!-- Footer đầy đủ -->
   <footer class="bg-slate-800 text-white py-12">
     <div class="container mx-auto px-4">
@@ -470,7 +487,7 @@
           <div class="space-y-2 text-sm text-gray-400">
             <p>📍 12 Hưu trí Hà Đông Hà Nội </p>
             <p>📞 Hotline: 0365231819</p>
-            <p>✉️ Email: mitsayvutru.infor@gmail.com</p>
+            <p✉️ Email: mitsayvutru.infor@gmail.com</p>
             <p>🕒 8:00 - 22:00 (Thứ 2 - CN)</p>
           </div>
         </div>
@@ -478,11 +495,11 @@
         <div>
           <h5 class="font-semibold mb-4">Chính sách</h5>
           <ul class="space-y-2">
-  <li><a href="policy-return.html"  class="hover:text-amber-400">Chính sách đổi trả</a></li>
-  <li><a href="policy-privacy.html" class="hover:text-amber-400">Chính sách bảo mật</a></li>
-  <li><a href="policy-terms.html"   class="hover:text-amber-400">Điều khoản sử dụng</a></li>
-  <li><a href="policy-guide.html"   class="hover:text-amber-400">Hướng dẫn mua hàng</a></li>
-</ul>
+            <li><a href="policy-return.html"  class="hover:text-amber-400">Chính sách đổi trả</a></li>
+            <li><a href="policy-privacy.html" class="hover:text-amber-400">Chính sách bảo mật</a></li>
+            <li><a href="policy-terms.html"   class="hover:text-amber-400">Điều khoản sử dụng</a></li>
+            <li><a href="policy-guide.html"   class="hover:text-amber-400">Hướng dẫn mua hàng</a></li>
+          </ul>
         </div>
 
         <div>
@@ -559,18 +576,22 @@
     updateCartUI();
   }
 
-  document.getElementById('cartToggle').addEventListener('click', ()=>{
+  // ===== ADD: Hàm mở/đóng mini-cart tái sử dụng + gán global
+  function openCart(){
     document.getElementById('miniCart').classList.add('open');
     document.getElementById('cartOverlay').classList.remove('hidden');
-  });
-  document.getElementById('closeCart').addEventListener('click', ()=>{
+  }
+  function closeCart(){
     document.getElementById('miniCart').classList.remove('open');
     document.getElementById('cartOverlay').classList.add('hidden');
-  });
-  document.getElementById('cartOverlay').addEventListener('click', ()=>{
-    document.getElementById('miniCart').classList.remove('open');
-    document.getElementById('cartOverlay').classList.add('hidden');
-  });
+  }
+  window.openCart = openCart; // để nơi khác (hash) gọi được
+  // /ADD
+
+  // Dùng 2 hàm trên cho các nút sẵn có
+  document.getElementById('cartToggle').addEventListener('click', openCart);
+  document.getElementById('closeCart').addEventListener('click', closeCart);
+  document.getElementById('cartOverlay').addEventListener('click', closeCart);
 
   document.querySelectorAll('.add-to-cart').forEach(b=>b.addEventListener('click', (e)=>{
     const id=e.target.dataset.id, name=e.target.dataset.name, price=parseInt(e.target.dataset.price);
@@ -579,12 +600,10 @@
     setTimeout(()=>{ e.target.textContent='Thêm vào giỏ'; e.target.classList.remove('bg-green-500'); }, 1000);
   }));
 
-document.getElementById('checkoutBtn').addEventListener('click',()=>{
-  // Nếu giỏ trống thì không cho đi
-  if (!cart || cart.length === 0) { alert('Giỏ hàng đang trống'); return; }
-  // Sang trang thanh toán riêng
-  window.location.href = 'checkout.html';
-});
+  document.getElementById('checkoutBtn').addEventListener('click',()=>{
+    if (!cart || cart.length === 0) { alert('Giỏ hàng đang trống'); return; }
+    window.location.href = 'checkout.html';
+  });
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', function(e){
@@ -597,7 +616,7 @@ document.getElementById('checkoutBtn').addEventListener('click',()=>{
   const obs=new IntersectionObserver((es)=>es.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('visible'); }),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
   document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 
-  // FAQ toggle (đóng các mục khác khi mở một mục)
+  // FAQ toggle
   document.querySelectorAll('.faq-question').forEach(q=>{
     q.addEventListener('click', ()=>{
       const i=q.parentElement.querySelector('.faq-icon');
@@ -620,10 +639,10 @@ document.getElementById('checkoutBtn').addEventListener('click',()=>{
     });
   }
 
-  // ====== CAROUSEL "Cảm nhận khách hàng" ======
+  // ===== CAROUSEL "Cảm nhận khách hàng"
   (function initReviewCarousel(){
     const root = document.getElementById('reviewCarousel');
-    if (!root) return; // nếu trang không có phần này thì bỏ qua
+    if (!root) return;
 
     const slides = Array.from(root.querySelectorAll('.review-slide'));
     const dots   = Array.from(document.querySelectorAll('#reviewDots .review-dot'));
@@ -648,15 +667,13 @@ document.getElementById('checkoutBtn').addEventListener('click',()=>{
     show(0);
   })();
 
-  // ====== Fallback JPG: nếu PNG lỗi, thử JPG ======
+  // Fallback JPG
   function fallbackToJPG(id, pngPath, jpgPath){
     const el=document.getElementById(id);
     if(!el) return;
     el.onerror=function(){ this.onerror=null; this.src=jpgPath; };
-    // nếu thẻ chưa có src (được tạo động) thì set pngPath
     if (!el.getAttribute('src')) el.src = pngPath;
   }
-  // Gọi cho các ảnh chính (nếu trong HTML có các id sau)
   fallbackToJPG('img-hero','images/hero.png','images/hero.jpg');
   fallbackToJPG('img-quytrinh','images/quytrinh.png','images/quytrinh.jpg');
   fallbackToJPG('img-100g','images/goi-100g.png','images/goi-100g.jpg');
@@ -665,75 +682,65 @@ document.getElementById('checkoutBtn').addEventListener('click',()=>{
 
   // Khởi tạo giỏ hàng
   updateCartUI();
- // ===== Liên kết quay lại giỏ hàng khi từ track.html =====
+
+  // ===== ADD: Tự mở mini-cart khi vào index.html#cart
   document.addEventListener('DOMContentLoaded', ()=>{
-    if(location.hash==='#cart'){
-      if(typeof window.openCart==='function'){
-        window.openCart();
-      } else {
-        document.getElementById('btn-open-cart')?.click();
-      }
+    if(location.hash === '#cart') openCart();
+  });
+  // /ADD
+
+  // ===== Gửi đơn về Sheet (giữ nguyên logic của bạn) =====
+  let pageHidden = false;
+  window.addEventListener('pagehide', () => { pageHidden = true; });
+
+  async function pushOrderToSheet(order) {
+    try {
+      const res = await fetch(TRACK_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: JSON.stringify({ key: API_KEY, ...order })
+      });
+
+      const json = await res.json().catch(() => ({}));
+      return json && json.ok ? json : { ok: false, error: 'bad_json' };
+    } catch (err) {
+      console.error('Lỗi gửi đơn về Sheet:', err);
+      if (pageHidden) return { ok: false, silent: true };
+      return { ok: false, error: String(err) };
+    }
+  }
+
+  document.getElementById('checkoutBtn').addEventListener('click', async () => {
+    const name  = document.getElementById('cusName')?.value.trim()  || '';
+    const phone = document.getElementById('cusPhone')?.value.trim() || '';
+    const email = document.getElementById('cusEmail')?.value.trim() || '';
+    const addr  = document.getElementById('cusAddress')?.value.trim() || '';
+    if (!name || !phone || !addr) {
+      alert('Vui lòng điền Họ tên, SĐT và Địa chỉ trước khi thanh toán.');
+      return;
+    }
+
+    const orderId = 'MSV' + Date.now();
+    const { itemsText, totalVND } = getCartSummary?.() || { itemsText: '', totalVND: 0 };
+
+    const order = {
+      id: orderId,
+      name, phone, email, address: addr,
+      ordered_at: new Date().toLocaleString('vi-VN'),
+      items: itemsText,
+      price: totalVND,
+      status: 'đã xác nhận'
+    };
+
+    const result = await pushOrderToSheet(order);
+
+    if (result?.ok) {
+      alert('✅ Đặt hàng thành công! Mã đơn của bạn: ' + orderId);
+      location.href = 'track.html?q=' + encodeURIComponent(orderId);
+    } else {
+      if (!result?.silent) alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
     }
   });
-
-  // Hàm gửi đơn về Google Sheet
-// đặt trên cùng file (ngoài hàm) – để biết user đã rời trang chưa
-let pageHidden = false;
-window.addEventListener('pagehide', () => { pageHidden = true; });
-
-async function pushOrderToSheet(order) {
-  try {
-    const res = await fetch(TRACK_API, {
-      method: 'POST',
-      // dùng text/plain để né preflight CORS
-      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-      body: JSON.stringify({ key: API_KEY, ...order })
-    });
-
-    const json = await res.json().catch(() => ({}));
-    return json && json.ok ? json : { ok: false, error: 'bad_json' };
-  } catch (err) {
-    console.error('Lỗi gửi đơn về Sheet:', err);
-    // nếu người dùng đã rời trang thì im lặng, không bật alert
-    if (pageHidden) return { ok: false, silent: true };
-    return { ok: false, error: String(err) };
-  }
-}
-
-// BẮT SỰ KIỆN NHẤN NÚT THANH TOÁN
-document.getElementById('checkoutBtn').addEventListener('click', async () => {
-  // ---- validate nhanh, thiếu thì dừng, KHÔNG gọi API
-  const name  = document.getElementById('cusName')?.value.trim()  || '';
-  const phone = document.getElementById('cusPhone')?.value.trim() || '';
-  const email = document.getElementById('cusEmail')?.value.trim() || '';
-  const addr  = document.getElementById('cusAddress')?.value.trim() || '';
-  if (!name || !phone || !addr) {
-    alert('Vui lòng điền Họ tên, SĐT và Địa chỉ trước khi thanh toán.');
-    return;
-  }
-
-  const orderId = 'MSV' + Date.now();
-  const { itemsText, totalVND } = getCartSummary();
-
-  const order = {
-    id: orderId,
-    name, phone, email, address: addr,
-    ordered_at: new Date().toLocaleString('vi-VN'),
-    items: itemsText,
-    price: totalVND,
-    status: 'đã xác nhận'
-  };
-
-  const result = await pushOrderToSheet(order);
-
-  if (result?.ok) {
-    alert('✅ Đặt hàng thành công! Mã đơn của bạn: ' + orderId);
-    location.href = 'track.html?q=' + encodeURIComponent(orderId);
-  } else {
-    // nếu silent (đang rời trang) thì đừng báo gì
-    if (!result?.silent) alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
-  }
-});
 </script>
 </body>
 </html>
