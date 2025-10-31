@@ -69,7 +69,23 @@
       <a href="lien-he.html" class="hover:text-amber-600 transition-colors">Liên hệ / Mua sỉ</a>
     </nav>
 
-
+    <!-- GIỎ HÀNG + NÚT MOBILE -->
+    <div class="flex items-center gap-5">
+      <!-- CART -->
+      <button id="cartBtn"
+  class="relative flex items-center bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors text-sm font-semibold">
+  <span class="flex items-center space-x-2">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/>
+    </svg>
+    <span>Giỏ hàng</span>
+  </span>
+  <span id="cartBadge"
+    class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-semibold w-5 h-5 rounded-full flex items-center justify-center">
+    0
+  </span>
+</button>
 
       <!-- MOBILE TOGGLE -->
       <button id="mobile-menu-btn"
