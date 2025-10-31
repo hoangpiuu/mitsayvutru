@@ -99,36 +99,85 @@
 
 <body class="bg-white text-slate-800">
   <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-40">
-    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+<header id="main-header" class="header-sticky bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo & Brand -->
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden">
-          <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
+        <!-- Logo Circle -->
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center shadow-md">
+          <span class="text-2xl">🌟</span>
         </div>
-        <div>
-          <h1 class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
-          <p class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
+        <!-- Brand Text -->
+        <div class="hidden sm:block">
+          <h1 id="brand-name" class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
+          <p id="tagline" class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
         </div>
       </div>
 
-      <!-- ADD: Link Sản phẩm trong nav -->
-      <div class="flex items-center gap-4">
-        <a href="san-pham.html" class="hidden sm:inline-block text-slate-700 hover:text-black font-medium">
-          Sản phẩm
-        </a>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#home" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">TRANG CHỦ</a>
+        <a href="#products" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">SẢN PHẨM</a>
+        <a href="#about" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">GIỚI THIỆU</a>
+        <a href="#blog" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">BLOG</a>
+        <a href="#contact" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">LIÊN HỆ</a>
+      </nav>
 
-        <!-- Nút giỏ giữ nguyên -->
-        <button id="cartToggle" class="relative bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors">
-          <span class="flex items-center space-x-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
-            <span>Giỏ hàng</span>
-          </span>
-          <span id="cartBadge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 grid place-items-center">0</span>
+      <!-- Right Icons -->
+      <div class="flex items-center space-x-4">
+        <!-- Search Icon (chuyên nghiệp hơn) -->
+        <button class="p-2 text-slate-700 hover:text-amber-500 transition-colors duration-200" aria-label="Tìm kiếm">
+          <i class="fa-solid fa-magnifying-glass text-xl"></i>
+        </button>
+
+        <!-- Cart Icon with Badge -->
+        <button class="relative p-2 text-slate-700 hover:text-amber-500 transition-colors duration-200" aria-label="Giỏ hàng">
+          <i class="fa-solid fa-cart-shopping text-xl"></i>
+          <span class="cart-badge absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">3</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-700 hover:text-amber-500 transition-colors duration-200" aria-label="Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
       </div>
-      <!-- /ADD -->
-    </nav>
-  </header>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-amber-50 border-t border-gray-200">
+      <nav class="py-4 space-y-2">
+        <a href="#home" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">TRANG CHỦ</a>
+        <a href="#products" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">SẢN PHẨM</a>
+        <a href="#about" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">GIỚI THIỆU</a>
+        <a href="#blog" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">BLOG</a>
+        <a href="#contact" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">LIÊN HỆ</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- FontAwesome (bắt buộc) -->
+<script src="https://kit.fontawesome.com/a2e0e6ad13.js" crossorigin="anonymous"></script>
+
+<!-- Mobile menu toggle -->
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Hiệu ứng sticky shadow khi cuộn
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) header.classList.add('shadow-md');
+    else header.classList.remove('shadow-md');
+  });
+</script>
 
   <!-- Mini Cart -->
   <div id="miniCart" class="mini-cart fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 overflow-y-auto">
