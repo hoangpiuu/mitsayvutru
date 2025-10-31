@@ -98,37 +98,136 @@
   </div>
 
 <body class="bg-white text-slate-800">
-  <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-40">
-    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden">
-          <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
-        </div>
-        <div>
-          <h1 class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
-          <p class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
-        </div>
-      </div>
+  <!-- Header (new) -->
+<header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
 
-      <!-- ADD: Link Sản phẩm trong nav -->
-      <div class="flex items-center gap-4">
-        <a href="san-pham.html" class="hidden sm:inline-block text-slate-700 hover:text-black font-medium">
-          Sản phẩm
+    <!-- Left: Logo + Brand -->
+    <div class="flex items-start gap-3">
+      <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden border border-slate-300">
+        <img src="images/logo.png" alt="Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
+      </div>
+      <div class="leading-tight">
+        <div class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</div>
+        <div class="text-xs text-slate-600">Giòn thơm quay vị giác</div>
+      </div>
+    </div>
+
+    <!-- Center: Nav desktop -->
+    <nav class="hidden lg:flex items-center gap-6 text-[15px] font-semibold text-slate-800">
+      <a href="index.html" class="hover:text-black">TRANG CHỦ</a>
+
+      <div class="relative group flex items-center gap-1 cursor-pointer hover:text-black">
+        <a href="san-pham.html" class="flex items-center gap-1 hover:text-black">
+          <span>SẢN PHẨM</span>
+          <span class="text-[11px] leading-none">&#9662;</span>
         </a>
-
-        <!-- Nút giỏ giữ nguyên -->
-        <button id="cartToggle" class="relative bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors">
-          <span class="flex items-center space-x-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
-            <span>Giỏ hàng</span>
-          </span>
-          <span id="cartBadge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 grid place-items-center">0</span>
-        </button>
+        <!-- dropdown gợi ý (chưa cần JS) -->
+        <div class="absolute top-full left-0 hidden group-hover:block bg-white shadow-lg border border-slate-200 rounded-lg min-w-[180px] py-2 z-30">
+          <a href="san-pham.html#100g" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Gói 100g</a>
+          <a href="san-pham.html#200g" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Gói 200g</a>
+          <a href="san-pham.html#300g" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Gói 300g</a>
+          <a href="san-pham.html#combo" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Combo quà Tết</a>
+        </div>
       </div>
-      <!-- /ADD -->
+
+      <a href="gioi-thieu.html" class="hover:text-black">GIỚI THIỆU</a>
+      <a href="blog.html" class="hover:text-black">BLOG</a>
+
+      <div class="relative group flex items-center gap-1 cursor-pointer hover:text-black">
+        <span>HƯỚNG DẪN SỬ DỤNG</span>
+        <span class="text-[11px] leading-none">&#9662;</span>
+        <div class="absolute top-full left-0 hidden group-hover:block bg-white shadow-lg border border-slate-200 rounded-lg min-w-[200px] py-2 z-30">
+          <a href="huong-dan-bao-quan.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Bảo quản giòn lâu</a>
+          <a href="an-khong-beo.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Ăn vặt không lo béo</a>
+        </div>
+      </div>
+
+      <a href="lien-he.html" class="hover:text-black">LIÊN HỆ</a>
     </nav>
-  </header>
+
+    <!-- Right: Icons -->
+    <div class="flex items-center gap-5 text-slate-800">
+
+      <!-- Search icon -->
+      <button class="hidden sm:inline-flex text-slate-700 hover:text-black" aria-label="Tìm kiếm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle cx="11" cy="11" r="6"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-linecap="round"></line>
+        </svg>
+      </button>
+
+      <!-- User icon -->
+      <button class="hidden sm:inline-flex text-slate-700 hover:text-black" aria-label="Tài khoản">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <!-- Cart icon with badge -->
+      <button
+        class="relative inline-flex text-slate-700 hover:text-black"
+        aria-label="Giỏ hàng"
+        id="cartToggleHeader"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M6 6h15l-1.5 9h-12z" stroke-linecap="round" stroke-linejoin="round"></path>
+          <circle cx="9" cy="20" r="1"></circle>
+          <circle cx="18" cy="20" r="1"></circle>
+        </svg>
+
+        <span
+          id="cartBadgeHeader"
+          class="absolute -top-2 -right-2 min-w-[20px] h-[20px] rounded-full bg-red-600 text-white text-[12px] font-bold flex items-center justify-center px-1 leading-none"
+        >0</span>
+      </button>
+
+      <!-- Mobile menu toggle -->
+      <button
+        class="lg:hidden inline-flex text-slate-700 hover:text-black"
+        id="mobileMenuToggle"
+        aria-label="Mở menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 stroke-[1.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <line x1="4" y1="7" x2="20" y2="7" stroke-linecap="round"></line>
+          <line x1="4" y1="12" x2="20" y2="12" stroke-linecap="round"></line>
+          <line x1="4" y1="17" x2="20" y2="17" stroke-linecap="round"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown nav -->
+  <div
+    id="mobileMenu"
+    class="lg:hidden hidden border-t border-slate-200 bg-white px-4 py-3 text-slate-800 text-[15px] font-medium space-y-3"
+  >
+    <a href="index.html" class="block">Trang chủ</a>
+    <a href="san-pham.html" class="block">Sản phẩm</a>
+    <a href="gioi-thieu.html" class="block">Giới thiệu</a>
+    <a href="blog.html" class="block">Blog</a>
+    <a href="huong-dan-bao-quan.html" class="block">Hướng dẫn sử dụng</a>
+    <a href="lien-he.html" class="block">Liên hệ</a>
+
+    <button class="flex items-center gap-2" id="cartToggleHeaderMobile">
+      <span>Giỏ hàng</span>
+      <span
+        id="cartBadgeHeaderMobile"
+        class="inline-flex min-w-[20px] h-[20px] rounded-full bg-red-600 text-white text-[12px] font-bold items-center justify-center px-1 leading-none"
+      >0</span>
+    </button>
+  </div>
+</header>
+
+<!-- Breadcrumb dưới header -->
+<div class="bg-slate-50 border-b border-slate-200 text-sm text-slate-600">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap gap-1">
+    <a href="index.html" class="hover:underline text-slate-700">Trang chủ</a>
+    <span>/</span>
+    <span class="text-slate-900 font-medium" id="breadcrumbCurrent">Trang chủ</span>
+  </div>
+</div>
 
   <!-- Mini Cart -->
   <div id="miniCart" class="mini-cart fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 overflow-y-auto">
