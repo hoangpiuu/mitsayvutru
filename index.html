@@ -99,189 +99,36 @@
 
 <body class="bg-white text-slate-800">
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-[radial-gradient(circle_at_20%_20%,#1f2937_0%,#0a0a0a_60%)] border-b border-amber-500/20 shadow-[0_20px_60px_rgba(251,191,36,0.08)] relative">
-  <!-- dải glow mỏng trên đầu, như viền ánh sáng phi thuyền -->
-  <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400/70 to-transparent blur-[2px]"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between relative">
-    
-    <!-- LEFT: LOGO + BRAND -->
-    <a href="index.html" class="flex items-center gap-3 shrink-0">
-      <div class="relative">
-        <img src="images/logo.png"
-             alt="Mít Sấy Vũ Trụ"
-             class="h-10 w-10 rounded-full object-cover ring-2 ring-amber-400/40 shadow-[0_0_20px_rgba(251,191,36,0.5)]">
-        <!-- hiệu ứng vòng sáng quay quanh logo -->
-        <div class="absolute inset-0 rounded-full bg-amber-400/20 blur-xl animate-pulse"></div>
-      </div>
-      <div class="leading-tight hidden sm:block">
-        <div class="text-amber-200 font-semibold text-base sm:text-lg tracking-wide drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]">
-          Mít Sấy Vũ Trụ
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-orange-50 via-violet-50 to-amber-50 border-b border-violet-200/30 shadow-[0_4px_25px_rgba(224,160,255,0.15)]">
+  <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-amber-300 via-violet-300 to-orange-200 blur-[2px]"></div>
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden">
+          <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
         </div>
-        <div class="text-[11px] text-slate-300 font-normal italic">
-          Giòn thơm quay vị giác
+        <div>
+          <h1 class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
+          <p class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
         </div>
       </div>
-    </a>
 
-    <!-- CENTER NAV (desktop) -->
-    <nav class="hidden lg:flex items-center gap-8 text-[13px] font-semibold tracking-wide">
-      <a href="index.html"
-         class="text-slate-200 hover:text-amber-400 transition-colors flex items-center gap-1">
-        <span>TRANG CHỦ</span>
-      </a>
+      <!-- ADD: Link Sản phẩm trong nav -->
+      <div class="flex items-center gap-4">
+        <a href="san-pham.html" class="hidden sm:inline-block text-slate-700 hover:text-black font-medium">
+          Sản phẩm
+        </a>
 
-      <div class="relative group">
-        <button class="flex items-center gap-1 text-slate-200 hover:text-amber-400 transition-colors">
-          <span>SẢN PHẨM</span>
-          <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:text-amber-400"></i>
+        <!-- Nút giỏ giữ nguyên -->
+        <button id="cartToggle" class="relative bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors">
+          <span class="flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+            <span>Giỏ hàng</span>
+          </span>
+          <span id="cartBadge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 grid place-items-center">0</span>
         </button>
-
-        <!-- dropdown -->
-        <div class="absolute left-0 top-full mt-3 w-52 bg-slate-900/95 border border-amber-400/20 rounded-xl shadow-[0_30px_80px_rgba(251,191,36,0.15)] backdrop-blur-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
-          <div class="px-4 py-2 border-b border-white/5">
-            <p class="text-[11px] uppercase text-amber-400 tracking-wider font-medium leading-none">
-              Gói ưu đãi
-            </p>
-          </div>
-          <a href="#products"
-             class="block px-4 py-2 text-[14px] text-slate-200 hover:bg-amber-400/10 hover:text-amber-300">
-            Gói 100g – Ăn thử
-          </a>
-          <a href="#products"
-             class="block px-4 py-2 text-[14px] text-slate-200 hover:bg-amber-400/10 hover:text-amber-300">
-            Gói 200g – Bán chạy 🚀
-          </a>
-          <a href="#products"
-             class="block px-4 py-2 text-[14px] text-slate-200 hover:bg-amber-400/10 hover:text-amber-300">
-            Gói 300g – Tiết kiệm
-          </a>
-        </div>
       </div>
-
-      <a href="#gioi-thieu"
-         class="text-slate-200 hover:text-amber-400 transition-colors">
-        CÂU CHUYỆN
-      </a>
-
-      <a href="#nutrition"
-         class="text-slate-200 hover:text-amber-400 transition-colors">
-        DINH DƯỠNG
-      </a>
-
-      <div class="relative group">
-        <button class="flex items-center gap-1 text-slate-200 hover:text-amber-400 transition-colors">
-          <span>HỎI &amp; ĐÁP</span>
-          <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:text-amber-400"></i>
-        </button>
-
-        <!-- dropdown FAQ mini -->
-        <div class="absolute left-0 top-full mt-3 w-[15rem] bg-slate-900/95 border border-amber-400/20 rounded-xl shadow-[0_30px_80px_rgba(251,191,36,0.15)] backdrop-blur-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
-          <a href="#faq"
-             class="block px-4 py-2 text-[14px] text-slate-200 hover:bg-amber-400/10 hover:text-amber-300">
-            Bảo quản thế nào để luôn giòn?
-          </a>
-          <a href="#faq"
-             class="block px-4 py-2 text-[14px] text-slate-200 hover:bg-amber-400/10 hover:text-amber-300">
-            Bao lâu giao tới nhà?
-          </a>
-          <a href="#nutrition"
-             class="block px-4 py-2 text-[14px] text-slate-200 hover:bg-amber-400/10 hover:text-amber-300">
-            Ăn kiêng / eat clean được không?
-          </a>
-        </div>
-      </div>
-
-      <a href="#lien-he"
-         class="text-slate-200 hover:text-amber-400 transition-colors">
-        LIÊN HỆ
-      </a>
+      <!-- /ADD -->
     </nav>
-
-    <!-- RIGHT ACTIONS -->
-    <div class="flex items-center gap-5">
-      <!-- search -->
-      <button class="hidden sm:inline-flex text-slate-300 hover:text-amber-400 transition-colors" aria-label="Tìm kiếm">
-        <i class="fa-solid fa-magnifying-glass text-xl leading-none drop-shadow-[0_0_8px_rgba(251,191,36,0.4)]"></i>
-      </button>
-
-      <!-- account -->
-      <button class="hidden sm:inline-flex text-slate-300 hover:text-amber-400 transition-colors" aria-label="Tài khoản">
-        <i class="fa-regular fa-user text-xl leading-none drop-shadow-[0_0_8px_rgba(251,191,36,0.4)]"></i>
-      </button>
-
-      <!-- cart -->
-      <button id="cartBtn"
-        class="relative flex items-center text-slate-200 hover:text-amber-400 transition-colors"
-        aria-label="Giỏ hàng">
-        <i class="fa-solid fa-bag-shopping text-xl leading-none drop-shadow-[0_0_8px_rgba(251,191,36,0.4)]"></i>
-
-        <span
-          id="cartBadge"
-          class="absolute -top-2 -right-2 bg-red-600 text-white text-[11px] font-semibold min-w-[18px] h-[18px] px-[5px] rounded-full flex items-center justify-center leading-none hidden shadow-[0_0_10px_rgba(220,38,38,0.8)] ring-2 ring-red-400/40">
-          0
-        </span>
-      </button>
-
-      <!-- mobile hamburger -->
-      <button id="mobileMenuToggle"
-        class="lg:hidden text-slate-200 hover:text-amber-400 transition-colors flex items-center"
-        aria-label="Menu">
-        <i class="fa-solid fa-bars text-2xl leading-none drop-shadow-[0_0_8px_rgba(251,191,36,0.4)]"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- MOBILE MENU PANEL -->
-  <div id="mobileMenuPanel"
-       class="lg:hidden border-t border-amber-500/20 bg-[rgba(15,15,15,0.96)] backdrop-blur-md shadow-[0_30px_80px_rgba(251,191,36,0.15)] hidden">
-    <nav class="px-4 py-4 flex flex-col text-[15px] font-semibold text-slate-100">
-      <a href="index.html"
-         class="py-3 border-b border-white/5 flex justify-between items-center">
-        <span>Trang chủ</span>
-      </a>
-
-      <details class="py-3 border-b border-white/5 text-slate-100">
-        <summary class="flex justify-between items-center cursor-pointer list-none">
-          <span>Sản phẩm</span>
-          <i class="fa-solid fa-chevron-down text-[12px] text-slate-400 ml-2"></i>
-        </summary>
-        <div class="pl-3 pt-2 pb-1 flex flex-col text-[14px] font-normal text-slate-300">
-          <a href="#products" class="py-1">Gói 100g – Ăn thử</a>
-          <a href="#products" class="py-1">Gói 200g – Bán chạy 🚀</a>
-          <a href="#products" class="py-1">Gói 300g – Tiết kiệm</a>
-        </div>
-      </details>
-
-      <a href="#gioi-thieu"
-         class="py-3 border-b border-white/5 flex justify-between items-center">
-        <span>Câu chuyện</span>
-      </a>
-
-      <a href="#nutrition"
-         class="py-3 border-b border-white/5 flex justify-between items-center">
-        <span>Dinh dưỡng</span>
-      </a>
-
-      <details class="py-3 border-b border-white/5 text-slate-100">
-        <summary class="flex justify-between items-center cursor-pointer list-none">
-          <span>Hỏi &amp; Đáp</span>
-          <i class="fa-solid fa-chevron-down text-[12px] text-slate-400 ml-2"></i>
-        </summary>
-        <div class="pl-3 pt-2 pb-1 flex flex-col text-[14px] font-normal text-slate-300">
-          <a href="#faq" class="py-1">Bảo quản thế nào để luôn giòn?</a>
-          <a href="#faq" class="py-1">Bao lâu giao tới nhà?</a>
-          <a href="#nutrition" class="py-1">Ăn kiêng được không?</a>
-        </div>
-      </details>
-
-      <a href="#lien-he"
-         class="py-3 flex justify-between items-center">
-        <span>Liên hệ</span>
-      </a>
-    </nav>
-  </div>
-</header>
+  </header>
 
   <!-- Mini Cart -->
   <div id="miniCart" class="mini-cart fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 overflow-y-auto">
@@ -894,15 +741,6 @@
       if (!result?.silent) alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
     }
   });
-  <script>
-  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-  const mobileMenuPanel = document.getElementById('mobileMenuPanel');
-
-  if (mobileMenuToggle && mobileMenuPanel) {
-    mobileMenuToggle.addEventListener('click', () => {
-      mobileMenuPanel.classList.toggle('hidden');
-    });
-  }
 </script>
 </body>
 </html>
