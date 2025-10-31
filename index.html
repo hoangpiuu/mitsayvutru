@@ -850,6 +850,13 @@
       if (!result?.silent) alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
     }
   });
+    // ========= FADE IN SECTIONS =========
+  // thêm class .visible để hiện các block nội dung
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.classList.add('visible');
+    });
+  });
 </script>
 </body>
 </html>
