@@ -10,7 +10,6 @@
   <meta property="og:image" content="images/hero.jpg">
   <meta property="og:type" content="product">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥭</text></svg>">
-  <script src="https://kit.fontawesome.com/a2e0e6ad13.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,144 +99,36 @@
 
 <body class="bg-white text-slate-800">
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    
-    <!-- LEFT: LOGO -->
-    <a href="index.html" class="flex items-center gap-3 shrink-0">
-      <img src="images/logo.png" alt="Mít Sấy Vũ Trụ" class="h-10 w-10 rounded-full object-cover">
-      <div class="leading-tight hidden sm:block">
-        <div class="text-slate-800 font-semibold text-base sm:text-lg">
-          Mít Sấy Vũ Trụ
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden">
+          <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
         </div>
-        <div class="text-[11px] text-slate-500 font-normal">
-          Giòn thơm quay vị giác
+        <div>
+          <h1 class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
+          <p class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
         </div>
       </div>
-    </a>
 
-    <!-- CENTER: MAIN NAV (desktop) -->
-    <nav class="hidden lg:flex items-center gap-7 text-[14px] font-semibold text-slate-800 tracking-wide">
-      <a href="index.html" class="hover:text-amber-600 transition-colors">TRANG CHỦ</a>
-
-      <div class="relative group">
-        <a href="san-pham.html" class="flex items-center gap-1 hover:text-amber-600 transition-colors">
-          <span>SẢN PHẨM</span>
-          <i class="fa-solid fa-chevron-down text-[11px] text-slate-500 group-hover:text-amber-600"></i>
+      <!-- ADD: Link Sản phẩm trong nav -->
+      <div class="flex items-center gap-4">
+        <a href="san-pham.html" class="hidden sm:inline-block text-slate-700 hover:text-black font-medium">
+          Sản phẩm
         </a>
-        <!-- dropdown (ẩn trước, sau bạn muốn list SKU thì mở cái này ra) -->
-        <div class="absolute left-0 top-full mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
-          <a href="#products" class="block px-4 py-2 text-[14px] text-slate-700 hover:bg-amber-50 hover:text-amber-600">
-            Gói 100g
-          </a>
-          <a href="#products" class="block px-4 py-2 text-[14px] text-slate-700 hover:bg-amber-50 hover:text-amber-600">
-            Gói 200g (Bán chạy)
-          </a>
-          <a href="#products" class="block px-4 py-2 text-[14px] text-slate-700 hover:bg-amber-50 hover:text-amber-600">
-            Gói 300g Tiết kiệm
-          </a>
-        </div>
+
+        <!-- Nút giỏ giữ nguyên -->
+        <button id="cartToggle" class="relative bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors">
+          <span class="flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+            <span>Giỏ hàng</span>
+          </span>
+          <span id="cartBadge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 grid place-items-center">0</span>
+        </button>
       </div>
-
-      <a href="#gioi-thieu" class="hover:text-amber-600 transition-colors">GIỚI THIỆU</a>
-
-      <a href="#blog" class="hover:text-amber-600 transition-colors">BLOG</a>
-
-      <div class="relative group">
-        <a href="#huong-dan" class="flex items-center gap-1 hover:text-amber-600 transition-colors">
-          <span>HƯỚNG DẪN</span>
-          <i class="fa-solid fa-chevron-down text-[11px] text-slate-500 group-hover:text-amber-600"></i>
-        </a>
-        <!-- dropdown demo: cách bảo quản, cách ăn kiêng -->
-        <div class="absolute left-0 top-full mt-2 w-56 bg-white border border-slate-200 rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
-          <a href="#faq" class="block px-4 py-2 text-[14px] text-slate-700 hover:bg-amber-50 hover:text-amber-600">
-            Bảo quản thế nào cho giòn lâu?
-          </a>
-          <a href="#nutrition" class="block px-4 py-2 text-[14px] text-slate-700 hover:bg-amber-50 hover:text-amber-600">
-            Ăn kiêng / eat clean có ăn được không?
-          </a>
-        </div>
-      </div>
-
-      <a href="#lien-he" class="hover:text-amber-600 transition-colors">LIÊN HỆ</a>
+      <!-- /ADD -->
     </nav>
-
-    <!-- RIGHT: ACTION ICONS -->
-    <div class="flex items-center gap-5">
-      <!-- search -->
-      <button class="hidden sm:inline-flex text-slate-700 hover:text-amber-600 transition-colors" aria-label="Tìm kiếm">
-        <i class="fa-solid fa-magnifying-glass text-xl leading-none"></i>
-      </button>
-
-      <!-- account -->
-      <button class="hidden sm:inline-flex text-slate-700 hover:text-amber-600 transition-colors" aria-label="Tài khoản">
-        <i class="fa-regular fa-user text-xl leading-none"></i>
-      </button>
-
-      <!-- cart -->
-      <button id="cartBtn" class="relative text-slate-700 hover:text-amber-600 transition-colors flex items-center" aria-label="Giỏ hàng">
-        <i class="fa-solid fa-bag-shopping text-xl leading-none"></i>
-        <span
-          id="cartBadge"
-          class="absolute -top-2 -right-2 bg-red-600 text-white text-[11px] font-semibold min-w-[18px] h-[18px] px-[5px] rounded-full flex items-center justify-center leading-none hidden">
-          0
-        </span>
-      </button>
-
-      <!-- mobile menu button -->
-      <button id="mobileMenuToggle"
-        class="lg:hidden text-slate-700 hover:text-amber-600 transition-colors flex items-center"
-        aria-label="Menu">
-        <i class="fa-solid fa-bars text-2xl leading-none"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- MOBILE MENU PANEL -->
-  <div id="mobileMenuPanel"
-       class="lg:hidden border-t border-slate-200 bg-white shadow-md hidden">
-    <nav class="px-4 py-3 flex flex-col text-[15px] font-semibold text-slate-800">
-      <a href="index.html" class="py-2 border-b border-slate-100 flex justify-between items-center">
-        <span>Trang chủ</span>
-      </a>
-
-      <details class="py-2 border-b border-slate-100">
-        <summary class="flex justify-between items-center cursor-pointer list-none">
-          <span>Sản phẩm</span>
-          <i class="fa-solid fa-chevron-down text-[12px] text-slate-500 ml-2"></i>
-        </summary>
-        <div class="pl-3 pt-2 pb-1 flex flex-col text-[14px] font-normal text-slate-600">
-          <a href="#products" class="py-1">Gói 100g</a>
-          <a href="#products" class="py-1">Gói 200g (Bán chạy)</a>
-          <a href="#products" class="py-1">Gói 300g Tiết kiệm</a>
-        </div>
-      </details>
-
-      <a href="#gioi-thieu" class="py-2 border-b border-slate-100 flex justify-between items-center">
-        <span>Giới thiệu</span>
-      </a>
-
-      <a href="#blog" class="py-2 border-b border-slate-100 flex justify-between items-center">
-        <span>Blog</span>
-      </a>
-
-      <details class="py-2 border-b border-slate-100">
-        <summary class="flex justify-between items-center cursor-pointer list-none">
-          <span>Hướng dẫn</span>
-          <i class="fa-solid fa-chevron-down text-[12px] text-slate-500 ml-2"></i>
-        </summary>
-        <div class="pl-3 pt-2 pb-1 flex flex-col text-[14px] font-normal text-slate-600">
-          <a href="#faq" class="py-1">Bảo quản mít giòn</a>
-          <a href="#nutrition" class="py-1">Dùng cho ăn kiêng?</a>
-        </div>
-      </details>
-
-      <a href="#lien-he" class="py-2 flex justify-between items-center">
-        <span>Liên hệ</span>
-      </a>
-    </nav>
-  </div>
-</header>
+  </header>
 
   <!-- Mini Cart -->
   <div id="miniCart" class="mini-cart fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 overflow-y-auto">
