@@ -894,6 +894,15 @@
       if (!result?.silent) alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
     }
   });
+  <script>
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+
+  if (mobileMenuToggle && mobileMenuPanel) {
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuPanel.classList.toggle('hidden');
+    });
+  }
 </script>
 </body>
 </html>
