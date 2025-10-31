@@ -98,47 +98,37 @@
   </div>
 
 <body class="bg-white text-slate-800">
- <!-- HEADER MỚI -->
-<header class="sticky top-0 z-50 bg-white shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-    <!-- LOGO -->
-    <a href="index.html" class="flex items-center gap-2">
-      <img src="images/logo.png" alt="Mít Sấy Vũ Trụ" class="h-10 w-10 rounded-full object-cover">
-      <div class="flex flex-col leading-tight">
-        <span class="font-semibold text-lg text-slate-800">Mít Sấy Vũ Trụ</span>
-        <span class="text-xs text-slate-500">Giòn thơm quay vị giác</span>
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden">
+          <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
+          <p class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
+        </div>
       </div>
-    </a>
 
-    <!-- MENU -->
-    <nav class="hidden md:flex items-center space-x-8 text-[15px] font-medium text-slate-700">
-      <a href="index.html" class="hover:text-amber-600">TRANG CHỦ</a>
-      <a href="san-pham.html" class="hover:text-amber-600">SẢN PHẨM</a>
-      <a href="#gioi-thieu" class="hover:text-amber-600">GIỚI THIỆU</a>
-      <a href="#blog" class="hover:text-amber-600">BLOG</a>
-      <a href="#huong-dan" class="hover:text-amber-600">HƯỚNG DẪN</a>
-      <a href="#lien-he" class="hover:text-amber-600">LIÊN HỆ</a>
+      <!-- ADD: Link Sản phẩm trong nav -->
+      <div class="flex items-center gap-4">
+        <a href="san-pham.html" class="hidden sm:inline-block text-slate-700 hover:text-black font-medium">
+          Sản phẩm
+        </a>
+
+        <!-- Nút giỏ giữ nguyên -->
+        <button id="cartToggle" class="relative bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors">
+          <span class="flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+            <span>Giỏ hàng</span>
+          </span>
+          <span id="cartBadge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 grid place-items-center">0</span>
+        </button>
+      </div>
+      <!-- /ADD -->
     </nav>
-
-    <!-- ICONS -->
-    <div class="flex items-center space-x-4">
-      <!-- Search -->
-      <button class="text-slate-600 hover:text-amber-600">
-        <i class="fa-solid fa-magnifying-glass text-xl"></i>
-      </button>
-      <!-- Account -->
-      <button class="text-slate-600 hover:text-amber-600">
-        <i class="fa-regular fa-user text-xl"></i>
-      </button>
-      <!-- Cart -->
-      <button id="cartBtn" class="relative text-slate-600 hover:text-amber-600">
-        <i class="fa-solid fa-bag-shopping text-xl"></i>
-        <span id="cartBadge"
-          class="absolute -top-2 -right-2 bg-red-500 text-white text-[11px] font-semibold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
-      </button>
-    </div>
-  </div>
-</header>
+  </header>
 
   <!-- Mini Cart -->
   <div id="miniCart" class="mini-cart fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 overflow-y-auto">
