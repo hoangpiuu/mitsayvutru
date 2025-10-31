@@ -51,31 +51,31 @@
   </style>
 
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Mít Sấy Vũ Trụ",
-  "brand": {"@type": "Brand", "name": "Mít Sấy Vũ Trụ"},
-  "image": "images/hero.jpg",
-  "offers": {"@type": "Offer", "price": "45000", "priceCurrency": "VND", "availability": "https://schema.org/InStock"},
-  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "127"},
-  "review": {
-    "@type": "Review",
-    "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-    "author": {"@type": "Person", "name": "Nguyễn Thị Lan"},
-    "reviewBody": "Mít sấy rất giòn và ngọt tự nhiên, con tôi rất thích ăn!"
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Mít Sấy Vũ Trụ",
+    "brand": {"@type": "Brand", "name": "Mít Sấy Vũ Trụ"},
+    "image": "images/hero.jpg",
+    "offers": {"@type": "Offer", "price": "45000", "priceCurrency": "VND", "availability": "https://schema.org/InStock"},
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "127"},
+    "review": {
+      "@type": "Review",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+      "author": {"@type": "Person", "name": "Nguyễn Thị Lan"},
+      "reviewBody": "Mít sấy rất giòn và ngọt tự nhiên, con tôi rất thích ăn!"
+    }
   }
-}
-</script>
+  </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HYNFZGJB0P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HYNFZGJB0P');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HYNFZGJB0P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HYNFZGJB0P');
+  </script>
 </head>
 <body class="bg-white text-slate-800">
 
@@ -97,38 +97,101 @@
     </a>
   </div>
 
-<body class="bg-white text-slate-800">
-  <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-40">
-    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden">
+  <!-- ========== HEADER ========== -->
+  <header id="main-header" class="sticky top-0 z-50 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+      <!-- LEFT: LOGO + BRAND -->
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden shadow-md ring-2 ring-amber-400/40">
           <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
         </div>
-        <div>
-          <h1 class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
-          <p class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
+        <div class="leading-tight">
+          <div class="text-slate-900 font-semibold text-base">
+            Mít Sấy Vũ Trụ
+          </div>
+          <div class="text-[11px] text-slate-600 -mt-0.5">
+            Giòn thơm quay vị giác
+          </div>
         </div>
-      </div>
+      </a>
 
-      <!-- ADD: Link Sản phẩm trong nav -->
-      <div class="flex items-center gap-4">
-        <a href="san-pham.html" class="hidden sm:inline-block text-slate-700 hover:text-black font-medium">
-          Sản phẩm
-        </a>
+      <!-- CENTER NAV (desktop only) -->
+      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-semibold tracking-wide text-slate-800">
+        <a href="#home" class="hover:text-amber-600 transition-colors">TRANG CHỦ</a>
+        <a href="#products" class="hover:text-amber-600 transition-colors">SẢN PHẨM</a>
+        <a href="#nutrition" class="hover:text-amber-600 transition-colors">THÀNH PHẦN</a>
+        <a href="#reviewCarousel" class="hover:text-amber-600 transition-colors">ĐÁNH GIÁ</a>
+        <a href="#contact-footer" class="hover:text-amber-600 transition-colors">LIÊN HỆ</a>
+      </nav>
 
-        <!-- Nút giỏ giữ nguyên -->
-        <button id="cartToggle" class="relative bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors">
-          <span class="flex items-center space-x-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
-            <span>Giỏ hàng</span>
+      <!-- RIGHT (search + cart + hamburger) -->
+      <div class="flex items-center gap-5">
+        <!-- Search (ẩn trên màn rất nhỏ để đỡ chật) -->
+        <button class="hidden sm:inline-flex text-slate-700 hover:text-amber-600 transition-colors" aria-label="Tìm kiếm">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/>
+          </svg>
+        </button>
+
+        <!-- Cart -->
+        <button id="cartBtn"
+          class="relative flex items-center text-slate-700 hover:text-amber-600 transition-colors"
+          aria-label="Giỏ hàng">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/>
+          </svg>
+
+          <!-- Badge số lượng -->
+          <span
+            id="cartBadge"
+            class="cart-badge absolute -top-2 -right-2 bg-red-600 text-white text-[11px] font-semibold min-w-[18px] h-[18px] px-[5px] rounded-full flex items-center justify-center leading-none hidden shadow-[0_0_10px_rgba(220,38,38,0.6)] ring-2 ring-red-400/40">
+            0
           </span>
-          <span id="cartBadge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 grid place-items-center">0</span>
+        </button>
+
+        <!-- Hamburger cho mobile -->
+        <button id="mobile-menu-btn"
+          class="lg:hidden text-slate-700 hover:text-amber-600 transition-colors flex items-center"
+          aria-label="Mở menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
         </button>
       </div>
-      <!-- /ADD -->
-    </nav>
+    </div>
+
+    <!-- MOBILE MENU PANEL -->
+    <div id="mobile-menu"
+        class="lg:hidden bg-white border-t border-slate-200 shadow-md hidden">
+      <nav class="px-4 py-4 flex flex-col text-[15px] font-semibold text-slate-800">
+        <a href="#home"
+          class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+          TRANG CHỦ
+        </a>
+        <a href="#products"
+          class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+          SẢN PHẨM
+        </a>
+        <a href="#nutrition"
+          class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+          THÀNH PHẦN
+        </a>
+        <a href="#reviewCarousel"
+          class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+          ĐÁNH GIÁ
+        </a>
+        <a href="#contact-footer"
+          class="py-3 hover:text-amber-600 transition-colors">
+          LIÊN HỆ
+        </a>
+      </nav>
+    </div>
   </header>
+  <!-- ========== /HEADER ========== -->
 
   <!-- Mini Cart -->
   <div id="miniCart" class="mini-cart fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 overflow-y-auto">
@@ -162,8 +225,8 @@
   <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-yellow-50 to-amber-50 py-12 lg:py-20">
-    <div class="container mx-auto px-4">
+  <section id="home" class="bg-gradient-to-br from-yellow-50 to-amber-50 py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-8 items-center">
         <div class="fade-in">
           <h2 class="text-3xl lg:text-5xl font-bold text-slate-800 mb-4">
@@ -178,7 +241,7 @@
           </div>
         </div>
         <div class="fade-in">
-          <img src="images/hero.jpg" alt="Mít sấy giòn rụm" class="w-full h-auto rounded-lg shadow-lg bg-white">
+          <img id="img-hero" src="images/hero.jpg" alt="Mít sấy giòn rụm" class="w-full h-auto rounded-lg shadow-lg bg-white">
         </div>
       </div>
     </div>
@@ -186,7 +249,7 @@
 
   <!-- Ưu điểm nổi bật -->
   <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h3 class="text-3xl font-bold text-center text-slate-800 mb-12 fade-in">Ưu điểm nổi bật</h3>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center fade-in">
@@ -215,10 +278,10 @@
 
   <!-- Giới thiệu quy trình -->
   <section class="py-16 bg-yellow-50">
-    <div class="container mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="fade-in">
-          <img src="images/quytrinh.jpg" alt="Mít sấy cao cấp" class="w-full h-auto rounded-lg shadow-lg bg-white">
+          <img id="img-quytrinh" src="images/quytrinh.jpg" alt="Mít sấy cao cấp" class="w-full h-auto rounded-lg shadow-lg bg-white">
         </div>
         <div class="fade-in">
           <h3 class="text-3xl font-bold text-slate-800 mb-6">Quy trình sấy khô đặc biệt</h3>
@@ -235,7 +298,7 @@
 
   <!-- Thông tin dinh dưỡng & thành phần -->
   <section id="nutrition" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <h3 class="text-3xl font-bold text-center text-slate-800 mb-12 fade-in">Thông tin dinh dưỡng & thành phần</h3>
         <div class="grid md:grid-cols-2 gap-8">
@@ -269,14 +332,14 @@
 
   <!-- Sản phẩm & giá -->
   <section id="products" class="py-16 bg-yellow-50">
-    <div class="container mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h3 class="text-3xl font-bold text-center text-slate-800 mb-12 fade-in">Gói sản phẩm & giá</h3>
       <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
         <!-- 100g -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
           <div class="relative">
-            <img src="images/goi-100g.jpg" alt="Mít sấy gói 100g" class="w-full h-48 object-cover">
+            <img id="img-100g" src="images/goi-100g.jpg" alt="Mít sấy gói 100g" class="w-full h-48 object-cover">
           </div>
           <div class="p-6">
             <h4 class="font-semibold text-lg mb-2">Mít sấy giòn 100g</h4>
@@ -294,7 +357,7 @@
         <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in relative">
           <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">Bán chạy</div>
           <div class="relative">
-            <img src="images/goi-200g.jpg" alt="Mít sấy gói 200g" class="w-full h-48 object-cover">
+            <img id="img-200g" src="images/goi-200g.jpg" alt="Mít sấy gói 200g" class="w-full h-48 object-cover">
           </div>
           <div class="p-6">
             <h4 class="font-semibold text-lg mb-2">Mít sấy giòn 200g</h4>
@@ -311,7 +374,7 @@
         <!-- 300g -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
           <div class="relative">
-            <img src="images/goi-300g.jpg" alt="Mít sấy gói 300g" class="w-full h-48 object-cover">
+            <img id="img-300g" src="images/goi-300g.jpg" alt="Mít sấy gói 300g" class="w-full h-48 object-cover">
           </div>
           <div class="p-6">
             <h4 class="font-semibold text-lg mb-2">Mít sấy giòn 300g</h4>
@@ -331,7 +394,7 @@
 
   <!-- Cảm nhận khách hàng -->
   <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h3 class="text-3xl font-bold text-center text-slate-800 mb-12 fade-in">Cảm nhận khách hàng</h3>
       <div class="max-w-4xl mx-auto">
         <div id="reviewCarousel" class="relative">
@@ -409,7 +472,7 @@
 
   <!-- Câu hỏi thường gặp -->
   <section class="py-16 bg-yellow-50">
-    <div class="container mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h3 class="text-3xl font-bold text-center text-slate-800 mb-12 fade-in">Câu hỏi thường gặp</h3>
       <div class="max-w-3xl mx-auto space-y-4">
         <div class="faq-item bg-white rounded-lg shadow-sm">
@@ -457,7 +520,7 @@
 
   <!-- CTA cuối trang -->
   <section class="py-16 bg-gradient-to-r from-yellow-400 to-amber-500">
-    <div class="container mx-auto px-4 text-center">
+    <div class="max-w-7xl mx-auto px-4 text-center">
       <div class="max-w-3xl mx-auto fade-in">
         <h3 class="text-3xl lg:text-4xl font-bold text-white mb-4">Đừng bỏ lỡ cơ hội thưởng thức!</h3>
         <p class="text-xl text-yellow-100 mb-8">Mít Sấy Vũ Trụ - Giòn thơm tự nhiên, giao nhanh trong ngày</p>
@@ -468,8 +531,8 @@
   </section>
 
   <!-- Footer đầy đủ -->
-  <footer class="bg-slate-800 text-white py-12">
-    <div class="container mx-auto px-4">
+  <footer id="contact-footer" class="bg-slate-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="grid md:grid-cols-4 gap-8">
         <div>
           <div class="flex items-center space-x-3 mb-4">
@@ -487,7 +550,7 @@
           <div class="space-y-2 text-sm text-gray-400">
             <p>📍 12 Hưu trí Hà Đông Hà Nội </p>
             <p>📞 Hotline: 0365231819</p>
-            <p✉️ Email: mitsayvutru.infor@gmail.com</p>
+            <p>✉️ Email: mitsayvutru.infor@gmail.com</p>
             <p>🕒 8:00 - 22:00 (Thứ 2 - CN)</p>
           </div>
         </div>
@@ -525,7 +588,7 @@
 
  <!-- Scripts -->
 <script>
-  // ====== GIỎ HÀNG (giữ nguyên theo bản của bạn) ======
+  // ====== GIỎ HÀNG ======
   let cart = JSON.parse(localStorage.getItem('mitSayCart')) || [];
 
   function updateCartUI(){
@@ -537,29 +600,35 @@
     const totalItems = cart.reduce((s,i)=>s+i.quantity,0);
     const totalPrice = cart.reduce((s,i)=>s+i.price*i.quantity,0);
 
-    cartBadge.textContent = totalItems;
-    cartBadge.classList.toggle('show', totalItems>0);
-
-    if (cart.length===0){
-      cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Giỏ hàng trống</p>';
-      checkoutBtn.disabled = true;
-    } else {
-      cartItems.innerHTML = cart.map(i=>`
-        <div class="flex items-center justify-between py-3 border-b border-gray-200">
-          <div class="flex-1">
-            <h4 class="font-medium text-sm">${i.name}</h4>
-            <p class="text-amber-600 font-semibold">${i.price.toLocaleString()}₫</p>
-          </div>
-          <div class="flex items-center space-x-2">
-            <button onclick="updateQuantity('${i.id}', ${i.quantity-1})" class="w-6 h-6 bg-gray-200 rounded text-sm hover:bg-gray-300">-</button>
-            <span class="w-8 text-center text-sm">${i.quantity}</span>
-            <button onclick="updateQuantity('${i.id}', ${i.quantity+1})" class="w-6 h-6 bg-gray-200 rounded text-sm hover:bg-gray-300">+</button>
-          </div>
-        </div>`).join('');
-      checkoutBtn.disabled = false;
+    if (cartBadge) {
+      cartBadge.textContent = totalItems;
+      cartBadge.classList.toggle('show', totalItems>0);
+      // hiển thị badge nếu >0
+      if (totalItems>0) cartBadge.classList.remove('hidden');
     }
 
-    cartTotal.textContent = totalPrice.toLocaleString()+'₫';
+    if (cartItems && cartTotal && checkoutBtn) {
+      if (cart.length===0){
+        cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Giỏ hàng trống</p>';
+        checkoutBtn.disabled = true;
+      } else {
+        cartItems.innerHTML = cart.map(i=>`
+          <div class="flex items-center justify-between py-3 border-b border-gray-200">
+            <div class="flex-1">
+              <h4 class="font-medium text-sm">${i.name}</h4>
+              <p class="text-amber-600 font-semibold">${i.price.toLocaleString()}₫</p>
+            </div>
+            <div class="flex items-center space-x-2">
+              <button onclick="updateQuantity('${i.id}', ${i.quantity-1})" class="w-6 h-6 bg-gray-200 rounded text-sm hover:bg-gray-300">-</button>
+              <span class="w-8 text-center text-sm">${i.quantity}</span>
+              <button onclick="updateQuantity('${i.id}', ${i.quantity+1})" class="w-6 h-6 bg-gray-200 rounded text-sm hover:bg-gray-300">+</button>
+            </div>
+          </div>`).join('');
+        checkoutBtn.disabled = false;
+      }
+      cartTotal.textContent = totalPrice.toLocaleString()+'₫';
+    }
+
     localStorage.setItem('mitSayCart', JSON.stringify(cart));
   }
 
@@ -576,23 +645,31 @@
     updateCartUI();
   }
 
-  // ===== ADD: Hàm mở/đóng mini-cart tái sử dụng + gán global
+  // mở/đóng mini-cart
   function openCart(){
-    document.getElementById('miniCart').classList.add('open');
-    document.getElementById('cartOverlay').classList.remove('hidden');
+    const miniCart = document.getElementById('miniCart');
+    const overlay  = document.getElementById('cartOverlay');
+    if (miniCart) miniCart.classList.add('open');
+    if (overlay)  overlay.classList.remove('hidden');
   }
   function closeCart(){
-    document.getElementById('miniCart').classList.remove('open');
-    document.getElementById('cartOverlay').classList.add('hidden');
+    const miniCart = document.getElementById('miniCart');
+    const overlay  = document.getElementById('cartOverlay');
+    if (miniCart) miniCart.classList.remove('open');
+    if (overlay)  overlay.classList.add('hidden');
   }
-  window.openCart = openCart; // để nơi khác (hash) gọi được
-  // /ADD
+  window.openCart = openCart;
 
-  // Dùng 2 hàm trên cho các nút sẵn có
-  document.getElementById('cartToggle').addEventListener('click', openCart);
-  document.getElementById('closeCart').addEventListener('click', closeCart);
-  document.getElementById('cartOverlay').addEventListener('click', closeCart);
+  // Gán event cho icon giỏ hàng mới (#cartBtn), nút đóng và overlay
+  const cartBtnEl      = document.getElementById('cartBtn');
+  const closeCartBtnEl = document.getElementById('closeCart');
+  const cartOverlayEl  = document.getElementById('cartOverlay');
 
+  if (cartBtnEl)      cartBtnEl.addEventListener('click', openCart);
+  if (closeCartBtnEl) closeCartBtnEl.addEventListener('click', closeCart);
+  if (cartOverlayEl)  cartOverlayEl.addEventListener('click', closeCart);
+
+  // Thêm vào giỏ
   document.querySelectorAll('.add-to-cart').forEach(b=>b.addEventListener('click', (e)=>{
     const id=e.target.dataset.id, name=e.target.dataset.name, price=parseInt(e.target.dataset.price);
     addToCart(id,name,price);
@@ -600,17 +677,36 @@
     setTimeout(()=>{ e.target.textContent='Thêm vào giỏ'; e.target.classList.remove('bg-green-500'); }, 1000);
   }));
 
-  document.getElementById('checkoutBtn').addEventListener('click',()=>{
-    if (!cart || cart.length === 0) { alert('Giỏ hàng đang trống'); return; }
-    window.location.href = 'checkout.html';
-  });
+  // Thanh toán
+  const checkoutBtnGlobal = document.getElementById('checkoutBtn');
+  if (checkoutBtnGlobal){
+    checkoutBtnGlobal.addEventListener('click',()=>{
+      if (!cart || cart.length === 0) { alert('Giỏ hàng đang trống'); return; }
+      window.location.href = 'checkout.html';
+    });
+  }
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', function(e){
+    // Cho menu mobile tự đóng khi bấm
+    const mobileMenuPanel = document.getElementById('mobile-menu');
+    if (this.closest('#mobile-menu') && mobileMenuPanel){
+      mobileMenuPanel.classList.add('hidden');
+    }
+
     e.preventDefault();
     const t=document.querySelector(this.getAttribute('href'));
     if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
   }));
+
+  // Toggle mobile menu
+  const mobileMenuBtn   = document.getElementById('mobile-menu-btn');
+  const mobileMenuPanel = document.getElementById('mobile-menu');
+  if (mobileMenuBtn && mobileMenuPanel){
+    mobileMenuBtn.addEventListener('click', ()=>{
+      mobileMenuPanel.classList.toggle('hidden');
+    });
+  }
 
   // Fade-in
   const obs=new IntersectionObserver((es)=>es.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('visible'); }),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
@@ -683,13 +779,12 @@
   // Khởi tạo giỏ hàng
   updateCartUI();
 
-  // ===== ADD: Tự mở mini-cart khi vào index.html#cart
+  // Tự mở mini-cart khi vào index.html#cart
   document.addEventListener('DOMContentLoaded', ()=>{
     if(location.hash === '#cart') openCart();
   });
-  // /ADD
 
-  // ===== Gửi đơn về Sheet (giữ nguyên logic của bạn) =====
+  // ===== (GIỮ LOGIC TRACK ĐƠN HÀNG CỦA BẠN) =====
   let pageHidden = false;
   window.addEventListener('pagehide', () => { pageHidden = true; });
 
@@ -710,37 +805,41 @@
     }
   }
 
-  document.getElementById('checkoutBtn').addEventListener('click', async () => {
-    const name  = document.getElementById('cusName')?.value.trim()  || '';
-    const phone = document.getElementById('cusPhone')?.value.trim() || '';
-    const email = document.getElementById('cusEmail')?.value.trim() || '';
-    const addr  = document.getElementById('cusAddress')?.value.trim() || '';
-    if (!name || !phone || !addr) {
-      alert('Vui lòng điền Họ tên, SĐT và Địa chỉ trước khi thanh toán.');
-      return;
-    }
+  // Lưu ý: Trang index chưa có form checkout nên đoạn này sẽ chỉ chạy meaningful ở trang checkout thực sự
+  const finalCheckoutBtn = document.getElementById('checkoutBtn');
+  if (finalCheckoutBtn){
+    finalCheckoutBtn.addEventListener('click', async () => {
+      const name  = document.getElementById('cusName')?.value.trim()  || '';
+      const phone = document.getElementById('cusPhone')?.value.trim() || '';
+      const email = document.getElementById('cusEmail')?.value.trim() || '';
+      const addr  = document.getElementById('cusAddress')?.value.trim() || '';
+      if (!name || !phone || !addr) {
+        alert('Vui lòng điền Họ tên, SĐT và Địa chỉ trước khi thanh toán.');
+        return;
+      }
 
-    const orderId = 'MSV' + Date.now();
-    const { itemsText, totalVND } = getCartSummary?.() || { itemsText: '', totalVND: 0 };
+      const orderId = 'MSV' + Date.now();
+      const { itemsText, totalVND } = getCartSummary?.() || { itemsText: '', totalVND: 0 };
 
-    const order = {
-      id: orderId,
-      name, phone, email, address: addr,
-      ordered_at: new Date().toLocaleString('vi-VN'),
-      items: itemsText,
-      price: totalVND,
-      status: 'đã xác nhận'
-    };
+      const order = {
+        id: orderId,
+        name, phone, email, address: addr,
+        ordered_at: new Date().toLocaleString('vi-VN'),
+        items: itemsText,
+        price: totalVND,
+        status: 'đã xác nhận'
+      };
 
-    const result = await pushOrderToSheet(order);
+      const result = await pushOrderToSheet(order);
 
-    if (result?.ok) {
-      alert('✅ Đặt hàng thành công! Mã đơn của bạn: ' + orderId);
-      location.href = 'track.html?q=' + encodeURIComponent(orderId);
-    } else {
-      if (!result?.silent) alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
-    }
-  });
+      if (result?.ok) {
+        alert('✅ Đặt hàng thành công! Mã đơn của bạn: ' + orderId);
+        location.href = 'track.html?q=' + encodeURIComponent(orderId);
+      } else {
+        if (!result?.silent) alert('❌ Gửi đơn thất bại, vui lòng thử lại!');
+      }
+    });
+  }
 </script>
 </body>
 </html>
