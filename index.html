@@ -98,84 +98,115 @@
   </div>
 
 <body class="bg-white text-slate-800">
-  <!-- Header -->
-<header id="main-header" class="header-sticky bg-white border-b border-gray-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
+  <!-- HEADER BẢN CHUẨN THƯƠNG MẠI -->
+<header id="main-header" class="sticky top-0 z-50 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-      <!-- Logo & Brand -->
-      <div class="flex items-center space-x-3">
-        <!-- Logo Circle -->
-        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center shadow-md">
-          <span class="text-2xl">🌟</span>
+    <!-- LEFT: LOGO + BRAND TEXT -->
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <!-- logo tròn vàng, bạn có thể thay bằng <img src="images/logo.png"> -->
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center shadow-md ring-2 ring-amber-400/40">
+        <span class="text-xl">🌟</span>
+      </div>
+      <div class="leading-tight">
+        <div class="text-slate-900 font-semibold text-base">
+          Mít Sấy Vũ Trụ
         </div>
-        <!-- Brand Text -->
-        <div class="hidden sm:block">
-          <h1 id="brand-name" class="text-xl font-bold text-slate-800">Mít Sấy Vũ Trụ</h1>
-          <p id="tagline" class="text-xs text-slate-600">Giòn thơm quay vị giác</p>
+        <div class="text-[11px] text-slate-500 -mt-0.5">
+          Giòn thơm quay vị giác
         </div>
       </div>
+    </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="#home" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">TRANG CHỦ</a>
-        <a href="#products" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">SẢN PHẨM</a>
-        <a href="#about" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">GIỚI THIỆU</a>
-        <a href="#blog" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">BLOG</a>
-        <a href="#contact" class="text-sm font-medium text-slate-700 hover:text-amber-500 transition-colors duration-200">LIÊN HỆ</a>
-      </nav>
+    <!-- CENTER NAV (desktop) -->
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] font-semibold tracking-wide text-slate-800">
+      <a href="#home" class="hover:text-amber-600 transition-colors">TRANG CHỦ</a>
+      <a href="#products" class="hover:text-amber-600 transition-colors">SẢN PHẨM</a>
+      <a href="#about" class="hover:text-amber-600 transition-colors">GIỚI THIỆU</a>
+      <a href="#blog" class="hover:text-amber-600 transition-colors">BLOG</a>
+      <a href="#contact" class="hover:text-amber-600 transition-colors">LIÊN HỆ</a>
+    </nav>
 
-      <!-- Right Icons -->
-      <div class="flex items-center space-x-4">
-        <!-- Search Icon (chuyên nghiệp hơn) -->
-        <button class="p-2 text-slate-700 hover:text-amber-500 transition-colors duration-200" aria-label="Tìm kiếm">
-          <i class="fa-solid fa-magnifying-glass text-xl"></i>
-        </button>
+    <!-- RIGHT ICONS -->
+    <div class="flex items-center gap-5">
+      <!-- Search -->
+      <button class="hidden sm:inline-flex text-slate-700 hover:text-amber-600 transition-colors" aria-label="Tìm kiếm">
+        <i class="fa-solid fa-magnifying-glass text-xl leading-none"></i>
+      </button>
 
-        <!-- Cart Icon with Badge -->
-        <button class="relative p-2 text-slate-700 hover:text-amber-500 transition-colors duration-200" aria-label="Giỏ hàng">
-          <i class="fa-solid fa-cart-shopping text-xl"></i>
-          <span class="cart-badge absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">3</span>
-        </button>
+      <!-- Cart -->
+      <button id="cartBtn"
+        class="relative flex items-center text-slate-700 hover:text-amber-600 transition-colors"
+        aria-label="Giỏ hàng">
+        <i class="fa-solid fa-cart-shopping text-xl leading-none"></i>
+        <span
+          id="cartBadge"
+          class="absolute -top-2 -right-2 bg-red-600 text-white text-[11px] font-semibold min-w-[18px] h-[18px] px-[5px] rounded-full flex items-center justify-center leading-none hidden shadow-[0_0_10px_rgba(220,38,38,0.6)] ring-2 ring-red-400/40">
+          0
+        </span>
+      </button>
 
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-700 hover:text-amber-500 transition-colors duration-200" aria-label="Menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
+      <!-- mobile hamburger -->
+      <button id="mobile-menu-btn"
+        class="lg:hidden text-slate-700 hover:text-amber-600 transition-colors flex items-center"
+        aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
+  </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu md:hidden bg-amber-50 border-t border-gray-200">
-      <nav class="py-4 space-y-2">
-        <a href="#home" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">TRANG CHỦ</a>
-        <a href="#products" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">SẢN PHẨM</a>
-        <a href="#about" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">GIỚI THIỆU</a>
-        <a href="#blog" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">BLOG</a>
-        <a href="#contact" class="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-amber-100 hover:text-amber-600 transition-colors duration-200">LIÊN HỆ</a>
-      </nav>
-    </div>
+  <!-- MOBILE MENU PANEL -->
+  <div id="mobile-menu"
+       class="lg:hidden bg-white border-t border-slate-200 shadow-md hidden">
+    <nav class="px-4 py-4 flex flex-col text-[15px] font-semibold text-slate-800">
+      <a href="#home"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        TRANG CHỦ
+      </a>
+      <a href="#products"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        SẢN PHẨM
+      </a>
+      <a href="#about"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        GIỚI THIỆU
+      </a>
+      <a href="#blog"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        BLOG
+      </a>
+      <a href="#contact"
+         class="py-3 hover:text-amber-600 transition-colors">
+        LIÊN HỆ
+      </a>
+    </nav>
   </div>
 </header>
 
-<!-- FontAwesome (bắt buộc) -->
+<!-- Font Awesome icons (đặt trong <head> nếu chưa có) -->
 <script src="https://kit.fontawesome.com/a2e0e6ad13.js" crossorigin="anonymous"></script>
 
-<!-- Mobile menu toggle -->
+<!-- JS toggle mobile menu + shadow khi scroll -->
 <script>
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
+  const mobileMenuPanel = document.getElementById('mobile-menu');
+  const headerEl = document.getElementById('main-header');
 
-  // Hiệu ứng sticky shadow khi cuộn
-  const header = document.getElementById('main-header');
+  if (mobileMenuBtn && mobileMenuPanel) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenuPanel.classList.toggle('hidden');
+    });
+  }
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) header.classList.add('shadow-md');
-    else header.classList.remove('shadow-md');
+    if (window.scrollY > 10) {
+      headerEl.classList.add('shadow-md');
+    } else {
+      headerEl.classList.remove('shadow-md');
+    }
   });
 </script>
 
