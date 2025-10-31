@@ -99,98 +99,118 @@
 
   <!-- ========== HEADER ========== -->
   <header id="main-header" class="sticky top-0 z-50 bg-white border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Logo + tagline -->
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <!-- Logo tròn -->
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center shadow-md ring-2 ring-amber-400/40">
+        <span class="text-xl">🥭</span>
+      </div>
+      <!-- Brand text -->
+      <div class="leading-tight">
+        <div class="text-slate-900 font-semibold text-base">
+          Mít Sấy Vũ Trụ
+        </div>
+        <div class="text-[11px] text-slate-600 -mt-0.5">
+          Giòn thơm quay vị giác – Mít ngon chuẩn vũ trụ
+        </div>
+      </div>
+    </a>
 
-      <!-- LEFT: LOGO + BRAND -->
-      <a href="index.html" class="flex items-center gap-3 shrink-0">
-        <div class="w-10 h-10 rounded-full bg-yellow-100 grid place-items-center overflow-hidden shadow-md ring-2 ring-amber-400/40">
-          <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="w-full h-full object-contain" />
-        </div>
-        <div class="leading-tight">
-          <div class="text-slate-900 font-semibold text-base">
-            Mít Sấy Vũ Trụ
-          </div>
-          <div class="text-[11px] text-slate-600 -mt-0.5">
-            Giòn thơm quay vị giác
-          </div>
-        </div>
+    <!-- Desktop menu -->
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] font-semibold tracking-wide text-slate-800">
+      <a href="index.html" class="hover:text-amber-600 transition-colors">
+        TRANG CHỦ
       </a>
 
-      <!-- CENTER NAV (desktop only) -->
-      <nav class="hidden lg:flex items-center gap-8 text-[14px] font-semibold tracking-wide text-slate-800">
-        <a href="#home" class="hover:text-amber-600 transition-colors">TRANG CHỦ</a>
-        <a href="#products" class="hover:text-amber-600 transition-colors">SẢN PHẨM</a>
-        <a href="#nutrition" class="hover:text-amber-600 transition-colors">THÀNH PHẦN</a>
-        <a href="#reviewCarousel" class="hover:text-amber-600 transition-colors">ĐÁNH GIÁ</a>
-        <a href="#contact-footer" class="hover:text-amber-600 transition-colors">LIÊN HỆ</a>
-      </nav>
+      <a href="san-pham.html" class="hover:text-amber-600 transition-colors">
+        SẢN PHẨM
+      </a>
 
-      <!-- RIGHT (search + cart + hamburger) -->
-      <div class="flex items-center gap-5">
-        <!-- Search (ẩn trên màn rất nhỏ để đỡ chật) -->
-        <button class="hidden sm:inline-flex text-slate-700 hover:text-amber-600 transition-colors" aria-label="Tìm kiếm">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/>
-          </svg>
-        </button>
+      <a href="gioithieu.html" class="hover:text-amber-600 transition-colors">
+        CÂU CHUYỆN THƯƠNG HIỆU
+      </a>
 
-        <!-- Cart -->
-        <button id="cartBtn"
-          class="relative flex items-center text-slate-700 hover:text-amber-600 transition-colors"
-          aria-label="Giỏ hàng">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/>
-          </svg>
+      <a href="blog.html" class="hover:text-amber-600 transition-colors">
+        BLOG / TIN TỨC
+      </a>
 
-          <!-- Badge số lượng -->
-          <span
-            id="cartBadge"
-            class="cart-badge absolute -top-2 -right-2 bg-red-600 text-white text-[11px] font-semibold min-w-[18px] h-[18px] px-[5px] rounded-full flex items-center justify-center leading-none hidden shadow-[0_0_10px_rgba(220,38,38,0.6)] ring-2 ring-red-400/40">
-            0
-          </span>
-        </button>
+      <a href="huong-dan.html" class="hover:text-amber-600 transition-colors">
+        HƯỚNG DẪN
+      </a>
 
-        <!-- Hamburger cho mobile -->
-        <button id="mobile-menu-btn"
-          class="lg:hidden text-slate-700 hover:text-amber-600 transition-colors flex items-center"
-          aria-label="Mở menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
+      <a href="lien-he.html" class="hover:text-amber-600 transition-colors">
+        LIÊN HỆ
+      </a>
+    </nav>
+
+    <!-- Cart + mobile hamburger -->
+    <div class="flex items-center gap-5">
+      <!-- Giỏ hàng -->
+      <button id="cartBtn"
+        class="relative flex items-center text-slate-700 hover:text-amber-600 transition-colors"
+        aria-label="Giỏ hàng">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"/>
+        </svg>
+
+        <!-- badge số lượng -->
+        <span
+          id="cartBadge"
+          class="absolute -top-2 -right-2 bg-red-600 text-white text-[11px] font-semibold min-w-[18px] h-[18px] px-[5px] rounded-full flex items-center justify-center leading-none hidden shadow-[0_0_10px_rgba(220,38,38,0.6)] ring-2 ring-red-400/40">
+          0
+        </span>
+      </button>
+
+      <!-- Hamburger mobile -->
+      <button id="mobile-menu-btn"
+        class="lg:hidden text-slate-700 hover:text-amber-600 transition-colors flex items-center"
+        aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
+  </div>
 
-    <!-- MOBILE MENU PANEL -->
-    <div id="mobile-menu"
-        class="lg:hidden bg-white border-t border-slate-200 shadow-md hidden">
-      <nav class="px-4 py-4 flex flex-col text-[15px] font-semibold text-slate-800">
-        <a href="#home"
-          class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
-          TRANG CHỦ
-        </a>
-        <a href="#products"
-          class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
-          SẢN PHẨM
-        </a>
-        <a href="#nutrition"
-          class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
-          THÀNH PHẦN
-        </a>
-        <a href="#reviewCarousel"
-          class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
-          ĐÁNH GIÁ
-        </a>
-        <a href="#contact-footer"
-          class="py-3 hover:text-amber-600 transition-colors">
-          LIÊN HỆ
-        </a>
-      </nav>
-    </div>
-  </header>
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu"
+       class="lg:hidden bg-white border-t border-slate-200 shadow-md hidden">
+    <nav class="px-4 py-4 flex flex-col text-[15px] font-semibold text-slate-800">
+      <a href="index.html"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        TRANG CHỦ
+      </a>
+
+      <a href="san-pham.html"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        SẢN PHẨM
+      </a>
+
+      <a href="gioithieu.html"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        CÂU CHUYỆN THƯƠNG HIỆU
+      </a>
+
+      <a href="blog.html"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        BLOG / TIN TỨC
+      </a>
+
+      <a href="huong-dan.html"
+         class="py-3 border-b border-slate-100 hover:text-amber-600 transition-colors">
+        HƯỚNG DẪN
+      </a>
+
+      <a href="lien-he.html"
+         class="py-3 hover:text-amber-600 transition-colors">
+        LIÊN HỆ
+      </a>
+    </nav>
+  </div>
+</header>
   <!-- ========== /HEADER ========== -->
 
   <!-- Mini Cart -->
