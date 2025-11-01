@@ -62,8 +62,31 @@
         }
         
         .section-spacing {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        @media (min-width: 640px) {
+            .section-spacing {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .section-spacing {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
         }
         
         .category-badge {
@@ -90,58 +113,62 @@
  </head>
  <body class="font-sans bg-gray-50"><!-- Header -->
   <header class="gradient-bg shadow-md sticky top-0 z-50">
-   <div class="container mx-auto px-4 py-4">
+   <div class="container mx-auto px-3 py-3">
     <div class="flex items-center justify-between">
-     <div class="flex items-center space-x-3">
-      <div class="text-5xl float-animation">
+     <div class="flex items-center space-x-2">
+      <div class="text-3xl sm:text-4xl float-animation">
        🪐
       </div>
       <div>
-       <h1 id="brand-name" class="text-2xl font-bold text-amber-900">Mít Sấy Vũ Trụ</h1>
-       <p id="tagline" class="text-sm text-amber-700">Giòn thơm quay vị giác – Mít ngon chuẩn vũ trụ</p>
+       <h1 id="brand-name" class="text-lg sm:text-xl md:text-2xl font-bold text-amber-900">Mít Sấy Vũ Trụ</h1>
+       <p id="tagline" class="text-xs sm:text-sm text-amber-700 hidden sm:block">Giòn thơm quay vị giác – Mít ngon chuẩn vũ trụ</p>
       </div>
      </div>
-     <nav class="hidden md:flex space-x-6"><a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition">Trang chủ</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition">Giới thiệu</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition">Sản phẩm</a> <a href="#" class="text-amber-600 font-bold">Blog</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition">Liên hệ</a>
-     </nav><button class="md:hidden text-amber-900">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+     <nav class="hidden lg:flex space-x-4"><a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition text-sm">Trang chủ</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition text-sm">Giới thiệu</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition text-sm">Sản phẩm</a> <a href="#" class="text-amber-600 font-bold text-sm">Blog</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition text-sm">Liên hệ</a>
+     </nav><button id="mobile-menu-btn" class="lg:hidden text-amber-900 p-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg></button>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden mt-3 pb-3 border-t border-amber-300">
+     <nav class="flex flex-col space-y-2 pt-3"><a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition py-2 px-2 rounded">Trang chủ</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition py-2 px-2 rounded">Giới thiệu</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition py-2 px-2 rounded">Sản phẩm</a> <a href="#" class="text-amber-600 font-bold py-2 px-2 rounded bg-amber-100">Blog</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition py-2 px-2 rounded">Liên hệ</a>
+     </nav>
     </div>
    </div>
   </header><!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 overflow-hidden">
-   <div class="container mx-auto px-4 py-20 relative z-10">
+   <div class="container mx-auto px-3 py-12 sm:py-16 md:py-20 relative z-10">
     <div class="max-w-4xl mx-auto text-center">
-     <div class="flex justify-center space-x-8 mb-6"><!-- Múi mít bay 1 -->
-      <div class="float-animation"><img src="blog/mit1.png" alt="Múi mít bay 1" class="w-20 h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-20 h-20 flex items-center justify-center text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';">
+     <div class="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 mb-4 sm:mb-6"><!-- Múi mít bay 1 -->
+      <div class="float-animation"><img src="blog/mit1.png" alt="Múi mít bay 1" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';">
       </div><!-- Múi mít bay 2 -->
-      <div class="wave-animation" style="animation-delay: 0.7s"><img src="blog/mit2.png" alt="Múi mít bay 2" class="w-20 h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-20 h-20 flex items-center justify-center text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';">
+      <div class="wave-animation" style="animation-delay: 0.7s"><img src="blog/mit2.png" alt="Múi mít bay 2" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';">
       </div><!-- Múi mít bay 3 -->
-      <div class="float-animation" style="animation-delay: 1.4s"><img src="blog/mit3.png" alt="Múi mít bay 3" class="w-20 h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-20 h-20 flex items-center justify-center text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';">
+      <div class="float-animation" style="animation-delay: 1.4s"><img src="blog/mit3.png" alt="Múi mít bay 3" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';">
       </div>
      </div>
-     <h1 id="blog-title" class="text-5xl md:text-6xl font-bold text-amber-900 mb-6">Blog giòn vui</h1>
-     <p id="blog-subtitle" class="text-xl md:text-2xl text-amber-700 mb-8">Chia sẻ câu chuyện và bí quyết ăn vặt healthy</p>
-     <div class="flex justify-center space-x-6 text-lg text-amber-800">
-      <div class="flex items-center space-x-2"><span class="text-2xl">🌱</span> <span>Healthy Tips</span>
+     <h1 id="blog-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-amber-900 mb-4 sm:mb-6">Blog giòn vui</h1>
+     <p id="blog-subtitle" class="text-base sm:text-lg md:text-xl lg:text-2xl text-amber-700 mb-6 sm:mb-8 px-2">Chia sẻ câu chuyện và bí quyết ăn vặt healthy</p>
+     <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6 text-sm sm:text-base md:text-lg text-amber-800">
+      <div class="flex items-center space-x-2"><span class="text-xl sm:text-2xl">🌱</span> <span>Healthy Tips</span>
       </div>
-      <div class="flex items-center space-x-2"><span class="text-2xl">📖</span> <span>Câu chuyện</span>
+      <div class="flex items-center space-x-2"><span class="text-xl sm:text-2xl">📖</span> <span>Câu chuyện</span>
       </div>
-      <div class="flex items-center space-x-2"><span class="text-2xl">💡</span> <span>Mẹo hay</span>
+      <div class="flex items-center space-x-2"><span class="text-xl sm:text-2xl">💡</span> <span>Mẹo hay</span>
       </div>
      </div>
     </div>
    </div>
-   <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-200 rounded-full opacity-20 -mr-32 -mt-32"></div>
-   <div class="absolute bottom-0 left-0 w-96 h-96 bg-orange-200 rounded-full opacity-20 -ml-48 -mb-48"></div>
+   <div class="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-yellow-200 rounded-full opacity-20 -mr-16 sm:-mr-24 md:-mr-32 -mt-16 sm:-mt-24 md:-mt-32"></div>
+   <div class="absolute bottom-0 left-0 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-orange-200 rounded-full opacity-20 -ml-24 sm:-ml-36 md:-ml-48 -mb-24 sm:-mb-36 md:-mb-48"></div>
   </section><!-- Categories Navigation -->
-  <section class="bg-white shadow-sm sticky top-20 z-40">
-   <div class="container mx-auto px-4 py-4">
-    <div class="flex justify-center space-x-8 overflow-x-auto"><button onclick="showCategory('healthy')" class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-green-100 text-green-800 hover:bg-green-200 transition font-medium whitespace-nowrap"> <span class="text-xl">🌱</span> <span>Bí quyết ăn vặt healthy</span> </button> <button onclick="showCategory('stories')" class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition font-medium whitespace-nowrap"> <span class="text-xl">📖</span> <span>Câu chuyện phía sau</span> </button> <button onclick="showCategory('tips')" class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition font-medium whitespace-nowrap"> <span class="text-xl">💡</span> <span>Mẹo bảo quản &amp; thưởng thức</span> </button>
+  <section class="bg-white shadow-sm sticky top-16 sm:top-20 z-40">
+   <div class="container mx-auto px-3 py-3">
+    <div class="flex justify-start sm:justify-center space-x-3 sm:space-x-4 md:space-x-8 overflow-x-auto pb-2 scrollbar-hide"><button onclick="showCategory('healthy')" class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-green-100 text-green-800 hover:bg-green-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"> <span class="text-base sm:text-lg md:text-xl">🌱</span> <span class="hidden sm:inline">Bí quyết ăn vặt healthy</span> <span class="sm:hidden">Healthy</span> </button> <button onclick="showCategory('stories')" class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"> <span class="text-base sm:text-lg md:text-xl">📖</span> <span class="hidden sm:inline">Câu chuyện phía sau</span> <span class="sm:hidden">Câu chuyện</span> </button> <button onclick="showCategory('tips')" class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"> <span class="text-base sm:text-lg md:text-xl">💡</span> <span class="hidden sm:inline">Mẹo bảo quản &amp; thưởng thức</span> <span class="sm:hidden">Mẹo hay</span> </button>
     </div>
    </div>
   </section><!-- Section 1: Bí quyết ăn vặt healthy -->
   <section id="healthy-section" class="section-spacing bg-gradient-to-br from-green-50 to-emerald-50">
-   <div class="container mx-auto px-4">
+   <div class="container mx-auto px-3 sm:px-4">
     <div class="max-w-6xl mx-auto">
      <div class="text-center mb-12">
       <div class="text-6xl mb-4 bounce-gentle">
@@ -150,7 +177,7 @@
       <h2 class="text-4xl font-bold text-green-800 mb-4">Bí quyết ăn vặt healthy</h2>
       <p class="text-xl text-green-700">Thưởng thức ngon miệng mà vẫn giữ dáng và sức khỏe</p>
      </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Bài viết 1 -->
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"><!-- Bài viết 1 -->
       <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
        <div class="h-48 bg-gradient-to-br from-green-200 to-green-300 overflow-hidden"><img src="blog/blog1.jpg" alt="10 cách kết hợp mít sấy với bữa ăn hàng ngày" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog1.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🥗</div>';}">
        </div>
@@ -198,7 +225,7 @@
    </div>
   </section><!-- Section 2: Câu chuyện phía sau -->
   <section id="stories-section" class="section-spacing bg-gradient-to-br from-blue-50 to-indigo-50">
-   <div class="container mx-auto px-4">
+   <div class="container mx-auto px-3 sm:px-4">
     <div class="max-w-6xl mx-auto">
      <div class="text-center mb-12">
       <div class="text-6xl mb-4 float-animation">
@@ -255,7 +282,7 @@
    </div>
   </section><!-- Section 3: Mẹo bảo quản & thưởng thức -->
   <section id="tips-section" class="section-spacing bg-gradient-to-br from-purple-50 to-pink-50">
-   <div class="container mx-auto px-4">
+   <div class="container mx-auto px-3 sm:px-4">
     <div class="max-w-6xl mx-auto">
      <div class="text-center mb-12">
       <div class="text-6xl mb-4 bounce-gentle">
@@ -339,34 +366,34 @@
    </div>
   </section><!-- Newsletter Section -->
   <section class="section-spacing bg-gradient-to-r from-amber-100 to-yellow-100">
-   <div class="container mx-auto px-4">
+   <div class="container mx-auto px-3 sm:px-4">
     <div class="max-w-4xl mx-auto text-center">
      <div class="text-6xl mb-6 pulse-glow">
       📧
      </div>
      <h2 class="text-4xl font-bold text-amber-900 mb-4">Đăng ký nhận tin mới</h2>
      <p class="text-xl text-amber-800 mb-8">Cập nhật những bài viết mới nhất và tips hay về mít sấy</p>
-     <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"><input type="email" placeholder="Nhập email của bạn" class="flex-1 px-4 py-3 rounded-full border border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500"> <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-full transition"> Đăng ký </button>
+     <div class="flex flex-col gap-3 justify-center max-w-sm sm:max-w-md mx-auto"><input type="email" placeholder="Nhập email của bạn" class="w-full px-4 py-3 rounded-full border border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm sm:text-base"> <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-full transition text-sm sm:text-base"> Đăng ký nhận tin </button>
      </div>
     </div>
    </div>
   </section><!-- CTA Section -->
   <section class="section-spacing gradient-bg">
-   <div class="container mx-auto px-4">
+   <div class="container mx-auto px-3 sm:px-4">
     <div class="max-w-4xl mx-auto text-center">
      <div class="text-6xl mb-6 float-animation">
       🎁
      </div>
      <h2 class="text-4xl font-bold text-amber-900 mb-6">Thích những câu chuyện này?</h2>
      <p class="text-xl text-amber-800 mb-8">Hãy thử ngay sản phẩm mít sấy của chúng tôi để cảm nhận trọn vẹn hương vị!</p>
-     <div class="flex flex-col sm:flex-row gap-4 justify-center"><button id="cta-button" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-full text-lg transition shadow-lg hover:shadow-xl"> 🛒 Đặt thử gói mít đầu tiên </button> <button class="bg-white hover:bg-gray-50 text-amber-900 font-bold py-4 px-8 rounded-full text-lg transition shadow-lg hover:shadow-xl border-2 border-amber-600"> 📖 Đọc thêm câu chuyện </button>
+     <div class="flex flex-col gap-3 sm:gap-4 justify-center max-w-sm sm:max-w-none mx-auto"><button id="cta-button" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-base md:text-lg transition shadow-lg hover:shadow-xl"> 🛒 Đặt thử gói mít đầu tiên </button> <button class="bg-white hover:bg-gray-50 text-amber-900 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-base md:text-lg transition shadow-lg hover:shadow-xl border-2 border-amber-600"> 📖 Đọc thêm câu chuyện </button>
      </div>
     </div>
    </div>
   </section><!-- Footer -->
   <footer class="bg-amber-900 text-amber-50">
-   <div class="container mx-auto px-4 py-12">
-    <div class="grid md:grid-cols-4 gap-8 mb-8">
+   <div class="container mx-auto px-3 sm:px-4 py-8 sm:py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
      <div>
       <div class="flex items-center space-x-2 mb-4"><span class="text-4xl">🪐</span>
        <h3 id="footer-brand" class="text-xl font-bold">Mít Sấy Vũ Trụ</h3>
@@ -479,6 +506,12 @@
             ]);
         }
 
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
         if (window.elementSdk) {
             window.elementSdk.init({
                 defaultConfig,
@@ -488,5 +521,5 @@
             });
         }
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99790aa8d7e8039f',t:'MTc2MTk3NTQ2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997910092582039f',t:'MTc2MTk3NTY4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
