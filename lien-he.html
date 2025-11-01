@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="vi" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mít Sấy Vũ Trụ - Liên Hệ Bán Sỉ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+        
+        .cosmic-bg {
+            background: radial-gradient(ellipse at center, #1a0b3d 0%, #0f051a 50%, #000000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .jackfruit-meteor {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 50%, #ff8c00 100%);
+            border-radius: 50% 20% 50% 20%;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.3);
+            animation: meteorFall 8s linear infinite;
+            opacity: 0.8;
+        }
+        
+        .jackfruit-meteor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 60%;
+            background: radial-gradient(circle, #fff700 0%, transparent 70%);
+            border-radius: inherit;
+        }
+        
+        .jackfruit-meteor::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #ffd700 50%, transparent 100%);
+            transform: translateY(-50%);
+            opacity: 0.7;
+        }
+        
+        @keyframes meteorFall {
+            0% {
+                transform: translateX(-100px) translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .cosmic-particles {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .form-glow {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1), inset 0 0 20px rgba(255, 215, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .input-glow:focus {
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .button-glow {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .button-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.9) 0%, rgba(22, 163, 74, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full cosmic-bg font-sans">
+  <main class="min-h-full relative"><!-- Animated Jackfruit Meteors -->
+   <div id="meteors-container" class="absolute inset-0 pointer-events-none"></div><!-- Floating Cosmic Particles -->
+   <div id="particles-container" class="absolute inset-0 pointer-events-none"></div><!-- Hero Section -->
+   <header class="relative z-10 text-center pt-20 pb-16">
+    <div class="container mx-auto px-6">
+     <h1 id="hero-title" class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 glow-text mb-4" style="font-family: 'Orbitron', monospace;">LIÊN HỆ BÁN SỈ</h1>
+     <p id="brand-name" class="text-2xl md:text-3xl text-yellow-200 font-light tracking-wider glow-text" style="font-family: 'Orbitron', monospace;">MÍT SẤY VŨ TRỤ</p>
+     <div class="w-32 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mt-8"></div>
+    </div>
+   </header><!-- Contact Form Section -->
+   <section class="relative z-10 pb-20">
+    <div class="container mx-auto px-6 max-w-2xl">
+     <div class="form-glow bg-black bg-opacity-30 rounded-3xl p-8 md:p-12 border border-yellow-400 border-opacity-20">
+      <form id="contact-form" class="space-y-6">
+       <div class="grid md:grid-cols-2 gap-6">
+        <div><label for="name" id="name-label" class="block text-yellow-200 text-sm font-medium mb-2">Họ và tên</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-black bg-opacity-50 border border-yellow-400 border-opacity-30 rounded-xl text-white placeholder-gray-400 focus:outline-none input-glow transition-all duration-300" placeholder="Nhập họ và tên của bạn">
+        </div>
+        <div><label for="email" id="email-label" class="block text-yellow-200 text-sm font-medium mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-black bg-opacity-50 border border-yellow-400 border-opacity-30 rounded-xl text-white placeholder-gray-400 focus:outline-none input-glow transition-all duration-300" placeholder="email@example.com">
+        </div>
+       </div>
+       <div><label for="company" id="company-label" class="block text-yellow-200 text-sm font-medium mb-2">Công ty</label> <input type="text" id="company" name="company" required class="w-full px-4 py-3 bg-black bg-opacity-50 border border-yellow-400 border-opacity-30 rounded-xl text-white placeholder-gray-400 focus:outline-none input-glow transition-all duration-300" placeholder="Tên công ty của bạn">
+       </div>
+       <div><label for="message" id="message-label" class="block text-yellow-200 text-sm font-medium mb-2">Tin nhắn</label> <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-black bg-opacity-50 border border-yellow-400 border-opacity-30 rounded-xl text-white placeholder-gray-400 focus:outline-none input-glow transition-all duration-300 resize-none" placeholder="Mô tả nhu cầu bán sỉ của bạn..."></textarea>
+       </div><button type="submit" id="submit-btn" class="w-full py-4 px-8 button-glow text-black font-bold text-lg rounded-xl transition-all duration-300 transform hover:scale-105" style="font-family: 'Orbitron', monospace;"> <span id="button-text">Kết nối ngay</span> <span id="loading-text" class="hidden">Đang gửi...</span> </button>
+      </form><!-- Success Message -->
+      <div id="success-message" class="hidden mt-6 p-4 rounded-xl success-message">
+       <div class="flex items-center">
+        <svg class="w-6 h-6 text-white mr-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <p class="text-white font-medium">Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm nhất có thể.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <script>
+        // Default configuration
+        const defaultConfig = {
+            hero_title: "LIÊN HỆ BÁN SỈ",
+            brand_name: "MÍT SẤY VŨ TRỤ",
+            name_label: "Họ và tên",
+            email_label: "Email",
+            company_label: "Công ty",
+            message_label: "Tin nhắn",
+            button_text: "Kết nối ngay",
+            background_color: "#1a0b3d",
+            surface_color: "#000000",
+            text_color: "#ffd700",
+            primary_action_color: "#ffd700",
+            secondary_action_color: "#ffb347",
+            font_family: "Orbitron",
+            font_size: 16
+        };
+
+        let currentData = [];
+
+        // Data handler for form submissions
+        const dataHandler = {
+            onDataChanged(data) {
+                currentData = data;
+                // Update UI if needed - for this contact form, we just store the data
+            }
+        };
+
+        // Initialize Data SDK
+        async function initializeDataSdk() {
+            if (window.dataSdk) {
+                const result = await window.dataSdk.init(dataHandler);
+                if (!result.isOk) {
+                    console.error("Failed to initialize data SDK");
+                }
+            }
+        }
+
+        // Form submission handler
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            if (currentData.length >= 999) {
+                showMessage("Đã đạt giới hạn 999 liên hệ. Vui lòng thử lại sau.", "error");
+                return;
+            }
+
+            const formData = new FormData(event.target);
+            const submitData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                company: formData.get('company'),
+                message: formData.get('message'),
+                submitted_at: new Date().toISOString()
+            };
+
+            // Show loading state
+            const submitBtn = document.getElementById('submit-btn');
+            const buttonText = document.getElementById('button-text');
+            const loadingText = document.getElementById('loading-text');
+            
+            submitBtn.disabled = true;
+            buttonText.classList.add('hidden');
+            loadingText.classList.remove('hidden');
+
+            try {
+                if (window.dataSdk) {
+                    const result = await window.dataSdk.create(submitData);
+                    
+                    if (result.isOk) {
+                        // Show success message
+                        document.getElementById('success-message').classList.remove('hidden');
+                        document.getElementById('contact-form').reset();
+                    } else {
+                        showMessage("Có lỗi xảy ra. Vui lòng thử lại.", "error");
+                    }
+                }
+            } catch (error) {
+                showMessage("Có lỗi xảy ra. Vui lòng thử lại.", "error");
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                buttonText.classList.remove('hidden');
+                loadingText.classList.add('hidden');
+            }
+        }
+
+        function showMessage(text, type) {
+            // Create temporary message element
+            const message = document.createElement('div');
+            message.className = `fixed top-4 right-4 p-4 rounded-xl z-50 ${type === 'error' ? 'bg-red-600' : 'bg-green-600'} text-white`;
+            message.textContent = text;
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 5000);
+        }
+
+        // Create animated jackfruit meteors
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.className = 'jackfruit-meteor';
+            
+            // Random starting position and animation delay
+            const startY = Math.random() * -200 - 100;
+            const startX = Math.random() * -200 - 100;
+            const animationDelay = Math.random() * 8;
+            const animationDuration = 8 + Math.random() * 4;
+            
+            meteor.style.left = startX + 'px';
+            meteor.style.top = startY + 'px';
+            meteor.style.animationDelay = animationDelay + 's';
+            meteor.style.animationDuration = animationDuration + 's';
+            
+            return meteor;
+        }
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'cosmic-particles';
+            
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            const animationDelay = Math.random() * 6;
+            
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.animationDelay = animationDelay + 's';
+            
+            return particle;
+        }
+
+        // Initialize animations
+        function initializeAnimations() {
+            const meteorsContainer = document.getElementById('meteors-container');
+            const particlesContainer = document.getElementById('particles-container');
+            
+            // Create meteors
+            for (let i = 0; i < 8; i++) {
+                meteorsContainer.appendChild(createMeteor());
+            }
+            
+            // Create particles
+            for (let i = 0; i < 50; i++) {
+                particlesContainer.appendChild(createParticle());
+            }
+        }
+
+        // Element SDK configuration
+        async function onConfigChange(config) {
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            const baseFontStack = 'Arial, sans-serif';
+
+            // Update text content
+            document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+            document.getElementById('brand-name').textContent = config.brand_name || defaultConfig.brand_name;
+            document.getElementById('name-label').textContent = config.name_label || defaultConfig.name_label;
+            document.getElementById('email-label').textContent = config.email_label || defaultConfig.email_label;
+            document.getElementById('company-label').textContent = config.company_label || defaultConfig.company_label;
+            document.getElementById('message-label').textContent = config.message_label || defaultConfig.message_label;
+            document.getElementById('button-text').textContent = config.button_text || defaultConfig.button_text;
+
+            // Update colors
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+
+            document.body.style.background = `radial-gradient(ellipse at center, ${backgroundColor} 0%, ${surfaceColor} 50%, #000000 100%)`;
+            
+            // Update fonts
+            const heroTitle = document.getElementById('hero-title');
+            const brandName = document.getElementById('brand-name');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            heroTitle.style.fontFamily = `${customFont}, ${baseFontStack}`;
+            heroTitle.style.fontSize = `${baseSize * 4}px`;
+            
+            brandName.style.fontFamily = `${customFont}, ${baseFontStack}`;
+            brandName.style.fontSize = `${baseSize * 1.5}px`;
+            
+            submitBtn.style.fontFamily = `${customFont}, ${baseFontStack}`;
+            submitBtn.style.fontSize = `${baseSize * 1.125}px`;
+        }
+
+        // Initialize Element SDK
+        async function initializeElementSdk() {
+            if (window.elementSdk) {
+                await window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange,
+                    mapToCapabilities: (config) => ({
+                        recolorables: [
+                            {
+                                get: () => config.background_color || defaultConfig.background_color,
+                                set: (value) => {
+                                    config.background_color = value;
+                                    window.elementSdk.setConfig({ background_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.surface_color || defaultConfig.surface_color,
+                                set: (value) => {
+                                    config.surface_color = value;
+                                    window.elementSdk.setConfig({ surface_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.text_color || defaultConfig.text_color,
+                                set: (value) => {
+                                    config.text_color = value;
+                                    window.elementSdk.setConfig({ text_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                                set: (value) => {
+                                    config.primary_action_color = value;
+                                    window.elementSdk.setConfig({ primary_action_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                                set: (value) => {
+                                    config.secondary_action_color = value;
+                                    window.elementSdk.setConfig({ secondary_action_color: value });
+                                }
+                            }
+                        ],
+                        borderables: [],
+                        fontEditable: {
+                            get: () => config.font_family || defaultConfig.font_family,
+                            set: (value) => {
+                                config.font_family = value;
+                                window.elementSdk.setConfig({ font_family: value });
+                            }
+                        },
+                        fontSizeable: {
+                            get: () => config.font_size || defaultConfig.font_size,
+                            set: (value) => {
+                                config.font_size = value;
+                                window.elementSdk.setConfig({ font_size: value });
+                            }
+                        }
+                    }),
+                    mapToEditPanelValues: (config) => new Map([
+                        ["hero_title", config.hero_title || defaultConfig.hero_title],
+                        ["brand_name", config.brand_name || defaultConfig.brand_name],
+                        ["name_label", config.name_label || defaultConfig.name_label],
+                        ["email_label", config.email_label || defaultConfig.email_label],
+                        ["company_label", config.company_label || defaultConfig.company_label],
+                        ["message_label", config.message_label || defaultConfig.message_label],
+                        ["button_text", config.button_text || defaultConfig.button_text]
+                    ])
+                });
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', async function() {
+            await initializeDataSdk();
+            await initializeElementSdk();
+            initializeAnimations();
+            
+            // Add form submit handler
+            document.getElementById('contact-form').addEventListener('submit', handleFormSubmit);
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9979ea64703fd007',t:'MTc2MTk4NDYyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
