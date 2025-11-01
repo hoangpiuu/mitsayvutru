@@ -1,1657 +1,503 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>
-      Blog giòn vui - Mít Sấy Vũ Trụ | Bí quyết ăn vặt healthy và
-      câu chuyện thú vị
-    </title>
-    <meta
-      name="description"
-      content="Khám phá blog Mít Sấy Vũ Trụ với những bí quyết ăn vặt healthy, câu chuyện thú vị và mẹo bảo quản mít sấy giòn ngon lâu dài."
-    />
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Blog giòn vui - Mít Sấy Vũ Trụ | Bí quyết ăn vặt healthy và câu chuyện thú vị</title>
+<meta name="description" content="Khám phá blog Mít Sấy Vũ Trụ với những bí quyết ăn vặt healthy, câu chuyện thú vị và mẹo bảo quản mít sấy giòn ngon lâu dài." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="/_sdk/element_sdk.js"></script>
+<script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+<style>
+*{box-sizing:border-box;}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-8px) rotate(2deg)}50%{transform:translateY(-15px) rotate(0)}75%{transform:translateY(-8px) rotate(-2deg)}}
+@keyframes wave-animation{0%,100%{transform:translateY(0) rotate(0) scale(1)}20%{transform:translateY(-12px) rotate(3deg) scale(1.05)}40%{transform:translateY(-5px) rotate(-1deg) scale(.98)}60%{transform:translateY(-18px) rotate(2deg) scale(1.02)}80%{transform:translateY(-8px) rotate(-3deg) scale(.99)}}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(245,158,11,.3)}50%{box-shadow:0 0 30px rgba(245,158,11,.6)}}
+.float-animation{animation:float 4s ease-in-out infinite;}
+.wave-animation{animation:wave-animation 3.5s ease-in-out infinite;}
+.pulse-glow{animation:pulse-glow 2s ease-in-out infinite;}
+.gradient-bg{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 50%,#fcd34d 100%)}
+.gradient-card{background:linear-gradient(135deg,#fff 0%,#fefce8 100%)}
+.hover-lift{transition:all .3s ease;}
+.hover-lift:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,.1);}
+.section-spacing{padding-top:2rem;padding-bottom:2rem;}
+@media (min-width:640px){.section-spacing{padding-top:3rem;padding-bottom:3rem;}}
+@media (min-width:768px){.section-spacing{padding-top:4rem;padding-bottom:4rem;}}
+.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none;}
+.scrollbar-hide::-webkit-scrollbar{display:none;}
+.category-badge{background:linear-gradient(45deg,#f59e0b,#d97706);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;line-height:1rem;}
+.read-time{background:rgba(245,158,11,.1);color:#92400e;padding:.25rem .5rem;border-radius:.5rem;font-size:.75rem;line-height:1rem;}
+@view-transition{navigation:auto;}
+</style>
+</head>
+<body class="font-sans bg-gray-50">
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<!-- HEADER -->
+<header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-full overflow-hidden bg-yellow-100 grid place-items-center">
+        <div class="text-2xl float-animation">🪐</div>
+      </div>
+      <div>
+        <h1 id="brand-name" class="text-[18px] font-bold text-slate-800 leading-none">Mít Sấy Vũ Trụ</h1>
+        <p id="tagline" class="text-[12px] text-slate-600">Giòn thơm quay vị giác</p>
+      </div>
+    </a>
 
-    <!-- SDK -->
-    <script src="/_sdk/element_sdk.js"></script>
-    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-700">
+      <a href="index.html" class="hover:text-amber-600 transition-colors">Trang chủ</a>
+      <a href="san-pham.html" class="hover:text-amber-600 transition-colors">Sản phẩm</a>
+      <a href="gioithieu.html" class="hover:text-amber-600 transition-colors">Câu chuyện hiệu hiệu</a>
+      <a href="blog.html" class="text-amber-600 font-bold">Blog / Tin tức</a>
+      <a href="lien-he.html" class="hover:text-amber-600 transition-colors">Liên hệ / Mua sỉ</a>
+    </nav>
 
-    <style>
-      /* Base */
-      * {
-        box-sizing: border-box;
-      }
+    <div class="flex items-center">
+      <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-amber-600 transition-colors flex items-center" aria-label="Mở menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
 
-      /* Animations */
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        25% {
-          transform: translateY(-8px) rotate(2deg);
-        }
-        50% {
-          transform: translateY(-15px) rotate(0deg);
-        }
-        75% {
-          transform: translateY(-8px) rotate(-2deg);
-        }
-      }
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 shadow-lg">
+    <nav class="flex flex-col text-[15px] font-medium text-slate-700 px-4 py-3">
+      <a href="index.html" class="py-2 border-b hover:text-amber-600">Trang chủ</a>
+      <a href="san-pham.html" class="py-2 border-b hover:text-amber-600">Sản phẩm</a>
+      <a href="gioithieu.html" class="py-2 border-b hover:text-amber-600">Câu chuyện thương hiệu</a>
+      <a href="blog.html" class="py-2 border-b text-amber-600 font-bold">Blog / Tin tức</a>
+      <a href="lien-he.html" class="py-2 hover:text-amber-600">Liên hệ / Mua sỉ</a>
+    </nav>
+  </div>
+</header>
 
-      @keyframes wave-animation {
-        0%,
-        100% {
-          transform: translateY(0px) rotate(0deg) scale(1);
-        }
-        20% {
-          transform: translateY(-12px) rotate(3deg) scale(1.05);
-        }
-        40% {
-          transform: translateY(-5px) rotate(-1deg) scale(0.98);
-        }
-        60% {
-          transform: translateY(-18px) rotate(2deg) scale(1.02);
-        }
-        80% {
-          transform: translateY(-8px) rotate(-3deg) scale(0.99);
-        }
-      }
-
-      @keyframes pulse-glow {
-        0%,
-        100% {
-          box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
-        }
-        50% {
-          box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
-        }
-      }
-
-      .float-animation {
-        animation: float 4s ease-in-out infinite;
-      }
-
-      .wave-animation {
-        animation: wave-animation 3.5s ease-in-out infinite;
-      }
-
-      .pulse-glow {
-        animation: pulse-glow 2s ease-in-out infinite;
-      }
-
-      .gradient-bg {
-        background: linear-gradient(
-          135deg,
-          #fef3c7 0%,
-          #fde68a 50%,
-          #fcd34d 100%
-        );
-      }
-
-      .gradient-card {
-        background: linear-gradient(
-          135deg,
-          #ffffff 0%,
-          #fefce8 100%
-        );
-      }
-
-      .hover-lift {
-        transition: all 0.3s ease;
-      }
-
-      .hover-lift:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      }
-
-      .section-spacing {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-
-      @media (min-width: 640px) {
-        .section-spacing {
-          padding-top: 3rem;
-          padding-bottom: 3rem;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .section-spacing {
-          padding-top: 4rem;
-          padding-bottom: 4rem;
-        }
-      }
-
-      /* Hide scrollbar for category nav */
-      .scrollbar-hide {
-        -ms-overflow-style: none; /* IE/Edge */
-        scrollbar-width: none; /* Firefox */
-      }
-      .scrollbar-hide::-webkit-scrollbar {
-        display: none; /* Chrome/Safari/Webkit */
-      }
-
-      /* Custom pills */
-      .category-badge {
-        background: linear-gradient(45deg, #f59e0b, #d97706);
-        color: #fff;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        line-height: 1rem;
-      }
-
-      .read-time {
-        background: rgba(245, 158, 11, 0.1);
-        color: #92400e;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.5rem;
-        font-size: 0.75rem;
-        line-height: 1rem;
-      }
-
-      @view-transition {
-        navigation: auto;
-      }
-    </style>
-  </head>
-
-  <body class="font-sans bg-gray-50">
-    <!-- ========== HEADER ========== -->
-    <header
-      class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200"
-    >
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
-      >
-        <!-- LOGO -->
-        <a
-          href="index.html"
-          class="flex items-center space-x-3"
-        >
-          <div
-            class="w-10 h-10 rounded-full overflow-hidden bg-yellow-100 grid place-items-center"
-          >
-            <div class="text-2xl float-animation">🪐</div>
-          </div>
-
-          <div>
-            <h1
-              id="brand-name"
-              class="text-[18px] font-bold text-slate-800 leading-none"
-            >
-              Mít Sấy Vũ Trụ
-            </h1>
-            <p
-              id="tagline"
-              class="text-[12px] text-slate-600"
-            >
-              Giòn thơm quay vị giác
-            </p>
-          </div>
-        </a>
-
-        <!-- MENU DESKTOP -->
-        <nav
-          class="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-700"
-        >
-          <a
-            href="index.html"
-            class="hover:text-amber-600 transition-colors"
-            >Trang chủ</a
-          >
-          <a
-            href="san-pham.html"
-            class="hover:text-amber-600 transition-colors"
-            >Sản phẩm</a
-          >
-          <a
-            href="gioithieu.html"
-            class="hover:text-amber-600 transition-colors"
-            >Câu chuyện hiệu hiệu</a
-          >
-          <a
-            href="blog.html"
-            class="text-amber-600 font-bold"
-            >Blog / Tin tức</a
-          >
-          <a
-            href="lien-he.html"
-            class="hover:text-amber-600 transition-colors"
-            >Liên hệ / Mua sỉ</a
-          >
-        </nav>
-
-        <!-- MOBILE MENU BUTTON -->
-        <div class="flex items-center">
-          <button
-            id="mobile-menu-btn"
-            class="md:hidden text-slate-700 hover:text-amber-600 transition-colors flex items-center"
-            aria-label="Mở menu"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+<!-- HERO -->
+<section class="relative bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 overflow-hidden">
+  <div class="container mx-auto px-3 py-12 sm:py-16 md:py-20 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 mb-4 sm:mb-6">
+        <div class="float-animation">
+          <img src="blog/mit1.png" alt="Phần mít bay 1" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';" />
+        </div>
+        <div class="wave-animation" style="animation-delay:.7s">
+          <img src="blog/mit2.png" alt="Múi mít bay 2" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';" />
+        </div>
+        <div class="float-animation" style="animation-delay:1.4s">
+          <img src="blog/mit3.png" alt="Múi mít bay 3" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110" style="image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';" />
         </div>
       </div>
 
-      <!-- MENU MOBILE -->
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden bg-white border-t border-slate-200 shadow-lg"
-      >
-        <nav
-          class="flex flex-col text-[15px] font-medium text-slate-700 px-4 py-3"
-        >
-          <a
-            href="index.html"
-            class="py-2 border-b hover:text-amber-600"
-            >Trang chủ</a
-          >
-          <a
-            href="san-pham.html"
-            class="py-2 border-b hover:text-amber-600"
-            >Sản phẩm</a
-          >
-          <a
-            href="gioithieu.html"
-            class="py-2 border-b hover:text-amber-600"
-            >Câu chuyện thương hiệu</a
-          >
-          <a
-            href="blog.html"
-            class="py-2 border-b text-amber-600 font-bold"
-            >Blog / Tin tức</a
-          >
-          <a
-            href="lien-he.html"
-            class="py-2 hover:text-amber-600"
-            >Liên hệ / Mua sỉ</a
-          >
-        </nav>
+      <h1 id="blog-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-amber-900 mb-4 sm:mb-6">Blog giòn vui</h1>
+      <p id="blog-subtitle" class="text-base sm:text-lg md:text-xl lg:text-2xl text-amber-700 mb-6 sm:mb-8 px-2">Chia sẻ câu chuyện và bí quyết ăn vặt healthy</p>
+
+      <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6 text-sm sm:text-base md:text-lg text-amber-800">
+        <div class="flex items-center space-x-2"><span class="text-xl sm:text-2xl">🌱</span><span>Mẹo hay</span></div>
+        <div class="flex items-center space-x-2"><span class="text-xl sm:text-2xl">📖</span><span>Câu chuyện</span></div>
+        <div class="flex items-center space-x-2"><span class="text-xl sm:text-2xl">💡</span><span>Mẹo hay</span></div>
       </div>
-    </header>
+    </div>
+  </div>
 
-    <!-- ========== HERO ========== -->
-    <section
-      class="relative bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 overflow-hidden"
-    >
-      <div
-        class="container mx-auto px-3 py-12 sm:py-16 md:py-20 relative z-10"
-      >
-        <div class="max-w-4xl mx-auto text-center">
-          <!-- Floating fruit row -->
-          <div
-            class="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 mb-4 sm:mb-6"
-          >
-            <!-- Múi mít bay 1 -->
-            <div class="float-animation">
-              <img
-                src="blog/mit1.png"
-                alt="Phần mít bay 1"
-                class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110"
-                style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
-                onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';"
-              />
+  <div class="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-yellow-200 rounded-full opacity-20 -mr-16 sm:-mr-24 md:-mr-32 -mt-16 sm:-mt-24 md:-mt-32"></div>
+  <div class="absolute bottom-0 left-0 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-orange-200 rounded-full opacity-20 -ml-24 sm:-ml-36 md:-ml-48 -mb-24 sm:-mb-36 md:-mb-48"></div>
+</section>
+
+<!-- CATEGORY NAV -->
+<section class="bg-white shadow-sm sticky top-16 sm:top-20 z-40">
+  <div class="container mx-auto px-3 py-3">
+    <div class="flex justify-start sm:justify-center space-x-3 sm:space-x-4 md:space-x-8 overflow-x-auto pb-2 scrollbar-hide">
+      <button onclick="showCategory('healthy')" class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-green-100 text-green-800 hover:bg-green-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"><span class="text-base sm:text-lg md:text-xl">🌱</span><span class="hidden sm:inline">Bí quyết ăn vặt healthy</span><span class="sm:hidden">Healthy</span></button>
+      <button onclick="showCategory('stories')" class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"><span class="text-base sm:text-lg md:text-xl">📖</span><span class="hidden sm:inline">Câu chuyện phía sau</span><span class="sm:hidden">Câu chuyện</span></button>
+      <button onclick="showCategory('tips')" class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"><span class="text-base sm:text-lg md:text-xl">💡</span><span class="hidden sm:inline">Mẹ bảo quản &amp; thưởng thức</span><span class="sm:hidden">Mẹ hay</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: HEALTHY -->
+<section id="healthy-section" class="section-spacing bg-gradient-to-br from-green-50 to-emerald-50">
+  <div class="container mx-auto px-3 sm:px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-6xl mb-4 float-animation">🌱</div>
+        <h2 class="text-4xl font-bold text-green-800 mb-4">Bí quyết định ăn vặt lành mạnh</h2>
+        <p class="text-xl text-green-700">Thưởng thức ngon miệng mà vẫn giữ phong cách và sức khỏe</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+
+        <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="h-48 bg-gradient-to-br from-green-200 to-green-300 overflow-hidden">
+            <img src="blog/blog1.jpg" alt="10 cách kết hợp mít sấy với bữa ăn hàng ngày" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog1.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🥗</div>'};" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="category-badge bg-green-500 bg-gradient-to-br from-green-500 to-green-600 !uppercase">Healthy</span>
+              <span class="read-time">5 phút đọc</span>
             </div>
-
-            <!-- Múi mít bay 2 -->
-            <div
-              class="wave-animation"
-              style="animation-delay: 0.7s"
-            >
-              <img
-                src="blog/mit2.png"
-                alt="Múi mít bay 2"
-                class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110"
-                style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
-                onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';"
-              />
-            </div>
-
-            <!-- Múi mít bay 3 -->
-            <div
-              class="float-animation"
-              style="animation-delay: 1.4s"
-            >
-              <img
-                src="blog/mit3.png"
-                alt="Múi mít bay 3"
-                class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl filter brightness-110"
-                style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
-                onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl drop-shadow-2xl filter brightness-110\'>🥭</div>';"
-              />
+            <a href="baiviet1.html" class="block"><h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-green-600 transition">10 cách kết hợp mít sấy với bữa ăn hàng ngày</h3></a>
+            <p class="text-gray-600 mb-4 leading-relaxed">Khám phá những cách sáng tạo để thêm mít sấy vào salad, sữa chua, smoothie và nhiều món ăn khác...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-sm text-gray-500"><span>📅</span><span>15/12/2024</span></div>
+              <a href="baiviet1.html" class="text-green-600 hover:text-green-800 font-medium transition">Đọc thêm →</a>
             </div>
           </div>
+        </article>
 
-          <!-- Title + subtitle -->
-          <h1
-            id="blog-title"
-            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-amber-900 mb-4 sm:mb-6"
-          >
-            Blog giòn vui
-          </h1>
+        <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="h-48 bg-gradient-to-br from-yellow-200 to-orange-300 overflow-hidden">
+            <img src="blog/blog2.jpg" alt="Ăn vặt thông minh: Mít sấy vs các loại snack khác" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog2.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>⚖️</div>'};" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="category-badge bg-green-500 bg-gradient-to-br from-green-500 to-green-600 !uppercase">Healthy</span>
+              <span class="read-time">7 phút đọc</span>
+            </div>
+            <a href="baiviet2.html" class="block"><h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-green-600 transition">Ăn vặt thông minh: Mít sấy vs các loại snack khác</h3></a>
+            <p class="text-gray-600 mb-4 leading-relaxed">So sánh giá trị dinh dưỡng và lợi ích sức khỏe của mít sấy với khoai tây chiên, bánh quy và các snack phổ biến...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-sm text-gray-500"><span>📅</span><span>12/12/2024</span></div>
+              <a href="baiviet2.html" class="text-green-600 hover:text-green-800 font-medium transition">Đọc thêm →</a>
+            </div>
+          </div>
+        </article>
 
-          <p
-            id="blog-subtitle"
-            class="text-base sm:text-lg md:text-xl lg:text-2xl text-amber-700 mb-6 sm:mb-8 px-2"
-          >
-            Chia sẻ câu chuyện và bí quyết ăn vặt healthy
-          </p>
+        <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="h-48 bg-gradient-to-br from-blue-200 to-cyan-300 overflow-hidden">
+            <img src="blog/blog3.jpg" alt="Mít sấy - Nguồn năng lượng tự nhiên cho người tập thể thao" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog3.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🏃‍♀️</div>'};" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="category-badge bg-green-500 bg-gradient-to-br from-green-500 to-green-600 !uppercase">Khỏe mạnh</span>
+              <span class="read-time">4 phút</span>
+            </div>
+            <a href="baiviet3.html" class="block"><h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-green-600 transition">Mít luyện - Nguồn năng lượng tự nhiên cho người tập thể thao</h3></a>
+            <p class="text-gray-600 mb-4 leading-relaxed">Tại sao mít là lựa chọn hoàn thành cho những ai yêu thích sử dụng và cần tiện ích bổ sung nhanh chóng...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-sm text-gray-500"><span>📅</span><span>10/12/2024</span></div>
+              <a href="baiviet3.html" class="text-green-600 hover:text-green-800 font-medium transition">Đọc thêm →</a>
+            </div>
+          </div>
+        </article>
 
-          <!-- Hero tags -->
-          <div
-            class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6 text-sm sm:text-base md:text-lg text-amber-800"
-          >
-            <div class="flex items-center space-x-2">
-              <span class="text-xl sm:text-2xl">🌱</span>
-              <span>Mẹo hay</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: STORIES -->
+<section id="stories-section" class="section-spacing bg-gradient-to-br from-blue-50 to-indigo-50">
+  <div class="container mx-auto px-3 sm:px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-6xl mb-4 float-animation">📖</div>
+        <h2 class="text-4xl font-bold text-blue-800 mb-4">Câu chuyện phía sau gói mít</h2>
+        <p class="text-xl text-blue-700">Những câu hỏi cảm động về hành trình tạo ra sản phẩm</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <article class="md:col-span-2 gradient-card rounded-3xl overflow-hidden shadow-xl hover-lift">
+          <div class="md:flex">
+            <div class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-amber-200 to-orange-300 overflow-hidden">
+              <img src="blog/blog4.jpg" alt="Chuyến đi về vùng mít Cần Thơ - Nơi khởi nguồn của ước mơ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog4.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-9xl\'>🌾</div>'};" />
             </div>
-            <div class="flex items-center space-x-2">
-              <span class="text-xl sm:text-2xl">📖</span>
-              <span>Câu chuyện</span>
+            <div class="md:w-1/2 p-8">
+              <div class="flex items-center justify-between mb-4">
+                <span class="category-badge bg-blue-500 bg-gradient-to-br from-blue-500 to-blue-600 !uppercase">Câu chuyện</span>
+                <span class="read-time">10 phút đọc</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4 hover:text-blue-600 transition">Chuyến đi về vùng mít Cần Thơ - Nơi khởi nguồn của ước mơ</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">Câu chuyện về chuyến đi định mệnh đến vùng đất Cần Thơ, nơi chúng tôi lần đầu tiên nếm thử hương vị mít tươi ngọt lịm và quyết định mang nó đến với cả thế giới. Từ những vườn mít xanh mướt đến quy trình sản xuất hiện đại...</p>
+              <a href="baiviet4.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition inline-block">Đọc câu chuyện đầy đủ →</a>
             </div>
-            <div class="flex items-center space-x-2">
-              <span class="text-xl sm:text-2xl">💡</span>
-              <span>Mẹo hay</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="h-48 bg-gradient-to-br from-purple-200 to-pink-300 overflow-hidden">
+            <img src="blog/blog5.jpg" alt="Chú Năm và vườn mít 30 năm tuổi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog5.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>👨‍🌾</div>'};" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="category-badge bg-blue-500 bg-gradient-to-br from-blue-500 to-blue-600 !uppercase">Câu chuyện</span>
+              <span class="read-time">6 phút đọc</span>
             </div>
+            <a href="baiviet5.html" class="block"><h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition">Chú Năm và vườn mít 30 năm tuổi</h3></a>
+            <p class="text-gray-600 mb-4 leading-relaxed">Gặp gỡ chú Năm - người nông dân với 30 năm kinh nghiệm trồng mít, người đã cung cấp những trái mít ngon nhất cho chúng tôi...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-sm text-gray-500"><span>📅</span><span>08/12/2024</span></div>
+              <a href="baiviet5.html" class="text-blue-600 hover:text-blue-800 font-medium transition">Đọc thêm →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="h-48 bg-gradient-to-br from-red-200 to-pink-300 overflow-hidden">
+            <img src="blog/blog6.jpg" alt="Những phản hồi cảm động từ khách hàng" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog6.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>❤️</div>'};" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="category-badge bg-blue-500 bg-gradient-to-br from-blue-500 to-blue-600 !uppercase">Câu chuyện</span>
+              <span class="read-time">8 phút đọc</span>
+            </div>
+            <a href="baiviet6.html" class="block"><h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition">Những phản hồi cảm động từ khách hàng</h3></a>
+            <p class="text-gray-600 mb-4 leading-relaxed">Tổng hợp những câu chuyện ấm lòng từ khách hàng về cách mít sấy đã trở thành một phần trong cuộc sống hàng ngày của họ...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-sm text-gray-500"><span>📅</span><span>05/12/2024</span></div>
+              <a href="baiviet6.html" class="text-blue-600 hover:text-blue-800 font-medium transition">Đọc thêm →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: TIPS -->
+<section id="tips-section" class="section-spacing bg-gradient-to-br from-purple-50 to-pink-50">
+  <div class="container mx-auto px-3 sm:px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-6xl mb-4 float-animation">💡</div>
+        <h2 class="text-4xl font-bold text-purple-800 mb-4">Mẹo bảo quản &amp; thưởng thức</h2>
+        <p class="text-xl text-purple-700">Những bí quyết giúp bạn tận dụng mít một cách tối ưu nhất</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+
+        <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="h-48 bg-gradient-to-br from-indigo-200 to-purple-300 overflow-hidden">
+            <img src="blog/blog7.jpg" alt="5 cách bảo quản mít sấy luôn giòn" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog7.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🏠</div>'};" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="category-badge bg-purple-500 bg-gradient-to-br from-purple-500 to-purple-600 !uppercase">Mẹo hay</span>
+              <span class="read-time">3 phút đọc</span>
+            </div>
+            <a href="baiviet7.html" class="block"><h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-purple-600 transition">5 cách bảo quản mít mài mòn</h3></a>
+            <p class="text-gray-600 mb-4 leading-relaxed">ngon...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-sm text-gray-500"><span>📅</span><span>03/12/2024</span></div>
+              <a href="baiviet7.html" class="text-purple-600 hover:text-purple-800 font-medium transition">Đọc thêm →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="h-48 bg-gradient-to-br from-teal-200 to-cyan-300 overflow-hidden">
+            <img src="blog/blog8.jpg" alt="Công thức smoothie mít sấy siêu ngon" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog8.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🍹</div>'};" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="category-badge bg-purple-500 bg-gradient-to-br from-purple-500 to-purple-600 !uppercase">Mẹo hay</span>
+              <span class="read-time">4 phút đọc</span>
+            </div>
+            <a href="baiviet8.html" class="block"><h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-purple-600 transition">Công thức smoothie mít sấy siêu ngon</h3></a>
+            <p class="text-gray-600 mb-4 leading-relaxed">Hướng dẫn chi tiết cách làm smoothie mít sấy kết hợp với các loại trái cây khác để tạo ra thức uống bổ dưỡng...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-sm text-gray-500"><span>📅</span><span>01/12/2024</span></div>
+              <a href="baiviet8.html" class="text-purple-600 hover:text-purple-800 font-medium transition">Đọc thêm →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="h-48 bg-gradient-to-br from-rose-200 to-pink-300 overflow-hidden">
+            <img src="blog/blog9.jpg" alt="Trang trí bánh kem với mít sấy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='blog/blog9.png';this.onerror=function(){this.style.display='none';this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🎂</div>'};" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="category-badge bg-purple-500 bg-gradient-to-br from-purple-500 to-purple-600 !uppercase">Mẹo hay</span>
+              <span class="read-time">6 phút đọc</span>
+            </div>
+            <a href="baiviet9.html" class="block"><h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-purple-600 transition">Trang trí bánh kem với mít sấy</h3></a>
+            <p class="text-gray-600 mb-4 leading-relaxed">Ý tưởng sáng tạo sử dụng mít sấy làm topping trang trí bánh kem, tạo điểm nhấn độc đáo và hấp dẫn...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-sm text-gray-500"><span>📅</span><span>28/11/2024</span></div>
+              <a href="baiviet9.html" class="text-purple-600 hover:text-purple-800 font-medium transition">Đọc thêm →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- FAQ -->
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+        <div class="text-center mb-8">
+          <div class="text-5xl mb-4">❓</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Câu hỏi thường gặp</h3>
+          <p class="text-gray-600">Những thắc mắc phổ biến về mít sấy</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h4 class="font-bold text-gray-900 mb-2">🤔 Mít sấy có thể bảo quản bao lâu?</h4>
+            <p class="text-gray-600 text-sm">Trong điều kiện bảo quản tốt, mít sấy có thể giữ được 6-12 tháng mà vẫn giòn ngon.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h4 class="font-bold text-gray-900 mb-2">🍼 Trẻ em có ăn được mít sấy không?</h4>
+            <p class="text-gray-600 text-sm">Hoàn toàn an toàn cho trẻ từ 2 tuổi trở lên, là nguồn vitamin và chất xơ tự nhiên tốt.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h4 class="font-bold text-gray-900 mb-2">⚖️ Ăn bao nhiêu mít sấy mỗi ngày là đủ?</h4>
+            <p class="text-gray-600 text-sm">Khoảng 30-50g mỗi ngày (tương đương 1 nắm tay) là lượng lý tưởng.</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h4 class="font-bold text-gray-900 mb-2">🌡️ Có nên bảo quản mít sấy trong tủ lạnh?</h4>
+            <p class="text-gray-600 text-sm">Không cần thiết, chỉ cần nơi khô ráo, thoáng mát và kín gió là đủ.</p>
           </div>
         </div>
       </div>
+      <!-- /FAQ -->
 
-      <!-- Background blobs -->
-      <div
-        class="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-yellow-200 rounded-full opacity-20 -mr-16 sm:-mr-24 md:-mr-32 -mt-16 sm:-mt-24 md:-mt-32"
-      ></div>
-      <div
-        class="absolute bottom-0 left-0 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-orange-200 rounded-full opacity-20 -ml-24 sm:-ml-36 md:-ml-48 -mb-24 sm:-mb-36 md:-mb-48"
-      ></div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- ========== CATEGORY NAV (sticky filter tabs) ========== -->
-    <section
-      class="bg-white shadow-sm sticky top-16 sm:top-20 z-40"
-    >
-      <div class="container mx-auto px-3 py-3">
-        <div
-          class="flex justify-start sm:justify-center space-x-3 sm:space-x-4 md:space-x-8 overflow-x-auto pb-2 scrollbar-hide"
-        >
-          <button
-            onclick="showCategory('healthy')"
-            class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-green-100 text-green-800 hover:bg-green-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"
-          >
-            <span
-              class="text-base sm:text-lg md:text-xl"
-              >🌱</span
-            >
-            <span class="hidden sm:inline"
-              >Bí quyết ăn vặt healthy</span
-            >
-            <span class="sm:hidden">Healthy</span>
-          </button>
-
-          <button
-            onclick="showCategory('stories')"
-            class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"
-          >
-            <span
-              class="text-base sm:text-lg md:text-xl"
-              >📖</span
-            >
-            <span class="hidden sm:inline"
-              >Câu chuyện phía sau</span
-            >
-            <span class="sm:hidden">Câu chuyện</span>
-          </button>
-
-          <button
-            onclick="showCategory('tips')"
-            class="category-btn flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition font-medium whitespace-nowrap text-xs sm:text-sm md:text-base"
-          >
-            <span
-              class="text-base sm:text-lg md:text-xl"
-              >💡</span
-            >
-            <span class="hidden sm:inline"
-              >Mẹ bảo quản &amp; thưởng thức</span
-            >
-            <span class="sm:hidden">Mẹ hay</span>
-          </button>
-        </div>
+<!-- NEWSLETTER -->
+<section class="section-spacing bg-gradient-to-r from-amber-100 to-yellow-100">
+  <div class="container mx-auto px-3 sm:px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="text-6xl mb-6 pulse-glow">📧</div>
+      <h2 class="text-4xl font-bold text-amber-900 mb-4">Đăng ký nhận tin mới</h2>
+      <p class="text-xl text-amber-800 mb-8">Cập nhật những bài viết mới nhất và tips hay về mít sấy</p>
+      <div class="flex flex-col gap-3 justify-center max-w-sm sm:max-w-md mx-auto">
+        <input type="email" placeholder="Nhập email của bạn" class="w-full px-4 py-3 rounded-full border border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm sm:text-base" />
+        <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-full transition text-sm sm:text-base">Đăng ký nhận tin</button>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- ========== SECTION 1: Bí quyết ăn vặt lành mạnh ========== -->
-    <section
-      id="healthy-section"
-      class="section-spacing bg-gradient-to-br from-green-50 to-emerald-50"
-    >
-      <div class="container mx-auto px-3 sm:px-4">
-        <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-12">
-            <div class="text-6xl mb-4 float-animation">
-              🌱
-            </div>
-            <h2
-              class="text-4xl font-bold text-green-800 mb-4"
-            >
-              Bí quyết ăn vặt lành mạnh
-            </h2>
-            <p class="text-xl text-green-700">
-              Thưởng thức ngon miệng mà vẫn giữ phong cách và
-              sức khỏe
-            </p>
-          </div>
-
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
-          >
-            <!-- Bài viết 1 -->
-            <article
-              class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift"
-            >
-              <div
-                class="h-48 bg-gradient-to-br from-green-200 to-green-300 overflow-hidden"
-              >
-                <img
-                  src="blog/blog1.jpg"
-                  alt="10 cách kết hợp mít sấy với bữa ăn hàng ngày"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onerror="this.src='blog/blog1.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🥗</div>'};"
-                />
-              </div>
-
-              <div class="p-6">
-                <div
-                  class="flex items-center justify-between mb-3"
-                >
-                  <span
-                    class="category-badge bg-green-500 bg-gradient-to-br from-green-500 to-green-600 !uppercase"
-                    >Healthy</span
-                  >
-                  <span class="read-time"
-                    >5 phút đọc</span
-                  >
-                </div>
-
-                <a
-                  href="baiviet1.html"
-                  class="block"
-                >
-                  <h3
-                    class="text-xl font-bold text-gray-900 mb-3 hover:text-green-600 transition"
-                  >
-                    10 cách kết hợp mít sấy với bữa ăn hàng
-                    ngày
-                  </h3>
-                </a>
-
-                <p
-                  class="text-gray-600 mb-4 leading-relaxed"
-                >
-                  Khám phá những cách sáng tạo để thêm mít
-                  sấy vào salad, sữa chua, smoothie và nhiều
-                  món ăn khác...
-                </p>
-
-                <div
-                  class="flex items-center justify-between"
-                >
-                  <div
-                    class="flex items-center space-x-2 text-sm text-gray-500"
-                  >
-                    <span>📅</span>
-                    <span>15/12/2024</span>
-                  </div>
-
-                  <a
-                    href="baiviet1.html"
-                    class="text-green-600 hover:text-green-800 font-medium transition"
-                    >Đọc thêm →</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Bài viết 2 -->
-            <article
-              class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift"
-            >
-              <div
-                class="h-48 bg-gradient-to-br from-yellow-200 to-orange-300 overflow-hidden"
-              >
-                <img
-                  src="blog/blog2.jpg"
-                  alt="Ăn vặt thông minh: Mít sấy vs các loại snack khác"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onerror="this.src='blog/blog2.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>⚖️</div>'};"
-                />
-              </div>
-
-              <div class="p-6">
-                <div
-                  class="flex items-center justify-between mb-3"
-                >
-                  <span
-                    class="category-badge bg-green-500 bg-gradient-to-br from-green-500 to-green-600 !uppercase"
-                    >Healthy</span
-                  >
-                  <span class="read-time"
-                    >7 phút đọc</span
-                  >
-                </div>
-
-                <a
-                  href="baiviet2.html"
-                  class="block"
-                >
-                  <h3
-                    class="text-xl font-bold text-gray-900 mb-3 hover:text-green-600 transition"
-                  >
-                    Ăn vặt thông minh: Mít sấy vs các loại
-                    snack khác
-                  </h3>
-                </a>
-
-                <p
-                  class="text-gray-600 mb-4 leading-relaxed"
-                >
-                  So sánh giá trị dinh dưỡng và lợi ích sức
-                  khỏe của mít sấy với khoai tây chiên, bánh
-                  quy và các snack phổ biến...
-                </p>
-
-                <div
-                  class="flex items-center justify-between"
-                >
-                  <div
-                    class="flex items-center space-x-2 text-sm text-gray-500"
-                  >
-                    <span>📅</span>
-                    <span>12/12/2024</span>
-                  </div>
-
-                  <a
-                    href="baiviet2.html"
-                    class="text-green-600 hover:text-green-800 font-medium transition"
-                    >Đọc thêm →</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Bài viết 3 -->
-            <article
-              class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift"
-            >
-              <div
-                class="h-48 bg-gradient-to-br from-blue-200 to-cyan-300 overflow-hidden"
-              >
-                <img
-                  src="blog/blog3.jpg"
-                  alt="Mít sấy - Nguồn năng lượng tự nhiên cho người tập thể thao"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onerror="this.src='blog/blog3.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🏃‍♀️</div>'};"
-                />
-              </div>
-
-              <div class="p-6">
-                <div
-                  class="flex items-center justify-between mb-3"
-                >
-                  <span
-                    class="category-badge bg-green-500 bg-gradient-to-br from-green-500 to-green-600 !uppercase"
-                    >Khỏe mạnh</span
-                  >
-                  <span class="read-time"
-                    >4 phút</span
-                  >
-                </div>
-
-                <a
-                  href="baiviet3.html"
-                  class="block"
-                >
-                  <h3
-                    class="text-xl font-bold text-gray-900 mb-3 hover:text-green-600 transition"
-                  >
-                    Mít luyện - Nguồn năng lượng tự nhiên cho
-                    người tập thể thao
-                  </h3>
-                </a>
-
-                <p
-                  class="text-gray-600 mb-4 leading-relaxed"
-                >
-                  Tại sao mít là lựa chọn hoàn thành cho
-                  những ai yêu thích sử dụng và cần tiện ích
-                  bổ sung nhanh chóng...
-                </p>
-
-                <div
-                  class="flex items-center justify-between"
-                >
-                  <div
-                    class="flex items-center space-x-2 text-sm text-gray-500"
-                  >
-                    <span>📅</span>
-                    <span>10/12/2024</span>
-                  </div>
-
-                  <a
-                    href="baiviet3.html"
-                    class="text-green-600 hover:text-green-800 font-medium transition"
-                    >Đọc thêm →</a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
+<!-- CTA -->
+<section class="section-spacing gradient-bg">
+  <div class="container mx-auto px-3 sm:px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="text-6xl mb-6 float-animation">🎁</div>
+      <h2 class="text-4xl font-bold text-amber-900 mb-6">Thích những câu chuyện này?</h2>
+      <p class="text-xl text-amber-800 mb-8">Hãy thử ngay sản phẩm mít sấy của chúng tôi để cảm nhận trọn vẹn hương vị!</p>
+      <div class="flex flex-col gap-3 sm:gap-4 justify-center max-w-sm sm:max-w-none mx-auto">
+        <a href="san-pham.html" id="cta-button" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-base md:text-lg transition shadow-lg hover:shadow-xl text-center">🛒 Đặt thử gói mít đầu tiên</a>
+        <a href="baiviet10.html" class="bg-white hover:bg-gray-50 text-amber-900 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-base md:text-lg transition shadow-lg hover:shadow-xl border-2 border-amber-600 text-center">📖 Đọc thêm câu chuyện</a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- ========== SECTION 2: Câu chuyện phía sau ========== -->
-    <section
-      id="stories-section"
-      class="section-spacing bg-gradient-to-br from-blue-50 to-indigo-50"
-    >
-      <div class="container mx-auto px-3 sm:px-4">
-        <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-12">
-            <div class="text-6xl mb-4 float-animation">
-              📖
-            </div>
-            <h2
-              class="text-4xl font-bold text-blue-800 mb-4"
-            >
-              Câu chuyện phía sau gói mít
-            </h2>
-            <p class="text-xl text-blue-700">
-              Những câu hỏi cảm động về hành trình tạo ra sản
-              phẩm
-            </p>
-          </div>
-
-          <!-- Bài viết nổi bật full width -->
-          <div class="grid md:grid-cols-2 gap-8 mb-12">
-            <article
-              class="md:col-span-2 gradient-card rounded-3xl overflow-hidden shadow-xl hover-lift"
-            >
-              <div class="md:flex">
-                <div
-                  class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-amber-200 to-orange-300 overflow-hidden"
-                >
-                  <img
-                    src="blog/blog4.jpg"
-                    alt="Chuyến đi về vùng mít Cần Thơ - Nơi khởi nguồn của ước mơ"
-                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    onerror="this.src='blog/blog4.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-9xl\'>🌾</div>'};"
-                  />
-                </div>
-
-                <div class="md:w-1/2 p-8">
-                  <div
-                    class="flex items-center justify-between mb-4"
-                  >
-                    <span
-                      class="category-badge bg-blue-500 bg-gradient-to-br from-blue-500 to-blue-600 !uppercase"
-                      >Câu chuyện</span
-                    >
-                    <span class="read-time"
-                      >10 phút đọc</span
-                    >
-                  </div>
-
-                  <h3
-                    class="text-2xl font-bold text-gray-900 mb-4 hover:text-blue-600 transition"
-                  >
-                    Chuyến đi về vùng mít Cần Thơ - Nơi khởi
-                    nguồn của ước mơ
-                  </h3>
-
-                  <p
-                    class="text-gray-600 mb-6 leading-relaxed"
-                  >
-                    Câu chuyện về chuyến đi định mệnh đến vùng
-                    đất Cần Thơ, nơi chúng tôi lần đầu tiên
-                    nếm thử hương vị mít tươi ngọt lịm và quyết
-                    định mang nó đến với cả thế giới. Từ những
-                    vườn mít xanh mướt đến quy trình sản xuất
-                    hiện đại...
-                  </p>
-
-                  <a
-                    href="baiviet4.html"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition inline-block"
-                    >Đọc câu chuyện đầy đủ →</a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- 2 bài nhỏ -->
-          <div class="grid md:grid-cols-2 gap-8">
-            <!-- Bài viết 4 -->
-            <article
-              class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift"
-            >
-              <div
-                class="h-48 bg-gradient-to-br from-purple-200 to-pink-300 overflow-hidden"
-              >
-                <img
-                  src="blog/blog5.jpg"
-                  alt="Chú Năm và vườn mít 30 năm tuổi"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onerror="this.src='blog/blog5.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>👨‍🌾</div>'};"
-                />
-              </div>
-
-              <div class="p-6">
-                <div
-                  class="flex items-center justify-between mb-3"
-                >
-                  <span
-                    class="category-badge bg-blue-500 bg-gradient-to-br from-blue-500 to-blue-600 !uppercase"
-                    >Câu chuyện</span
-                  >
-                  <span class="read-time"
-                    >6 phút đọc</span
-                  >
-                </div>
-
-                <a
-                  href="baiviet5.html"
-                  class="block"
-                >
-                  <h3
-                    class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition"
-                  >
-                    Chú Năm và vườn mít 30 năm tuổi
-                  </h3>
-                </a>
-
-                <p
-                  class="text-gray-600 mb-4 leading-relaxed"
-                >
-                  Gặp gỡ chú Năm - người nông dân với 30 năm
-                  kinh nghiệm trồng mít, người đã cung cấp
-                  những trái mít ngon nhất cho chúng tôi...
-                </p>
-
-                <div
-                  class="flex items-center justify-between"
-                >
-                  <div
-                    class="flex items-center space-x-2 text-sm text-gray-500"
-                  >
-                    <span>📅</span>
-                    <span>08/12/2024</span>
-                  </div>
-
-                  <a
-                    href="baiviet5.html"
-                    class="text-blue-600 hover:text-blue-800 font-medium transition"
-                    >Đọc thêm →</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Bài viết 5 -->
-            <article
-              class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift"
-            >
-              <div
-                class="h-48 bg-gradient-to-br from-red-200 to-pink-300 overflow-hidden"
-              >
-                <img
-                  src="blog/blog6.jpg"
-                  alt="Những phản hồi cảm động từ khách hàng"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onerror="this.src='blog/blog6.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>❤️</div>'};"
-                />
-              </div>
-
-              <div class="p-6">
-                <div
-                  class="flex items-center justify-between mb-3"
-                >
-                  <span
-                    class="category-badge bg-blue-500 bg-gradient-to-br from-blue-500 to-blue-600 !uppercase"
-                    >Câu chuyện</span
-                  >
-                  <span class="read-time"
-                    >8 phút đọc</span
-                  >
-                </div>
-
-                <a
-                  href="baiviet6.html"
-                  class="block"
-                >
-                  <h3
-                    class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition"
-                  >
-                    Những phản hồi cảm động từ khách hàng
-                  </h3>
-                </a>
-
-                <p
-                  class="text-gray-600 mb-4 leading-relaxed"
-                >
-                  Tổng hợp những câu chuyện ấm lòng từ khách
-                  hàng về cách mít sấy đã trở thành một phần
-                  trong cuộc sống hàng ngày của họ...
-                </p>
-
-                <div
-                  class="flex items-center justify-between"
-                >
-                  <div
-                    class="flex items-center space-x-2 text-sm text-gray-500"
-                  >
-                    <span>📅</span>
-                    <span>05/12/2024</span>
-                  </div>
-
-                  <a
-                    href="baiviet6.html"
-                    class="text-blue-600 hover:text-blue-800 font-medium transition"
-                    >Đọc thêm →</a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
+<!-- FOOTER -->
+<footer class="bg-amber-900 text-amber-50">
+  <div class="container mx-auto px-3 sm:px-4 py-8 sm:py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+      <div>
+        <div class="flex items-center space-x-2 mb-4">
+          <span class="text-4xl">🪐</span>
+          <h3 id="footer-brand" class="text-xl font-bold">Mít Sấy Vũ Trụ</h3>
         </div>
+        <p class="text-amber-200 text-sm leading-relaxed">Giòn thơm quay vị giác – Mít ngon chuẩn vũ trụ</p>
       </div>
-    </section>
 
-    <!-- ========== SECTION 3: Mẹo bảo quản & thưởng thức ========== -->
-    <section
-      id="tips-section"
-      class="section-spacing bg-gradient-to-br from-purple-50 to-pink-50"
-    >
-      <div class="container mx-auto px-3 sm:px-4">
-        <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-12">
-            <div class="text-6xl mb-4 float-animation">
-              💡
-            </div>
-            <h2
-              class="text-4xl font-bold text-purple-800 mb-4"
-            >
-              Mẹo bảo quản &amp; thưởng thức
-            </h2>
-            <p class="text-xl text-purple-700">
-              Những bí quyết giúp bạn tận dụng mít một cách
-              tối ưu nhất
-            </p>
-          </div>
-
-          <!-- 3 bài -->
-          <div
-            class="grid md:grid-cols-3 gap-8 mb-12"
-          >
-            <!-- Bài viết 6 -->
-            <article
-              class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift"
-            >
-              <div
-                class="h-48 bg-gradient-to-br from-indigo-200 to-purple-300 overflow-hidden"
-              >
-                <img
-                  src="blog/blog7.jpg"
-                  alt="5 cách bảo quản mít sấy luôn giòn"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onerror="this.src='blog/blog7.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🏠</div>'};"
-                />
-              </div>
-
-              <div class="p-6">
-                <div
-                  class="flex items-center justify-between mb-3"
-                >
-                  <span
-                    class="category-badge bg-purple-500 bg-gradient-to-br from-purple-500 to-purple-600 !uppercase"
-                    >Mẹo hay</span
-                  >
-                  <span class="read-time"
-                    >3 phút đọc</span
-                  >
-                </div>
-
-                <a
-                  href="baiviet7.html"
-                  class="block"
-                >
-                  <h3
-                    class="text-xl font-bold text-gray-900 mb-3 hover:text-purple-600 transition"
-                  >
-                    5 cách bảo quản mít mài mòn
-                  </h3>
-                </a>
-
-                <p
-                  class="text-gray-600 mb-4 leading-relaxed"
-                >
-                  ngon...
-                </p>
-
-                <div
-                  class="flex items-center justify-between"
-                >
-                  <div
-                    class="flex items-center space-x-2 text-sm text-gray-500"
-                  >
-                    <span>📅</span>
-                    <span>03/12/2024</span>
-                  </div>
-
-                  <a
-                    href="baiviet7.html"
-                    class="text-purple-600 hover:text-purple-800 font-medium transition"
-                    >Đọc thêm →</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Bài viết 7 -->
-            <article
-              class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift"
-            >
-              <div
-                class="h-48 bg-gradient-to-br from-teal-200 to-cyan-300 overflow-hidden"
-              >
-                <img
-                  src="blog/blog8.jpg"
-                  alt="Công thức smoothie mít sấy siêu ngon"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onerror="this.src='blog/blog8.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🍹</div>'};"
-                />
-              </div>
-
-              <div class="p-6">
-                <div
-                  class="flex items-center justify-between mb-3"
-                >
-                  <span
-                    class="category-badge bg-purple-500 bg-gradient-to-br from-purple-500 to-purple-600 !uppercase"
-                    >Mẹo hay</span
-                  >
-                  <span class="read-time"
-                    >4 phút đọc</span
-                  >
-                </div>
-
-                <a
-                  href="baiviet8.html"
-                  class="block"
-                >
-                  <h3
-                    class="text-xl font-bold text-gray-900 mb-3 hover:text-purple-600 transition"
-                  >
-                    Công thức smoothie mít sấy siêu ngon
-                  </h3>
-                </a>
-
-                <p
-                  class="text-gray-600 mb-4 leading-relaxed"
-                >
-                  Hướng dẫn chi tiết cách làm smoothie mít
-                  sấy kết hợp với các loại trái cây khác để
-                  tạo ra thức uống bổ dưỡng...
-                </p>
-
-                <div
-                  class="flex items-center justify-between"
-                >
-                  <div
-                    class="flex items-center space-x-2 text-sm text-gray-500"
-                  >
-                    <span>📅</span>
-                    <span>01/12/2024</span>
-                  </div>
-
-                  <a
-                    href="baiviet8.html"
-                    class="text-purple-600 hover:text-purple-800 font-medium transition"
-                    >Đọc thêm →</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Bài viết 8 -->
-            <article
-              class="gradient-card rounded-2xl overflow-hidden shadow-lg hover-lift"
-            >
-              <div
-                class="h-48 bg-gradient-to-br from-rose-200 to-pink-300 overflow-hidden"
-              >
-                <img
-                  src="blog/blog9.jpg"
-                  alt="Trang trí bánh kem với mít sấy"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onerror="this.src='blog/blog9.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-8xl\'>🎂</div>'};"
-                />
-              </div>
-
-              <div class="p-6">
-                <div
-                  class="flex items-center justify-between mb-3"
-                >
-                  <span
-                    class="category-badge bg-purple-500 bg-gradient-to-br from-purple-500 to-purple-600 !uppercase"
-                    >Mẹo hay</span
-                  >
-                  <span class="read-time"
-                    >6 phút đọc</span
-                  >
-                </div>
-
-                <a
-                  href="baiviet9.html"
-                  class="block"
-                >
-                  <h3
-                    class="text-xl font-bold text-gray-900 mb-3 hover:text-purple-600 transition"
-                  >
-                    Trang trí bánh kem với mít sấy
-                  </h3>
-                </a>
-
-                <p
-                  class="text-gray-600 mb-4 leading-relaxed"
-                >
-                  Ý tưởng sáng tạo sử dụng mít sấy làm
-                  topping trang trí bánh kem, tạo điểm nhấn
-                  độc đáo và hấp dẫn...
-                </p>
-
-                <div
-                  class="flex items-center justify-between"
-                >
-                  <div
-                    class="flex items-center space-x-2 text-sm text-gray-500"
-                  >
-                    <span>📅</span>
-                    <span>28/11/2024</span>
-                  </div>
-
-                  <a
-                    href="baiviet9.html"
-                    class="text-purple-600 hover:text-purple-800 font-medium transition"
-                    >Đọc thêm →</a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- FAQ -->
-          <div
-            class="bg-white rounded-3xl p-8 shadow-xl"
-          >
-            <div class="text-center mb-8">
-              <div class="text-5xl mb-4">❓</div>
-              <h3
-                class="text-2xl font-bold text-gray-900 mb-2"
-              >
-                Câu hỏi thường gặp
-              </h3>
-              <p class="text-gray-600">
-                Những thắc mắc phổ biến về mít sấy
-              </p>
-            </div>
-
-            <div
-              class="grid md:grid-cols-2 gap-6"
-            >
-              <div
-                class="bg-gray-50 rounded-xl p-6"
-              >
-                <h4
-                  class="font-bold text-gray-900 mb-2"
-                >
-                  🤔 Mít sấy có thể bảo quản bao lâu?
-                </h4>
-                <p
-                  class="text-gray-600 text-sm"
-                >
-                  Trong điều kiện bảo quản tốt, mít sấy có
-                  thể giữ được 6-12 tháng mà vẫn giòn ngon.
-                </p>
-              </div>
-
-              <div
-                class="bg-gray-50 rounded-xl p-6"
-              >
-                <h4
-                  class="font-bold text-gray-900 mb-2"
-                >
-                  🍼 Trẻ em có ăn được mít sấy không?
-                </h4>
-                <p
-                  class="text-gray-600 text-sm"
-                >
-                  Hoàn toàn an toàn cho trẻ từ 2 tuổi trở
-                  lên, là nguồn vitamin và chất xơ tự nhiên
-                  tốt.
-                </p>
-              </div>
-
-              <div
-                class="bg-gray-50 rounded-xl p-6"
-              >
-                <h4
-                  class="font-bold text-gray-900 mb-2"
-                >
-                  ⚖️ Ăn bao nhiêu mít sấy mỗi ngày là đủ?
-                </h4>
-                <p
-                  class="text-gray-600 text-sm"
-                >
-                  Khoảng 30-50g mỗi ngày (tương đương 1 nắm
-                  tay) là lượng lý tưởng.
-                </p>
-              </div>
-
-              <div
-                class="bg-gray-50 rounded-xl p-6"
-              >
-                <h4
-                  class="font-bold text-gray-900 mb-2"
-                >
-                  🌡️ Có nên bảo quản mít sấy trong tủ
-                  lạnh?
-                </h4>
-                <p
-                  class="text-gray-600 text-sm"
-                >
-                  Không cần thiết, chỉ cần nơi khô ráo,
-                  thoáng mát và kín gió là đủ.
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- /FAQ -->
-        </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4">Liên kết nhanh</h4>
+        <ul class="space-y-2 text-amber-200">
+          <li><a href="index.html" class="hover:text-white transition">Trang chủ</a></li>
+          <li><a href="gioithieu.html" class="hover:text-white transition">Giới thiệu</a></li>
+          <li><a href="san-pham.html" class="hover:text-white transition">Sản phẩm</a></li>
+          <li><a href="blog.html" class="hover:text-white transition">Blog</a></li>
+          <li><a href="lien-he.html" class="hover:text-white transition">Liên hệ</a></li>
+        </ul>
       </div>
-    </section>
 
-    <!-- ========== NEWSLETTER ========== -->
-    <section
-      class="section-spacing bg-gradient-to-r from-amber-100 to-yellow-100"
-    >
-      <div class="container mx-auto px-3 sm:px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <div class="text-6xl mb-6 pulse-glow">
-            📧
-          </div>
-          <h2
-            class="text-4xl font-bold text-amber-900 mb-4"
-          >
-            Đăng ký nhận tin mới
-          </h2>
-          <p class="text-xl text-amber-800 mb-8">
-            Cập nhật những bài viết mới nhất và tips hay về
-            mít sấy
-          </p>
-
-          <div
-            class="flex flex-col gap-3 justify-center max-w-sm sm:max-w-md mx-auto"
-          >
-            <input
-              type="email"
-              placeholder="Nhập email của bạn"
-              class="w-full px-4 py-3 rounded-full border border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm sm:text-base"
-            />
-            <button
-              class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-full transition text-sm sm:text-base"
-            >
-              Đăng ký nhận tin
-            </button>
-          </div>
-        </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4">Thông tin liên hệ</h4>
+        <ul class="space-y-3 text-amber-200">
+          <li class="flex items-start space-x-2"><span>📞</span><span id="footer-hotline">1900 xxxx</span></li>
+          <li class="flex items-start space-x-2"><span>✉️</span><span id="footer-email">hello@mitsayvutru.space</span></li>
+          <li class="flex items-start space-x-2"><span>📍</span><span id="footer-address">123 Đường ABC, Quận XYZ, TP.HCM</span></li>
+        </ul>
       </div>
-    </section>
 
-    <!-- ========== CTA ========== -->
-    <section class="section-spacing gradient-bg">
-      <div class="container mx-auto px-3 sm:px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <div class="text-6xl mb-6 float-animation">
-            🎁
-          </div>
-          <h2
-            class="text-4xl font-bold text-amber-900 mb-6"
-          >
-            Thích những câu chuyện này?
-          </h2>
-          <p class="text-xl text-amber-800 mb-8">
-            Hãy thử ngay sản phẩm mít sấy của chúng tôi để
-            cảm nhận trọn vẹn hương vị!
-          </p>
-
-          <div
-            class="flex flex-col gap-3 sm:gap-4 justify-center max-w-sm sm:max-w-none mx-auto"
-          >
-            <a
-              href="san-pham.html"
-              id="cta-button"
-              class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-base md:text-lg transition shadow-lg hover:shadow-xl text-center"
-            >
-              🛒 Đặt thử gói mít đầu tiên
-            </a>
-
-            <a
-              href="baiviet10.html"
-              class="bg-white hover:bg-gray-50 text-amber-900 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-base md:text-lg transition shadow-lg hover:shadow-xl border-2 border-amber-600 text-center"
-            >
-              📖 Đọc thêm câu chuyện
-            </a>
-          </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4">Kết nối với chúng tôi</h4>
+        <div class="flex space-x-4 mb-4">
+          <a href="#" class="w-10 h-10 bg-amber-700 hover:bg-amber-600 rounded-full flex items-center justify-center transition"><span class="text-xl">f</span></a>
+          <a href="#" class="w-10 h-10 bg-amber-700 hover:bg-amber-600 rounded-full flex items-center justify-center transition"><span class="text-xl">📷</span></a>
+          <a href="#" class="w-10 h-10 bg-amber-700 hover:bg-amber-600 rounded-full flex items-center justify-center transition"><span class="text-xl">🎵</span></a>
         </div>
+        <p class="text-amber-200 text-sm">Theo dõi để cập nhật tin tức và ưu đãi mới nhất!</p>
       </div>
-    </section>
+    </div>
 
-    <!-- ========== FOOTER ========== -->
-    <footer class="bg-amber-900 text-amber-50">
-      <div
-        class="container mx-auto px-3 sm:px-4 py-8 sm:py-12"
-      >
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"
-        >
-          <!-- col 1 -->
-          <div>
-            <div
-              class="flex items-center space-x-2 mb-4"
-            >
-              <span class="text-4xl">🪐</span>
-              <h3
-                id="footer-brand"
-                class="text-xl font-bold"
-              >
-                Mít Sấy Vũ Trụ
-              </h3>
-            </div>
-            <p
-              class="text-amber-200 text-sm leading-relaxed"
-            >
-              Giòn thơm quay vị giác – Mít ngon chuẩn vũ trụ
-            </p>
-          </div>
+    <div class="border-t border-amber-700 pt-6 text-center text-amber-200 text-sm">
+      <p id="footer-company">© 2024 Công ty TNHH Mít Sấy Vũ Trụ. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </div>
+</footer>
 
-          <!-- col 2 -->
-          <div>
-            <h4 class="font-bold text-lg mb-4">
-              Liên kết nhanh
-            </h4>
-            <ul class="space-y-2 text-amber-200">
-              <li>
-                <a
-                  href="index.html"
-                  class="hover:text-white transition"
-                  >Trang chủ</a
-                >
-              </li>
-              <li>
-                <a
-                  href="gioithieu.html"
-                  class="hover:text-white transition"
-                  >Giới thiệu</a
-                >
-              </li>
-              <li>
-                <a
-                  href="san-pham.html"
-                  class="hover:text-white transition"
-                  >Sản phẩm</a
-                >
-              </li>
-              <li>
-                <a
-                  href="blog.html"
-                  class="hover:text-white transition"
-                  >Blog</a
-                >
-              </li>
-              <li>
-                <a
-                  href="lien-he.html"
-                  class="hover:text-white transition"
-                  >Liên hệ</a
-                >
-              </li>
-            </ul>
-          </div>
+<!-- SCRIPT -->
+<script>
+const defaultConfig={brand_name:"Mít Sấy Vũ Trụ",tagline:"Giòn thơm quay vị giác – Mít ngon chuẩn vũ trụ",blog_title:"Blog nứt vui",blog_subtitle:"Chia sẻ câu chuyện và bí quyết ăn vặt lành mạnh",cta_text:"Thử gói mít đầu tiên",company_name:"Công ty TNHH Mít Sấy Vũ Trụ",hotline:"1900 xxxx",email:"hello@mitsayvutru.space",address:"123 Đường ABC, Quận XYZ, TP.HCM"};
 
-          <!-- col 3 -->
-          <div>
-            <h4 class="font-bold text-lg mb-4">
-              Thông tin liên hệ
-            </h4>
-            <ul class="space-y-3 text-amber-200">
-              <li class="flex items-start space-x-2">
-                <span>📞</span>
-                <span id="footer-hotline"
-                  >1900 xxxx</span
-                >
-              </li>
-              <li class="flex items-start space-x-2">
-                <span>✉️</span>
-                <span id="footer-email"
-                  >hello@mitsayvutru.space</span
-                >
-              </li>
-              <li class="flex items-start space-x-2">
-                <span>📍</span>
-                <span id="footer-address"
-                  >123 Đường ABC, Quận XYZ,
-                  TP.HCM</span
-                >
-              </li>
-            </ul>
-          </div>
+function showCategory(category){
+  document.querySelectorAll(".category-btn").forEach(btn=>{
+    btn.classList.remove("bg-amber-500","text-white");
+    btn.classList.add("bg-gray-100","text-gray-800");
+  });
+  const activeBtn=event.target.closest(".category-btn");
+  if(activeBtn){
+    activeBtn.classList.remove("bg-gray-100","text-gray-800");
+    activeBtn.classList.add("bg-amber-500","text-white");
+  }
+  const sections={healthy:"healthy-section",stories:"stories-section",tips:"tips-section"};
+  if(sections[category]){
+    document.getElementById(sections[category]).scrollIntoView({behavior:"smooth",block:"start"});
+  }
+}
 
-          <!-- col 4 -->
-          <div>
-            <h4 class="font-bold text-lg mb-4">
-              Kết nối với chúng tôi
-            </h4>
+async function onConfigChange(config){
+  document.getElementById("brand-name").textContent=config.brand_name||defaultConfig.brand_name;
+  document.getElementById("tagline").textContent=config.tagline||defaultConfig.tagline;
+  document.getElementById("blog-title").textContent=config.blog_title||defaultConfig.blog_title;
+  document.getElementById("blog-subtitle").textContent=config.blog_subtitle||defaultConfig.blog_subtitle;
+  document.getElementById("cta-button").innerHTML="🛒 "+(config.cta_text||defaultConfig.cta_text);
+  document.getElementById("footer-brand").textContent=config.brand_name||defaultConfig.brand_name;
+  document.getElementById("footer-hotline").textContent=config.hotline||defaultConfig.hotline;
+  document.getElementById("footer-email").textContent=config.email||defaultConfig.email;
+  document.getElementById("footer-address").textContent=config.address||defaultConfig.address;
+  document.getElementById("footer-company").textContent="© 2024 "+(config.company_name||defaultConfig.company_name)+". Tất cả quyền được bảo lưu.";
+}
 
-            <div class="flex space-x-4 mb-4">
-              <a
-                href="#"
-                class="w-10 h-10 bg-amber-700 hover:bg-amber-600 rounded-full flex items-center justify-center transition"
-              >
-                <span class="text-xl">f</span>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-amber-700 hover:bg-amber-600 rounded-full flex items-center justify-center transition"
-              >
-                <span class="text-xl">📷</span>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-amber-700 hover:bg-amber-600 rounded-full flex items-center justify-center transition"
-              >
-                <span class="text-xl">🎵</span>
-              </a>
-            </div>
+function mapToCapabilities(config){
+  return{recolorables:[],borderables:[],fontEditable:undefined,fontSizeable:undefined};
+}
 
-            <p class="text-amber-200 text-sm">
-              Theo dõi để cập nhật tin tức và ưu đãi mới
-              nhất!
-            </p>
-          </div>
-        </div>
+function mapToEditPanelValues(config){
+  return new Map([
+    ["brand_name",config.brand_name||defaultConfig.brand_name],
+    ["tagline",config.tagline||defaultConfig.tagline],
+    ["blog_title",config.blog_title||defaultConfig.blog_title],
+    ["blog_subtitle",config.blog_subtitle||defaultConfig.blog_subtitle],
+    ["cta_text",config.cta_text||defaultConfig.cta_text],
+    ["company_name",config.company_name||defaultConfig.company_name],
+    ["hotline",config.hotline||defaultConfig.hotline],
+    ["email",config.email||defaultConfig.email],
+    ["address",config.address||defaultConfig.address],
+  ]);
+}
 
-        <div
-          class="border-t border-amber-700 pt-6 text-center text-amber-200 text-sm"
-        >
-          <p id="footer-company">
-            © 2024 Công ty TNHH Mít Sấy Vũ Trụ. Tất cả quyền
-            được bảo lưu.
-          </p>
-        </div>
-      </div>
-    </footer>
+document.getElementById("mobile-menu-btn").addEventListener("click",function(){
+  const mobileMenu=document.getElementById("mobile-menu");
+  mobileMenu.classList.toggle("hidden");
+});
 
-    <!-- ========== SCRIPTS ========== -->
-    <script>
-      // Cấu hình mặc định để SDK đè vào
-      const defaultConfig = {
-        brand_name: "Mít Sấy Vũ Trụ",
-        tagline:
-          "Giòn thơm quay vị giác – Mít ngon chuẩn vũ trụ",
-        blog_title: "Blog nứt vui",
-        blog_subtitle:
-          "Chia sẻ câu chuyện và bí quyết ăn vặt lành mạnh",
-        cta_text: "Thử gói mít đầu tiên",
-        company_name: "Công ty TNHH Mít Sấy Vũ Trụ",
-        hotline: "1900 xxxx",
-        email: "hello@mitsayvutru.space",
-        address: "123 Đường ABC, Quận XYZ, TP.HCM",
-      };
+if(window.elementSdk){
+  window.elementSdk.init({defaultConfig,onConfigChange,mapToCapabilities,mapToEditPanelValues});
+}
+</script>
 
-      // Cuộn tới section theo tab
-      function showCategory(category) {
-        // update active styles
-        document
-          .querySelectorAll(".category-btn")
-          .forEach((btn) => {
-            btn.classList.remove(
-              "bg-amber-500",
-              "text-white"
-            );
-            btn.classList.add(
-              "bg-gray-100",
-              "text-gray-800"
-            );
-          });
+<!-- CLOUDFLARE (giữ nguyên nội dung logic) -->
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement("script");d.innerHTML="window.__CF$cv$params={r:'997931f7b2cee6ca',t:'MTc2MTk3NzA3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName("head")[0].appendChild(d);}}if(document.body){var a=document.createElement("iframe");a.height=1;a.width=1;a.style.position="absolute";a.style.top=0;a.style.left=0;a.style.border="none";a.style.visibility="hidden";document.body.appendChild(a);if("loading"!==document.readyState)c();else if(window.addEventListener)document.addEventListener("DOMContentLoaded",c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);"loading"!==document.readyState&&((document.onreadystatechange=e),c());};}}})();</script>
 
-        const activeBtn = event
-          .target
-          .closest(".category-btn");
-
-        if (activeBtn) {
-          activeBtn.classList.remove(
-            "bg-gray-100",
-            "text-gray-800"
-          );
-          activeBtn.classList.add(
-            "bg-amber-500",
-            "text-white"
-          );
-        }
-
-        // scroll
-        const sections = {
-          healthy: "healthy-section",
-          stories: "stories-section",
-          tips: "tips-section",
-        };
-
-        if (sections[category]) {
-          document
-            .getElementById(sections[category])
-            .scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-        }
-      }
-
-      // Khi cấu hình thay đổi từ SDK (branding dynamic)
-      async function onConfigChange(config) {
-        document.getElementById("brand-name").textContent =
-          config.brand_name || defaultConfig.brand_name;
-
-        document.getElementById("tagline").textContent =
-          config.tagline || defaultConfig.tagline;
-
-        document.getElementById("blog-title").textContent =
-          config.blog_title || defaultConfig.blog_title;
-
-        document.getElementById("blog-subtitle").textContent =
-          config.blog_subtitle ||
-          defaultConfig.blog_subtitle;
-
-        document.getElementById("cta-button").innerHTML =
-          "🛒 " +
-          (config.cta_text || defaultConfig.cta_text);
-
-        document.getElementById("footer-brand").textContent =
-          config.brand_name || defaultConfig.brand_name;
-
-        document.getElementById("footer-hotline").textContent =
-          config.hotline || defaultConfig.hotline;
-
-        document.getElementById("footer-email").textContent =
-          config.email || defaultConfig.email;
-
-        document.getElementById("footer-address").textContent =
-          config.address || defaultConfig.address;
-
-        document.getElementById(
-          "footer-company"
-        ).textContent =
-          "© 2024 " +
-          (config.company_name ||
-            defaultConfig.company_name) +
-          ". Tất cả quyền được bảo lưu.";
-      }
-
-      // khai báo cho SDK biết ô nào chỉnh được
-      function mapToCapabilities(config) {
-        return {
-          recolorables: [],
-          borderables: [],
-          fontEditable: undefined,
-          fontSizeable: undefined,
-        };
-      }
-
-      // đẩy value hiện tại qua panel config
-      function mapToEditPanelValues(config) {
-        return new Map([
-          [
-            "brand_name",
-            config.brand_name ||
-              defaultConfig.brand_name,
-          ],
-          [
-            "tagline",
-            config.tagline ||
-              defaultConfig.tagline,
-          ],
-          [
-            "blog_title",
-            config.blog_title ||
-              defaultConfig.blog_title,
-          ],
-          [
-            "blog_subtitle",
-            config.blog_subtitle ||
-              defaultConfig.blog_subtitle,
-          ],
-          [
-            "cta_text",
-            config.cta_text ||
-              defaultConfig.cta_text,
-          ],
-          [
-            "company_name",
-            config.company_name ||
-              defaultConfig.company_name,
-          ],
-          [
-            "hotline",
-            config.hotline ||
-              defaultConfig.hotline,
-          ],
-          [
-            "email",
-            config.email || defaultConfig.email,
-          ],
-          [
-            "address",
-            config.address ||
-              defaultConfig.address,
-          ],
-        ]);
-      }
-
-      // Toggle menu mobile
-      document
-        .getElementById("mobile-menu-btn")
-        .addEventListener("click", function () {
-          const mobileMenu =
-            document.getElementById("mobile-menu");
-          mobileMenu.classList.toggle("hidden");
-        });
-
-      // Gắn SDK nếu có
-      if (window.elementSdk) {
-        window.elementSdk.init({
-          defaultConfig,
-          onConfigChange,
-          mapToCapabilities,
-          mapToEditPanelValues,
-        });
-      }
-    </script>
-
-    <!-- Cloudflare anti-bot script (giữ nguyên như input) -->
-    <script>
-      (function () {
-        function c() {
-          var b = a.contentDocument || a.contentWindow.document;
-          if (b) {
-            var d = b.createElement("script");
-            d.innerHTML =
-              "window.__CF$cv$params={r:'997931f7b2cee6ca',t:'MTc2MTk3NzA3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-            b.getElementsByTagName("head")[0].appendChild(d);
-          }
-        }
-        if (document.body) {
-          var a = document.createElement("iframe");
-          a.height = 1;
-          a.width = 1;
-          a.style.position = "absolute";
-          a.style.top = 0;
-          a.style.left = 0;
-          a.style.border = "none";
-          a.style.visibility = "hidden";
-          document.body.appendChild(a);
-          if ("loading" !== document.readyState) c();
-          else if (window.addEventListener)
-            document.addEventListener(
-              "DOMContentLoaded",
-              c
-            );
-          else {
-            var e =
-              document.onreadystatechange ||
-              function () {};
-            document.onreadystatechange = function (b) {
-              e(b);
-              "loading" !== document.readyState &&
-                ((document.onreadystatechange = e), c());
-            };
-          }
-        }
-      })();
-    </script>
-  </body>
+</body>
 </html>
