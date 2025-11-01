@@ -112,27 +112,29 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="font-sans bg-gray-50"><!-- Header -->
-  <header class="gradient-bg shadow-md sticky top-0 z-50">
-   <div class="container mx-auto px-3 py-3">
-    <div class="flex items-center justify-between">
-     <div class="flex items-center space-x-2">
-      <div class="text-3xl sm:text-4xl float-animation">
+  <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"><!-- LOGO --> <a href="#" class="flex items-center space-x-3">
+     <div class="w-10 h-10 rounded-full overflow-hidden bg-yellow-100 grid place-items-center">
+      <div class="text-2xl float-animation">
        🪐
       </div>
-      <div>
-       <h1 id="brand-name" class="text-lg sm:text-xl md:text-2xl font-bold text-amber-900">Mít Sấy Vũ Trụ</h1>
-       <p id="tagline" class="text-xs sm:text-sm text-amber-700 hidden sm:block">Giòn thơm quay vị giác – Mít ngon chuẩn vũ trụ</p>
-      </div>
      </div>
-     <nav class="hidden lg:flex space-x-4"><a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition text-sm">Trang chủ</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition text-sm">Giới thiệu</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition text-sm">Sản phẩm</a> <a href="#" class="text-amber-600 font-bold text-sm">Blog</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition text-sm">Liên hệ</a>
-     </nav><button id="mobile-menu-btn" class="lg:hidden text-amber-900 p-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+     <div>
+      <h1 id="brand-name" class="text-[18px] font-bold text-slate-800 leading-none">Mít Sấy Vũ Trụ</h1>
+      <p id="tagline" class="text-[12px] text-slate-600">Giòn thơm quay vị giác</p>
+     </div></a> <!-- MENU DESKTOP -->
+    <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-700"><a href="#" class="hover:text-amber-600 transition-colors">Trang chủ</a> <a href="#" class="hover:text-amber-600 transition-colors">Sản phẩm</a> <a href="#" class="hover:text-amber-600 transition-colors">Câu chuyện thương hiệu</a> <a href="#" class="text-amber-600 font-bold">Blog / Tin tức</a> <a href="#" class="hover:text-amber-600 transition-colors">Liên hệ / Mua sỉ</a>
+    </nav><!-- GIỎ HÀNG + NÚT MOBILE -->
+    <div class="flex items-center gap-5"><!-- CART --> <button id="cartBtn" class="relative flex items-center bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors text-sm font-semibold"> <span class="flex items-center space-x-2">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0-1.5 6m0 0h9M17 21a2 2 0 11-4 0 2 2 0 014 0zM9 21a2 2 0 11-4 0 2 2 0 014 0z" />
+       </svg><span>Giỏ hàng</span> </span> <span id="cartBadge" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-semibold w-5 h-5 rounded-full flex items-center justify-center"> 0 </span> </button> <!-- MOBILE TOGGLE --> <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-amber-600 transition-colors flex items-center" aria-label="Mở menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg></button>
-    </div><!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden hidden mt-3 pb-3 border-t border-amber-300">
-     <nav class="flex flex-col space-y-2 pt-3"><a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition py-2 px-2 rounded">Trang chủ</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition py-2 px-2 rounded">Giới thiệu</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition py-2 px-2 rounded">Sản phẩm</a> <a href="#" class="text-amber-600 font-bold py-2 px-2 rounded bg-amber-100">Blog</a> <a href="#" class="text-amber-900 hover:text-amber-600 font-medium transition py-2 px-2 rounded">Liên hệ</a>
-     </nav>
     </div>
+   </div><!-- MENU MOBILE -->
+   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 shadow-lg">
+    <nav class="flex flex-col text-[15px] font-medium text-slate-700 px-4 py-3"><a href="#" class="py-2 border-b hover:text-amber-600">Trang chủ</a> <a href="#" class="py-2 border-b hover:text-amber-600">Sản phẩm</a> <a href="#" class="py-2 border-b hover:text-amber-600">Câu chuyện thương hiệu</a> <a href="#" class="py-2 border-b text-amber-600 font-bold">Blog / Tin tức</a> <a href="#" class="py-2 hover:text-amber-600">Liên hệ / Mua sỉ</a>
+    </nav>
    </div>
   </header><!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 overflow-hidden">
@@ -521,5 +523,5 @@
             });
         }
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997910092582039f',t:'MTc2MTk3NTY4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9979137b271b039f',t:'MTc2MTk3NTgyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
