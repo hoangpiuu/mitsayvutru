@@ -10,6 +10,59 @@
       box-sizing: border-box;
     }
     
+    /* Stars */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes twinkle {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+    
+    /* Meteors */
+    .meteor {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: meteorFall linear infinite;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 10px #fbbf24);
+    }
+    
+    @keyframes meteorFall {
+      0% {
+        transform: translateX(-100px) translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.9;
+      }
+      90% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
     .product-card {
       transition: all 0.3s ease;
     }
@@ -39,18 +92,19 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
- <body class="bg-gradient-to-b from-amber-50 to-white text-slate-800"><!-- Tiêu đề trang -->
-  <div class="text-center py-12 bg-gradient-to-r from-amber-100 to-orange-100">
+ <body class="bg-gradient-to-b from-amber-50 to-white text-slate-800"><!-- Stars and Meteors Background -->
+  <div class="stars" id="stars-container"></div><!-- Tiêu đề trang -->
+  <div class="relative z-10 text-center py-12 bg-gradient-to-r from-amber-100 to-orange-100">
    <h1 class="text-4xl font-bold text-amber-800 mb-4">🥭 Sản Phẩm Mít Sấy Vũ Trụ</h1>
    <p class="text-lg text-amber-700">Khám phá bộ sưu tập mít sấy giòn ngon, healthy từ thiên nhiên</p>
   </div><!-- Bộ lọc danh mục -->
-  <div class="max-w-7xl mx-auto px-4 py-8">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 py-8">
    <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="category-btn active px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('all')"> 🌟 Tất cả </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('single')"> 📦 Gói lẻ </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('combo')"> 🎁 Combo </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('gift')"> 🎀 Quà tặng </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('healthy')"> 💚 Healthy </button>
    </div>
   </div><!-- Danh sách sản phẩm -->
-  <main class="max-w-7xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-container"><!-- Gói lẻ -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-container"><!-- Gói lẻ -->
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/mit100.png" alt="Mít sấy 100g" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/mit100.png" alt="Mít sấy 100g" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/mit100.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       🥭
      </div>
@@ -61,7 +115,7 @@
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/mit80.png" alt="Mít sấy mật ong 80g" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/mit80.png" alt="Mít sấy mật ong 80g" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/mit80.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       🍯
      </div>
@@ -72,7 +126,7 @@
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/mit120.png" alt="Mít sấy organic 120g" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/mit120.png" alt="Mít sấy organic 120g" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/mit120.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       🌿
      </div>
@@ -83,7 +137,7 @@
     </div>
    </div><!-- Combo -->
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/combo3.png" alt="Combo 3 vị mít sấy" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/combo3.png" alt="Combo 3 vị mít sấy" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/combo3.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       📦
      </div>
@@ -94,7 +148,7 @@
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/combo5.png" alt="Combo gia đình 5 gói" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/combo5.png" alt="Combo gia đình 5 gói" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/combo5.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       👨‍👩‍👧‍👦
      </div>
@@ -105,7 +159,7 @@
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/combo10.png" alt="Combo tiết kiệm 10 gói" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/combo10.png" alt="Combo tiết kiệm 10 gói" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/combo10.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       💰
      </div>
@@ -116,7 +170,7 @@
     </div>
    </div><!-- Quà tặng -->
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/gift-box.png" alt="Hộp quà mít sấy cao cấp" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/gift-box.png" alt="Hộp quà mít sấy cao cấp" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/gift-box.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       🎁
      </div>
@@ -127,7 +181,7 @@
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/tet-gift.png" alt="Set quà tết mít sấy" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/tet-gift.png" alt="Set quà tết mít sấy" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/tet-gift.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       🧧
      </div>
@@ -138,7 +192,7 @@
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/birthday-gift.png" alt="Túi quà sinh nhật" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/birthday-gift.png" alt="Túi quà sinh nhật" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/birthday-gift.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       🎂
      </div>
@@ -149,7 +203,7 @@
     </div>
    </div><!-- Healthy -->
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/sugar-free.png" alt="Mít sấy không đường" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/sugar-free.png" alt="Mít sấy không đường" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/sugar-free.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       💚
      </div>
@@ -160,7 +214,7 @@
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/superfood.png" alt="Mít sấy siêu thực phẩm" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/superfood.png" alt="Mít sấy siêu thực phẩm" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/superfood.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       ⚡
      </div>
@@ -171,7 +225,7 @@
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="images/protein.png" alt="Mít sấy protein" class="w-40 h-40 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/protein.png" alt="Mít sấy protein" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/protein.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
      <div class="text-6xl" style="display: none;">
       💪
      </div>
@@ -183,6 +237,77 @@
    </div>
   </main>
   <script>
+    // Tạo ngôi sao và thiên thạch
+    function createCosmicBackground() {
+      const starsContainer = document.getElementById('stars-container');
+      
+      // Tạo ngôi sao
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.width = Math.random() * 3 + 1 + 'px';
+        star.style.height = star.style.width;
+        star.style.animationDelay = Math.random() * 2 + 's';
+        star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        starsContainer.appendChild(star);
+      }
+      
+      // Tạo thiên thạch với ảnh thật
+      function createMeteor() {
+        const meteor = document.createElement('div');
+        meteor.className = 'meteor';
+        meteor.style.left = Math.random() * 100 + '%';
+        meteor.style.top = Math.random() * 100 + '%';
+        
+        // Thử load ảnh thiên thạch
+        meteor.style.backgroundImage = `url('anhsanpham/anhthienthach.png')`;
+        meteor.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        meteor.style.animationDelay = Math.random() * 5 + 's';
+        
+        // Fallback nếu không load được ảnh PNG
+        const testImg = new Image();
+        testImg.onload = function() {
+          meteor.style.backgroundImage = `url('anhsanpham/anhthienthach.png')`;
+        };
+        testImg.onerror = function() {
+          // Thử JPG nếu PNG không có
+          const testImg2 = new Image();
+          testImg2.onload = function() {
+            meteor.style.backgroundImage = `url('anhsanpham/anhthienthach.jpg')`;
+          };
+          testImg2.onerror = function() {
+            // Fallback emoji nếu không có ảnh nào
+            meteor.innerHTML = '☄️';
+            meteor.style.fontSize = '40px';
+            meteor.style.display = 'flex';
+            meteor.style.alignItems = 'center';
+            meteor.style.justifyContent = 'center';
+          };
+          testImg2.src = 'anhsanpham/anhthienthach.jpg';
+        };
+        testImg.src = 'anhsanpham/anhthienthach.png';
+        
+        starsContainer.appendChild(meteor);
+        
+        // Xóa thiên thạch sau khi animation kết thúc
+        setTimeout(() => {
+          if (meteor.parentNode) {
+            meteor.parentNode.removeChild(meteor);
+          }
+        }, 8000);
+      }
+      
+      // Tạo thiên thạch liên tục
+      setInterval(createMeteor, 800); // Tạo thiên thạch mỗi 0.8 giây
+      
+      // Tạo một vài thiên thạch ngay lập tức
+      for (let i = 0; i < 5; i++) {
+        setTimeout(createMeteor, i * 200);
+      }
+    }
+
     // Hàm lọc sản phẩm theo danh mục
     function filterProducts(category) {
       const products = document.querySelectorAll('.product-card');
@@ -192,16 +317,32 @@
       buttons.forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
       
-      // Hiển thị/ẩn sản phẩm
-      products.forEach(product => {
+      // Hiển thị/ẩn sản phẩm với hiệu ứng
+      products.forEach((product, index) => {
         if (category === 'all' || product.dataset.category === category) {
           product.style.display = 'flex';
+          product.style.opacity = '0';
+          product.style.transform = 'translateY(30px)';
+          setTimeout(() => {
+            product.style.transition = 'all 0.5s ease';
+            product.style.opacity = '1';
+            product.style.transform = 'translateY(0)';
+          }, index * 100);
         } else {
-          product.style.display = 'none';
+          product.style.opacity = '0';
+          product.style.transform = 'translateY(-30px)';
+          setTimeout(() => {
+            product.style.display = 'none';
+          }, 300);
         }
       });
     }
+    
+    // Khởi tạo khi trang load
+    document.addEventListener('DOMContentLoaded', function() {
+      createCosmicBackground();
+    });
   </script><!-- Gọi file dùng chung (tự động tạo header + giỏ hàng + MXH) -->
   <script src="global-cart.js"></script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99852f13d3636d08',t:'MTc2MjEwMjc4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9985440916fe039f',t:'MTc2MjEwMzY0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
