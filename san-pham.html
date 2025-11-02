@@ -1,520 +1,279 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mít Sấy Vũ Trụ – Sản phẩm | Giòn thơm quay vị giác</title>
-  <meta name="description" content="Mít sấy 100% từ mít tươi, không chiên dầu – giòn rụm ngọt thanh. Chọn gói 100g/200g/300g và nhiều lựa chọn khác. Giao nhanh 2–4h nội thành." />
-  <link rel="canonical" href="{{YOUR_DOMAIN}}/san-pham" />
-
-  <!-- Tailwind + Icons -->
+<!doctype html>
+<html lang="vi" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mít Sấy Vũ Trụ - Danh sách sản phẩm</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-
+  <script src="/_sdk/element_sdk.js"></script>
   <style>
-    .product-card{transition:all .25s ease}
-    .product-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.08)}
-    .btn-active{background:#d97706;color:#fff}
-    .badge{position:absolute;top:.75rem;right:.75rem}
-  </style>
-
-  <!-- JSON-LD (rút gọn; bạn có thể bổ sung thêm các item sau) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ItemList",
-    "name":"Sản phẩm Mít Sấy Vũ Trụ",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"item":{"@type":"Product","name":"Mít sấy giòn 100g","brand":{"@type":"Brand","name":"Mít Sấy Vũ Trụ"},"offers":{"@type":"Offer","price":"35000","priceCurrency":"VND"}}},
-      {"@type":"ListItem","position":2,"item":{"@type":"Product","name":"Mít sấy giòn 200g","brand":{"@type":"Brand","name":"Mít Sấy Vũ Trụ"},"offers":{"@type":"Offer","price":"65000","priceCurrency":"VND"}}},
-      {"@type":"ListItem","position":3,"item":{"@type":"Product","name":"Mít sấy giòn 300g","brand":{"@type":"Brand","name":"Mít Sấy Vũ Trụ"},"offers":{"@type":"Offer","price":"100000","priceCurrency":"VND"}}}
-    ]
-  }
-  </script>
-</head>
-<body class="bg-gray-50 text-gray-800">
-
-  <!-- ===== (Placeholder) Header site của bạn ===== -->
-  <!-- <header>...</header> -->
-
-  <!-- Hero nhỏ -->
-  <section class="bg-gradient-to-br from-amber-500 to-orange-500 text-white">
-    <div class="max-w-6xl mx-auto px-4 py-10">
-      <h1 class="text-3xl md:text-4xl font-extrabold">Mít Sấy Vũ Trụ – Giòn thơm “quay” vị giác!</h1>
-      <p class="mt-2 text-amber-100">Mít tươi chín cây, sấy giòn công nghệ hiện đại – ngọt tự nhiên, không chiên dầu.</p>
-      <div class="mt-5 flex flex-wrap gap-2 text-sm">
-        <span class="inline-flex items-center bg-white/10 px-3 py-1 rounded-full">✓ 100% mít tươi</span>
-        <span class="inline-flex items-center bg-white/10 px-3 py-1 rounded-full">✓ Không chiên dầu</span>
-        <span class="inline-flex items-center bg-white/10 px-3 py-1 rounded-full">✓ Giòn rụm ngọt thanh</span>
-        <span class="inline-flex items-center bg-white/10 px-3 py-1 rounded-full">✓ Ít calo, giàu chất xơ</span>
-      </div>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .category-btn:hover {
+            background-color: #FDE68A;
+        }
+        
+        .category-btn.active {
+            background-color: #FACC15;
+            color: #78350F;
+            font-weight: bold;
+        }
+        
+        .category-btn:not(.active) {
+            background-color: white;
+            border: 1px solid #FCD34D;
+            color: #1E293B;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gradient-to-br from-yellow-50 to-orange-50 font-sans"><!-- Header -->
+  <header class="bg-white shadow-sm border-b-2 border-yellow-200">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="text-center">
+     <h1 id="brand-name" class="text-4xl font-bold text-amber-600 mb-2">🥭 Mít Sấy Vũ Trụ</h1>
+     <p id="brand-tagline" class="text-lg text-gray-600">Giòn thơm từ thiên nhiên - Healthy &amp; Yummy!</p>
     </div>
-  </section>
-
-  <!-- Bộ lọc -->
-  <section class="py-6 bg-white border-b">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-wrap gap-3">
-        <button class="category-btn btn-active px-5 py-2 rounded-full font-medium" data-category="all">Tất cả</button>
-        <button class="category-btn bg-gray-200 text-gray-800 px-5 py-2 rounded-full font-medium hover:bg-gray-300" data-category="single">Gói lẻ</button>
-        <button class="category-btn bg-gray-200 text-gray-800 px-5 py-2 rounded-full font-medium hover:bg-gray-300" data-category="combo">Combo</button>
-        <button class="category-btn bg-gray-200 text-gray-800 px-5 py-2 rounded-full font-medium hover:bg-gray-300" data-category="gift">Quà tặng</button>
-        <button class="category-btn bg-gray-200 text-gray-800 px-5 py-2 rounded-full font-medium hover:bg-gray-300" data-category="healthy">Healthy</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lưới sản phẩm -->
-  <main class="py-6">
-    <div class="max-w-6xl mx-auto px-4">
-      <div id="products-grid" class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-        <!-- ==== 1-3: Sản phẩm hiện có ==== -->
-        <!-- 1) 100g -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border relative" data-category="single healthy">
-          <div class="bg-gradient-to-br from-amber-100 to-orange-100 p-6 text-center">
-            <div class="text-5xl mb-3">📦</div>
-            <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs font-medium">Healthy</span>
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy giòn 100g</h3>
-            <p class="text-gray-600 text-sm mb-3">Hoàn hảo để thử vị lần đầu</p>
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-2">
-                <span class="text-xl font-bold text-amber-600">35.000₫</span>
-                <span class="text-gray-500 line-through text-sm">40.000₫</span>
-              </div>
-            </div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg font-medium hover:bg-amber-700 transition-colors"
-              data-id="mit-100" data-name="Mít sấy giòn 100g" data-price="35000">
-              🛒 Thêm vào giỏ
-            </button>
-          </div>
-        </div>
-
-        <!-- 2) 200g -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border relative" data-category="single healthy">
-          <span class="badge bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">Bán chạy</span>
-          <div class="bg-gradient-to-br from-amber-100 to-orange-100 p-6 text-center">
-            <div class="text-5xl mb-3">📦</div>
-            <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs font-medium">Healthy</span>
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy giòn 200g</h3>
-            <p class="text-gray-600 text-sm mb-3">Lựa chọn phổ biến nhất</p>
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-2">
-                <span class="text-xl font-bold text-amber-600">65.000₫</span>
-                <span class="text-gray-500 line-through text-sm">80.000₫</span>
-              </div>
-            </div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg font-medium hover:bg-amber-700 transition-colors"
-              data-id="mit-200" data-name="Mít sấy giòn 200g" data-price="65000">
-              🛒 Thêm vào giỏ
-            </button>
-          </div>
-        </div>
-
-        <!-- 3) 300g -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border relative" data-category="single gift healthy">
-          <div class="bg-gradient-to-br from-amber-100 to-orange-100 p-6 text-center">
-            <div class="text-5xl mb-3">📦</div>
-            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-xs font-medium">Quà tặng</span>
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy giòn 300g</h3>
-            <p class="text-gray-600 text-sm mb-3">Giá tốt nhất cho gia đình</p>
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-2">
-                <span class="text-xl font-bold text-amber-600">100.000₫</span>
-                <span class="text-gray-500 line-through text-sm">120.000₫</span>
-              </div>
-            </div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg font-medium hover:bg-amber-700 transition-colors"
-              data-id="mit-300" data-name="Mít sấy giòn 300g" data-price="100000">
-              🛒 Thêm vào giỏ
-            </button>
-          </div>
-        </div>
-
-        <!-- ==== 4-18: 15 ô sản phẩm mẫu (đổi tên/giá/id sau) ==== -->
-
-        <!-- 4 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="single healthy">
-          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center"><div class="text-5xl mb-3">🥭</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy vị tự nhiên 80g</h3>
-            <p class="text-gray-600 text-sm mb-3">Nhẹ nhàng cho bữa xế</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">29.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="mit-80" data-name="Mít sấy 80g" data-price="29000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 5 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="single healthy">
-          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center"><div class="text-5xl mb-3">🥭</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy ít đường 150g</h3>
-            <p class="text-gray-600 text-sm mb-3">Phù hợp eat-clean</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">49.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="mit-150" data-name="Mít sấy 150g" data-price="49000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 6 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="combo">
-          <div class="bg-gradient-to-br from-blue-100 to-indigo-100 p-6 text-center"><div class="text-5xl mb-3">🎁</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Combo 2 x 200g</h3>
-            <p class="text-gray-600 text-sm mb-3">Tiết kiệm hơn 10%</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">118.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="combo-2x200" data-name="Combo 2x200g" data-price="118000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 7 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="combo">
-          <div class="bg-gradient-to-br from-blue-100 to-indigo-100 p-6 text-center"><div class="text-5xl mb-3">🎁</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Combo 5 x 100g</h3>
-            <p class="text-gray-600 text-sm mb-3">Đãi bạn bè</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">155.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="combo-5x100" data-name="Combo 5x100g" data-price="155000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 8 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="gift">
-          <div class="bg-gradient-to-br from-purple-100 to-pink-100 p-6 text-center"><div class="text-5xl mb-3">🎁</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Hộp quà 2 x 300g</h3>
-            <p class="text-gray-600 text-sm mb-3">Lịch sự – sang trọng</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">195.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="gift-2x300" data-name="Hộp quà 2x300g" data-price="195000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 9 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="single healthy">
-          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center"><div class="text-5xl mb-3">🥭</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy siêu giòn 250g</h3>
-            <p class="text-gray-600 text-sm mb-3">Ăn vặt cả ngày</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">79.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="mit-250" data-name="Mít sấy 250g" data-price="79000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 10 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="healthy">
-          <div class="bg-gradient-to-br from-emerald-100 to-green-100 p-6 text-center"><div class="text-5xl mb-3">🌿</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy không đường 120g</h3>
-            <p class="text-gray-600 text-sm mb-3">Phù hợp người ăn kiêng</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">45.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="mit-120" data-name="Mít sấy 120g" data-price="45000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 11 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="single">
-          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center"><div class="text-5xl mb-3">🥭</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy lát dày 180g</h3>
-            <p class="text-gray-600 text-sm mb-3">Cắn đã miệng</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">59.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="mit-180" data-name="Mít sấy 180g" data-price="59000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 12 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="combo">
-          <div class="bg-gradient-to-br from-blue-100 to-indigo-100 p-6 text-center"><div class="text-5xl mb-3">🎁</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Combo gia đình 3 x 300g</h3>
-            <p class="text-gray-600 text-sm mb-3">Tiết kiệm lớn</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">270.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="combo-3x300" data-name="Combo 3x300g" data-price="270000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 13 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="gift">
-          <div class="bg-gradient-to-br from-purple-100 to-pink-100 p-6 text-center"><div class="text-5xl mb-3">🎁</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Set quà Tết 5 món</h3>
-            <p class="text-gray-600 text-sm mb-3">Thiết kế hộp sang</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">399.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="gift-tet-5" data-name="Set quà Tết 5 món" data-price="399000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 14 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="single healthy">
-          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center"><div class="text-5xl mb-3">🥭</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy giòn 400g</h3>
-            <p class="text-gray-600 text-sm mb-3">Hộp lớn tiết kiệm</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">129.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="mit-400" data-name="Mít sấy 400g" data-price="129000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 15 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="healthy">
-          <div class="bg-gradient-to-br from-emerald-100 to-green-100 p-6 text-center"><div class="text-5xl mb-3">🌿</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy ăn kiêng 90g</h3>
-            <p class="text-gray-600 text-sm mb-3">Không phụ gia</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">33.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="mit-90" data-name="Mít sấy ăn kiêng 90g" data-price="33000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 16 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="combo">
-          <div class="bg-gradient-to-br from-blue-100 to-indigo-100 p-6 text-center"><div class="text-5xl mb-3">🎁</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Combo thử vị (100g+200g)</h3>
-            <p class="text-gray-600 text-sm mb-3">Mua thử – giá mềm</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">95.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="combo-100-200" data-name="Combo 100g+200g" data-price="95000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 17 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="gift">
-          <div class="bg-gradient-to-br from-purple-100 to-pink-100 p-6 text-center"><div class="text-5xl mb-3">🎁</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Giỏ quà doanh nghiệp</h3>
-            <p class="text-gray-600 text-sm mb-3">Tùy biến logo</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">Liên hệ</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="gift-biz" data-name="Giỏ quà doanh nghiệp" data-price="0">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- 18 -->
-        <div class="product-item product-card bg-white rounded-xl shadow-lg overflow-hidden border" data-category="single">
-          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center"><div class="text-5xl mb-3">🥭</div></div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-1">Mít sấy mini snack 50g</h3>
-            <p class="text-gray-600 text-sm mb-3">Tiện mang theo</p>
-            <div class="flex items-center justify-between mb-3"><span class="text-xl font-bold text-amber-600">20.000₫</span></div>
-            <button class="add-to-cart w-full bg-amber-600 text-white py-2 rounded-lg" data-id="mit-50" data-name="Mít sấy 50g" data-price="20000">🛒 Thêm vào giỏ</button>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Ưu điểm -->
-      <section class="mt-14">
-        <h2 class="text-2xl font-bold mb-4">Ưu điểm nổi bật</h2>
-        <div class="grid md:grid-cols-4 gap-4">
-          <div class="bg-white rounded-xl p-5 shadow"><h4 class="font-bold">100% mít tươi</h4><p class="text-gray-600 text-sm">Chọn lọc từ những trái mít chín cây tự nhiên.</p></div>
-          <div class="bg-white rounded-xl p-5 shadow"><h4 class="font-bold">Không chiên dầu</h4><p class="text-gray-600 text-sm">Sấy khô công nghệ hiện đại, giữ nguyên dinh dưỡng.</p></div>
-          <div class="bg-white rounded-xl p-5 shadow"><h4 class="font-bold">Giòn rụm ngọt thanh</h4><p class="text-gray-600 text-sm">Vị ngọt tự nhiên, độ giòn hoàn hảo.</p></div>
-          <div class="bg-white rounded-xl p-5 shadow"><h4 class="font-bold">Đóng gói tiện lợi</h4><p class="text-gray-600 text-sm">Túi zip lock, bảo quản dễ dàng.</p></div>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section class="mt-14 bg-gray-50 rounded-2xl p-8">
-        <h3 class="text-2xl font-bold text-center mb-8">Câu hỏi thường gặp</h3>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div><h4 class="font-bold mb-2">Bảo quản thế nào?</h4><p class="text-gray-600">Để nơi khô ráo, thoáng mát. Sau khi mở, zip kín túi/hộp để giữ độ giòn.</p></div>
-          <div><h4 class="font-bold mb-2">Hạn sử dụng?</h4><p class="text-gray-600">12 tháng kể từ NSX (xem trên bao bì).</p></div>
-          <div><h4 class="font-bold mb-2">Thời gian giao hàng?</h4><p class="text-gray-600">Nội thành 2–4 giờ; tỉnh khác 1–3 ngày làm việc.</p></div>
-          <div><h4 class="font-bold mb-2">Chính sách đổi trả?</h4><p class="text-gray-600">Đổi trả trong 7 ngày nếu lỗi nhà sản xuất (giữ nguyên seal).</p></div>
-        </div>
-      </section>
-    </div>
+   </div>
+  </header><!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><!-- Page Title -->
+   <div class="text-center mb-8">
+    <h2 id="page-title" class="text-3xl font-bold text-gray-800 mb-4">Danh Sách Sản Phẩm</h2>
+   </div><!-- Category Filter -->
+   <div class="flex flex-wrap justify-center gap-3 mb-12"><button id="all-btn" class="category-btn active px-6 py-3 rounded-full text-sm font-medium border transition-all" onclick="filterProducts('all')"> <span id="all-products-text">Tất cả</span> </button> <button id="single-btn" class="category-btn px-6 py-3 rounded-full text-sm font-medium border transition-all" onclick="filterProducts('single')"> <span id="single-pack-text">Gói lẻ</span> </button> <button id="combo-btn" class="category-btn px-6 py-3 rounded-full text-sm font-medium border transition-all" onclick="filterProducts('combo')"> <span id="combo-text">Combo</span> </button> <button id="gift-btn" class="category-btn px-6 py-3 rounded-full text-sm font-medium border transition-all" onclick="filterProducts('gift')"> <span id="gift-text">Quà tặng</span> </button> <button id="healthy-btn" class="category-btn px-6 py-3 rounded-full text-sm font-medium border transition-all" onclick="filterProducts('healthy')"> <span id="healthy-text">Healthy</span> </button>
+   </div><!-- Products Grid -->
+   <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Products will be generated by JavaScript -->
+   </div>
   </main>
-
-  <!-- CTA cuối trang -->
-  <section class="bg-gradient-to-br from-amber-500 to-orange-500 text-white">
-    <div class="max-w-6xl mx-auto px-4 py-12 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold mb-2">Đừng bỏ lỡ cơ hội thưởng thức!</h2>
-      <p class="text-amber-100 mb-6">Mít Sấy Vũ Trụ – Giòn thơm tự nhiên, giao nhanh trong ngày</p>
-      <button id="cta-buy"
-        class="inline-block bg-white text-amber-700 font-bold px-6 py-3 rounded-lg hover:bg-amber-50 transition-colors">
-        Mua ngay – Giao nhanh trong ngày
-      </button>
-      <div class="mt-4 text-sm text-amber-100">
-        ✓ Đổi trả 7 ngày nếu lỗi • ✓ Giao nhanh 2–4h nội thành • ✓ Thanh toán khi nhận hàng
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-white">
-    <div class="max-w-6xl mx-auto px-4 py-12">
-      <div class="grid md:grid-cols-4 gap-10">
-        <div>
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-2xl">🥭</span>
-            <div>
-              <div class="text-xl font-bold">Mít Sấy Vũ Trụ</div>
-              <div class="text-slate-300 text-sm">Giòn thơm quay vị giác</div>
-            </div>
-          </div>
-          <p class="text-slate-400 text-sm">Thương hiệu mít sấy cao cấp, cam kết chất lượng và an toàn thực phẩm.</p>
-        </div>
-        <div>
-          <h4 class="font-bold mb-3">Liên hệ</h4>
-          <ul class="space-y-2 text-slate-300 text-sm">
-            <li>📍 12 Hữu trí Hà Đông Hà Nội</li>
-            <li>📞 Hotline: <a href="tel:0365231819" class="hover:underline">0365231819</a></li>
-            <li>✉️ Email: <a href="mailto:mitsayvutru.infor@gmail.com" class="hover:underline">mitsayvutru.infor@gmail.com</a></li>
-            <li>🕗 8:00 – 22:00 (Thứ 2 – CN)</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold mb-3">Chính sách</h4>
-          <ul class="space-y-2 text-slate-300 text-sm">
-            <li><a href="/chinh-sach-doi-tra" class="hover:text-white">Chính sách đổi trả</a></li>
-            <li><a href="/chinh-sach-bao-mat" class="hover:text-white">Chính sách bảo mật</a></li>
-            <li><a href="/dieu-khoan-su-dung" class="hover:text-white">Điều khoản sử dụng</a></li>
-            <li><a href="/huong-dan-mua-hang" class="hover:text-white">Hướng dẫn mua hàng</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold mb-3">Nhận ưu đãi</h4>
-          <p class="text-slate-300 text-sm mb-3">Đăng ký để nhận thông tin khuyến mãi mới nhất</p>
-          <form id="newsletter-form" class="space-y-3">
-            <input type="email" id="newsletter-email" required placeholder="Email của bạn"
-              class="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500" />
-            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 rounded-lg transition">Đăng ký</button>
-          </form>
-        </div>
-      </div>
-      <div class="border-t border-slate-800 mt-10 pt-6 text-center text-slate-400 text-sm">
-        © 2025 Mít Sấy Vũ Trụ. Tất cả quyền được bảo lưu.
-      </div>
-    </div>
-  </footer>
-
-  <!-- Sticky Cart -->
-  <div class="fixed bottom-5 right-5 z-40">
-    <button id="open-cart" class="bg-amber-600 text-white p-4 rounded-full shadow-lg hover:bg-amber-700 transition-colors relative">
-      <i class="fas fa-shopping-cart text-xl"></i>
-      <span id="cart-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center">0</span>
-    </button>
-  </div>
-
-  <!-- Floating Social Buttons -->
-  <div class="fixed right-5 bottom-24 flex flex-col gap-3 z-40">
-    <a href="https://facebook.com/mitsayvutru" target="_blank" rel="noopener"
-       class="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 shadow-lg grid place-items-center">
-      <i class="fab fa-facebook-f text-white text-lg"></i>
-    </a>
-    <a href="tel:0365231819"
-       class="w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 shadow-lg grid place-items-center">
-      <i class="fas fa-phone text-white text-lg"></i>
-    </a>
-    <a href="https://www.tiktok.com/@mitsayvutru" target="_blank" rel="noopener"
-       class="w-12 h-12 rounded-full bg-black hover:bg-zinc-800 shadow-lg grid place-items-center">
-      <i class="fab fa-tiktok text-white text-lg"></i>
-    </a>
-  </div>
-
-  <!-- Scripts -->
   <script>
-    // ===== Lọc danh mục
-    const btns = Array.from(document.querySelectorAll('.category-btn'));
-    const items = Array.from(document.querySelectorAll('.product-item'));
-    btns.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        btns.forEach(b=>b.classList.remove('btn-active'));
-        btn.classList.add('btn-active');
-        const cat = btn.dataset.category;
-        items.forEach(it=> it.style.display = (cat==='all'|| it.dataset.category.includes(cat)) ? 'block' : 'none');
-      });
-    });
+        // Default configuration
+        const defaultConfig = {
+            brand_name: "🥭 Mít Sấy Vũ Trụ",
+            brand_tagline: "Giòn thơm từ thiên nhiên - Healthy & Yummy!",
+            page_title: "Danh Sách Sản Phẩm",
+            all_products_text: "Tất cả",
+            single_pack_text: "Gói lẻ",
+            combo_text: "Combo",
+            gift_text: "Quà tặng",
+            healthy_text: "Healthy",
+            add_to_cart_text: "Thêm vào giỏ",
+            primary_color: "#FACC15",
+            secondary_color: "#FCD34D",
+            text_color: "#1E293B",
+            accent_color: "#EAB308",
+            surface_color: "#FFFFFF"
+        };
 
-    // ===== Giỏ hàng LocalStorage (ĐỒNG BỘ VỚI index.html)
-    const CART_KEY = 'mitSayCart'; // << dùng chung
-    const getCart = ()=> JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-    const setCart = (arr)=> localStorage.setItem(CART_KEY, JSON.stringify(arr));
-    const badge = document.getElementById('cart-badge');
+        // Product data
+        const products = [
+            // Gói lẻ
+            { id: 1, name: "Mít sấy giòn nguyên chất 100g", price: "45.000đ", category: "single", image: "🥭" },
+            { id: 2, name: "Mít sấy mật ong 80g", price: "52.000đ", category: "single", image: "🍯" },
+            { id: 3, name: "Mít sấy organic 120g", price: "68.000đ", category: "single", image: "🌿" },
+            
+            // Combo
+            { id: 4, name: "Combo 3 vị mít sấy", price: "135.000đ", category: "combo", image: "📦" },
+            { id: 5, name: "Combo gia đình 5 gói", price: "220.000đ", category: "combo", image: "👨‍👩‍👧‍👦" },
+            { id: 6, name: "Combo tiết kiệm 10 gói", price: "400.000đ", category: "combo", image: "💰" },
+            
+            // Quà tặng
+            { id: 7, name: "Hộp quà mít sấy cao cấp", price: "180.000đ", category: "gift", image: "🎁" },
+            { id: 8, name: "Set quà tết mít sấy", price: "250.000đ", category: "gift", image: "🧧" },
+            { id: 9, name: "Túi quà sinh nhật", price: "120.000đ", category: "gift", image: "🎂" },
+            
+            // Healthy
+            { id: 10, name: "Mít sấy không đường", price: "58.000đ", category: "healthy", image: "💚" },
+            { id: 11, name: "Mít sấy siêu thực phẩm", price: "75.000đ", category: "healthy", image: "⚡" },
+            { id: 12, name: "Mít sấy protein", price: "82.000đ", category: "healthy", image: "💪" }
+        ];
 
-    function updateBadge(){
-      const cart = getCart();
-      const totalQty = cart.reduce((s,i)=> s + (i.quantity||0), 0);
-      badge.textContent = totalQty;
-    }
-    updateBadge();
+        let currentCategory = 'all';
 
-    function addToCart(item){
-      const cart = getCart();
-      const idx = cart.findIndex(i=> i.id === item.id);
-      if(idx>-1){ cart[idx].quantity = (cart[idx].quantity||1) + 1; }
-      else{ cart.push({...item, quantity: 1}); }
-      setCart(cart);
-      updateBadge();
-      alert('Đã thêm "' + item.name + '" vào giỏ!');
-    }
+        function createProductCard(product) {
+            return `
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden border border-yellow-200" data-category="${product.category}">
+                    <div class="aspect-square bg-gradient-to-br from-yellow-100 to-orange-100 flex items-center justify-center text-6xl border-b border-yellow-200">
+                        ${product.image}
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-gray-800 mb-2 text-lg leading-tight">${product.name}</h3>
+                        <p class="text-2xl font-bold text-amber-600 mb-4">${product.price}</p>
+                        <button class="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200" onclick="addToCart(${product.id})">
+                            <span class="add-to-cart-text">${defaultConfig.add_to_cart_text}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
 
-    document.querySelectorAll('.add-to-cart').forEach(btn=>{
-      // chuẩn hoá phòng trường hợp bạn vẫn còn data-sku đâu đó
-      if (!btn.dataset.id && btn.dataset.sku) btn.dataset.id = btn.dataset.sku;
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const filteredProducts = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
+            grid.innerHTML = filteredProducts.map(createProductCard).join('');
+        }
 
-      btn.addEventListener('click', ()=>{
-        addToCart({
-          id: btn.dataset.id,
-          name: btn.dataset.name,
-          price: Number(btn.dataset.price||0)
+        function filterProducts(category) {
+            currentCategory = category;
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(category === 'all' ? 'all-btn' : 
+                                 category === 'single' ? 'single-btn' :
+                                 category === 'combo' ? 'combo-btn' :
+                                 category === 'gift' ? 'gift-btn' : 'healthy-btn').classList.add('active');
+            
+            renderProducts();
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            // Simple notification without using alert
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            notification.textContent = `Đã thêm "${product.name}" vào giỏ hàng!`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Element SDK implementation
+        async function onConfigChange(config) {
+            // Update brand information
+            document.getElementById('brand-name').textContent = config.brand_name || defaultConfig.brand_name;
+            document.getElementById('brand-tagline').textContent = config.brand_tagline || defaultConfig.brand_tagline;
+            document.getElementById('page-title').textContent = config.page_title || defaultConfig.page_title;
+            
+            // Update category button texts
+            document.getElementById('all-products-text').textContent = config.all_products_text || defaultConfig.all_products_text;
+            document.getElementById('single-pack-text').textContent = config.single_pack_text || defaultConfig.single_pack_text;
+            document.getElementById('combo-text').textContent = config.combo_text || defaultConfig.combo_text;
+            document.getElementById('gift-text').textContent = config.gift_text || defaultConfig.gift_text;
+            document.getElementById('healthy-text').textContent = config.healthy_text || defaultConfig.healthy_text;
+            
+            // Update add to cart button texts
+            document.querySelectorAll('.add-to-cart-text').forEach(el => {
+                el.textContent = config.add_to_cart_text || defaultConfig.add_to_cart_text;
+            });
+
+            // Update colors
+            const primaryColor = config.primary_color || defaultConfig.primary_color;
+            const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+
+            // Apply colors to elements
+            document.documentElement.style.setProperty('--primary-color', primaryColor);
+            document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+            document.documentElement.style.setProperty('--text-color', textColor);
+            document.documentElement.style.setProperty('--accent-color', accentColor);
+            document.documentElement.style.setProperty('--surface-color', surfaceColor);
+
+            // Update brand name color
+            document.getElementById('brand-name').style.color = accentColor;
+            
+            // Update price colors
+            document.querySelectorAll('.text-amber-600').forEach(el => {
+                el.style.color = accentColor;
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.secondary_color || defaultConfig.secondary_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ secondary_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.accent_color || defaultConfig.accent_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["brand_name", config.brand_name || defaultConfig.brand_name],
+                ["brand_tagline", config.brand_tagline || defaultConfig.brand_tagline],
+                ["page_title", config.page_title || defaultConfig.page_title],
+                ["all_products_text", config.all_products_text || defaultConfig.all_products_text],
+                ["single_pack_text", config.single_pack_text || defaultConfig.single_pack_text],
+                ["combo_text", config.combo_text || defaultConfig.combo_text],
+                ["gift_text", config.gift_text || defaultConfig.gift_text],
+                ["healthy_text", config.healthy_text || defaultConfig.healthy_text],
+                ["add_to_cart_text", config.add_to_cart_text || defaultConfig.add_to_cart_text]
+            ]);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            
+            // Initialize Element SDK
+            if (window.elementSdk) {
+                window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange,
+                    mapToCapabilities,
+                    mapToEditPanelValues
+                });
+            }
         });
-      });
-    });
-
-    // Nút mở giỏ: điều hướng về index.html#cart để mở mini-cart trang chủ
-    document.getElementById('open-cart').addEventListener('click', ()=>{
-      window.location.href = 'index.html#cart';
-    });
-
-    // CTA mua ngay: kéo về lưới sản phẩm (hoặc tuỳ bạn đổi điều hướng)
-    document.getElementById('cta-buy').addEventListener('click', ()=>{
-      const grid = document.getElementById('products-grid');
-      if (grid) grid.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // Newsletter submit
-    document.getElementById('newsletter-form').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const email = document.getElementById('newsletter-email').value.trim();
-      if(!email){ alert('Vui lòng nhập email'); return; }
-      const key = 'newsletter_emails';
-      const list = JSON.parse(localStorage.getItem(key) || '[]');
-      if(!list.includes(email)) list.push(email);
-      localStorage.setItem(key, JSON.stringify(list));
-      alert('Đăng ký thành công! Cảm ơn bạn đã quan tâm.');
-      e.target.reset();
-    });
-
-    // Hỗ trợ ?category=...
-    (function(){
-      const c = new URLSearchParams(location.search).get('category');
-      if(!c) return;
-      const match = btns.find(b=>b.dataset.category===c);
-      if(match) match.click();
-    })();
-
-    // ===== Migration: cart_items -> mitSayCart (chạy 1 lần nếu có dữ liệu cũ)
-    (function migrateOldCart(){
-      try{
-        const old = JSON.parse(localStorage.getItem('cart_items')||'[]');
-        if (!Array.isArray(old) || old.length===0) return;
-        const neo = old.map(x=>({
-          id: x.id || x.sku,
-          name: x.name,
-          price: Number(x.price||0),
-          quantity: Number(x.quantity || x.qty || 1)
-        }));
-        localStorage.setItem('mitSayCart', JSON.stringify(neo));
-        localStorage.removeItem('cart_items');
-        updateBadge();
-      }catch(e){}
-    })();
-  </script>
-</body>
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99843cd257f6e2ff',t:'MTc2MjA5Mjg1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
