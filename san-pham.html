@@ -92,7 +92,13 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
- <body class="bg-gradient-to-b from-amber-50 to-white text-slate-800"><!-- Stars and Meteors Background -->
+ <body class="bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 text-slate-800" style="background-size: 400% 400%; animation: gradientShift 8s ease infinite;">
+  <style>
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+  </style><!-- Stars and Meteors Background -->
   <div class="stars" id="stars-container"></div><!-- Tiêu đề trang -->
   <div class="relative z-10 text-center py-12 bg-gradient-to-r from-amber-100 to-orange-100">
    <h1 class="text-4xl font-bold text-amber-800 mb-4">🥭 Sản Phẩm Mít Sấy Vũ Trụ</h1>
@@ -103,9 +109,9 @@
    </div>
   </div><!-- Danh sách sản phẩm -->
   <main class="relative z-10 max-w-7xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-container"><!-- Gói lẻ -->
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/mit100.png" alt="Mít sấy 100g" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/mit100.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single" data-product-id="1">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy giòn nguyên chất 100g">
+     <div class="product-fallback text-6xl" style="display: none;">
       🥭
      </div>
     </div>
@@ -114,9 +120,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/mit80.png" alt="Mít sấy mật ong 80g" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/mit80.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single" data-product-id="2">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy mật ong 80g">
+     <div class="product-fallback text-6xl" style="display: none;">
       🍯
      </div>
     </div>
@@ -125,9 +131,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('mit80','Mít sấy mật ong 80g',52000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('mit80','Mít sấy mật ong 80g',52000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/mit120.png" alt="Mít sấy organic 120g" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/mit120.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single" data-product-id="3">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy organic 120g">
+     <div class="product-fallback text-6xl" style="display: none;">
       🌿
      </div>
     </div>
@@ -136,9 +142,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('mit120','Mít sấy organic 120g',68000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('mit120','Mít sấy organic 120g',68000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div><!-- Combo -->
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/combo3.png" alt="Combo 3 vị mít sấy" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/combo3.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo" data-product-id="4">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Combo 3 vị mít sấy">
+     <div class="product-fallback text-6xl" style="display: none;">
       📦
      </div>
     </div>
@@ -147,9 +153,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('combo3','Combo 3 vị mít sấy',135000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('combo3','Combo 3 vị mít sấy',135000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/combo5.png" alt="Combo gia đình 5 gói" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/combo5.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo" data-product-id="5">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Combo gia đình 5 gói">
+     <div class="product-fallback text-6xl" style="display: none;">
       👨‍👩‍👧‍👦
      </div>
     </div>
@@ -158,9 +164,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('combo5','Combo gia đình 5 gói',220000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('combo5','Combo gia đình 5 gói',220000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/combo10.png" alt="Combo tiết kiệm 10 gói" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/combo10.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="combo" data-product-id="6">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Combo tiết kiệm 10 gói">
+     <div class="product-fallback text-6xl" style="display: none;">
       💰
      </div>
     </div>
@@ -169,9 +175,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('combo10','Combo tiết kiệm 10 gói',400000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('combo10','Combo tiết kiệm 10 gói',400000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div><!-- Quà tặng -->
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/gift-box.png" alt="Hộp quà mít sấy cao cấp" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/gift-box.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift" data-product-id="7">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Hộp quà mít sấy cao cấp">
+     <div class="product-fallback text-6xl" style="display: none;">
       🎁
      </div>
     </div>
@@ -180,9 +186,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('giftBox','Hộp quà mít sấy cao cấp',180000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('giftBox','Hộp quà mít sấy cao cấp',180000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/tet-gift.png" alt="Set quà tết mít sấy" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/tet-gift.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift" data-product-id="8">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Set quà tết mít sấy">
+     <div class="product-fallback text-6xl" style="display: none;">
       🧧
      </div>
     </div>
@@ -191,9 +197,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('tetGift','Set quà tết mít sấy',250000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('tetGift','Set quà tết mít sấy',250000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/birthday-gift.png" alt="Túi quà sinh nhật" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/birthday-gift.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="gift" data-product-id="9">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Túi quà sinh nhật">
+     <div class="product-fallback text-6xl" style="display: none;">
       🎂
      </div>
     </div>
@@ -202,9 +208,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('birthdayGift','Túi quà sinh nhật',120000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('birthdayGift','Túi quà sinh nhật',120000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div><!-- Healthy -->
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/sugar-free.png" alt="Mít sấy không đường" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/sugar-free.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy" data-product-id="10">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy không đường">
+     <div class="product-fallback text-6xl" style="display: none;">
       💚
      </div>
     </div>
@@ -213,9 +219,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('sugarFree','Mít sấy không đường',58000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('sugarFree','Mít sấy không đường',58000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/superfood.png" alt="Mít sấy siêu thực phẩm" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/superfood.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy" data-product-id="11">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy siêu thực phẩm">
+     <div class="product-fallback text-6xl" style="display: none;">
       ⚡
      </div>
     </div>
@@ -224,9 +230,9 @@
     <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('superfood','Mít sấy siêu thực phẩm',75000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('superfood','Mít sấy siêu thực phẩm',75000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img src="anhsanpham/protein.png" alt="Mít sấy protein" class="w-40 h-40 object-contain" onerror="this.src='anhsanpham/protein.jpg'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
-     <div class="text-6xl" style="display: none;">
+   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="healthy" data-product-id="12">
+    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy protein">
+     <div class="product-fallback text-6xl" style="display: none;">
       💪
      </div>
     </div>
@@ -338,11 +344,51 @@
       });
     }
     
+    // Hàm tự động tìm và load ảnh sản phẩm
+    function loadProductImages() {
+      const productCards = document.querySelectorAll('.product-card[data-product-id]');
+      
+      productCards.forEach(card => {
+        const productId = card.dataset.productId;
+        const img = card.querySelector('.product-image');
+        const fallback = card.querySelector('.product-fallback');
+        
+        // Thử load ảnh PNG trước
+        const testPng = new Image();
+        testPng.onload = function() {
+          img.src = `anhsanpham/${productId}.png`;
+          img.style.display = 'block';
+          fallback.style.display = 'none';
+        };
+        
+        testPng.onerror = function() {
+          // Nếu PNG không có, thử JPG
+          const testJpg = new Image();
+          testJpg.onload = function() {
+            img.src = `anhsanpham/${productId}.jpg`;
+            img.style.display = 'block';
+            fallback.style.display = 'none';
+          };
+          
+          testJpg.onerror = function() {
+            // Nếu cả PNG và JPG đều không có, hiển thị emoji fallback
+            img.style.display = 'none';
+            fallback.style.display = 'flex';
+          };
+          
+          testJpg.src = `anhsanpham/${productId}.jpg`;
+        };
+        
+        testPng.src = `anhsanpham/${productId}.png`;
+      });
+    }
+
     // Khởi tạo khi trang load
     document.addEventListener('DOMContentLoaded', function() {
       createCosmicBackground();
+      loadProductImages();
     });
   </script><!-- Gọi file dùng chung (tự động tạo header + giỏ hàng + MXH) -->
   <script src="global-cart.js"></script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9985440916fe039f',t:'MTc2MjEwMzY0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99854c71743b039f',t:'MTc2MjEwMzk4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
