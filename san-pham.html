@@ -74,38 +74,75 @@
     
     .category-btn {
       transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      color: #92400e;
     }
     
     .category-btn.active {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
+      background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
       color: white;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+      border: 1px solid rgba(251, 191, 36, 0.5);
     }
     
     .category-btn:not(.active):hover {
-      background-color: #fef3c7;
+      background: rgba(254, 243, 199, 0.5);
       transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
- <body class="bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 text-slate-800" style="background-size: 400% 400%; animation: gradientShift 8s ease infinite;">
+ <body class="text-slate-800 overflow-x-hidden" style="background: linear-gradient(45deg, #fefce8, #fef3c7, #fed7aa, #fde68a, #fbbf24, #f59e0b); background-size: 600% 600%; animation: galaxyShift 12s ease infinite;">
   <style>
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    @keyframes galaxyShift {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 100% 0%; }
+      50% { background-position: 100% 100%; }
+      75% { background-position: 0% 100%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Galaxy particles */
+    .galaxy-particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(147,197,253,0.4) 50%, transparent 100%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+    }
+    
+    /* Nebula clouds */
+    .nebula {
+      position: absolute;
+      background: radial-gradient(ellipse, rgba(147,51,234,0.3) 0%, rgba(79,70,229,0.2) 30%, rgba(59,130,246,0.1) 60%, transparent 100%);
+      border-radius: 50%;
+      animation: nebulaDrift 20s linear infinite;
+    }
+    
+    @keyframes nebulaDrift {
+      0% { transform: translateX(-100px) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { transform: translateX(calc(100vw + 100px)) rotate(360deg); opacity: 0; }
     }
   </style><!-- Stars and Meteors Background -->
   <div class="stars" id="stars-container"></div><!-- Tiêu đề trang -->
-  <div class="relative z-10 text-center py-12 bg-gradient-to-r from-amber-100 to-orange-100">
-   <h1 class="text-4xl font-bold text-amber-800 mb-4">🥭 Sản Phẩm Mít Sấy Vũ Trụ</h1>
-   <p class="text-lg text-amber-700">Khám phá bộ sưu tập mít sấy giòn ngon, healthy từ thiên nhiên</p>
+  <div class="relative z-10 text-center py-12 bg-gradient-to-r from-amber-100/30 via-yellow-100/30 to-orange-100/30 backdrop-blur-sm">
+   <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-500 to-yellow-600 mb-4 drop-shadow-lg animate-pulse">Sản Phẩm Mít Sấy Vũ Trụ</h1>
+   <p class="text-lg text-amber-700 drop-shadow-md">Khám phá bộ sưu tập mít sấy giòn ngon, healthy từ thiên nhiên</p>
   </div><!-- Bộ lọc danh mục -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 py-8">
-   <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="category-btn active px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('all')"> 🌟 Tất cả </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('single')"> 📦 Gói lẻ </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('combo')"> 🎁 Combo </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('gift')"> 🎀 Quà tặng </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('healthy')"> 💚 Healthy </button>
+   <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="category-btn active px-6 py-3 rounded-full font-medium" onclick="filterProducts('all')"> 🌟 Tất cả </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('single')"> 📦 Gói lẻ </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('combo')"> 🎁 Combo </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('gift')"> 🎀 Quà tặng </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('healthy')"> 💚 Healthy </button>
    </div>
   </div><!-- Danh sách sản phẩm -->
   <main class="relative z-10 max-w-7xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-container"><!-- Gói lẻ -->
@@ -248,16 +285,54 @@
       const starsContainer = document.getElementById('stars-container');
       
       // Tạo ngôi sao
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 150; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         star.style.left = Math.random() * 100 + '%';
         star.style.top = Math.random() * 100 + '%';
-        star.style.width = Math.random() * 3 + 1 + 'px';
+        star.style.width = Math.random() * 4 + 1 + 'px';
         star.style.height = star.style.width;
         star.style.animationDelay = Math.random() * 2 + 's';
-        star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        
+        // Màu sắc ngôi sao đa dạng
+        const colors = ['#ffffff', '#e0e7ff', '#ddd6fe', '#fef3c7', '#fecaca'];
+        star.style.background = colors[Math.floor(Math.random() * colors.length)];
+        star.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px ${colors[Math.floor(Math.random() * colors.length)]}`;
+        
         starsContainer.appendChild(star);
+      }
+      
+      // Tạo galaxy particles
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'galaxy-particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.width = Math.random() * 8 + 4 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        starsContainer.appendChild(particle);
+      }
+      
+      // Tạo nebula clouds
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const nebula = document.createElement('div');
+          nebula.className = 'nebula';
+          nebula.style.top = Math.random() * 80 + '%';
+          nebula.style.width = Math.random() * 200 + 100 + 'px';
+          nebula.style.height = Math.random() * 150 + 80 + 'px';
+          nebula.style.animationDelay = Math.random() * 10 + 's';
+          starsContainer.appendChild(nebula);
+          
+          setTimeout(() => {
+            if (nebula.parentNode) {
+              nebula.parentNode.removeChild(nebula);
+            }
+          }, 25000);
+        }, i * 5000);
       }
       
       // Tạo thiên thạch với ảnh thật
@@ -390,5 +465,5 @@
     });
   </script><!-- Gọi file dùng chung (tự động tạo header + giỏ hàng + MXH) -->
   <script src="global-cart.js"></script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99854c71743b039f',t:'MTc2MjEwMzk4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9989fcc9555b8b32',t:'MTc2MjE1MzE1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
