@@ -264,3 +264,81 @@
 
   updateCartUI();
 })();
+//  Inject Footer dùng chung cho tất cả trang
+(function injectFooter() {
+  const footerHTML = `
+<footer class="bg-[#1a2536] text-white pt-10 pb-6 mt-16 border-t-4 border-amber-400">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+    <div class="md:col-span-2 flex flex-col">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center shadow">
+          <img src="images/logo.png" alt="Logo" class="w-9 h-9 object-contain" />
+        </div>
+        <div>
+          <p class="font-semibold text-lg">Mít Sấy Vũ Trụ</p>
+          <p class="text-sm text-gray-300">Giòn thơm quay vị giác</p>
+        </div>
+      </div>
+      <p class="text-gray-300 text-sm leading-relaxed max-w-md">
+        Thương hiệu mít sấy cao cấp, cam kết chất lượng và an toàn thực phẩm.
+      </p>
+    </div>
+
+    <div>
+      <p class="font-semibold text-lg mb-4">Liên hệ</p>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li class="flex gap-2"><span>📍</span><span>12 Hữu trí Hà Đông Hà Nội</span></li>
+        <li class="flex gap-2"><span>📞</span><span>Hotline: 0365231819</span></li>
+        <li class="flex gap-2"><span>✉️</span><span>Email: mitsayvutru.infor@gmail.com</span></li>
+        <li class="flex gap-2"><span>⏰</span><span>8:00 - 22:00 (Thứ 2 - CN)</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-semibold text-lg mb-4">Chính sách</p>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="policy-return.html" class="hover:text-white">Chính sách đổi trả</a></li>
+        <li><a href="policy-privacy.html" class="hover:text-white">Chính sách bảo mật</a></li>
+        <li><a href="policy-terms.html" class="hover:text-white">Điều khoản sử dụng</a></li>
+        <li><a href="policy-guide.html" class="hover:text-white">Hướng dẫn mua hàng</a></li>
+      </ul>
+    </div>
+
+    <div class="lg:col-span-1">
+      <p class="font-semibold text-lg mb-4">Nhận ưu đãi</p>
+      <p class="text-sm text-gray-300 mb-3">
+        Đăng ký để nhận thông tin khuyến mãi mới nhất
+      </p>
+
+      <div class="flex flex-col gap-3">
+        <input
+          type="email"
+          class="bg-[#2a3447] text-gray-200 text-sm rounded-md px-3 py-3 outline-none border border-[#3a465f] placeholder-gray-400"
+          placeholder="Email của bạn">
+        <button class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold text-sm rounded-md py-3 text-center transition">
+          Đăng ký
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 mt-6">
+        <div class="w-3 h-3 rounded-full bg-indigo-600 shadow-[0_0_8px_rgba(99,102,241,.8)]"></div>
+        <div class="w-3 h-3 rounded-full bg-purple-600 shadow-[0_0_8px_rgba(168,85,247,.8)]"></div>
+        <div class="w-3 h-3 rounded-full bg-slate-300 shadow-[0_0_8px_rgba(226,232,240,.5)]"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 mt-10 pt-6 border-t border-slate-600 text-center text-gray-400 text-sm">
+    © 2024 Mít Sấy Vũ Trụ. Tất cả quyền được bảo lưu.
+  </div>
+</footer>
+  `;
+
+  const footerWrapper = document.createElement('div');
+  footerWrapper.innerHTML = footerHTML;
+
+  // chèn footer TRƯỚC khi kết thúc body để nó luôn nằm cuối trang
+  document.body.appendChild(footerWrapper);
+})();
+
