@@ -3,1222 +3,621 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chi Tiết Sản Phẩm – Mít Sấy Vũ Trụ</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Chi tiết sản phẩm - Mua sắm trực tuyến">
+  <title>Chi tiết sản phẩm</title>
+  <script src="/_sdk/element_sdk.js"></script>
   <style>
     body {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #FFF5E6 0%, #FFE4B5 100%);
+      min-height: 100%;
     }
-    
-    /* Stars */
-    .stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
+
+    * {
+      box-sizing: border-box;
     }
-    
-    .star {
-      position: absolute;
-      background: #fff;
-      border-radius: 50%;
-      animation: twinkle 2s ease-in-out infinite alternate;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
-    
-    @keyframes twinkle {
-      0% { opacity: 0.3; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.2); }
+
+    .header {
+      background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-    
-    /* Image Gallery Styles */
-    .gallery-container {
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .product-detail {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .image-section {
       position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(254,243,199,0.9));
-      backdrop-filter: blur(20px);
-      border: 3px solid transparent;
-      background-clip: padding-box;
     }
-    
-    .gallery-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, #f59e0b, #d97706, #b45309, #92400e);
-      background-size: 300% 300%;
-      animation: gradientShift 4s ease infinite;
-      z-index: -1;
-      border-radius: inherit;
-    }
-    
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    .gallery-main-image {
+
+    .main-image {
       width: 100%;
-      height: 500px;
+      height: 400px;
       object-fit: cover;
-      border-radius: 16px;
-      transition: all 0.3s ease;
+      border-radius: 10px;
+      margin-bottom: 15px;
     }
-    
-    .gallery-thumbnails {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-      justify-content: center;
+
+    .thumbnail-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
     }
-    
+
     .thumbnail {
-      width: 80px;
+      width: 100%;
       height: 80px;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 8px;
       cursor: pointer;
       border: 3px solid transparent;
       transition: all 0.3s ease;
-      opacity: 0.7;
     }
-    
-    .thumbnail:hover, .thumbnail.active {
-      border-color: #f59e0b;
-      opacity: 1;
-      transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+
+    .thumbnail:hover {
+      border-color: #FF8C00;
+      transform: scale(1.05);
     }
-    
-    .product-info-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(254,243,199,0.9));
-      backdrop-filter: blur(20px);
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      border-radius: 20px;
-      position: relative;
-      overflow: hidden;
+
+    .thumbnail.active {
+      border-color: #FF8C00;
     }
-    
-    .product-info-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, #f59e0b, #d97706, #b45309, #92400e);
-      background-size: 300% 300%;
-      animation: gradientShift 4s ease infinite;
-      z-index: -1;
-      border-radius: inherit;
+
+    .info-section h1 {
+      color: #333;
+      font-size: 32px;
+      margin: 0 0 15px 0;
     }
-    
-    .product-info-card::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(254,243,199,0.9));
-      backdrop-filter: blur(20px);
-      border-radius: calc(20px - 2px);
-      z-index: -1;
-    }
-    
-    .price-display {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: white;
-      padding: 16px 24px;
-      border-radius: 16px;
-      font-size: 2rem;
+
+    .price {
+      font-size: 36px;
+      color: #FF8C00;
       font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .description {
+      color: #666;
+      line-height: 1.8;
+      margin: 20px 0;
+      padding: 20px;
+      background: #FFF5E6;
+      border-radius: 10px;
+      border-left: 4px solid #FF8C00;
+    }
+
+    .quantity-section {
+      margin: 30px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .quantity-label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-btn {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #FF8C00;
+      background: white;
+      color: #FF8C00;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quantity-btn:hover {
+      background: #FF8C00;
+      color: white;
+    }
+
+    .quantity-input {
+      width: 60px;
+      height: 40px;
       text-align: center;
-      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-      position: relative;
-      overflow: hidden;
+      border: 2px solid #FF8C00;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
     }
-    
-    .price-display::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-      transform: rotate(45deg);
-      animation: priceShine 3s ease-in-out infinite;
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
     }
-    
-    @keyframes priceShine {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-      50% { transform: translateX(0%) translateY(0%) rotate(45deg); }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-    }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
+
+    .btn {
+      flex: 1;
+      padding: 15px 30px;
       border: none;
-      color: white;
+      border-radius: 10px;
+      font-size: 18px;
       font-weight: bold;
-      padding: 16px 32px;
-      border-radius: 12px;
-      font-size: 1.1rem;
+      cursor: pointer;
       transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-    
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: left 0.5s ease;
-    }
-    
-    .btn-primary:hover::before {
-      left: 100%;
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
-    }
-    
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #f59e0b;
-      color: #f59e0b;
-      font-weight: bold;
-      padding: 16px 32px;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    
-    .btn-secondary:hover {
-      background: rgba(245, 158, 11, 0.1);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
-    }
-    
-    .feature-badge {
-      background: linear-gradient(135deg, #10b981, #059669);
+
+    .btn-buy {
+      background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
       color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.875rem;
-      font-weight: 600;
+    }
+
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255,140,0,0.3);
+    }
+
+    .btn-cart {
+      background: white;
+      color: #FF8C00;
+      border: 2px solid #FF8C00;
+    }
+
+    .btn-cart:hover {
+      background: #FFF5E6;
+      transform: translateY(-2px);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px;
+      font-size: 20px;
+      color: #666;
+    }
+
+    .error {
+      text-align: center;
+      padding: 60px;
+      color: #d32f2f;
+      font-size: 18px;
+    }
+
+    .back-link {
       display: inline-block;
-      margin: 4px;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-    }
-    
-    .back-btn {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #f59e0b;
-      color: #f59e0b;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
+      margin-bottom: 20px;
+      color: #FF8C00;
       text-decoration: none;
-      display: inline-block;
+      font-weight: bold;
+      transition: all 0.3s ease;
     }
-    
-    .back-btn:hover {
-      background: rgba(245, 158, 11, 0.1);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+
+    .back-link:hover {
+      color: #FFA500;
+      transform: translateX(-5px);
+    }
+
+    @media (max-width: 768px) {
+      .product-detail {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .main-image {
+        height: 300px;
+      }
+
+      .info-section h1 {
+        font-size: 24px;
+      }
+
+      .price {
+        font-size: 28px;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
- <body class="text-slate-800 overflow-x-hidden" style="background: linear-gradient(45deg, #fefce8, #fef3c7, #fed7aa, #fde68a, #fbbf24, #f59e0b); background-size: 600% 600%; animation: galaxyShift 12s ease infinite;">
-  <style>
-    @keyframes galaxyShift {
-      0% { background-position: 0% 50%; }
-      25% { background-position: 100% 0%; }
-      50% { background-position: 100% 100%; }
-      75% { background-position: 0% 100%; }
-      100% { background-position: 0% 50%; }
-    }
-  </style><!-- Stars Background -->
-  <div class="stars" id="stars-container"></div><!-- Header với nút quay lại -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 py-8"><a href="san-pham.html" class="back-btn"> ← Quay lại danh sách sản phẩm </a>
-  </div><!-- Chi tiết sản phẩm -->
-  <main class="relative z-10 max-w-7xl mx-auto px-4 pb-12">
-   <div class="grid grid-cols-1 lg:grid-cols-2 gap-12"><!-- Gallery ảnh bên trái -->
-    <div class="gallery-container p-6"><img id="main-image" class="gallery-main-image" alt="Ảnh sản phẩm chính">
-     <div class="gallery-thumbnails" id="thumbnails-container"><!-- Thumbnails sẽ được tạo bởi JavaScript -->
-     </div>
-    </div><!-- Thông tin sản phẩm bên phải -->
-    <div class="product-info-card p-8 relative z-10">
-     <h1 id="product-title" class="text-3xl font-bold mb-4 text-slate-800"></h1>
-     <div class="price-display mb-6" id="product-price"><!-- Giá sẽ được cập nhật bởi JavaScript -->
-     </div>
-     <div class="mb-6">
-      <h3 class="text-xl font-semibold mb-3 text-slate-700">✨ Đặc điểm nổi bật:</h3>
-      <div id="product-features" class="mb-4"><!-- Features sẽ được cập nhật bởi JavaScript -->
-      </div>
-     </div>
-     <div class="mb-6">
-      <h3 class="text-xl font-semibold mb-3 text-slate-700">📝 Mô tả sản phẩm:</h3>
-      <p id="product-description" class="text-slate-600 leading-relaxed"><!-- Mô tả sẽ được cập nhật bởi JavaScript --></p>
-     </div>
-     <div class="mb-6">
-      <h3 class="text-xl font-semibold mb-3 text-slate-700">📊 Thông tin dinh dưỡng:</h3>
-      <div id="nutrition-info" class="bg-amber-50 p-4 rounded-lg border border-amber-200"><!-- Thông tin dinh dưỡng sẽ được cập nhật bởi JavaScript -->
-      </div>
-     </div>
-     <div class="flex gap-4"><button id="buy-now-btn" class="btn-primary flex-1"> 🚀 Mua Ngay </button> <button id="add-to-cart-btn" class="btn-secondary flex-1"> 🛒 Thêm vào giỏ </button>
-     </div>
+ <body>
+  <div class="container"><a href="sanpham.html" class="back-link" target="_blank" rel="noopener noreferrer">← Quay lại danh sách sản phẩm</a>
+   <div class="header">
+    <h1 id="store-name">Cửa Hàng Trái Cây Sấy</h1>
+   </div>
+   <div id="product-container">
+    <div class="loading">
+     Đang tải thông tin sản phẩm...
     </div>
    </div>
-  </main>
+  </div>
   <script>
-    // Dữ liệu chi tiết 12 sản phẩm
-    const productData = {
-      1: {
-        title: "Mít sấy giòn nguyên chất 100g",
+    const products = [
+      {
+        id: 1,
+        name: "Mít sấy giòn nguyên chất 100g",
         price: "45.000đ",
-        cartId: "mit100",
-        cartPrice: 45000,
-        features: ["100% tự nhiên", "Không chất bảo quản", "Giòn tan", "Vitamin C cao"],
-        description: "Mít sấy giòn nguyên chất được chế biến từ những trái mít chín tự nhiên, không sử dụng chất bảo quản hay phẩm màu. Sản phẩm giữ nguyên hương vị thơm ngon đặc trưng của mít tươi, giòn tan trong miệng với độ ngọt tự nhiên vừa phải.",
-        nutrition: "Năng lượng: 320 kcal/100g | Protein: 2.5g | Carbohydrate: 78g | Chất xơ: 8g | Vitamin C: 15mg"
+        description: "Mít sấy giòn được chế biến từ 100% trái mít tươi ngon, không chất bảo quản, không hương liệu tổng hợp. Sản phẩm giữ nguyên hương vị thơm ngon tự nhiên của mít, giòn tan, ngọt thanh. Giàu vitamin C, chất xơ và khoáng chất tốt cho sức khỏe. Thích hợp làm món ăn vặt bổ dưỡng cho cả gia đình."
       },
-      2: {
-        title: "Mít sấy mật ong 80g",
-        price: "52.000đ",
-        cartId: "mit80",
-        cartPrice: 52000,
-        features: ["Mật ong thiên nhiên", "Vị ngọt đậm đà", "Bổ dưỡng", "Không gluten"],
-        description: "Mít sấy mật ong kết hợp hoàn hảo giữa vị ngọt tự nhiên của mít và mật ong rừng nguyên chất. Sản phẩm có màu vàng óng đẹp mắt, vị ngọt đậm đà và thơm mùi mật ong đặc trưng, mang lại cảm giác thỏa mãn cho người thưởng thức.",
-        nutrition: "Năng lượng: 340 kcal/100g | Protein: 2.8g | Carbohydrate: 82g | Chất xơ: 7g | Khoáng chất tự nhiên"
+      {
+        id: 2,
+        name: "Mít sấy mặt ong 80g",
+        price: "38.000đ",
+        description: "Mít sấy mặt ong là sự kết hợp hoàn hảo giữa vị ngọt tự nhiên của mít và mật ong nguyên chất. Sản phẩm được sấy khô theo công nghệ hiện đại, giữ nguyên dinh dưỡng và hương vị đặc trưng. Mít sấy mềm mại, thơm ngon, bổ dưỡng, cung cấp năng lượng tức thì cho cơ thể."
       },
-      3: {
-        title: "Mít sấy organic 120g",
-        price: "68.000đ",
-        cartId: "mit120",
-        cartPrice: 68000,
-        features: ["Chứng nhận Organic", "Không thuốc trừ sâu", "An toàn tuyệt đối", "Cao cấp"],
-        description: "Mít sấy organic được trồng và chế biến theo tiêu chuẩn hữu cơ nghiêm ngặt, không sử dụng thuốc trừ sâu hay phân bón hóa học. Sản phẩm đảm bảo an toàn tuyệt đối cho sức khỏe, phù hợp cho trẻ em và người cao tuổi.",
-        nutrition: "Năng lượng: 315 kcal/100g | Protein: 3.2g | Carbohydrate: 76g | Chất xơ: 9g | Chất chống oxy hóa cao"
+      {
+        id: 3,
+        name: "Chuối sấy giòn 100g",
+        price: "35.000đ",
+        description: "Chuối sấy giòn được làm từ chuối già chín tự nhiên, sấy khô bằng công nghệ chân không hiện đại. Sản phẩm giòn rụm, thơm ngon, giữ nguyên hương vị đặc trưng của chuối tươi. Giàu kali, magie và vitamin B6, tốt cho tim mạch và hệ tiêu hóa. Món ăn vặt lý tưởng cho mọi lứa tuổi."
       },
-      4: {
-        title: "Combo 3 vị mít sấy",
-        price: "135.000đ",
-        cartId: "combo3",
-        cartPrice: 135000,
-        features: ["3 vị khác nhau", "Tiết kiệm 15%", "Đa dạng hương vị", "Hộp quà đẹp"],
-        description: "Combo 3 vị bao gồm mít sấy nguyên chất, mít sấy mật ong và mít sấy organic. Mỗi loại có hương vị riêng biệt, tạo nên trải nghiệm thú vị khi thưởng thức. Đóng gói trong hộp quà sang trọng, phù hợp làm quà tặng.",
-        nutrition: "Bao gồm đầy đủ dinh dưỡng từ 3 loại mít sấy cao cấp với hương vị đa dạng"
+      {
+        id: 4,
+        name: "Khoai lang tím sấy 120g",
+        price: "42.000đ",
+        description: "Khoai lang tím sấy được chế biến từ khoai lang tím Đà Lạt cao cấp, giàu anthocyanin - chất chống oxi hóa mạnh. Sản phẩm sấy khô tự nhiên, không dầu mỡ, không đường, giữ nguyên màu tím đẹp mắt và vị ngọt thanh tự nhiên. Tốt cho sức khỏe tim mạch, làm đẹp da và tăng cường miễn dịch."
       },
-      5: {
-        title: "Combo gia đình 5 gói",
-        price: "220.000đ",
-        cartId: "combo5",
-        cartPrice: 220000,
-        features: ["5 gói lớn", "Tiết kiệm 20%", "Cho cả gia đình", "Bảo quản lâu"],
-        description: "Combo gia đình với 5 gói mít sấy các loại, đủ cho cả gia đình thưởng thức trong thời gian dài. Sản phẩm được đóng gói kỹ lưỡng, bảo quản được lâu mà vẫn giữ nguyên độ tươi ngon và giòn tan.",
-        nutrition: "Nguồn dinh dưỡng phong phú cho cả gia đình với nhiều loại mít sấy chất lượng cao"
+      {
+        id: 5,
+        name: "Xoài sấy dẻo 100g",
+        price: "48.000đ",
+        description: "Xoài sấy dẻo được làm từ xoài cát Hòa Lộc chín cây, sấy khô theo công nghệ tiên tiến giữ nguyên vị ngọt thanh và hương thơm đặc trưng. Sản phẩm mềm dẻo, dễ ăn, giàu vitamin A, C và chất xơ. Không chất bảo quản, không phẩm màu, an toàn cho sức khỏe. Món quà tặng ý nghĩa từ thiên nhiên."
       },
-      6: {
-        title: "Combo tiết kiệm 10 gói",
-        price: "400.000đ",
-        cartId: "combo10",
-        cartPrice: 400000,
-        features: ["10 gói siêu tiết kiệm", "Giảm 25%", "Mua sỉ", "Chất lượng đồng đều"],
-        description: "Combo tiết kiệm dành cho những ai yêu thích mít sấy hoặc kinh doanh nhỏ lẻ. 10 gói mít sấy chất lượng cao với mức giá ưu đãi nhất, đảm bảo chất lượng đồng đều và độ tươi ngon ổn định.",
-        nutrition: "Combo dinh dưỡng hoàn hảo với 10 gói mít sấy chất lượng cao, giá trị dinh dưỡng ổn định"
+      {
+        id: 6,
+        name: "Dứa sấy giòn 90g",
+        price: "40.000đ",
+        description: "Dứa sấy giòn được chế biến từ dứa tươi Cayenne ngọt thanh, sấy khô bằng công nghệ hiện đại. Sản phẩm giòn tan, thơm ngon, giữ nguyên hương vị tự nhiên của dứa tươi. Giàu vitamin C, enzyme bromelain hỗ trợ tiêu hóa và tăng cường hệ miễn dịch. Không đường, không chất bảo quản."
       },
-      7: {
-        title: "Hộp quà mít sấy cao cấp",
-        price: "180.000đ",
-        cartId: "giftBox",
-        cartPrice: 180000,
-        features: ["Hộp quà sang trọng", "Thiết kế đẹp", "Phù hợp làm quà", "Chất lượng premium"],
-        description: "Hộp quà mít sấy cao cấp với thiết kế sang trọng, bên trong chứa những loại mít sấy chất lượng nhất. Phù hợp làm quà tặng cho người thân, đối tác kinh doanh hoặc trong các dịp lễ tết đặc biệt.",
-        nutrition: "Tuyển chọn những loại mít sấy cao cấp nhất với giá trị dinh dưỡng tối ưu"
+      {
+        id: 7,
+        name: "Khoai môn sấy 110g",
+        price: "39.000đ",
+        description: "Khoai môn sấy được làm từ khoai môn tươi ngon, sấy khô giòn rụm, thơm bùi đặc trưng. Sản phẩm giữ nguyên giá trị dinh dưỡng cao của khoai môn, giàu chất xơ, vitamin và khoáng chất. Không dầu mỡ, không chất bảo quản, phù hợp cho người ăn kiêng và người tiểu đường."
       },
-      8: {
-        title: "Set quà tết mít sấy",
-        price: "250.000đ",
-        cartId: "tetGift",
-        cartPrice: 250000,
-        features: ["Thiết kế tết", "Màu sắc may mắn", "Ý nghĩa tốt lành", "Bao bì đặc biệt"],
-        description: "Set quà tết với thiết kế đặc biệt mang ý nghĩa may mắn, thịnh vượng. Bao gồm nhiều loại mít sấy cao cấp được đóng gói trong hộp quà màu đỏ vàng truyền thống, thể hiện lòng thành kính và sự quan tâm.",
-        nutrition: "Kết hợp đa dạng các loại mít sấy cao cấp, mang lại sức khỏe và may mắn"
+      {
+        id: 8,
+        name: "Cà rốt sấy 100g",
+        price: "36.000đ",
+        description: "Cà rốt sấy được chế biến từ cà rốt Đà Lạt tươi ngon, giàu beta-carotene và vitamin A tốt cho mắt. Sản phẩm sấy khô tự nhiên, giòn ngọt, giữ nguyên màu cam đẹp mắt và dinh dưỡng. Không đường, không chất bảo quản, thích hợp cho trẻ em và người lớn tuổi."
       },
-      9: {
-        title: "Túi quà sinh nhật",
-        price: "120.000đ",
-        cartId: "birthdayGift",
-        cartPrice: 120000,
-        features: ["Thiết kế sinh nhật", "Màu sắc vui tươi", "Phù hợp mọi lứa tuổi", "Ý nghĩa đặc biệt"],
-        description: "Túi quà sinh nhật với thiết kế vui tươi, màu sắc rực rỡ phù hợp cho mọi lứa tuổi. Bên trong chứa những loại mít sấy thơm ngon, mang đến niềm vui và sự ngọt ngào cho ngày sinh nhật đặc biệt.",
-        nutrition: "Lựa chọn các loại mít sấy phù hợp mọi lứa tuổi, an toàn và bổ dưỡng"
+      {
+        id: 9,
+        name: "Bí đỏ sấy 100g",
+        price: "37.000đ",
+        description: "Bí đỏ sấy được làm từ bí đỏ Nhật Bản cao cấp, giàu vitamin A, C và chất xơ. Sản phẩm sấy khô mềm dẻo, ngọt thanh tự nhiên, màu vàng cam bắt mắt. Tốt cho sức khỏe mắt, da và hệ tiêu hóa. Không chất bảo quản, không phẩm màu, an toàn tuyệt đối."
       },
-      10: {
-        title: "Mít sấy không đường",
-        price: "58.000đ",
-        cartId: "sugarFree",
-        cartPrice: 58000,
-        features: ["Không đường bổ sung", "Cho người tiểu đường", "Ít calo", "Tự nhiên 100%"],
-        description: "Mít sấy không đường dành riêng cho người tiểu đường, người ăn kiêng hoặc những ai muốn hạn chế đường. Sản phẩm chỉ giữ lại độ ngọt tự nhiên của mít, không bổ sung đường hay chất tạo ngọt nhân tạo.",
-        nutrition: "Năng lượng: 280 kcal/100g | Protein: 3.0g | Carbohydrate: 65g | Đường tự nhiên: 45g"
+      {
+        id: 10,
+        name: "Khoai tây sấy 120g",
+        price: "41.000đ",
+        description: "Khoai tây sấy được chế biến từ khoai tây Đà Lạt tươi ngon, sấy giòn theo công nghệ hiện đại. Sản phẩm giòn rụm, thơm ngon, ít calo hơn khoai tây chiên truyền thống. Giàu vitamin C, kali và chất xơ. Không dầu mỡ, không chất bảo quản, món ăn vặt lành mạnh."
       },
-      11: {
-        title: "Mít sấy siêu thực phẩm",
-        price: "75.000đ",
-        cartId: "superfood",
-        cartPrice: 75000,
-        features: ["Bổ sung vitamin", "Khoáng chất cao", "Chất chống oxy hóa", "Tăng cường miễn dịch"],
-        description: "Mít sấy siêu thực phẩm được bổ sung thêm các vitamin và khoáng chất thiết yếu. Sản phẩm không chỉ ngon miệng mà còn mang lại nhiều lợi ích cho sức khỏe, tăng cường hệ miễn dịch và chống lão hóa.",
-        nutrition: "Năng lượng: 330 kcal/100g | Vitamin A, C, E | Kẽm, Selen | Chất chống oxy hóa cao"
+      {
+        id: 11,
+        name: "Ổi sấy dẻo 90g",
+        price: "43.000đ",
+        description: "Ổi sấy dẻo được làm từ ổi nữ hoàng chín cây, sấy khô giữ nguyên hương vị thơm ngon đặc trưng. Sản phẩm mềm dẻo, ngọt thanh, giàu vitamin C gấp nhiều lần cam chanh. Tốt cho hệ miễn dịch, làm đẹp da và hỗ trợ tiêu hóa. Không đường, không chất bảo quản."
       },
-      12: {
-        title: "Mít sấy protein",
-        price: "82.000đ",
-        cartId: "protein",
-        cartPrice: 82000,
-        features: ["Bổ sung protein", "Cho người tập gym", "Phục hồi cơ bắp", "Năng lượng cao"],
-        description: "Mít sấy protein dành cho người tập thể thao, gym hoặc cần bổ sung protein. Sản phẩm được bổ sung protein thực vật chất lượng cao, giúp phục hồi và phát triển cơ bắp, cung cấp năng lượng bền bỉ.",
-        nutrition: "Năng lượng: 380 kcal/100g | Protein: 12g | BCAA | Creatine tự nhiên | Carbohydrate: 70g"
+      {
+        id: 12,
+        name: "Chuối sấy mật ong 100g",
+        price: "44.000đ",
+        description: "Chuối sấy mật ong là sự kết hợp tuyệt vời giữa chuối già chín tự nhiên và mật ong nguyên chất. Sản phẩm mềm dẻo, thơm ngon, bổ dưỡng, cung cấp năng lượng nhanh chóng. Giàu kali, magie và các vitamin nhóm B. Không chất bảo quản, không hương liệu tổng hợp, an toàn cho sức khỏe."
       }
+    ];
+
+    const defaultConfig = {
+      store_name: "Cửa Hàng Trái Cây Sấy",
+      buy_button_text: "Mua ngay",
+      cart_button_text: "Thêm vào giỏ hàng",
+      primary_color: "#FF8C00",
+      secondary_color: "#FFA500",
+      background_color: "#FFF5E6",
+      text_color: "#333333",
+      button_text_color: "#FFFFFF"
     };
 
-    // Lấy ID sản phẩm từ URL
+    let config = { ...defaultConfig };
+
     function getProductIdFromUrl() {
       const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('id') || '1';
+      return parseInt(urlParams.get('id')) || 1;
     }
 
-    // Tạo ngôi sao background
-    function createStarsBackground() {
-      const starsContainer = document.getElementById('stars-container');
-      
-      for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.width = Math.random() * 3 + 1 + 'px';
-        star.style.height = star.style.width;
-        star.style.animationDelay = Math.random() * 2 + 's';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        
-        const colors = ['#ffffff', '#fef3c7', '#fecaca'];
-        star.style.background = colors[Math.floor(Math.random() * colors.length)];
-        
-        starsContainer.appendChild(star);
-      }
-    }
-
-    // Load ảnh gallery
-    function loadProductImages(productId) {
-      const mainImage = document.getElementById('main-image');
-      const thumbnailsContainer = document.getElementById('thumbnails-container');
-      
-      // Xóa thumbnails cũ
-      thumbnailsContainer.innerHTML = '';
-      
-      // Tạo 4 thumbnails
-      for (let i = 1; i <= 4; i++) {
-        const thumbnail = document.createElement('img');
-        thumbnail.className = 'thumbnail';
-        thumbnail.dataset.imageIndex = i;
-        
-        // Thử load ảnh từ thư mục infosp
-        const testImg = new Image();
-        testImg.onload = function() {
-          thumbnail.src = `infosp/${productId}/${i}.png`;
-        };
-        testImg.onerror = function() {
-          // Thử JPG nếu PNG không có
-          const testImg2 = new Image();
-          testImg2.onload = function() {
-            thumbnail.src = `infosp/${productId}/${i}.jpg`;
-          };
-          testImg2.onerror = function() {
-            // Fallback: sử dụng ảnh từ thư mục anhsanpham
-            thumbnail.src = `anhsanpham/${productId}.png`;
-          };
-          testImg2.src = `infosp/${productId}/${i}.jpg`;
-        };
-        testImg.src = `infosp/${productId}/${i}.png`;
-        
-        // Click event cho thumbnail
-        thumbnail.addEventListener('click', function() {
-          // Remove active class from all thumbnails
-          document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-          // Add active class to clicked thumbnail
-          this.classList.add('active');
-          // Update main image
-          mainImage.src = this.src;
-        });
-        
-        thumbnailsContainer.appendChild(thumbnail);
-      }
-      
-      // Set ảnh đầu tiên làm ảnh chính và active
-      setTimeout(() => {
-        const firstThumbnail = thumbnailsContainer.querySelector('.thumbnail');
-        if (firstThumbnail) {
-          firstThumbnail.classList.add('active');
-          mainImage.src = firstThumbnail.src;
-        }
-      }, 100);
-    }
-
-    // Load thông tin sản phẩm
-    function loadProductInfo(productId) {
-      const product = productData[productId];
-      if (!product) return;
-      
-      // Cập nhật thông tin cơ bản
-      document.getElementById('product-title').textContent = product.title;
-      document.getElementById('product-price').textContent = product.price;
-      document.getElementById('product-description').textContent = product.description;
-      
-      // Cập nhật features
-      const featuresContainer = document.getElementById('product-features');
-      featuresContainer.innerHTML = '';
-      product.features.forEach(feature => {
-        const badge = document.createElement('span');
-        badge.className = 'feature-badge';
-        badge.textContent = feature;
-        featuresContainer.appendChild(badge);
+    function checkImageExists(url) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
       });
-      
-      // Cập nhật thông tin dinh dưỡng
-      document.getElementById('nutrition-info').innerHTML = `<p class="text-sm text-slate-600">${product.nutrition}</p>`;
-      
-      // Cập nhật nút bấm
-      const buyNowBtn = document.getElementById('buy-now-btn');
-      const addToCartBtn = document.getElementById('add-to-cart-btn');
-      
-      buyNowBtn.onclick = function() {
-        if (typeof addToCart === 'function') {
-          addToCart(product.cartId, product.title, product.cartPrice);
-        }
-        window.location.href = 'checkout.html';
-      };
-      
-      addToCartBtn.onclick = function() {
-        if (typeof addToCart === 'function') {
-          addToCart(product.cartId, product.title, product.cartPrice);
-        }
-        // Hiển thị thông báo đã thêm vào giỏ
-        const originalText = this.textContent;
-        this.textContent = '✅ Đã thêm!';
-        this.style.background = '#10b981';
-        this.style.color = 'white';
-        this.style.border = '2px solid #10b981';
-        
-        setTimeout(() => {
-          this.textContent = originalText;
-          this.style.background = 'rgba(255, 255, 255, 0.9)';
-          this.style.color = '#f59e0b';
-          this.style.border = '2px solid #f59e0b';
-        }, 2000);
-      };
     }
 
-    // Khởi tạo trang
-    document.addEventListener('DOMContentLoaded', function() {
+    async function getProductImages(productId) {
+      const images = [];
+      const extensions = ['jpg', 'png'];
+      
+      for (let i = 1; i <= 4; i++) {
+        let imageFound = false;
+        for (const ext of extensions) {
+          const imagePath = `infosp/${productId}/${i}.${ext}`;
+          const exists = await checkImageExists(imagePath);
+          if (exists) {
+            images.push(imagePath);
+            imageFound = true;
+            break;
+          }
+        }
+        if (!imageFound) {
+          images.push(`https://via.placeholder.com/400x400/FF8C00/FFFFFF?text=Ảnh+${i}`);
+        }
+      }
+      
+      return images;
+    }
+
+    function createProductHTML(product, images) {
+      return `
+        <div class="product-detail">
+          <div class="image-section">
+            <img src="${images[0]}" alt="${product.name}" class="main-image" id="main-image">
+            <div class="thumbnail-container">
+              ${images.map((img, index) => `
+                <img src="${img}" alt="${product.name} - Ảnh ${index + 1}" 
+                     class="thumbnail ${index === 0 ? 'active' : ''}" 
+                     onclick="changeMainImage('${img}', ${index})">
+              `).join('')}
+            </div>
+          </div>
+          
+          <div class="info-section">
+            <h1>${product.name}</h1>
+            <div class="price">${product.price}</div>
+            
+            <section class="description">
+              <p>${product.description}</p>
+            </section>
+            
+            <div class="quantity-section">
+              <span class="quantity-label">Số lượng:</span>
+              <div class="quantity-controls">
+                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                <input type="number" id="quantity" class="quantity-input" value="1" min="1" max="99">
+                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+              </div>
+            </div>
+            
+            <div class="button-group">
+              <button class="btn btn-buy" id="buy-btn">${config.buy_button_text || defaultConfig.buy_button_text}</button>
+              <button class="btn btn-cart" id="cart-btn">${config.cart_button_text || defaultConfig.cart_button_text}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function changeMainImage(imageSrc, index) {
+      const mainImage = document.getElementById('main-image');
+      mainImage.src = imageSrc;
+      
+      document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index);
+      });
+    }
+
+    function decreaseQuantity() {
+      const input = document.getElementById('quantity');
+      const currentValue = parseInt(input.value);
+      if (currentValue > 1) {
+        input.value = currentValue - 1;
+      }
+    }
+
+    function increaseQuantity() {
+      const input = document.getElementById('quantity');
+      const currentValue = parseInt(input.value);
+      if (currentValue < 99) {
+        input.value = currentValue + 1;
+      }
+    }
+
+    async function loadProduct() {
+      const container = document.getElementById('product-container');
       const productId = getProductIdFromUrl();
       
-      createStarsBackground();
-      loadProductImages(productId);
-      loadProductInfo(productId);
+      const product = products.find(p => p.id === productId);
       
-      // Cập nhật title trang
-      const product = productData[productId];
-      if (product) {
-        document.title = `${product.title} – Mít Sấy Vũ Trụ`;
-      }
-    });
-  </script><!-- Gọi file dùng chung -->
-  <script src="global-cart.js"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sản phẩm – Mít Sấy Vũ Trụ</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      box-sizing: border-box;
-    }
-    
-    /* Stars */
-    .stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    .star {
-      position: absolute;
-      background: #fff;
-      border-radius: 50%;
-      animation: twinkle 2s ease-in-out infinite alternate;
-    }
-    
-    @keyframes twinkle {
-      0% { opacity: 0.3; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.2); }
-    }
-    
-    /* Meteors */
-    .meteor {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      animation: meteorFall linear infinite;
-      opacity: 0.9;
-      filter: drop-shadow(0 0 10px #fbbf24);
-    }
-    
-    @keyframes meteorFall {
-      0% {
-        transform: translateX(-100px) translateY(-100px) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.9;
-      }
-      90% {
-        opacity: 0.9;
-      }
-      100% {
-        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(360deg);
-        opacity: 0;
-      }
-    }
-    
-    /* KHUNG SẢN PHẨM NGẦU MỚI */
-    .product-card {
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(254,243,199,0.9));
-      backdrop-filter: blur(20px);
-      border: 2px solid transparent;
-      background-clip: padding-box;
-    }
-    
-    .product-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, #f59e0b, #d97706, #b45309, #92400e);
-      background-size: 300% 300%;
-      animation: gradientShift 4s ease infinite;
-      z-index: -1;
-      border-radius: inherit;
-    }
-    
-    .product-card::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(254,243,199,0.9));
-      backdrop-filter: blur(20px);
-      border-radius: calc(1rem - 2px);
-      z-index: -1;
-    }
-    
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    .product-card:hover {
-      transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
-      box-shadow: 
-        0 25px 50px rgba(245, 158, 11, 0.3),
-        0 15px 35px rgba(217, 119, 6, 0.2),
-        0 5px 15px rgba(180, 83, 9, 0.1);
-    }
-    
-    .product-card:hover::before {
-      animation-duration: 1s;
-    }
-    
-    .product-image-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #fef3c7, #fed7aa, #fdba74);
-    }
-    
-    .product-image-container::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
-      transform: rotate(45deg);
-      transition: all 0.6s ease;
-      opacity: 0;
-    }
-    
-    .product-card:hover .product-image-container::before {
-      animation: shine 0.8s ease-in-out;
-    }
-    
-    @keyframes shine {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
-    }
-    
-    .price-tag {
-      position: relative;
-      display: inline-block;
-      padding: 8px 16px;
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      border-radius: 20px;
-      color: white;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-      transform: perspective(100px) rotateX(10deg);
-    }
-    
-    .price-tag::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #b45309);
-      border-radius: 22px;
-      z-index: -1;
-      animation: priceGlow 2s ease-in-out infinite alternate;
-    }
-    
-    @keyframes priceGlow {
-      0% { opacity: 0.7; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.05); }
-    }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
-      border: none;
-      position: relative;
-      overflow: hidden;
-      transform: perspective(100px) rotateX(5deg);
-      transition: all 0.3s ease;
-    }
-    
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: left 0.5s ease;
-    }
-    
-    .btn-primary:hover::before {
-      left: 100%;
-    }
-    
-    .btn-primary:hover {
-      transform: perspective(100px) rotateX(0deg) translateY(-2px);
-      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
-    }
-    
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #f59e0b;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    
-    .btn-secondary:hover {
-      background: rgba(245, 158, 11, 0.1);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
-    }
-    
-    .category-btn {
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(251, 191, 36, 0.3);
-      color: #92400e;
-    }
-    
-    .category-btn.active {
-      background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-      border: 1px solid rgba(251, 191, 36, 0.5);
-    }
-    
-    .category-btn:not(.active):hover {
-      background: rgba(254, 243, 199, 0.5);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
-    }
-  </style>
-  <style>
-    @keyframes galaxyShift {
-      0% { background-position: 0% 50%; }
-      25% { background-position: 100% 0%; }
-      50% { background-position: 100% 100%; }
-      75% { background-position: 0% 100%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    /* Galaxy particles */
-    .galaxy-particle {
-      position: absolute;
-      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(147,197,253,0.4) 50%, transparent 100%);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
-      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
-    }
-    
-    /* Nebula clouds */
-    .nebula {
-      position: absolute;
-      background: radial-gradient(ellipse, rgba(147,51,234,0.3) 0%, rgba(79,70,229,0.2) 30%, rgba(59,130,246,0.1) 60%, transparent 100%);
-      border-radius: 50%;
-      animation: nebulaDrift 20s linear infinite;
-    }
-    
-    @keyframes nebulaDrift {
-      0% { transform: translateX(-100px) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.6; }
-      100% { transform: translateX(calc(100vw + 100px)) rotate(360deg); opacity: 0; }
-    }
-  </style><!-- Stars and Meteors Background -->
-  <div class="stars" id="stars-container"></div><!-- Tiêu đề trang -->
-  <div class="relative z-10 text-center py-12 bg-gradient-to-r from-amber-100/30 via-yellow-100/30 to-orange-100/30 backdrop-blur-sm">
-   <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-500 to-yellow-600 mb-4 drop-shadow-lg animate-pulse">Sản Phẩm Mít Sấy Vũ Trụ</h1>
-   <p class="text-lg text-amber-700 drop-shadow-md">Khám phá bộ sưu tập mít sấy giòn ngon, healthy từ thiên nhiên</p>
-  </div><!-- Bộ lọc danh mục -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 py-8">
-   <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="category-btn active px-6 py-3 rounded-full font-medium" onclick="filterProducts('all')"> 🌟 Tất cả </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('single')"> 📦 Gói lẻ </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('combo')"> 🎁 Combo </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('gift')"> 🎀 Quà tặng </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('healthy')"> 💚 Healthy </button>
-   </div>
-  </div><!-- Danh sách sản phẩm -->
-  <main class="relative z-10 max-w-7xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-container"><!-- Gói lẻ -->
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="single" data-product-id="1">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy giòn nguyên chất 100g">
-     <div class="product-fallback text-6xl" style="display: none;">
-      🥭
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Mít sấy giòn nguyên chất 100g</h3>
-    <div class="price-tag text-xl mb-4">
-     45.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(1);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(1);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="single" data-product-id="2">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy mật ong 80g">
-     <div class="product-fallback text-6xl" style="display: none;">
-      🍯
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Mít sấy mật ong 80g</h3>
-    <div class="price-tag text-xl mb-4">
-     52.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(2);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('mit80','Mít sấy mật ong 80g',52000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(2);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="single" data-product-id="3">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy organic 120g">
-     <div class="product-fallback text-6xl" style="display: none;">
-      🌿
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Mít sấy organic 120g</h3>
-    <div class="price-tag text-xl mb-4">
-     68.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(3);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('mit120','Mít sấy organic 120g',68000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(3);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div><!-- Combo -->
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="combo" data-product-id="4">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Combo 3 vị mít sấy">
-     <div class="product-fallback text-6xl" style="display: none;">
-      📦
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Combo 3 vị mít sấy</h3>
-    <div class="price-tag text-xl mb-4">
-     135.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(4);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('combo3','Combo 3 vị mít sấy',135000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(4);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="combo" data-product-id="5">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Combo gia đình 5 gói">
-     <div class="product-fallback text-6xl" style="display: none;">
-      👨‍👩‍👧‍👦
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Combo gia đình 5 gói</h3>
-    <div class="price-tag text-xl mb-4">
-     220.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(5);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('combo5','Combo gia đình 5 gói',220000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(5);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="combo" data-product-id="6">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Combo tiết kiệm 10 gói">
-     <div class="product-fallback text-6xl" style="display: none;">
-      💰
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Combo tiết kiệm 10 gói</h3>
-    <div class="price-tag text-xl mb-4">
-     400.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(6);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('combo10','Combo tiết kiệm 10 gói',400000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(6);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div><!-- Quà tặng -->
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="gift" data-product-id="7">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Hộp quà mít sấy cao cấp">
-     <div class="product-fallback text-6xl" style="display: none;">
-      🎁
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Hộp quà mít sấy cao cấp</h3>
-    <div class="price-tag text-xl mb-4">
-     180.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(7);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('giftBox','Hộp quà mít sấy cao cấp',180000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(7);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="gift" data-product-id="8">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Set quà tết mít sấy">
-     <div class="product-fallback text-6xl" style="display: none;">
-      🧧
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Set quà tết mít sấy</h3>
-    <div class="price-tag text-xl mb-4">
-     250.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(8);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('tetGift','Set quà tết mít sấy',250000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(8);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="gift" data-product-id="9">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Túi quà sinh nhật">
-     <div class="product-fallback text-6xl" style="display: none;">
-      🎂
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Túi quà sinh nhật</h3>
-    <div class="price-tag text-xl mb-4">
-     120.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(9);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('birthdayGift','Túi quà sinh nhật',120000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(9);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div><!-- Healthy -->
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="healthy" data-product-id="10">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy không đường">
-     <div class="product-fallback text-6xl" style="display: none;">
-      💚
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Mít sấy không đường</h3>
-    <div class="price-tag text-xl mb-4">
-     58.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(10);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('sugarFree','Mít sấy không đường',58000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(10);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="healthy" data-product-id="11">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy siêu thực phẩm">
-     <div class="product-fallback text-6xl" style="display: none;">
-      ⚡
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Mít sấy siêu thực phẩm</h3>
-    <div class="price-tag text-xl mb-4">
-     75.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(11);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('superfood','Mít sấy siêu thực phẩm',75000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(11);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-   <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="healthy" data-product-id="12">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy protein">
-     <div class="product-fallback text-6xl" style="display: none;">
-      💪
-     </div>
-    </div>
-    <h3 class="font-bold text-lg mb-3 text-slate-800">Mít sấy protein</h3>
-    <div class="price-tag text-xl mb-4">
-     82.000đ
-    </div>
-    <div class="flex flex-col gap-2 w-full"><button class="btn-primary w-full text-white font-semibold px-4 py-3 rounded-lg" onclick="viewProductDetail(12);"> 👁️ Xem Chi Tiết </button>
-     <div class="flex gap-2"><button class="btn-secondary flex-1 text-amber-600 font-semibold px-3 py-2 rounded-lg text-sm" onclick="addToCart('protein','Mít sấy protein',82000);"> 🛒 Thêm vào giỏ </button> <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg text-sm transition-all duration-300" onclick="viewProductDetail(12);"> 📖 Xem thêm </button>
-     </div>
-    </div>
-   </div>
-  </main>
-  <script>
-    // Tạo ngôi sao và thiên thạch
-    function createCosmicBackground() {
-      const starsContainer = document.getElementById('stars-container');
-      
-      // Tạo ngôi sao
-      for (let i = 0; i < 150; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.width = Math.random() * 4 + 1 + 'px';
-        star.style.height = star.style.width;
-        star.style.animationDelay = Math.random() * 2 + 's';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        
-        // Màu sắc ngôi sao đa dạng
-        const colors = ['#ffffff', '#e0e7ff', '#ddd6fe', '#fef3c7', '#fecaca'];
-        star.style.background = colors[Math.floor(Math.random() * colors.length)];
-        star.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px ${colors[Math.floor(Math.random() * colors.length)]}`;
-        
-        starsContainer.appendChild(star);
+      if (!product) {
+        container.innerHTML = '<div class="error">Không tìm thấy sản phẩm!</div>';
+        return;
       }
       
-      // Tạo galaxy particles
-      for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'galaxy-particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.width = Math.random() * 8 + 4 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.animationDelay = Math.random() * 6 + 's';
-        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-        starsContainer.appendChild(particle);
+      const images = await getProductImages(productId);
+      
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.content = `${product.name} - ${product.price}. ${product.description.substring(0, 150)}...`;
+      }
+      document.title = `${product.name} - Chi tiết sản phẩm`;
+      
+      container.innerHTML = createProductHTML(product, images);
+      
+      document.getElementById('buy-btn').addEventListener('click', () => {
+        const quantity = document.getElementById('quantity').value;
+        const message = document.createElement('div');
+        message.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 15px 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index: 1000; font-weight: bold;';
+        message.textContent = `Đã thêm ${quantity} sản phẩm vào giỏ hàng!`;
+        document.body.appendChild(message);
+        setTimeout(() => message.remove(), 3000);
+      });
+      
+      document.getElementById('cart-btn').addEventListener('click', () => {
+        const quantity = document.getElementById('quantity').value;
+        const message = document.createElement('div');
+        message.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); color: white; padding: 15px 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index: 1000; font-weight: bold;';
+        message.textContent = `Đã thêm ${quantity} sản phẩm vào giỏ hàng!`;
+        document.body.appendChild(message);
+        setTimeout(() => message.remove(), 3000);
+      });
+    }
+
+    async function onConfigChange(newConfig) {
+      config = { ...config, ...newConfig };
+      
+      const storeName = document.getElementById('store-name');
+      if (storeName) {
+        storeName.textContent = config.store_name || defaultConfig.store_name;
       }
       
-      // Tạo nebula clouds
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          const nebula = document.createElement('div');
-          nebula.className = 'nebula';
-          nebula.style.top = Math.random() * 80 + '%';
-          nebula.style.width = Math.random() * 200 + 100 + 'px';
-          nebula.style.height = Math.random() * 150 + 80 + 'px';
-          nebula.style.animationDelay = Math.random() * 10 + 's';
-          starsContainer.appendChild(nebula);
-          
-          setTimeout(() => {
-            if (nebula.parentNode) {
-              nebula.parentNode.removeChild(nebula);
+      const buyBtn = document.getElementById('buy-btn');
+      if (buyBtn) {
+        buyBtn.textContent = config.buy_button_text || defaultConfig.buy_button_text;
+      }
+      
+      const cartBtn = document.getElementById('cart-btn');
+      if (cartBtn) {
+        cartBtn.textContent = config.cart_button_text || defaultConfig.cart_button_text;
+      }
+      
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const buttonTextColor = config.button_text_color || defaultConfig.button_text_color;
+      
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #FFE4B5 100%)`;
+      
+      const header = document.querySelector('.header');
+      if (header) {
+        header.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+      }
+      
+      const price = document.querySelector('.price');
+      if (price) {
+        price.style.color = primaryColor;
+      }
+      
+      const description = document.querySelector('.description');
+      if (description) {
+        description.style.background = backgroundColor;
+        description.style.borderLeftColor = primaryColor;
+      }
+      
+      document.querySelectorAll('.quantity-btn').forEach(btn => {
+        btn.style.borderColor = primaryColor;
+        btn.style.color = primaryColor;
+      });
+      
+      document.querySelectorAll('.quantity-input').forEach(input => {
+        input.style.borderColor = primaryColor;
+      });
+      
+      const btnBuy = document.querySelector('.btn-buy');
+      if (btnBuy) {
+        btnBuy.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+        btnBuy.style.color = buttonTextColor;
+      }
+      
+      const btnCart = document.querySelector('.btn-cart');
+      if (btnCart) {
+        btnCart.style.color = primaryColor;
+        btnCart.style.borderColor = primaryColor;
+      }
+      
+      const backLink = document.querySelector('.back-link');
+      if (backLink) {
+        backLink.style.color = primaryColor;
+      }
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            },
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.button_text_color || defaultConfig.button_text_color,
+              set: (value) => {
+                config.button_text_color = value;
+                window.elementSdk.setConfig({ button_text_color: value });
+              }
             }
-          }, 25000);
-        }, i * 5000);
-      }
-      
-      // Tạo thiên thạch với ảnh thật
-      function createMeteor() {
-        const meteor = document.createElement('div');
-        meteor.className = 'meteor';
-        meteor.style.left = Math.random() * 100 + '%';
-        meteor.style.top = Math.random() * 100 + '%';
-        
-        // Thử load ảnh thiên thạch
-        meteor.style.backgroundImage = `url('anhsanpham/anhthienthach.png')`;
-        meteor.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        meteor.style.animationDelay = Math.random() * 5 + 's';
-        
-        // Fallback nếu không load được ảnh PNG
-        const testImg = new Image();
-        testImg.onload = function() {
-          meteor.style.backgroundImage = `url('anhsanpham/anhthienthach.png')`;
-        };
-        testImg.onerror = function() {
-          // Thử JPG nếu PNG không có
-          const testImg2 = new Image();
-          testImg2.onload = function() {
-            meteor.style.backgroundImage = `url('anhsanpham/anhthienthach.jpg')`;
-          };
-          testImg2.onerror = function() {
-            // Fallback emoji nếu không có ảnh nào
-            meteor.innerHTML = '☄️';
-            meteor.style.fontSize = '40px';
-            meteor.style.display = 'flex';
-            meteor.style.alignItems = 'center';
-            meteor.style.justifyContent = 'center';
-          };
-          testImg2.src = 'anhsanpham/anhthienthach.jpg';
-        };
-        testImg.src = 'anhsanpham/anhthienthach.png';
-        
-        starsContainer.appendChild(meteor);
-        
-        // Xóa thiên thạch sau khi animation kết thúc
-        setTimeout(() => {
-          if (meteor.parentNode) {
-            meteor.parentNode.removeChild(meteor);
-          }
-        }, 8000);
-      }
-      
-      // Tạo thiên thạch liên tục
-      setInterval(createMeteor, 800); // Tạo thiên thạch mỗi 0.8 giây
-      
-      // Tạo một vài thiên thạch ngay lập tức
-      for (let i = 0; i < 5; i++) {
-        setTimeout(createMeteor, i * 200);
-      }
-    }
-
-    // Hàm lọc sản phẩm theo danh mục
-    function filterProducts(category) {
-      const products = document.querySelectorAll('.product-card');
-      const buttons = document.querySelectorAll('.category-btn');
-      
-      // Cập nhật trạng thái nút active
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      
-      // Hiển thị/ẩn sản phẩm với hiệu ứng
-      products.forEach((product, index) => {
-        if (category === 'all' || product.dataset.category === category) {
-          product.style.display = 'flex';
-          product.style.opacity = '0';
-          product.style.transform = 'translateY(30px)';
-          setTimeout(() => {
-            product.style.transition = 'all 0.5s ease';
-            product.style.opacity = '1';
-            product.style.transform = 'translateY(0)';
-          }, index * 100);
-        } else {
-          product.style.opacity = '0';
-          product.style.transform = 'translateY(-30px)';
-          setTimeout(() => {
-            product.style.display = 'none';
-          }, 300);
-        }
-      });
-    }
-    
-    // Hàm tự động tìm và load ảnh sản phẩm
-    function loadProductImages() {
-      const productCards = document.querySelectorAll('.product-card[data-product-id]');
-      
-      productCards.forEach(card => {
-        const productId = card.dataset.productId;
-        const img = card.querySelector('.product-image');
-        const fallback = card.querySelector('.product-fallback');
-        
-        // Thử load ảnh PNG trước
-        const testPng = new Image();
-        testPng.onload = function() {
-          img.src = `anhsanpham/${productId}.png`;
-          img.style.display = 'block';
-          fallback.style.display = 'none';
-        };
-        
-        testPng.onerror = function() {
-          // Nếu PNG không có, thử JPG
-          const testJpg = new Image();
-          testJpg.onload = function() {
-            img.src = `anhsanpham/${productId}.jpg`;
-            img.style.display = 'block';
-            fallback.style.display = 'none';
-          };
-          
-          testJpg.onerror = function() {
-            // Nếu cả PNG và JPG đều không có, hiển thị emoji fallback
-            img.style.display = 'none';
-            fallback.style.display = 'flex';
-          };
-          
-          testJpg.src = `anhsanpham/${productId}.jpg`;
-        };
-        
-        testPng.src = `anhsanpham/${productId}.png`;
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["store_name", config.store_name || defaultConfig.store_name],
+          ["buy_button_text", config.buy_button_text || defaultConfig.buy_button_text],
+          ["cart_button_text", config.cart_button_text || defaultConfig.cart_button_text]
+        ])
       });
     }
 
-    // Hàm chuyển đến trang chi tiết sản phẩm
-    function viewProductDetail(productId) {
-      window.location.href = `thongtinsanpham.html?id=${productId}`;
-    }
-
-    // Khởi tạo khi trang load
-    document.addEventListener('DOMContentLoaded', function() {
-      createCosmicBackground();
-      loadProductImages();
-    });
-  </script><!-- Gọi file dùng chung (tự động tạo header + giỏ hàng + MXH) -->
-  <script src="global-cart.js"></script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998a381ec6380655',t:'MTc2MjE1NTU4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    loadProduct();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998a42e760a0b4c7',t:'MTc2MjE1NjAyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
