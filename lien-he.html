@@ -268,6 +268,39 @@
       window.scrollTo({ top: document.getElementById('contact-form').offsetTop - 20, behavior: 'smooth' });
     });
   </script>
+  <script>
+  // ... giữ nguyên code phía trên
+
+  // GỬI KHÔNG PRE-FLIGHT: ưu tiên sendBeacon, fallback fetch form-encoded
+  async function syncToSheet(data) {
+    // 1) Thử fire-and-forget bằng sendBeacon (ổn định, không CORS)
+    try {
+      const payload = new URLSearchParams(data).toString();
+      const ok = navigator.sendBeacon(
+        SHEET_WEBAPP_URL,
+        new Blob([payload], { type: 'application/x-www-form-urlencoded;charset=UTF-8' })
+      );
+      if (ok) return true;
+    } catch (_) {}
+
+    // 2) Fallback: fetch POST form-encoded, KHÔNG set headers
+    try {
+      const body = new URLSearchParams();
+      Object.entries(data).forEach(([k, v]) => body.append(k, v));
+      await fetch(SHEET_WEBAPP_URL, {
+        method: 'POST',
+        body,          // không đặt headers để tránh preflight
+        mode: 'no-cors'// an toàn hơn khi test local; ta không cần đọc response
+      });
+      return true;
+    } catch (err) {
+      console.error('Sheet sync failed', err);
+      return false;
+    }
+  }
+
+  // ... giữ nguyên phần submit handler/cta/init
+</script>
   <script src="https://cdn.tailwindcss.com"></script>
 <script src="global-cart.js"></script>
 </body>
