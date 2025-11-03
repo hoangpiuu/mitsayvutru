@@ -1,432 +1,284 @@
 <!doctype html>
-<html lang="vi" class="h-full">
+<html lang="vi">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mít Sấy Vũ Trụ - Liên Hệ Bán Sỉ</title>
+  <title>Liên hệ Bán Sỉ – Mít Sấy Vũ Trụ</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <script src="/_sdk/data_sdk.js"></script>
   <style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
-        
-        .cosmic-bg {
-            background: radial-gradient(ellipse at center, #1a0b3d 0%, #0f051a 50%, #000000 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .jackfruit-meteor {
-            position: absolute;
-            width: 60px;
-            height: 40px;
-            background: linear-gradient(135deg, #ffd700 0%, #ffb347 50%, #ff8c00 100%);
-            border-radius: 50% 20% 50% 20%;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.3);
-            animation: meteorFall 8s linear infinite;
-            opacity: 0.8;
-        }
-        
-        .jackfruit-meteor::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 60%;
-            background: radial-gradient(circle, #fff700 0%, transparent 70%);
-            border-radius: inherit;
-        }
-        
-        .jackfruit-meteor::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 100%;
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent 0%, #ffd700 50%, transparent 100%);
-            transform: translateY(-50%);
-            opacity: 0.7;
-        }
-        
-        @keyframes meteorFall {
-            0% {
-                transform: translateX(-100px) translateY(-100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        .cosmic-particles {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #ffd700;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
-            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
-        }
-        
-        .glow-text {
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.2);
-        }
-        
-        .form-glow {
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1), inset 0 0 20px rgba(255, 215, 0, 0.05);
-            backdrop-filter: blur(10px);
-        }
-        
-        .input-glow:focus {
-            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-        
-        .button-glow {
-            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .button-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 8px 25px rgba(0, 0, 0, 0.4);
-        }
-        
-        .success-message {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.9) 0%, rgba(22, 163, 74, 0.9) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-        }
-    </style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFE0B2 100%);
+    }
+    
+    .card-shadow {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      animation: slideIn 0.3s ease;
+      max-width: 90%;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .success-toast {
+      background-color: #10B981;
+      color: white;
+    }
+    
+    .error-toast {
+      background-color: #EF4444;
+      color: white;
+    }
+  </style>
   <style>@view-transition { navigation: auto; }</style>
  </head>
- <body class="h-full cosmic-bg font-sans">
-  <main class="min-h-full relative"><!-- Animated Jackfruit Meteors -->
-   <div id="meteors-container" class="absolute inset-0 pointer-events-none"></div><!-- Floating Cosmic Particles -->
-   <div id="particles-container" class="absolute inset-0 pointer-events-none"></div><!-- Hero Section -->
-   <header class="relative z-10 text-center pt-20 pb-16">
-    <div class="container mx-auto px-6">
-     <h1 id="hero-title" class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 glow-text mb-4" style="font-family: 'Orbitron', monospace;">LIÊN HỆ BÁN SỈ</h1>
-     <p id="brand-name" class="text-2xl md:text-3xl text-yellow-200 font-light tracking-wider glow-text" style="font-family: 'Orbitron', monospace;">MÍT SẤY VŨ TRỤ</p>
-     <div class="w-32 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mt-8"></div>
-    </div>
-   </header><!-- Contact Form Section -->
-   <section class="relative z-10 pb-20">
-    <div class="container mx-auto px-6 max-w-2xl">
-     <div class="form-glow bg-black bg-opacity-30 rounded-3xl p-8 md:p-12 border border-yellow-400 border-opacity-20">
-      <form id="contact-form" class="space-y-6">
-       <div class="grid md:grid-cols-2 gap-6">
-        <div><label for="name" id="name-label" class="block text-yellow-200 text-sm font-medium mb-2">Họ và tên</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-black bg-opacity-50 border border-yellow-400 border-opacity-30 rounded-xl text-white placeholder-gray-400 focus:outline-none input-glow transition-all duration-300" placeholder="Nhập họ và tên của bạn">
-        </div>
-        <div><label for="email" id="email-label" class="block text-yellow-200 text-sm font-medium mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-black bg-opacity-50 border border-yellow-400 border-opacity-30 rounded-xl text-white placeholder-gray-400 focus:outline-none input-glow transition-all duration-300" placeholder="email@example.com">
-        </div>
+ <body class="gradient-bg">
+  <div class="min-h-full py-8 px-4">
+   <div class="max-w-6xl mx-auto"><!-- Header Section -->
+    <div class="text-center mb-12">
+     <div class="inline-block mb-4"><img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" class="h-20 w-auto mx-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="text-6xl" style="display: none;">
+       🪐
+      </div>
+     </div>
+     <h1 id="page-title" class="text-4xl md:text-5xl font-bold mb-4" style="color: #F57C00;">Liên hệ Bán Sỉ – Mít Sấy Vũ Trụ</h1>
+     <p id="intro-text" class="text-lg md:text-xl max-w-3xl mx-auto" style="color: #5D4037;">Mít Sấy Vũ Trụ chuyên cung cấp mít sấy giòn – thơm ngon – chuẩn vị Việt, được sản xuất từ nguồn mít tươi sạch, không chất bảo quản. Chúng tôi luôn mong muốn hợp tác lâu dài với các đại lý, cửa hàng đặc sản, siêu thị mini và nhà phân phối trên toàn quốc.</p>
+    </div><!-- Contact Info Cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+     <div class="bg-white rounded-xl p-6 card-shadow hover-lift text-center">
+      <div class="icon-circle mx-auto mb-3" style="background-color: #FFE0B2;"><span>☎️</span>
+      </div>
+      <h3 class="font-semibold mb-2" style="color: #F57C00;">Hotline/Zalo</h3>
+      <p id="hotline" class="text-lg font-bold" style="color: #5D4037;">0909 999 999</p>
+     </div>
+     <div class="bg-white rounded-xl p-6 card-shadow hover-lift text-center">
+      <div class="icon-circle mx-auto mb-3" style="background-color: #FFE0B2;"><span>📧</span>
+      </div>
+      <h3 class="font-semibold mb-2" style="color: #F57C00;">Email</h3>
+      <p id="email-contact" class="text-lg font-bold break-all" style="color: #5D4037;">lienhe@mitsayvutru.vn</p>
+     </div>
+     <div class="bg-white rounded-xl p-6 card-shadow hover-lift text-center">
+      <div class="icon-circle mx-auto mb-3" style="background-color: #FFE0B2;"><span>📍</span>
+      </div>
+      <h3 class="font-semibold mb-2" style="color: #F57C00;">Địa chỉ kho</h3>
+      <p id="address" class="text-sm" style="color: #5D4037;">123 Đường Sao Băng, Quận Vũ Trụ, TP. Hồ Chí Minh</p>
+     </div>
+     <div class="bg-white rounded-xl p-6 card-shadow hover-lift text-center">
+      <div class="icon-circle mx-auto mb-3" style="background-color: #FFE0B2;"><span>🕐</span>
+      </div>
+      <h3 class="font-semibold mb-2" style="color: #F57C00;">Giờ làm việc</h3>
+      <p id="working-hours" class="text-sm" style="color: #5D4037;">Thứ 2 – Thứ 7 | 8h00 – 17h30</p>
+     </div>
+    </div><!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-2 gap-8 mb-12"><!-- Contact Form -->
+     <div class="bg-white rounded-xl p-8 card-shadow">
+      <h2 class="text-2xl font-bold mb-6" style="color: #F57C00;">💬 Form Liên Hệ Nhanh</h2>
+      <form id="contact-form">
+       <div class="mb-4"><label for="name" class="block text-sm font-semibold mb-2" style="color: #5D4037;">Họ và tên *</label> <input type="text" id="name" required class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-orange-400 transition-colors" style="border-color: #FFE0B2;" placeholder="Nguyễn Văn A">
        </div>
-       <div><label for="company" id="company-label" class="block text-yellow-200 text-sm font-medium mb-2">Công ty</label> <input type="text" id="company" name="company" required class="w-full px-4 py-3 bg-black bg-opacity-50 border border-yellow-400 border-opacity-30 rounded-xl text-white placeholder-gray-400 focus:outline-none input-glow transition-all duration-300" placeholder="Tên công ty của bạn">
+       <div class="mb-4"><label for="phone" class="block text-sm font-semibold mb-2" style="color: #5D4037;">Số điện thoại *</label> <input type="tel" id="phone" required class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-orange-400 transition-colors" style="border-color: #FFE0B2;" placeholder="0909 999 999">
        </div>
-       <div><label for="message" id="message-label" class="block text-yellow-200 text-sm font-medium mb-2">Tin nhắn</label> <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-black bg-opacity-50 border border-yellow-400 border-opacity-30 rounded-xl text-white placeholder-gray-400 focus:outline-none input-glow transition-all duration-300 resize-none" placeholder="Mô tả nhu cầu bán sỉ của bạn..."></textarea>
-       </div><button type="submit" id="submit-btn" class="w-full py-4 px-8 button-glow text-black font-bold text-lg rounded-xl transition-all duration-300 transform hover:scale-105" style="font-family: 'Orbitron', monospace;"> <span id="button-text">Kết nối ngay</span> <span id="loading-text" class="hidden">Đang gửi...</span> </button>
-      </form><!-- Success Message -->
-      <div id="success-message" class="hidden mt-6 p-4 rounded-xl success-message">
-       <div class="flex items-center">
-        <svg class="w-6 h-6 text-white mr-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
-        <p class="text-white font-medium">Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm nhất có thể.</p>
+       <div class="mb-4"><label for="email" class="block text-sm font-semibold mb-2" style="color: #5D4037;">Email *</label> <input type="email" id="email" required class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-orange-400 transition-colors" style="border-color: #FFE0B2;" placeholder="email@example.com">
+       </div>
+       <div class="mb-4"><label for="wholesale-needs" class="block text-sm font-semibold mb-2" style="color: #5D4037;">Nhu cầu nhập sỉ *</label> <textarea id="wholesale-needs" required rows="3" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-orange-400 transition-colors" style="border-color: #FFE0B2;" placeholder="Số lượng, khu vực, yêu cầu đặc biệt..."></textarea>
+       </div>
+       <div class="mb-6"><label for="notes" class="block text-sm font-semibold mb-2" style="color: #5D4037;">Ghi chú thêm</label> <textarea id="notes" rows="2" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-orange-400 transition-colors" style="border-color: #FFE0B2;" placeholder="Thông tin bổ sung (nếu có)"></textarea>
+       </div><button type="submit" id="submit-btn" class="w-full py-4 rounded-lg font-bold text-white text-lg transition-all hover:shadow-lg" style="background-color: #F57C00;"> <span id="submit-button-text">Gửi yêu cầu báo giá sỉ</span> </button>
+      </form>
+     </div><!-- Offers Section -->
+     <div>
+      <div class="bg-white rounded-xl p-8 card-shadow mb-6">
+       <h2 class="text-2xl font-bold mb-6" style="color: #F57C00;">🚀 Ưu Đãi Dành Cho Đối Tác Mới</h2>
+       <div class="space-y-4 mb-6">
+        <div class="flex items-start"><span class="text-2xl mr-3">✨</span>
+         <div>
+          <h3 class="font-semibold mb-1" style="color: #5D4037;">Giảm 10% đơn đầu tiên</h3>
+          <p class="text-sm" style="color: #8D6E63;">Áp dụng cho đơn hàng sỉ đầu tiên của bạn</p>
+         </div>
+        </div>
+        <div class="flex items-start"><span class="text-2xl mr-3">🚚</span>
+         <div>
+          <h3 class="font-semibold mb-1" style="color: #5D4037;">Miễn phí vận chuyển</h3>
+          <p class="text-sm" style="color: #8D6E63;">Toàn quốc cho đơn từ 5 thùng trở lên</p>
+         </div>
+        </div>
+        <div class="flex items-start"><span class="text-2xl mr-3">🎁</span>
+         <div>
+          <h3 class="font-semibold mb-1" style="color: #5D4037;">Tặng combo sản phẩm mẫu</h3>
+          <p class="text-sm" style="color: #8D6E63;">Khi đăng ký hợp tác trong tháng này</p>
+         </div>
+        </div>
+       </div><button id="cta-btn" class="w-full py-4 rounded-lg font-bold text-white text-lg transition-all hover:shadow-lg" style="background-color: #FF6F00;"> <span id="cta-button-text">👉 Nhận báo giá sỉ ngay</span> </button>
+      </div><!-- Social Links -->
+      <div class="bg-white rounded-xl p-8 card-shadow">
+       <h3 class="text-xl font-bold mb-4" style="color: #F57C00;">📱 Kết Nối Với Chúng Tôi</h3>
+       <div class="grid grid-cols-2 gap-4"><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center py-3 rounded-lg font-semibold transition-all hover-lift" style="background-color: #E3F2FD; color: #1976D2;"> <span class="mr-2">📘</span> Facebook </a> <a href="https://zalo.me" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center py-3 rounded-lg font-semibold transition-all hover-lift" style="background-color: #E8F5E9; color: #388E3C;"> <span class="mr-2">💬</span> Zalo </a> <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center py-3 rounded-lg font-semibold transition-all hover-lift" style="background-color: #FCE4EC; color: #C2185B;"> <span class="mr-2">🎵</span> TikTok </a> <a href="https://shopee.vn" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center py-3 rounded-lg font-semibold transition-all hover-lift" style="background-color: #FFF3E0; color: #F57C00;"> <span class="mr-2">🛒</span> Shopee </a>
        </div>
       </div>
      </div>
+    </div><!-- Footer -->
+    <div class="text-center py-6">
+     <p class="text-sm" style="color: #8D6E63;">© 2024 Mít Sấy Vũ Trụ - Đặc sản Việt, hương vị vũ trụ 🌟</p>
     </div>
-   </section>
-  </main>
+   </div>
+  </div>
   <script>
-        // Default configuration
-        const defaultConfig = {
-            hero_title: "LIÊN HỆ BÁN SỈ",
-            brand_name: "MÍT SẤY VŨ TRỤ",
-            name_label: "Họ và tên",
-            email_label: "Email",
-            company_label: "Công ty",
-            message_label: "Tin nhắn",
-            button_text: "Kết nối ngay",
-            background_color: "#1a0b3d",
-            surface_color: "#000000",
-            text_color: "#ffd700",
-            primary_action_color: "#ffd700",
-            secondary_action_color: "#ffb347",
-            font_family: "Orbitron",
-            font_size: 16
-        };
+    const defaultConfig = {
+      page_title: "Liên hệ Bán Sỉ – Mít Sấy Vũ Trụ",
+      intro_text: "Mít Sấy Vũ Trụ chuyên cung cấp mít sấy giòn – thơm ngon – chuẩn vị Việt, được sản xuất từ nguồn mít tươi sạch, không chất bảo quản. Chúng tôi luôn mong muốn hợp tác lâu dài với các đại lý, cửa hàng đặc sản, siêu thị mini và nhà phân phối trên toàn quốc.",
+      hotline: "0909 999 999",
+      email_contact: "lienhe@mitsayvutru.vn",
+      address: "123 Đường Sao Băng, Quận Vũ Trụ, TP. Hồ Chí Minh",
+      working_hours: "Thứ 2 – Thứ 7 | 8h00 – 17h30",
+      submit_button_text: "Gửi yêu cầu báo giá sỉ",
+      cta_button_text: "👉 Nhận báo giá sỉ ngay"
+    };
 
-        let currentData = [];
+    const dataHandler = {
+      onDataChanged(data) {
+        // This is a write-only form, no need to display data
+      }
+    };
 
-        // Data handler for form submissions
-        const dataHandler = {
-            onDataChanged(data) {
-                currentData = data;
-                // Update UI if needed - for this contact form, we just store the data
-            }
-        };
-
-        // Initialize Data SDK
-        async function initializeDataSdk() {
-            if (window.dataSdk) {
-                const result = await window.dataSdk.init(dataHandler);
-                if (!result.isOk) {
-                    console.error("Failed to initialize data SDK");
-                }
-            }
+    async function initializeApp() {
+      if (window.dataSdk) {
+        const initResult = await window.dataSdk.init(dataHandler);
+        if (!initResult.isOk) {
+          console.error("Failed to initialize data SDK");
         }
+      }
 
-        // Form submission handler
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            if (currentData.length >= 999) {
-                showMessage("Đã đạt giới hạn 999 liên hệ. Vui lòng thử lại sau.", "error");
-                return;
-            }
-
-            const formData = new FormData(event.target);
-            const submitData = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                company: formData.get('company'),
-                message: formData.get('message'),
-                submitted_at: new Date().toISOString()
-            };
-
-            // Show loading state
-            const submitBtn = document.getElementById('submit-btn');
-            const buttonText = document.getElementById('button-text');
-            const loadingText = document.getElementById('loading-text');
-            
-            submitBtn.disabled = true;
-            buttonText.classList.add('hidden');
-            loadingText.classList.remove('hidden');
-
-            try {
-                if (window.dataSdk) {
-                    const result = await window.dataSdk.create(submitData);
-                    
-                    if (result.isOk) {
-                        // Show success message
-                        document.getElementById('success-message').classList.remove('hidden');
-                        document.getElementById('contact-form').reset();
-                    } else {
-                        showMessage("Có lỗi xảy ra. Vui lòng thử lại.", "error");
-                    }
-                }
-            } catch (error) {
-                showMessage("Có lỗi xảy ra. Vui lòng thử lại.", "error");
-            } finally {
-                // Reset button state
-                submitBtn.disabled = false;
-                buttonText.classList.remove('hidden');
-                loadingText.classList.add('hidden');
-            }
-        }
-
-        function showMessage(text, type) {
-            // Create temporary message element
-            const message = document.createElement('div');
-            message.className = `fixed top-4 right-4 p-4 rounded-xl z-50 ${type === 'error' ? 'bg-red-600' : 'bg-green-600'} text-white`;
-            message.textContent = text;
-            document.body.appendChild(message);
-            
-            setTimeout(() => {
-                message.remove();
-            }, 5000);
-        }
-
-        // Create animated jackfruit meteors
-        function createMeteor() {
-            const meteor = document.createElement('div');
-            meteor.className = 'jackfruit-meteor';
-            
-            // Random starting position and animation delay
-            const startY = Math.random() * -200 - 100;
-            const startX = Math.random() * -200 - 100;
-            const animationDelay = Math.random() * 8;
-            const animationDuration = 8 + Math.random() * 4;
-            
-            meteor.style.left = startX + 'px';
-            meteor.style.top = startY + 'px';
-            meteor.style.animationDelay = animationDelay + 's';
-            meteor.style.animationDuration = animationDuration + 's';
-            
-            return meteor;
-        }
-
-        // Create floating particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'cosmic-particles';
-            
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            const animationDelay = Math.random() * 6;
-            
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-            particle.style.animationDelay = animationDelay + 's';
-            
-            return particle;
-        }
-
-        // Initialize animations
-        function initializeAnimations() {
-            const meteorsContainer = document.getElementById('meteors-container');
-            const particlesContainer = document.getElementById('particles-container');
-            
-            // Create meteors
-            for (let i = 0; i < 8; i++) {
-                meteorsContainer.appendChild(createMeteor());
-            }
-            
-            // Create particles
-            for (let i = 0; i < 50; i++) {
-                particlesContainer.appendChild(createParticle());
-            }
-        }
-
-        // Element SDK configuration
-        async function onConfigChange(config) {
-            const customFont = config.font_family || defaultConfig.font_family;
-            const baseSize = config.font_size || defaultConfig.font_size;
-            const baseFontStack = 'Arial, sans-serif';
-
-            // Update text content
-            document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
-            document.getElementById('brand-name').textContent = config.brand_name || defaultConfig.brand_name;
-            document.getElementById('name-label').textContent = config.name_label || defaultConfig.name_label;
-            document.getElementById('email-label').textContent = config.email_label || defaultConfig.email_label;
-            document.getElementById('company-label').textContent = config.company_label || defaultConfig.company_label;
-            document.getElementById('message-label').textContent = config.message_label || defaultConfig.message_label;
-            document.getElementById('button-text').textContent = config.button_text || defaultConfig.button_text;
-
-            // Update colors
-            const backgroundColor = config.background_color || defaultConfig.background_color;
-            const surfaceColor = config.surface_color || defaultConfig.surface_color;
-            const textColor = config.text_color || defaultConfig.text_color;
-            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
-            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
-
-            document.body.style.background = `radial-gradient(ellipse at center, ${backgroundColor} 0%, ${surfaceColor} 50%, #000000 100%)`;
-            
-            // Update fonts
-            const heroTitle = document.getElementById('hero-title');
-            const brandName = document.getElementById('brand-name');
-            const submitBtn = document.getElementById('submit-btn');
-            
-            heroTitle.style.fontFamily = `${customFont}, ${baseFontStack}`;
-            heroTitle.style.fontSize = `${baseSize * 4}px`;
-            
-            brandName.style.fontFamily = `${customFont}, ${baseFontStack}`;
-            brandName.style.fontSize = `${baseSize * 1.5}px`;
-            
-            submitBtn.style.fontFamily = `${customFont}, ${baseFontStack}`;
-            submitBtn.style.fontSize = `${baseSize * 1.125}px`;
-        }
-
-        // Initialize Element SDK
-        async function initializeElementSdk() {
-            if (window.elementSdk) {
-                await window.elementSdk.init({
-                    defaultConfig,
-                    onConfigChange,
-                    mapToCapabilities: (config) => ({
-                        recolorables: [
-                            {
-                                get: () => config.background_color || defaultConfig.background_color,
-                                set: (value) => {
-                                    config.background_color = value;
-                                    window.elementSdk.setConfig({ background_color: value });
-                                }
-                            },
-                            {
-                                get: () => config.surface_color || defaultConfig.surface_color,
-                                set: (value) => {
-                                    config.surface_color = value;
-                                    window.elementSdk.setConfig({ surface_color: value });
-                                }
-                            },
-                            {
-                                get: () => config.text_color || defaultConfig.text_color,
-                                set: (value) => {
-                                    config.text_color = value;
-                                    window.elementSdk.setConfig({ text_color: value });
-                                }
-                            },
-                            {
-                                get: () => config.primary_action_color || defaultConfig.primary_action_color,
-                                set: (value) => {
-                                    config.primary_action_color = value;
-                                    window.elementSdk.setConfig({ primary_action_color: value });
-                                }
-                            },
-                            {
-                                get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
-                                set: (value) => {
-                                    config.secondary_action_color = value;
-                                    window.elementSdk.setConfig({ secondary_action_color: value });
-                                }
-                            }
-                        ],
-                        borderables: [],
-                        fontEditable: {
-                            get: () => config.font_family || defaultConfig.font_family,
-                            set: (value) => {
-                                config.font_family = value;
-                                window.elementSdk.setConfig({ font_family: value });
-                            }
-                        },
-                        fontSizeable: {
-                            get: () => config.font_size || defaultConfig.font_size,
-                            set: (value) => {
-                                config.font_size = value;
-                                window.elementSdk.setConfig({ font_size: value });
-                            }
-                        }
-                    }),
-                    mapToEditPanelValues: (config) => new Map([
-                        ["hero_title", config.hero_title || defaultConfig.hero_title],
-                        ["brand_name", config.brand_name || defaultConfig.brand_name],
-                        ["name_label", config.name_label || defaultConfig.name_label],
-                        ["email_label", config.email_label || defaultConfig.email_label],
-                        ["company_label", config.company_label || defaultConfig.company_label],
-                        ["message_label", config.message_label || defaultConfig.message_label],
-                        ["button_text", config.button_text || defaultConfig.button_text]
-                    ])
-                });
-            }
-        }
-
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', async function() {
-            await initializeDataSdk();
-            await initializeElementSdk();
-            initializeAnimations();
-            
-            // Add form submit handler
-            document.getElementById('contact-form').addEventListener('submit', handleFormSubmit);
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange: async (config) => {
+            document.getElementById('page-title').textContent = config.page_title || defaultConfig.page_title;
+            document.getElementById('intro-text').textContent = config.intro_text || defaultConfig.intro_text;
+            document.getElementById('hotline').textContent = config.hotline || defaultConfig.hotline;
+            document.getElementById('email-contact').textContent = config.email_contact || defaultConfig.email_contact;
+            document.getElementById('address').textContent = config.address || defaultConfig.address;
+            document.getElementById('working-hours').textContent = config.working_hours || defaultConfig.working_hours;
+            document.getElementById('submit-button-text').textContent = config.submit_button_text || defaultConfig.submit_button_text;
+            document.getElementById('cta-button-text').textContent = config.cta_button_text || defaultConfig.cta_button_text;
+          },
+          mapToCapabilities: (config) => ({
+            recolorables: [],
+            borderables: [],
+            fontEditable: undefined,
+            fontSizeable: undefined
+          }),
+          mapToEditPanelValues: (config) => new Map([
+            ["page_title", config.page_title || defaultConfig.page_title],
+            ["intro_text", config.intro_text || defaultConfig.intro_text],
+            ["hotline", config.hotline || defaultConfig.hotline],
+            ["email_contact", config.email_contact || defaultConfig.email_contact],
+            ["address", config.address || defaultConfig.address],
+            ["working_hours", config.working_hours || defaultConfig.working_hours],
+            ["submit_button_text", config.submit_button_text || defaultConfig.submit_button_text],
+            ["cta_button_text", config.cta_button_text || defaultConfig.cta_button_text]
+          ])
         });
-    </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9979ea64703fd007',t:'MTc2MTk4NDYyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+      }
+    }
+
+    function showToast(message, isSuccess = true) {
+      const toast = document.createElement('div');
+      toast.className = `toast ${isSuccess ? 'success-toast' : 'error-toast'}`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Đang gửi...</span>';
+      submitBtn.style.opacity = '0.7';
+
+      const formData = {
+        id: Date.now().toString(),
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        wholesale_needs: document.getElementById('wholesale-needs').value,
+        notes: document.getElementById('notes').value,
+        submitted_at: new Date().toISOString()
+      };
+
+      if (window.dataSdk) {
+        const result = await window.dataSdk.create(formData);
+
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.opacity = '1';
+
+        if (result.isOk) {
+          showToast('✅ Gửi thành công! Chúng tôi sẽ liên hệ bạn sớm nhất.', true);
+          document.getElementById('contact-form').reset();
+        } else {
+          showToast('❌ Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua hotline.', false);
+        }
+      }
+    });
+
+    document.getElementById('cta-btn').addEventListener('click', () => {
+      document.getElementById('name').focus();
+      window.scrollTo({
+        top: document.getElementById('contact-form').offsetTop - 20,
+        behavior: 'smooth'
+      });
+    });
+
+    initializeApp();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998a86d5e4e1104f',t:'MTc2MjE1ODgwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
