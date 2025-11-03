@@ -259,7 +259,7 @@
   </div>
 
   <div class="max-w-7xl mx-auto px-4 mt-10 pt-6 border-t border-slate-600 text-center text-gray-400 text-sm">
-    © 202̀5Mít Sấy Vũ Trụ. Tất cả quyền được bảo lưu.
+    © 202̀5 Mít Sấy Vũ Trụ. Tất cả quyền được bảo lưu.
   </div>
 </footer>
     `);
