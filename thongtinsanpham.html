@@ -1,626 +1,245 @@
 <!doctype html>
 <html lang="vi">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Chi tiết sản phẩm - Mua sắm trực tuyến">
   <title>Chi tiết sản phẩm</title>
   <script src="/_sdk/element_sdk.js"></script>
-  <style>
-    body {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #FFF5E6 0%, #FFE4B5 100%);
-      min-height: 100%;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .header {
-      background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
-      padding: 20px;
-      text-align: center;
-      color: white;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-
-    .product-detail {
-      background: white;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-
-    .image-section {
-      position: relative;
-    }
-
-    .main-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .thumbnail-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
-    .thumbnail {
-      width: 100%;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 3px solid transparent;
-      transition: all 0.3s ease;
-    }
-
-    .thumbnail:hover {
-      border-color: #FF8C00;
-      transform: scale(1.05);
-    }
-
-    .thumbnail.active {
-      border-color: #FF8C00;
-    }
-
-    .info-section h1 {
-      color: #333;
-      font-size: 32px;
-      margin: 0 0 15px 0;
-    }
-
-    .price {
-      font-size: 36px;
-      color: #FF8C00;
-      font-weight: bold;
-      margin: 20px 0;
-    }
-
-    .description {
-      color: #666;
-      line-height: 1.8;
-      margin: 20px 0;
-      padding: 20px;
-      background: #FFF5E6;
-      border-radius: 10px;
-      border-left: 4px solid #FF8C00;
-    }
-
-    .quantity-section {
-      margin: 30px 0;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .quantity-label {
-      font-weight: bold;
-      color: #333;
-    }
-
-    .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .quantity-btn {
-      width: 40px;
-      height: 40px;
-      border: 2px solid #FF8C00;
-      background: white;
-      color: #FF8C00;
-      font-size: 20px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .quantity-btn:hover {
-      background: #FF8C00;
-      color: white;
-    }
-
-    .quantity-input {
-      width: 60px;
-      height: 40px;
-      text-align: center;
-      border: 2px solid #FF8C00;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      flex: 1;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .btn-buy {
-      background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
-      color: white;
-    }
-
-    .btn-buy:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(255,140,0,0.3);
-    }
-
-    .btn-cart {
-      background: white;
-      color: #FF8C00;
-      border: 2px solid #FF8C00;
-    }
-
-    .btn-cart:hover {
-      background: #FFF5E6;
-      transform: translateY(-2px);
-    }
-
-    .loading {
-      text-align: center;
-      padding: 60px;
-      font-size: 20px;
-      color: #666;
-    }
-
-    .error {
-      text-align: center;
-      padding: 60px;
-      color: #d32f2f;
-      font-size: 18px;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #FF8C00;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .back-link:hover {
-      color: #FFA500;
-      transform: translateX(-5px);
-    }
-
-    @media (max-width: 768px) {
-      .product-detail {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 20px;
-      }
-
-      .main-image {
-        height: 300px;
-      }
-
-      .info-section h1 {
-        font-size: 24px;
-      }
-
-      .price {
-        font-size: 28px;
-      }
-
-      .button-group {
-        flex-direction: column;
-      }
-    }
-  </style>
-  <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
-  <div class="container"><a href="sanpham.html" class="back-link" target="_blank" rel="noopener noreferrer">← Quay lại danh sách sản phẩm</a>
-   <div class="header">
-    <h1 id="store-name">Cửa Hàng Trái Cây Sấy</h1>
-   </div>
-   <div id="product-container">
-    <div class="loading">
-     Đang tải thông tin sản phẩm...
+  <style>
+    body{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,#FFF5E6 0%,#FFE4B5 100%);min-height:100%}
+    *{box-sizing:border-box}
+    .container{max-width:1200px;margin:0 auto;padding:20px}
+    .header{background:linear-gradient(135deg,#FF8C00 0%,#FFA500 100%);padding:20px;text-align:center;color:#fff;margin-bottom:30px;border-radius:10px;box-shadow:0 4px 6px rgba(0,0,0,.1)}
+    .header h1{margin:0;font-size:28px}
+    .product-detail{background:#fff;border-radius:15px;padding:30px;box-shadow:0 8px 16px rgba(0,0,0,.1);display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .image-section{position:relative}
+    .main-image{width:100%;height:400px;object-fit:cover;border-radius:10px;margin-bottom:15px}
+    .thumbnail-container{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .thumbnail{width:100%;height:80px;object-fit:cover;border-radius:8px;cursor:pointer;border:3px solid transparent;transition:all .3s ease}
+    .thumbnail:hover{border-color:#FF8C00;transform:scale(1.05)}
+    .thumbnail.active{border-color:#FF8C00}
+    .info-section h1{color:#333;font-size:32px;margin:0 0 15px 0}
+    .price{font-size:36px;color:#FF8C00;font-weight:700;margin:20px 0}
+    .description{color:#666;line-height:1.8;margin:20px 0;padding:20px;background:#FFF5E6;border-radius:10px;border-left:4px solid #FF8C00}
+    .quantity-section{margin:30px 0;display:flex;align-items:center;gap:15px}
+    .quantity-label{font-weight:700;color:#333}
+    .quantity-controls{display:flex;align-items:center;gap:10px}
+    .quantity-btn{width:40px;height:40px;border:2px solid #FF8C00;background:#fff;color:#FF8C00;font-size:20px;font-weight:700;border-radius:8px;cursor:pointer;transition:all .3s ease}
+    .quantity-btn:hover{background:#FF8C00;color:#fff}
+    .quantity-input{width:60px;height:40px;text-align:center;border:2px solid #FF8C00;border-radius:8px;font-size:18px;font-weight:700}
+    .button-group{display:flex;gap:15px;margin-top:30px}
+    .btn{flex:1;padding:15px 30px;border:none;border-radius:10px;font-size:18px;font-weight:700;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 6px rgba(0,0,0,.1)}
+    .btn-buy{background:linear-gradient(135deg,#FF8C00 0%,#FFA500 100%);color:#fff}
+    .btn-buy:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(255,140,0,.3)}
+    .btn-cart{background:#fff;color:#FF8C00;border:2px solid #FF8C00}
+    .btn-cart:hover{background:#FFF5E6;transform:translateY(-2px)}
+    .loading{text-align:center;padding:60px;font-size:20px;color:#666}
+    .error{text-align:center;padding:60px;color:#d32f2f;font-size:18px}
+    .back-link{display:inline-block;margin-bottom:20px;color:#FF8C00;text-decoration:none;font-weight:700;transition:all .3s ease}
+    .back-link:hover{color:#FFA500;transform:translateX(-5px)}
+    @media(max-width:768px){
+      .product-detail{grid-template-columns:1fr;gap:20px;padding:20px}
+      .main-image{height:300px}
+      .info-section h1{font-size:24px}
+      .price{font-size:28px}
+      .button-group{flex-direction:column}
+    }
+    .toast{position:fixed;top:20px;right:20px;color:#fff;padding:15px 25px;border-radius:10px;box-shadow:0 4px 6px rgba(0,0,0,.2);z-index:10000;font-weight:700}
+  </style>
+  <style>@view-transition{navigation:auto}</style>
+</head>
+<body>
+  <div class="container">
+    <a href="san-pham.html" class="back-link">← Quay lại danh sách sản phẩm</a>
+    <div class="header">
+      <h1 id="store-name">Cửa Hàng Trái Cây Sấy</h1>
     </div>
-   </div>
+    <div id="product-container">
+      <div class="loading">Đang tải thông tin sản phẩm...</div>
+    </div>
   </div>
+
   <script>
     const products = [
-      {
-        id: 1,
-        name: "Mít sấy giòn nguyên chất 100g",
-        price: "45.000đ",
-        description: "Mít sấy giòn được chế biến từ 100% trái mít tươi ngon, không chất bảo quản, không hương liệu tổng hợp. Sản phẩm giữ nguyên hương vị thơm ngon tự nhiên của mít, giòn tan, ngọt thanh. Giàu vitamin C, chất xơ và khoáng chất tốt cho sức khỏe. Thích hợp làm món ăn vặt bổ dưỡng cho cả gia đình."
-      },
-      {
-        id: 2,
-        name: "Mít sấy mặt ong 80g",
-        price: "38.000đ",
-        description: "Mít sấy mặt ong là sự kết hợp hoàn hảo giữa vị ngọt tự nhiên của mít và mật ong nguyên chất. Sản phẩm được sấy khô theo công nghệ hiện đại, giữ nguyên dinh dưỡng và hương vị đặc trưng. Mít sấy mềm mại, thơm ngon, bổ dưỡng, cung cấp năng lượng tức thì cho cơ thể."
-      },
-      {
-        id: 3,
-        name: "Chuối sấy giòn 100g",
-        price: "35.000đ",
-        description: "Chuối sấy giòn được làm từ chuối già chín tự nhiên, sấy khô bằng công nghệ chân không hiện đại. Sản phẩm giòn rụm, thơm ngon, giữ nguyên hương vị đặc trưng của chuối tươi. Giàu kali, magie và vitamin B6, tốt cho tim mạch và hệ tiêu hóa. Món ăn vặt lý tưởng cho mọi lứa tuổi."
-      },
-      {
-        id: 4,
-        name: "Khoai lang tím sấy 120g",
-        price: "42.000đ",
-        description: "Khoai lang tím sấy được chế biến từ khoai lang tím Đà Lạt cao cấp, giàu anthocyanin - chất chống oxi hóa mạnh. Sản phẩm sấy khô tự nhiên, không dầu mỡ, không đường, giữ nguyên màu tím đẹp mắt và vị ngọt thanh tự nhiên. Tốt cho sức khỏe tim mạch, làm đẹp da và tăng cường miễn dịch."
-      },
-      {
-        id: 5,
-        name: "Xoài sấy dẻo 100g",
-        price: "48.000đ",
-        description: "Xoài sấy dẻo được làm từ xoài cát Hòa Lộc chín cây, sấy khô theo công nghệ tiên tiến giữ nguyên vị ngọt thanh và hương thơm đặc trưng. Sản phẩm mềm dẻo, dễ ăn, giàu vitamin A, C và chất xơ. Không chất bảo quản, không phẩm màu, an toàn cho sức khỏe. Món quà tặng ý nghĩa từ thiên nhiên."
-      },
-      {
-        id: 6,
-        name: "Dứa sấy giòn 90g",
-        price: "40.000đ",
-        description: "Dứa sấy giòn được chế biến từ dứa tươi Cayenne ngọt thanh, sấy khô bằng công nghệ hiện đại. Sản phẩm giòn tan, thơm ngon, giữ nguyên hương vị tự nhiên của dứa tươi. Giàu vitamin C, enzyme bromelain hỗ trợ tiêu hóa và tăng cường hệ miễn dịch. Không đường, không chất bảo quản."
-      },
-      {
-        id: 7,
-        name: "Khoai môn sấy 110g",
-        price: "39.000đ",
-        description: "Khoai môn sấy được làm từ khoai môn tươi ngon, sấy khô giòn rụm, thơm bùi đặc trưng. Sản phẩm giữ nguyên giá trị dinh dưỡng cao của khoai môn, giàu chất xơ, vitamin và khoáng chất. Không dầu mỡ, không chất bảo quản, phù hợp cho người ăn kiêng và người tiểu đường."
-      },
-      {
-        id: 8,
-        name: "Cà rốt sấy 100g",
-        price: "36.000đ",
-        description: "Cà rốt sấy được chế biến từ cà rốt Đà Lạt tươi ngon, giàu beta-carotene và vitamin A tốt cho mắt. Sản phẩm sấy khô tự nhiên, giòn ngọt, giữ nguyên màu cam đẹp mắt và dinh dưỡng. Không đường, không chất bảo quản, thích hợp cho trẻ em và người lớn tuổi."
-      },
-      {
-        id: 9,
-        name: "Bí đỏ sấy 100g",
-        price: "37.000đ",
-        description: "Bí đỏ sấy được làm từ bí đỏ Nhật Bản cao cấp, giàu vitamin A, C và chất xơ. Sản phẩm sấy khô mềm dẻo, ngọt thanh tự nhiên, màu vàng cam bắt mắt. Tốt cho sức khỏe mắt, da và hệ tiêu hóa. Không chất bảo quản, không phẩm màu, an toàn tuyệt đối."
-      },
-      {
-        id: 10,
-        name: "Khoai tây sấy 120g",
-        price: "41.000đ",
-        description: "Khoai tây sấy được chế biến từ khoai tây Đà Lạt tươi ngon, sấy giòn theo công nghệ hiện đại. Sản phẩm giòn rụm, thơm ngon, ít calo hơn khoai tây chiên truyền thống. Giàu vitamin C, kali và chất xơ. Không dầu mỡ, không chất bảo quản, món ăn vặt lành mạnh."
-      },
-      {
-        id: 11,
-        name: "Ổi sấy dẻo 90g",
-        price: "43.000đ",
-        description: "Ổi sấy dẻo được làm từ ổi nữ hoàng chín cây, sấy khô giữ nguyên hương vị thơm ngon đặc trưng. Sản phẩm mềm dẻo, ngọt thanh, giàu vitamin C gấp nhiều lần cam chanh. Tốt cho hệ miễn dịch, làm đẹp da và hỗ trợ tiêu hóa. Không đường, không chất bảo quản."
-      },
-      {
-        id: 12,
-        name: "Chuối sấy mật ong 100g",
-        price: "44.000đ",
-        description: "Chuối sấy mật ong là sự kết hợp tuyệt vời giữa chuối già chín tự nhiên và mật ong nguyên chất. Sản phẩm mềm dẻo, thơm ngon, bổ dưỡng, cung cấp năng lượng nhanh chóng. Giàu kali, magie và các vitamin nhóm B. Không chất bảo quản, không hương liệu tổng hợp, an toàn cho sức khỏe."
-      }
+      { id:1, name:"Mít sấy giòn nguyên chất 100g", price:"45.000đ", description:"Mít sấy giòn được chế biến từ 100% trái mít tươi ngon, không chất bảo quản..." },
+      { id:2, name:"Mít sấy mặt ong 80g", price:"38.000đ", description:"Mít sấy mặt ong là sự kết hợp hoàn hảo giữa vị ngọt tự nhiên của mít..." },
+      { id:3, name:"Chuối sấy giòn 100g", price:"35.000đ", description:"Chuối sấy giòn được làm từ chuối già chín tự nhiên..." },
+      { id:4, name:"Khoai lang tím sấy 120g", price:"42.000đ", description:"Khoai lang tím sấy được chế biến từ khoai lang tím Đà Lạt cao cấp..." },
+      { id:5, name:"Xoài sấy dẻo 100g", price:"48.000đ", description:"Xoài sấy dẻo được làm từ xoài cát Hòa Lộc chín cây..." },
+      { id:6, name:"Dứa sấy giòn 90g", price:"40.000đ", description:"Dứa sấy giòn được chế biến từ dứa tươi Cayenne ngọt thanh..." },
+      { id:7, name:"Khoai môn sấy 110g", price:"39.000đ", description:"Khoai môn sấy được làm từ khoai môn tươi ngon..." },
+      { id:8, name:"Cà rốt sấy 100g", price:"36.000đ", description:"Cà rốt sấy được chế biến từ cà rốt Đà Lạt tươi ngon..." },
+      { id:9, name:"Bí đỏ sấy 100g", price:"37.000đ", description:"Bí đỏ sấy được làm từ bí đỏ Nhật Bản cao cấp..." },
+      { id:10, name:"Khoai tây sấy 120g", price:"41.000đ", description:"Khoai tây sấy được chế biến từ khoai tây Đà Lạt tươi ngon..." },
+      { id:11, name:"Ổi sấy dẻo 90g", price:"43.000đ", description:"Ổi sấy dẻo được làm từ ổi nữ hoàng chín cây..." },
+      { id:12, name:"Chuối sấy mật ong 100g", price:"44.000đ", description:"Chuối sấy mật ong là sự kết hợp tuyệt vời giữa chuối già và mật ong..." }
     ];
 
     const defaultConfig = {
-      store_name: "Cửa Hàng Trái Cây Sấy",
-      buy_button_text: "Mua ngay",
-      cart_button_text: "Thêm vào giỏ hàng",
-      primary_color: "#FF8C00",
-      secondary_color: "#FFA500",
-      background_color: "#FFF5E6",
-      text_color: "#333333",
-      button_text_color: "#FFFFFF"
+      store_name:"Cửa Hàng Trái Cây Sấy",
+      buy_button_text:"Mua ngay",
+      cart_button_text:"Thêm vào giỏ hàng",
+      primary_color:"#FF8C00",
+      secondary_color:"#FFA500",
+      background_color:"#FFF5E6",
+      text_color:"#333333",
+      button_text_color:"#FFFFFF"
     };
+    let config = {...defaultConfig};
 
-    let config = { ...defaultConfig };
+    function getProductIdFromUrl(){const p=new URLSearchParams(location.search);return parseInt(p.get('id'))||1}
+    function moneyToNumber(v){return parseInt(String(v).replace(/[^\d]/g,''),10)||0}
+    function showToast(text,bg){const t=document.createElement('div');t.className='toast';t.style.background=bg; t.textContent=text;document.body.appendChild(t);setTimeout(()=>t.remove(),2500)}
 
-    function getProductIdFromUrl() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return parseInt(urlParams.get('id')) || 1;
-    }
-
-    function checkImageExists(url) {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-      });
-    }
-
-    async function getProductImages(productId) {
-      const images = [];
-      const extensions = ['jpg', 'png'];
-      
-      for (let i = 1; i <= 4; i++) {
-        let imageFound = false;
-        for (const ext of extensions) {
-          const imagePath = `infosp/${productId}/${i}.${ext}`;
-          const exists = await checkImageExists(imagePath);
-          if (exists) {
-            images.push(imagePath);
-            imageFound = true;
-            break;
-          }
+    function checkImageExists(url){return new Promise(res=>{const i=new Image();i.onload=()=>res(true);i.onerror=()=>res(false);i.src=url})}
+    async function getProductImages(productId){
+      const images=[], exts=['jpg','png'];
+      for(let i=1;i<=4;i++){
+        let ok=false;
+        for(const ext of exts){
+          const p=`infosp/${productId}/${i}.${ext}`;
+          if(await checkImageExists(p)){images.push(p);ok=true;break}
         }
-        if (!imageFound) {
-          images.push(`https://via.placeholder.com/400x400/FF8C00/FFFFFF?text=Ảnh+${i}`);
-        }
+        if(!ok){images.push(`https://via.placeholder.com/400x400/FF8C00/FFFFFF?text=Ảnh+${i}`)}
       }
-      
       return images;
     }
 
-    function createProductHTML(product, images) {
+    function createProductHTML(product, images){
       return `
-        <div class="product-detail">
-          <div class="image-section">
-            <img src="${images[0]}" alt="${product.name}" class="main-image" id="main-image">
-            <div class="thumbnail-container">
-              ${images.map((img, index) => `
-                <img src="${img}" alt="${product.name} - Ảnh ${index + 1}" 
-                     class="thumbnail ${index === 0 ? 'active' : ''}" 
-                     onclick="changeMainImage('${img}', ${index})">
-              `).join('')}
-            </div>
-          </div>
-          
-          <div class="info-section">
-            <h1>${product.name}</h1>
-            <div class="price">${product.price}</div>
-            
-            <section class="description">
-              <p>${product.description}</p>
-            </section>
-            
-            <div class="quantity-section">
-              <span class="quantity-label">Số lượng:</span>
-              <div class="quantity-controls">
-                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
-                <input type="number" id="quantity" class="quantity-input" value="1" min="1" max="99">
-                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
-              </div>
-            </div>
-            
-            <div class="button-group">
-              <button class="btn btn-buy" id="buy-btn">${config.buy_button_text || defaultConfig.buy_button_text}</button>
-              <button class="btn btn-cart" id="cart-btn">${config.cart_button_text || defaultConfig.cart_button_text}</button>
-            </div>
+      <div class="product-detail">
+        <div class="image-section">
+          <img src="${images[0]}" alt="${product.name}" class="main-image" id="main-image">
+          <div class="thumbnail-container">
+            ${images.map((img,idx)=>`
+              <img src="${img}" alt="${product.name} - Ảnh ${idx+1}"
+                   class="thumbnail ${idx===0?'active':''}"
+                   onclick="changeMainImage('${img}',${idx})">`).join('')}
           </div>
         </div>
-      `;
+
+        <div class="info-section">
+          <h1 id="pname">${product.name}</h1>
+          <div class="price" id="pprice">${product.price}</div>
+
+          <section class="description"><p>${product.description}</p></section>
+
+          <div class="quantity-section">
+            <span class="quantity-label">Số lượng:</span>
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+              <input type="number" id="quantity" class="quantity-input" value="1" min="1" max="99">
+              <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button class="btn btn-buy" id="buy-btn">${config.buy_button_text||defaultConfig.buy_button_text}</button>
+            <button class="btn btn-cart" id="cart-btn">${config.cart_button_text||defaultConfig.cart_button_text}</button>
+          </div>
+        </div>
+      </div>`;
     }
 
-    function changeMainImage(imageSrc, index) {
-      const mainImage = document.getElementById('main-image');
-      mainImage.src = imageSrc;
-      
-      document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-        thumb.classList.toggle('active', i === index);
+    function changeMainImage(src,idx){
+      const m=document.getElementById('main-image'); m.src=src;
+      document.querySelectorAll('.thumbnail').forEach((t,i)=>t.classList.toggle('active',i===idx));
+    }
+    function decreaseQuantity(){const i=document.getElementById('quantity');const v=parseInt(i.value);if(v>1)i.value=v-1}
+    function increaseQuantity(){const i=document.getElementById('quantity');const v=parseInt(i.value);if(v<99)i.value=v+1}
+
+    async function loadProduct(){
+      const container=document.getElementById('product-container');
+      const productId=getProductIdFromUrl();
+      const product=products.find(p=>p.id===productId);
+      if(!product){container.innerHTML='<div class="error">Không tìm thấy sản phẩm!</div>';return}
+
+      const images=await getProductImages(productId);
+
+      const meta=document.querySelector('meta[name="description"]');
+      if(meta){meta.content=`${product.name} - ${product.price}. ${product.description.substring(0,150)}...`}
+      document.title=`${product.name} - Chi tiết sản phẩm`;
+
+      container.innerHTML=createProductHTML(product,images);
+
+      const qtyInput=document.getElementById('quantity');
+      const name=product.name;
+      const unitPrice=moneyToNumber(product.price);
+      const pid=`p${productId}`;
+
+      document.getElementById('buy-btn').addEventListener('click',()=>{
+        const q=parseInt(qtyInput.value)||1;
+        if(typeof window.addToCart==='function'){
+          for(let k=0;k<q;k++) window.addToCart(pid,name,unitPrice);
+          if(typeof window.openCart==='function'){window.location.href='index.html#cart';window.openCart();}
+        }else{
+          let cart=JSON.parse(localStorage.getItem('mitSayCart'))||[];
+          const f=cart.find(i=>i.id===pid);
+          if(f) f.quantity+=q; else cart.push({id:pid,name,price:unitPrice,quantity:q});
+          localStorage.setItem('mitSayCart',JSON.stringify(cart));
+          window.location.href='index.html#cart';
+        }
+      });
+
+      document.getElementById('cart-btn').addEventListener('click',()=>{
+        const q=parseInt(qtyInput.value)||1;
+        if(typeof window.addToCart==='function'){
+          for(let k=0;k<q;k++) window.addToCart(pid,name,unitPrice);
+        }else{
+          let cart=JSON.parse(localStorage.getItem('mitSayCart'))||[];
+          const f=cart.find(i=>i.id===pid);
+          if(f) f.quantity+=q; else cart.push({id:pid,name,price:unitPrice,quantity:q});
+          localStorage.setItem('mitSayCart',JSON.stringify(cart));
+        }
+        showToast(`Đã thêm ${q} sản phẩm vào giỏ hàng!`,'linear-gradient(135deg,#2196F3 0%,#1976D2 100%)');
       });
     }
 
-    function decreaseQuantity() {
-      const input = document.getElementById('quantity');
-      const currentValue = parseInt(input.value);
-      if (currentValue > 1) {
-        input.value = currentValue - 1;
-      }
+    async function onConfigChange(newConfig){
+      config={...config,...newConfig};
+      const storeName=document.getElementById('store-name');
+      if(storeName) storeName.textContent=config.store_name||defaultConfig.store_name;
+
+      const primary=config.primary_color||defaultConfig.primary_color;
+      const secondary=config.secondary_color||defaultConfig.secondary_color;
+      const background=config.background_color||defaultConfig.background_color;
+
+      document.body.style.background=`linear-gradient(135deg, ${background} 0%, #FFE4B5 100%)`;
+      const header=document.querySelector('.header'); if(header) header.style.background=`linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`;
+      const price=document.querySelector('.price'); if(price) price.style.color=primary;
+      const desc=document.querySelector('.description'); if(desc){desc.style.background=background;desc.style.borderLeftColor=primary}
+      document.querySelectorAll('.quantity-btn').forEach(b=>{b.style.borderColor=primary;b.style.color=primary});
+      document.querySelectorAll('.quantity-input').forEach(i=>i.style.borderColor=primary);
+      const btnBuy=document.querySelector('.btn-buy'); if(btnBuy){btnBuy.style.background=`linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`;btnBuy.style.color=config.button_text_color||defaultConfig.button_text_color}
+      const btnCart=document.querySelector('.btn-cart'); if(btnCart){btnCart.style.color=primary;btnCart.style.borderColor=primary}
+      const backLink=document.querySelector('.back-link'); if(backLink) backLink.style.color=primary;
     }
 
-    function increaseQuantity() {
-      const input = document.getElementById('quantity');
-      const currentValue = parseInt(input.value);
-      if (currentValue < 99) {
-        input.value = currentValue + 1;
-      }
-    }
-
-    async function loadProduct() {
-      const container = document.getElementById('product-container');
-      const productId = getProductIdFromUrl();
-      
-      const product = products.find(p => p.id === productId);
-      
-      if (!product) {
-        container.innerHTML = '<div class="error">Không tìm thấy sản phẩm!</div>';
-        return;
-      }
-      
-      const images = await getProductImages(productId);
-      
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.content = `${product.name} - ${product.price}. ${product.description.substring(0, 150)}...`;
-      }
-      document.title = `${product.name} - Chi tiết sản phẩm`;
-      
-      container.innerHTML = createProductHTML(product, images);
-      
-      document.getElementById('buy-btn').addEventListener('click', () => {
-        const quantity = document.getElementById('quantity').value;
-        const message = document.createElement('div');
-        message.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 15px 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index: 1000; font-weight: bold;';
-        message.textContent = `Đã thêm ${quantity} sản phẩm vào giỏ hàng!`;
-        document.body.appendChild(message);
-        setTimeout(() => message.remove(), 3000);
-      });
-      
-      document.getElementById('cart-btn').addEventListener('click', () => {
-        const quantity = document.getElementById('quantity').value;
-        const message = document.createElement('div');
-        message.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); color: white; padding: 15px 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index: 1000; font-weight: bold;';
-        message.textContent = `Đã thêm ${quantity} sản phẩm vào giỏ hàng!`;
-        document.body.appendChild(message);
-        setTimeout(() => message.remove(), 3000);
-      });
-    }
-
-    async function onConfigChange(newConfig) {
-      config = { ...config, ...newConfig };
-      
-      const storeName = document.getElementById('store-name');
-      if (storeName) {
-        storeName.textContent = config.store_name || defaultConfig.store_name;
-      }
-      
-      const buyBtn = document.getElementById('buy-btn');
-      if (buyBtn) {
-        buyBtn.textContent = config.buy_button_text || defaultConfig.buy_button_text;
-      }
-      
-      const cartBtn = document.getElementById('cart-btn');
-      if (cartBtn) {
-        cartBtn.textContent = config.cart_button_text || defaultConfig.cart_button_text;
-      }
-      
-      const primaryColor = config.primary_color || defaultConfig.primary_color;
-      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
-      const backgroundColor = config.background_color || defaultConfig.background_color;
-      const textColor = config.text_color || defaultConfig.text_color;
-      const buttonTextColor = config.button_text_color || defaultConfig.button_text_color;
-      
-      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #FFE4B5 100%)`;
-      
-      const header = document.querySelector('.header');
-      if (header) {
-        header.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
-      }
-      
-      const price = document.querySelector('.price');
-      if (price) {
-        price.style.color = primaryColor;
-      }
-      
-      const description = document.querySelector('.description');
-      if (description) {
-        description.style.background = backgroundColor;
-        description.style.borderLeftColor = primaryColor;
-      }
-      
-      document.querySelectorAll('.quantity-btn').forEach(btn => {
-        btn.style.borderColor = primaryColor;
-        btn.style.color = primaryColor;
-      });
-      
-      document.querySelectorAll('.quantity-input').forEach(input => {
-        input.style.borderColor = primaryColor;
-      });
-      
-      const btnBuy = document.querySelector('.btn-buy');
-      if (btnBuy) {
-        btnBuy.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
-        btnBuy.style.color = buttonTextColor;
-      }
-      
-      const btnCart = document.querySelector('.btn-cart');
-      if (btnCart) {
-        btnCart.style.color = primaryColor;
-        btnCart.style.borderColor = primaryColor;
-      }
-      
-      const backLink = document.querySelector('.back-link');
-      if (backLink) {
-        backLink.style.color = primaryColor;
-      }
-    }
-
-    if (window.elementSdk) {
+    if(window.elementSdk){
       window.elementSdk.init({
         defaultConfig,
         onConfigChange,
-        mapToCapabilities: (config) => ({
-          recolorables: [
-            {
-              get: () => config.primary_color || defaultConfig.primary_color,
-              set: (value) => {
-                config.primary_color = value;
-                window.elementSdk.setConfig({ primary_color: value });
-              }
-            },
-            {
-              get: () => config.secondary_color || defaultConfig.secondary_color,
-              set: (value) => {
-                config.secondary_color = value;
-                window.elementSdk.setConfig({ secondary_color: value });
-              }
-            },
-            {
-              get: () => config.background_color || defaultConfig.background_color,
-              set: (value) => {
-                config.background_color = value;
-                window.elementSdk.setConfig({ background_color: value });
-              }
-            },
-            {
-              get: () => config.text_color || defaultConfig.text_color,
-              set: (value) => {
-                config.text_color = value;
-                window.elementSdk.setConfig({ text_color: value });
-              }
-            },
-            {
-              get: () => config.button_text_color || defaultConfig.button_text_color,
-              set: (value) => {
-                config.button_text_color = value;
-                window.elementSdk.setConfig({ button_text_color: value });
-              }
-            }
-          ],
-          borderables: [],
-          fontEditable: undefined,
-          fontSizeable: undefined
-        }),
-        mapToEditPanelValues: (config) => new Map([
-          ["store_name", config.store_name || defaultConfig.store_name],
-          ["buy_button_text", config.buy_button_text || defaultConfig.buy_button_text],
-          ["cart_button_text", config.cart_button_text || defaultConfig.cart_button_text]
+        mapToCapabilities:(cfg)=>({recolorables:[
+          {get:()=>cfg.primary_color||defaultConfig.primary_color,set:v=>{cfg.primary_color=v;window.elementSdk.setConfig({primary_color:v})}},
+          {get:()=>cfg.secondary_color||defaultConfig.secondary_color,set:v=>{cfg.secondary_color=v;window.elementSdk.setConfig({secondary_color:v})}},
+          {get:()=>cfg.background_color||defaultConfig.background_color,set:v=>{cfg.background_color=v;window.elementSdk.setConfig({background_color:v})}},
+          {get:()=>cfg.text_color||defaultConfig.text_color,set:v=>{cfg.text_color=v;window.elementSdk.setConfig({text_color:v})}},
+          {get:()=>cfg.button_text_color||defaultConfig.button_text_color,set:v=>{cfg.button_text_color=v;window.elementSdk.setConfig({button_text_color:v})}}
+        ]}),
+        mapToEditPanelValues:(cfg)=>new Map([
+          ['store_name',cfg.store_name||defaultConfig.store_name],
+          ['buy_button_text',cfg.buy_button_text||defaultConfig.buy_button_text],
+          ['cart_button_text',cfg.cart_button_text||defaultConfig.cart_button_text]
         ])
       });
     }
 
     loadProduct();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998a42e760a0b4c7',t:'MTc2MjE1NjAyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
- <script src="https://cdn.tailwindcss.com"></script>
-<script src="global-cart.js"></script>
- </body>
+
+  <script src="global-cart.js"></script>
+</body>
 </html>
