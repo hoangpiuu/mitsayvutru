@@ -74,50 +74,87 @@
     
     .category-btn {
       transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
     }
     
     .category-btn.active {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
+      background: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
       color: white;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
     .category-btn:not(.active):hover {
-      background-color: #fef3c7;
+      background: rgba(255, 255, 255, 0.2);
       transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
- <body class="bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 text-slate-800" style="background-size: 400% 400%; animation: gradientShift 8s ease infinite;">
+ <body class="text-white overflow-x-hidden" style="background: linear-gradient(45deg, #0f0c29, #302b63, #24243e, #1a1a2e, #16213e, #0f3460); background-size: 600% 600%; animation: galaxyShift 12s ease infinite;">
   <style>
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    @keyframes galaxyShift {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 100% 0%; }
+      50% { background-position: 100% 100%; }
+      75% { background-position: 0% 100%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Galaxy particles */
+    .galaxy-particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(147,197,253,0.4) 50%, transparent 100%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+    }
+    
+    /* Nebula clouds */
+    .nebula {
+      position: absolute;
+      background: radial-gradient(ellipse, rgba(147,51,234,0.3) 0%, rgba(79,70,229,0.2) 30%, rgba(59,130,246,0.1) 60%, transparent 100%);
+      border-radius: 50%;
+      animation: nebulaDrift 20s linear infinite;
+    }
+    
+    @keyframes nebulaDrift {
+      0% { transform: translateX(-100px) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { transform: translateX(calc(100vw + 100px)) rotate(360deg); opacity: 0; }
     }
   </style><!-- Stars and Meteors Background -->
   <div class="stars" id="stars-container"></div><!-- Tiêu đề trang -->
-  <div class="relative z-10 text-center py-12 bg-gradient-to-r from-amber-100 to-orange-100">
-   <h1 class="text-4xl font-bold text-amber-800 mb-4">🥭 Sản Phẩm Mít Sấy Vũ Trụ</h1>
-   <p class="text-lg text-amber-700">Khám phá bộ sưu tập mít sấy giòn ngon, healthy từ thiên nhiên</p>
+  <div class="relative z-10 text-center py-12 bg-gradient-to-r from-purple-900/30 via-blue-900/30 to-indigo-900/30 backdrop-blur-sm">
+   <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 mb-4 drop-shadow-lg">🥭 Sản Phẩm Mít Sấy Vũ Trụ</h1>
+   <p class="text-lg text-blue-200 drop-shadow-md">Khám phá bộ sưu tập mít sấy giòn ngon, healthy từ thiên nhiên</p>
   </div><!-- Bộ lọc danh mục -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 py-8">
-   <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="category-btn active px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('all')"> 🌟 Tất cả </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('single')"> 📦 Gói lẻ </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('combo')"> 🎁 Combo </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('gift')"> 🎀 Quà tặng </button> <button class="category-btn px-6 py-3 rounded-full border-2 border-amber-300 font-medium" onclick="filterProducts('healthy')"> 💚 Healthy </button>
+   <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="category-btn active px-6 py-3 rounded-full font-medium" onclick="filterProducts('all')"> 🌟 Tất cả </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('single')"> 📦 Gói lẻ </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('combo')"> 🎁 Combo </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('gift')"> 🎀 Quà tặng </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('healthy')"> 💚 Healthy </button>
    </div>
   </div><!-- Danh sách sản phẩm -->
   <main class="relative z-10 max-w-7xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-container"><!-- Gói lẻ -->
-   <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single" data-product-id="1">
-    <div class="w-48 h-48 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy giòn nguyên chất 100g">
+   <div class="product-card bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl p-6 flex flex-col items-center text-center border border-white/20" data-category="single" data-product-id="1">
+    <div class="w-48 h-48 bg-gradient-to-br from-purple-500/20 via-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-4 overflow-hidden backdrop-blur-sm border border-white/10"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy giòn nguyên chất 100g">
      <div class="product-fallback text-6xl" style="display: none;">
       🥭
      </div>
     </div>
-    <h3 class="font-bold text-lg mb-2 text-slate-800">Mít sấy giòn nguyên chất 100g</h3>
-    <p class="text-amber-600 font-bold text-xl mb-4">45.000đ</p>
-    <div class="flex gap-2 w-full"><button class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold px-4 py-3 rounded-lg transition" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000);"> 🛒 Thêm vào giỏ </button>
+    <h3 class="font-bold text-lg mb-2 text-white">Mít sấy giòn nguyên chất 100g</h3>
+    <p class="text-yellow-300 font-bold text-xl mb-4 drop-shadow-md">45.000đ</p>
+    <div class="flex gap-2 w-full"><button class="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold px-4 py-3 rounded-lg transition shadow-lg" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="flex-1 border-2 border-purple-400 text-purple-300 hover:bg-purple-500/20 font-semibold px-4 py-3 rounded-lg transition backdrop-blur-sm" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000);"> 🛒 Thêm vào giỏ </button>
     </div>
    </div>
    <div class="product-card bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center border border-amber-100" data-category="single" data-product-id="2">
@@ -248,16 +285,54 @@
       const starsContainer = document.getElementById('stars-container');
       
       // Tạo ngôi sao
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 150; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         star.style.left = Math.random() * 100 + '%';
         star.style.top = Math.random() * 100 + '%';
-        star.style.width = Math.random() * 3 + 1 + 'px';
+        star.style.width = Math.random() * 4 + 1 + 'px';
         star.style.height = star.style.width;
         star.style.animationDelay = Math.random() * 2 + 's';
-        star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        
+        // Màu sắc ngôi sao đa dạng
+        const colors = ['#ffffff', '#e0e7ff', '#ddd6fe', '#fef3c7', '#fecaca'];
+        star.style.background = colors[Math.floor(Math.random() * colors.length)];
+        star.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px ${colors[Math.floor(Math.random() * colors.length)]}`;
+        
         starsContainer.appendChild(star);
+      }
+      
+      // Tạo galaxy particles
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'galaxy-particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.width = Math.random() * 8 + 4 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        starsContainer.appendChild(particle);
+      }
+      
+      // Tạo nebula clouds
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const nebula = document.createElement('div');
+          nebula.className = 'nebula';
+          nebula.style.top = Math.random() * 80 + '%';
+          nebula.style.width = Math.random() * 200 + 100 + 'px';
+          nebula.style.height = Math.random() * 150 + 80 + 'px';
+          nebula.style.animationDelay = Math.random() * 10 + 's';
+          starsContainer.appendChild(nebula);
+          
+          setTimeout(() => {
+            if (nebula.parentNode) {
+              nebula.parentNode.removeChild(nebula);
+            }
+          }, 25000);
+        }, i * 5000);
       }
       
       // Tạo thiên thạch với ảnh thật
@@ -390,5 +465,5 @@
     });
   </script><!-- Gọi file dùng chung (tự động tạo header + giỏ hàng + MXH) -->
   <script src="global-cart.js"></script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99854c71743b039f',t:'MTc2MjEwMzk4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9989f3cb15fb8b32',t:'MTc2MjE1Mjc4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
