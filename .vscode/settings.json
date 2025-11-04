@@ -1,10 +1,7 @@
 {
   "emeraldwalk.runonsave": {
     "commands": [
-      {
-        "match": ".*",
-        "cmd": "cmd /c \"update.bat\""
-      }
+      { "match": ".*", "cmd": "cmd /c \"update.bat\"" }
     ]
   }
 }
