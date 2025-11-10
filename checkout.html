@@ -68,6 +68,7 @@
                    placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành">
           </div>
 
+          <!-- ✅ GHI CHÚ ĐƠN HÀNG -->
           <div>
             <label class="block text-sm mb-1" for="note">Ghi chú đơn hàng</label>
             <textarea id="note" name="note" rows="3"
@@ -96,7 +97,6 @@
           </div>
         </div>
 
-        <!-- Ẩn dùng để truyền vào EmailJS -->
         <div class="hidden">
           <div id="orderList"></div>
           <div id="orderTotal"></div>
@@ -114,16 +114,16 @@
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    // ====== CẤU HÌNH EMAILJS (ĐỂ NGUYÊN NHƯ CŨ) ======
+    // ====== CẤU HÌNH EMAILJS ======
     const EMAILJS_SERVICE_ID = 'service_92aaxmn';
     const EMAILJS_TEMPLATE_ID = 'template_i2dewcv';
     const EMAILJS_PUBLIC_KEY  = 'b40L89aibcM57zhOV';
 
-    // ====== CẤU HÌNH GOOGLE SHEET API (ĐIỀN 2 DÒNG NÀY) ======
-    const TRACK_API = 'https://script.google.com/macros/s/AKfycbwrwR5pjtkkFVo4Cl9WJmYL0ahysVM50JnbGRYTMpkI8wVjeM3jbhcWSRsrXtUFzxCI/exec'; // Web App URL: https://script.google.com/macros/s/AKfycbzkRYWYcWtAcoPtjpSiJCiwzvHn8Nv62aK4169dytH8Ehc88eIrGYgyGSVFbanH-PBD/exec
-    const API_KEY   = 'CHANGE_ME_123';               // phải trùng API_SECRET trong Apps Script
+    // ====== CẤU HÌNH GOOGLE SHEET API ======
+    const TRACK_API = 'https://script.google.com/macros/s/AKfycbwrwR5pjtkkFVo4Cl9WJmYL0ahysVM50JnbGRYTMpkI8wVjeM3jbhcWSRsrXtUFzxCI/exec';
+    const API_KEY   = 'CHANGE_ME_123';
 
-    // ====== Render giỏ hàng từ localStorage ======
+    // ====== Render giỏ hàng ======
     let cart = JSON.parse(localStorage.getItem('mitSayCart')) || [];
 
     const cartBox  = document.getElementById('cartSummary');
@@ -135,8 +135,6 @@
       if(!cart || cart.length===0){
         cartBox.innerHTML = '<p class="py-2 text-slate-500">Giỏ hàng đang trống. <a class="text-amber-600 underline" href="index.html#products">Mua thêm</a></p>';
         totalBox.textContent = '0₫';
-        orderListEl.innerHTML = '';
-        orderTotalEl.textContent = '0₫';
         return;
       }
 
@@ -153,7 +151,6 @@
       const sum = cart.reduce((s,i)=>s + i.price*i.quantity, 0);
       totalBox.textContent = sum.toLocaleString() + '₫';
 
-      // Nội dung gửi EmailJS
       orderListEl.innerHTML = cart
         .map(i => `${i.name} x${i.quantity} = ${(i.price*i.quantity).toLocaleString()}₫`)
         .join('<br>');
@@ -161,35 +158,31 @@
     }
     renderSummary();
 
-    // Nếu giỏ hàng trống, tự quay về trang sản phẩm
     if(!cart || cart.length===0){
       setTimeout(()=>{ window.location.href = 'index.html#products'; }, 1200);
     }
 
-    // ====== Helper: tóm tắt cho Google Sheet ======
+    // Helper
     function cartToSummary() {
       const itemsText = cart.map(i => `${i.name} x${i.quantity}`).join('; ');
       const totalVND  = cart.reduce((s,i)=>s + i.price*i.quantity, 0);
       return { itemsText, totalVND };
     }
 
-    // ====== Gửi đơn sang Google Sheet ======
-async function pushOrderToSheet(order){
-  try{
-    const res = await fetch(TRACK_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, // tránh preflight
-      body: JSON.stringify({ key: API_KEY, ...order })
-    });
-    return await res.json();
-  }catch(err){
-    console.error('Lỗi gửi Sheet:', err);
-    return { ok:false, error:String(err) };
-  }
-}
+    async function pushOrderToSheet(order){
+      try{
+        const res = await fetch(TRACK_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          body: JSON.stringify({ key: API_KEY, ...order })
+        });
+        return await res.json();
+      }catch(err){
+        return { ok:false, error:String(err) };
+      }
+    }
 
-    // ====== Gửi email qua EmailJS + ghi vào Sheet ======
-    (function(){ if(EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY') emailjs.init(EMAILJS_PUBLIC_KEY); })();
+    (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
 
     const form = document.getElementById('checkoutForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -198,11 +191,6 @@ async function pushOrderToSheet(order){
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       if(!cart || cart.length===0){ alert('Giỏ hàng trống'); return; }
-
-      if(EMAILJS_PUBLIC_KEY==='YOUR_PUBLIC_KEY' || EMAILJS_TEMPLATE_ID==='YOUR_TEMPLATE_ID'){
-        alert('Vui lòng thay EMAILJS_PUBLIC_KEY và EMAILJS_TEMPLATE_ID bằng giá trị thật trong checkout.html');
-        return;
-      }
 
       const orderId = 'MSV-' + Date.now();
       const { itemsText, totalVND } = cartToSummary();
@@ -219,17 +207,17 @@ async function pushOrderToSheet(order){
       };
 
       const dataSheet = {
-        id: orderId,
-        name:     form.fullname.value.trim(),
-        email:    form.email.value.trim(),
-        phone:    form.phone.value.trim(),
-        address:  form.address.value.trim(),
+        id:        orderId,
+        name:      form.fullname.value.trim(),
+        email:     form.email.value.trim(),
+        phone:     form.phone.value.trim(),
+        address:   form.address.value.trim(),
         ordered_at: new Date().toLocaleString('vi-VN'),
-        items:    itemsText,
-        price:    totalVND,
-        status:   'đã xác nhận',
-        tracking: '',
-        note:     form.note.value.trim()
+        items:     itemsText,
+        price:     totalVND,
+        status:    'đã xác nhận',
+        tracking:  '',
+        note:      form.note.value.trim()   <!-- ✅ GỬI GHI CHÚ LÊN SHEET -->
       };
 
       submitBtn.disabled = true;
@@ -237,23 +225,16 @@ async function pushOrderToSheet(order){
       statusText.textContent = 'Đang gửi đơn hàng...';
 
       try{
-        // 1) Gửi Email qua EmailJS
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, dataEmail);
 
-        // 2) Ghi vào Google Sheet
         const sheetRes = await pushOrderToSheet(dataSheet);
-        if(!sheetRes?.ok){
-          console.warn('Ghi Sheet lỗi:', sheetRes);
-        }
 
         statusText.textContent = 'Đã gửi thành công! Cảm ơn bạn.';
-        localStorage.removeItem('mitSayCart'); // Xoá giỏ
-        // Chuyển sang trang theo dõi, tự điền mã đơn
+        localStorage.removeItem('mitSayCart');
+
         setTimeout(()=>{ window.location.href='track.html?q='+encodeURIComponent(orderId); }, 1200);
       }catch(err){
-        console.error(err);
-        alert('Gửi đơn thất bại. Vui lòng kiểm tra cấu hình.\nChi tiết: ' + (err?.text || JSON.stringify(err)));
-        statusText.textContent = '';
+        alert('Gửi đơn thất bại: ' + err);
         submitBtn.disabled = false;
         submitBtn.classList.remove('opacity-70');
       }
