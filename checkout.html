@@ -94,7 +94,7 @@
           </div>
         </div>
 
-        <!-- Ẩn dùng để truyền vào EmailJS -->
+        <!-- Ẩn để gửi qua EmailJS -->
         <div class="hidden">
           <div id="orderList"></div>
           <div id="orderTotal"></div>
@@ -112,18 +112,17 @@
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    // ====== EMAILJS ======
+    /* ====== EMAILJS (giữ nguyên thông số của bạn) ====== */
     const EMAILJS_SERVICE_ID = 'service_92aaxmn';
     const EMAILJS_TEMPLATE_ID = 'template_i2dewcv';
     const EMAILJS_PUBLIC_KEY  = 'b40L89aibcM57zhOV';
 
-    // ====== GOOGLE SHEET API ======
+    /* ====== GOOGLE APPS SCRIPT WEB APP ====== */
     const TRACK_API = 'https://script.google.com/macros/s/AKfycbwrwR5pjtkkFVo4Cl9WJmYL0ahysVM50JnbGRYTMpkI8wVjeM3jbhcWSRsrXtUFzxCI/exec';
-    const API_KEY   = 'CHANGE_ME_123'; // trùng với API_SECRET
+    const API_KEY   = 'CHANGE_ME_123'; // Trùng với API_SECRET trong Mã.gs
 
-    // ====== Cart render ======
+    /* ====== Render giỏ hàng ====== */
     let cart = JSON.parse(localStorage.getItem('mitSayCart')) || [];
-
     const cartBox  = document.getElementById('cartSummary');
     const totalBox = document.getElementById('grandTotal');
     const orderListEl  = document.getElementById('orderList');
@@ -144,17 +143,14 @@
             <div class="text-sm text-slate-500">SL: ${i.quantity} × ${i.price.toLocaleString()}₫</div>
           </div>
           <div class="font-semibold">${(i.price*i.quantity).toLocaleString()}₫</div>
-        </div>
-      `).join('');
+        </div>`).join('');
       const sum = cart.reduce((s,i)=>s + i.price*i.quantity, 0);
       totalBox.textContent = sum.toLocaleString() + '₫';
-      orderListEl.innerHTML = cart
-        .map(i => `${i.name} x${i.quantity} = ${(i.price*i.quantity).toLocaleString()}₫`)
-        .join('<br>');
+      orderListEl.innerHTML = cart.map(i => `${i.name} x${i.quantity} = ${(i.price*i.quantity).toLocaleString()}₫`).join('<br>');
       orderTotalEl.textContent = sum.toLocaleString() + '₫';
     }
     renderSummary();
-    if(!cart || cart.length===0){ setTimeout(()=>{ window.location.href = 'index.html#products'; }, 1200); }
+    if(!cart || cart.length===0){ setTimeout(()=>{ location.href='index.html#products'; }, 1200); }
 
     function cartToSummary() {
       const itemsText = cart.map(i => `${i.name} x${i.quantity}`).join('; ');
@@ -162,20 +158,26 @@
       return { itemsText, totalVND };
     }
 
+    /* ====== Ghi vào Sheet (parse JSON an toàn) ====== */
     async function pushOrderToSheet(order){
       try{
         const res = await fetch(TRACK_API, {
           method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, // tránh preflight
           body: JSON.stringify({ key: API_KEY, ...order })
         });
-        return await res.json();
+        const text = await res.text();
+        try {
+          return JSON.parse(text);
+        } catch(parseErr){
+          return { ok:false, error:'bad-json', raw:text?.slice(0,200) || '(empty)' };
+        }
       }catch(err){
-        console.error('Lỗi gửi Sheet:', err);
         return { ok:false, error:String(err) };
       }
     }
 
+    /* ====== Gửi Email + Ghi Sheet ====== */
     (function(){ if(EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY') emailjs.init(EMAILJS_PUBLIC_KEY); })();
 
     const form = document.getElementById('checkoutForm');
@@ -195,7 +197,7 @@
         email:    form.email.value.trim(),
         phone:    form.phone.value.trim(),
         address:  form.address.value.trim(),
-        note:     form.note.value.trim(),   // gửi ghi chú trong email
+        note:     form.note.value.trim(),
         items:    orderListEl.innerHTML,
         total:    orderTotalEl.textContent
       };
@@ -208,10 +210,10 @@
         address:    form.address.value.trim(),
         ordered_at: new Date().toLocaleString('vi-VN'),
         items:      itemsText,
-        price:      totalVND,               // cPRICE = cột "Giá tiền" trên sheet
-        status:     'đã xác nhận',
+        price:      totalVND,               // cPRICE trong Mã.gs map tới header "Giá tiền"
+        status:     'đã xác nhận',          // cSTAT (cột K)
         tracking:   '',
-        note:       form.note.value.trim()  // ✅ QUAN TRỌNG: gửi ghi chú để ghi vào cột J
+        note:       form.note.value.trim()  // cNOTE (cột J)
       };
 
       submitBtn.disabled = true;
@@ -219,12 +221,20 @@
       statusText.textContent = 'Đang gửi đơn hàng...';
 
       try{
+        // 1) Email
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, dataEmail);
+
+        // 2) Sheet
         const sheetRes = await pushOrderToSheet(dataSheet);
-        if(!sheetRes?.ok){ console.warn('Ghi Sheet lỗi:', sheetRes); }
-        statusText.textContent = 'Đã gửi thành công! Cảm ơn bạn.';
+        if(!sheetRes?.ok){
+          console.warn('Ghi Sheet lỗi:', sheetRes);
+          alert('Không ghi được vào Sheet: ' + (sheetRes.error || JSON.stringify(sheetRes)));
+        } else {
+          statusText.textContent = 'Đã gửi thành công! Cảm ơn bạn.';
+        }
+
         localStorage.removeItem('mitSayCart');
-        setTimeout(()=>{ window.location.href='track.html?q='+encodeURIComponent(orderId); }, 1200);
+        setTimeout(()=>{ location.href='track.html?q='+encodeURIComponent(orderId); }, 1200);
       }catch(err){
         console.error(err);
         alert('Gửi đơn thất bại. Vui lòng kiểm tra cấu hình.\nChi tiết: ' + (err?.text || JSON.stringify(err)));
