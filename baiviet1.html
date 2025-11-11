@@ -7,109 +7,88 @@
   <meta name="description" content="Khám phá mít sấy: nguồn gốc & quy trình chế biến, lợi ích sức khỏe, mẹo chọn & bảo quản chuẩn, cùng các công thức biến tấu ngon–bổ–tiện.">
   <link rel="canonical" href="/baiviet1.html">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà">
-  <meta property="og:description" content="Nguồn gốc, lợi ích sức khỏe, mẹo chọn & bảo quản, và công thức biến tấu từ mít sấy.">
-  <meta property="og:url" content="/baiviet1.html">
+  <meta property="og:description" content="Nguồn gốc, lợi ích sức khỏe, mẹo chọn, bảo quản & công thức biến tấu từ mít sấy.">
   <meta property="og:image" content="/baiviet1/1.jpg">
-  <meta property="og:site_name" content="Mít Sấy Vũ Trụ">
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà">
-  <meta name="twitter:description" content="Nguồn gốc, lợi ích sức khỏe, mẹo chọn & bảo quản, và công thức biến tấu từ mít sấy.">
-  <meta name="twitter:image" content="/baiviet1/1.jpg">
-  <!-- Favicon (tùy chọn) -->
-  <link rel="icon" href="images/logo.jpg">
+  <meta property="og:url" content="/baiviet1.html">
+  <link rel="icon" href="images/logo.png">
+
   <style>
     :root{
       --bg:#fffdf8; --text:#0f172a; --muted:#475569; --brand:#f59e0b; --card:#ffffff; --border:#e2e8f0;
       --maxw:1000px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
     body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      margin:0; padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto;
       background:var(--bg); color:var(--text); line-height:1.75;
     }
     a{color:#0ea5e9; text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:var(--maxw); margin:0 auto; padding:16px}
+
     header.site{
       background:#fff; border-bottom:1px solid var(--border);
       position:sticky; top:0; z-index:50;
     }
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; height:64px}
+    .topbar{display:flex; align-items:center; justify-content:space-between; height:64px}
     .brand{display:flex; align-items:center; gap:12px}
-    .brand img{width:44px;height:44px;object-fit:contain;border-radius:999px;background:#fff7e6;border:1px solid var(--border)}
-    nav a{color:var(--muted); font-weight:600; margin:0 8px; font-size:15px}
+    .brand img{width:44px;height:44px;border-radius:50%;object-fit:contain;border:1px solid var(--border)}
+    nav a{margin:0 8px; font-size:15px; font-weight:600; color:var(--muted)}
     nav a.active{color:var(--text)}
+
     .breadcrumb{font-size:14px; color:var(--muted); margin:16px 0}
+
     .article{
-      background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px;
-      box-shadow:0 6px 24px rgba(15,23,42,.06);
+      background:#fff; border:1px solid var(--border); border-radius:16px;
+      padding:20px; box-shadow:0 6px 20px rgba(0,0,0,.05);
     }
-    .article h1{font-size:34px; line-height:1.2; margin:.2em 0 .6em}
-    .article h2{font-size:24px; margin:1.6em 0 .6em}
-    .article p{margin:1em 0}
-    .meta{display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px}
-    figure{margin:20px auto; text-align:center}
-    figure img{width:100%; height:auto; border-radius:14px; border:1px solid var(--border)}
+    .article h1{font-size:32px; line-height:1.25}
+    .article h2{font-size:24px; margin-top:36px}
+
+    figure{text-align:center; margin:24px 0}
+    figure img{width:100%; border-radius:14px; border:1px solid var(--border)}
     figcaption{font-size:13px; color:var(--muted); margin-top:8px}
+
+    .grid-2{
+      display:grid; grid-template-columns:1fr; gap:20px;
+    }
+    @media(min-width:860px){
+      .grid-2{grid-template-columns:1fr 1fr}
+    }
+
     .callout{
-      background:#fff7e6; border-left:4px solid var(--brand);
-      padding:14px 16px; border-radius:10px; margin:16px 0; color:#7c5a05
+      background:#fff7e6; padding:14px 18px; border-left:4px solid var(--brand);
+      border-radius:10px; margin:20px 0; color:#7a4a0b;
     }
-    .grid-2{display:grid; grid-template-columns:1fr; gap:16px}
-    @media(min-width:860px){.grid-2{grid-template-columns:1fr 1fr}}
+
     footer.article{
-      border-top:1px dashed var(--border); margin-top:24px; padding-top:18px; font-size:14px; color:var(--muted)
+      margin-top:20px; padding-top:20px; border-top:1px dashed var(--border);
+      font-size:14px; color:var(--muted);
     }
-    .tags{margin-top:10px}
     .tags a{
-      display:inline-block; background:#fff1cc; color:#7c5a05; padding:6px 10px; border-radius:999px;
-      border:1px solid #ffe5a3; margin:4px 6px 0 0; font-size:13px; text-decoration:none
+      background:#fff1cc; border:1px solid #ffe3a3;
+      padding:6px 10px; border-radius:999px; margin-right:6px;
+      font-size:13px; color:#7c5a05; text-decoration:none;
     }
   </style>
-
-  <!-- BreadcrumbList + Article JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Trang chủ","item":"/index.html"},
-          {"@type":"ListItem","position":2,"name":"Blog","item":"/blog.html"},
-          {"@type":"ListItem","position":3,"name":"Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà"}
-        ]
-      },
-      {
-        "@type":"Article",
-        "headline":"Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà",
-        "description":"Nguồn gốc & quy trình, lợi ích sức khỏe, mẹo chọn & bảo quản, và công thức biến tấu từ mít sấy.",
-        "image":["/baiviet1/1.jpg"],
-        "author":{"@type":"Organization","name":"Mít Sấy Vũ Trụ"},
-        "publisher":{"@type":"Organization","name":"Mít Sấy Vũ Trụ","logo":{"@type":"ImageObject","url":"/images/logo.jpg"}},
-        "mainEntityOfPage":"/baiviet1.html"
-      }
-    ]
-  }
-  </script>
 </head>
+
 <body>
 
 <header class="site">
   <div class="container topbar">
-    <a class="brand" href="index.html" aria-label="Về trang chủ">
-      <img src="images/logo.jgp" alt="Logo Mít Sấy Vũ Trụ" onerror="this.style.display='none'">
+    <a class="brand" href="index.html">
+      <img src="images/logo.png" alt="">
       <div>
-        <strong style="display:block; line-height:1">Mít Sấy Vũ Trụ</strong>
-        <span style="font-size:12px; color:var(--muted)">Giòn thơm quay vị giác</span>
+        <strong>Mít Sấy Vũ Trụ</strong>
+        <div style="font-size:12px; color:var(--muted)">Giòn thơm quay vị giác</div>
       </div>
     </a>
-    <nav aria-label="Chính">
+
+    <nav>
       <a href="index.html">Trang chủ</a>
       <a href="san-pham.html">Sản phẩm</a>
       <a href="gioi-thieu.html">Giới thiệu</a>
@@ -121,120 +100,81 @@
 </header>
 
 <main class="container">
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="index.html">Trang chủ</a> › <a href="blog.html">Blog</a> › Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà
-  </nav>
 
-  <article class="article" itemscope itemtype="https://schema.org/Article">
-    <header>
-      <h1 itemprop="headline">Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà từ tự nhiên đến bàn tiệc</h1>
-      <div class="meta">
-        <span>Đăng bởi <strong itemprop="author">Mít Sấy Vũ Trụ</strong></span>
-        <span>•</span>
-        <time itemprop="datePublished" datetime="2025-11-11">11/11/2025</time>
-        <span>•</span>
-        <a href="san-pham.html#mit-say">Mua mít sấy chính hãng</a>
-      </div>
+  <div class="breadcrumb">
+    <a href="index.html">Trang chủ</a> › <a href="blog.html">Blog</a> › Mít sấy – Món ăn vặt hấp dẫn
+  </div>
+
+  <article class="article">
+
+    <h1>Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà từ tự nhiên đến bàn tiệc</h1>
+
+    <figure>
+      <img src="baiviet1/1.jpg" alt="Mít sấy thơm giòn tự nhiên">
+      <figcaption>Hương vị tự nhiên, tiện lợi mọi lúc mọi nơi.</figcaption>
+    </figure>
+
+    <p>Mít sấy đã trở thành một món ăn vặt cực kỳ được ưa chuộng tại Việt Nam. Khác với mít tươi, mít sấy giữ được hương vị tự nhiên, độ giòn – dẻo đặc trưng và đặc biệt là bảo quản lâu, phù hợp sử dụng tại nhà, mang đi làm hoặc làm quà tặng.</p>
+
+    <h2>Nguồn gốc & quy trình chế biến</h2>
+
+    <div class="grid-2">
       <figure>
-        <picture>
-          <source srcset="baiviet1/1.webp" type="image/webp">
-          <source srcset="baiviet1/1.jpg" type="image/jpeg">
-          <img src="baiviet1/1.jpg" alt="Mít sấy vàng óng, giòn thơm hấp dẫn" loading="eager" decoding="async">
-        </picture>
-        <figcaption>Hương vị tự nhiên, tiện lợi mọi lúc mọi nơi.</figcaption>
-      </figure>
-    </header>
-
-    <section itemprop="articleBody">
-      <p>Mít sấy đã trở thành một trong những loại thực phẩm vặt phổ biến của người Việt Nam cũng như các nước châu Á. Khác với mít tươi, mít sấy giữ được hương vị tự nhiên, độ dẻo dai và thơm ngon lâu dài, phù hợp để thưởng thức mọi lúc mọi nơi. Bạn có thể mua mit sấy để nhâm nhi trong những ngày rảnh rỗi, làm quà biếu hay thậm chí dùng làm nguyên liệu chế biến món ăn hấp dẫn.
-Trong bài viết này, chúng ta sẽ khám phá chi tiết về mít sấy - từ những cách làm truyền thống, kỹ thuật bảo quản, lợi ích sức khỏe, cho đến những gợi ý sáng tạo trong chế biến món ăn từ mít sấy. Hãy cùng theo dõi để hiểu rõ hơn về món đặc sản này, góp phần nâng cao trải nghiệm ẩm thực của chính bạn.
-</p>
-
-      <h2 id="nguon-goc-quy-trinh">Nguồn gốc &amp; quy trình chế biến</h2>
-      <p>Mít sấy xuất hiện từ lâu trong ẩm thực vùng nhiệt đới. Quy trình hiện đại sử dụng máy sấy nhiệt độ thấp để tối ưu chất lượng, hạn chế mất dưỡng chất; song song đó, nhiều nơi vẫn giữ cách phơi truyền thống, tạo nên bản sắc vùng miền. Yếu tố then chốt là kiểm soát nhiệt – thời gian để thành phẩm có độ giòn vừa phải, giữ trọn vị ngọt và mùi thơm đặc trưng.</p>
-
-      <div class="grid-2">
-        <figure>
-          <picture>
-            <source srcset="baiviet1/2.webp" type="image/webp">
-            <source srcset="baiviet1/2.jpg" type="image/jpeg">
-            <img src="baiviet1/2.jpg" alt="Lựa chọn múi mít chín đều, sơ chế sạch trước khi sấy" loading="lazy" decoding="async">
-          </picture>
-          <figcaption>Chọn múi mít chín đều, thịt dày để sấy.</figcaption>
-        </figure>
-        <figure>
-          <picture>
-            <source srcset="baiviet1/3.webp" type="image/webp">
-            <source srcset="baiviet1/3.jpg" type="image/jpeg">
-            <img src="baiviet1/3.png" alt="Máy sấy nhiệt độ thấp giúp giữ mùi và màu tự nhiên" loading="lazy" decoding="async">
-          </picture>
-          <figcaption>Máy sấy nhiệt độ thấp giúp giữ màu &amp; mùi tự nhiên.</figcaption>
-        </figure>
-      </div>
-
-      <h2 id="loi-ich-suc-khoe">Lợi ích sức khỏe</h2>
-      <p>Mít sấy cung cấp vitamin (đặc biệt là C), chất xơ và chất chống oxy hóa – hỗ trợ miễn dịch, tiêu hóa, làm chậm lão hóa. Khi dùng đúng khẩu phần, đây là món snack lành mạnh, tiện lợi cho người bận rộn, trẻ nhỏ và người lớn tuổi.</p>
-
-      <div class="callout">
-        <strong>Mẹo dùng “healthy”:</strong> ăn vừa phải, ưu tiên dòng ít đường thêm/không dầu chiên lại, kết hợp hạt – sữa chua để cân bằng dinh dưỡng.
-      </div>
-
-      <h2 id="cach-chon-bao-quan">Cách chọn &amp; bảo quản chuẩn</h2>
-      <ul>
-        <li><strong>Chọn mua:</strong> màu vàng óng/nâu nhạt tự nhiên, hương thơm dễ chịu, không mùi lạ.</li>
-        <li><strong>Bảo quản:</strong> túi zipper/lọ kín, nơi khô ráo, tránh ánh nắng – nhiệt cao.</li>
-        <li><strong>Thời gian dùng:</strong> thường 1–3 tháng tùy đóng gói &amp; điều kiện bảo quản.</li>
-        <li><strong>Giữ độ giòn:</strong> có thể sấy lại nhẹ nhiệt thấp vài phút hoặc để ngăn mát.</li>
-      </ul>
-
-      <figure>
-        <picture>
-          <source srcset="baiviet1/4.webp" type="image/webp">
-          <source srcset="baiviet1/4.jpg" type="image/jpeg">
-          <img src="baiviet1/4.png" alt="Bảo quản mít sấy trong hũ/túi kín ở nơi khô ráo" loading="lazy" decoding="async">
-        </picture>
-        <figcaption>Bảo quản đúng cách để giữ vị ngon lâu hơn.</figcaption>
+        <img src="baiviet1/2.jpg" alt="">
+        <figcaption>Chọn múi mít chín đều, thịt dày để sấy.</figcaption>
       </figure>
 
-      <h2 id="cong-thuc-sang-tao">Công thức biến tấu ngon – tiện</h2>
-      <ul>
-        <li><strong>Parfait mít sấy:</strong> lớp sữa chua – hạt – mít sấy – trái cây tươi.</li>
-        <li><strong>Mít sấy sên mật ong/xi rô gừng:</strong> vị chua ngọt cân bằng, làm quà biếu đẹp mắt.</li>
-        <li><strong>Nhân bánh/quy:</strong> trộn vụn mít sấy với bột, bơ – tăng mùi thơm.</li>
-        <li><strong>Đồ uống:</strong> sinh tố mít sấy, trà thảo mộc, hoặc cocktail lấy cảm hứng nhiệt đới.</li>
-      </ul>
+      <figure>
+        <img src="baiviet1/3.jpg" alt="">
+        <figcaption>Máy sấy nhiệt độ thấp giúp giữ màu & mùi tự nhiên.</figcaption>
+      </figure>
+    </div>
 
-      <p>Tham khảo <a href="san-pham.html#mit-say">sản phẩm mít sấy</a> của <em>Mít Sấy Vũ Trụ</em> để áp dụng công thức ngay.</p>
+    <p>Quy trình sấy hiện đại sử dụng nhiệt độ thấp giúp hạn chế mất dưỡng chất, giữ màu đẹp và mùi thơm tự nhiên. Mít thành phẩm giòn nhẹ, ngọt tự nhiên, không bị cháy khét.</p>
 
-      <h2 id="ket-luan">Kết luận</h2>
-      <p>Mít sấy là món ăn vặt lý tưởng nhờ hương vị tự nhiên, lợi ích sức khỏe và khả năng biến tấu đa dạng. Chọn đúng, bảo quản chuẩn và kết hợp linh hoạt sẽ giúp bạn luôn có món ngon – tiện – lành mạnh cho gia đình và làm quà tặng.</p>
-    </section>
+    <h2>Lợi ích sức khỏe</h2>
+    <p>Mít sấy chứa vitamin, chất xơ, hợp chất chống oxy hóa – hỗ trợ tiêu hóa và tăng cường miễn dịch.</p>
+
+    <div class="callout">
+      <strong>Mẹo ăn “healthy”:</strong> ưu tiên loại ít đường, không chiên dầu lại, ăn kèm hạt – sữa chua.
+    </div>
+
+    <h2>Cách chọn & bảo quản chuẩn</h2>
+    <ul>
+      <li>Màu vàng tự nhiên, không mùi lạ.</li>
+      <li>Bảo quản nơi khô ráo, kín khí.</li>
+      <li>Dùng trong 1–3 tháng tùy đóng gói.</li>
+      <li>Có thể sấy nhẹ để lấy lại độ giòn.</li>
+    </ul>
+
+    <figure>
+      <img src="baiviet1/4.jpg" alt="">
+      <figcaption>Bảo quản đúng giúp giữ vị ngon lâu hơn.</figcaption>
+    </figure>
+
+    <h2>Công thức biến tấu ngon – tiện</h2>
+    <ul>
+      <li>Parfait sữa chua – hạt – mít sấy.</li>
+      <li>Mít sấy rang mật ong.</li>
+      <li>Trộn vụn mít vào bánh quy.</li>
+      <li>Làm topping trà – sinh tố.</li>
+    </ul>
+
+    <p>Tham khảo <a href="san-pham.html#mit-say">mít sấy chính hãng</a> của Mít Sấy Vũ Trụ.</p>
+
+    <h2>Kết luận</h2>
+    <p>Mít sấy là món ăn vặt lý tưởng – ngon, tiện, dễ bảo quản và nhiều lợi ích. Chọn đúng & bảo quản chuẩn sẽ giữ vị ngon tối ưu.</p>
 
     <footer class="article">
-      <div class="tags" aria-label="Tags">
-        <a href="blog.html?tag=mit-say">#mít-sấy</a>
-        <a href="blog.html?tag=do-an-vat">#đồ-ăn-vặt</a>
-        <a href="blog.html?tag=an-lanh-manh">#ăn-lành-mạnh</a>
-      </div>
-      <p>Gợi ý tiếp theo: xem <a href="gioi-thieu.html">câu chuyện thương hiệu</a> hoặc <a href="san-pham.html">đặt hàng mít sấy</a>.</p>
+      <div class="tags">
+        <a href="#">#mít-sấy</a>
+        <a href="#">#ăn-vặt</a>
+        <a href="#">#healthy</a>
+      </div>S
     </footer>
+
   </article>
 </main>
-
-<script>
-/* Fallback tự động đổi đuôi ảnh: .webp → .jpg → .png nếu không tồn tại */
-document.querySelectorAll("img").forEach(function(img){
-  img.addEventListener("error", function onErr(){
-    const src = img.getAttribute("src");
-    const triedPng = src.endsWith(".jpg");
-    const triedJpg = src.endsWith(".jpg");
-    const triedWebp = src.endsWith(".webp");
-    if (triedWebp)      img.src = src.replace(".webp",".jpg");
-    else if (triedJpg)  img.src = src.replace(".jpg",".png");
-    else if (triedPng)  img.removeEventListener("error", onErr); // hết fallback
-  });
-});
-</script>
 
 </body>
 </html>
