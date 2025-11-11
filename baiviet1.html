@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Nguồn gốc, lợi ích sức khỏe, mẹo chọn & bảo quản, và công thức biến tấu từ mít sấy.">
   <meta name="twitter:image" content="/baiviet1/1.jpg">
   <!-- Favicon (tùy chọn) -->
-  <link rel="icon" href="images/logo.png">
+  <link rel="icon" href="images/logo.jpg">
   <style>
     :root{
       --bg:#fffdf8; --text:#0f172a; --muted:#475569; --brand:#f59e0b; --card:#ffffff; --border:#e2e8f0;
@@ -91,7 +91,7 @@
         "description":"Nguồn gốc & quy trình, lợi ích sức khỏe, mẹo chọn & bảo quản, và công thức biến tấu từ mít sấy.",
         "image":["/baiviet1/1.jpg"],
         "author":{"@type":"Organization","name":"Mít Sấy Vũ Trụ"},
-        "publisher":{"@type":"Organization","name":"Mít Sấy Vũ Trụ","logo":{"@type":"ImageObject","url":"/images/logo.png"}},
+        "publisher":{"@type":"Organization","name":"Mít Sấy Vũ Trụ","logo":{"@type":"ImageObject","url":"/images/logo.jpg"}},
         "mainEntityOfPage":"/baiviet1.html"
       }
     ]
@@ -103,7 +103,7 @@
 <header class="site">
   <div class="container topbar">
     <a class="brand" href="index.html" aria-label="Về trang chủ">
-      <img src="images/logo.png" alt="Logo Mít Sấy Vũ Trụ" onerror="this.style.display='none'">
+      <img src="images/logo.jgp" alt="Logo Mít Sấy Vũ Trụ" onerror="this.style.display='none'">
       <div>
         <strong style="display:block; line-height:1">Mít Sấy Vũ Trụ</strong>
         <span style="font-size:12px; color:var(--muted)">Giòn thơm quay vị giác</span>
@@ -139,7 +139,7 @@
         <picture>
           <source srcset="baiviet1/1.webp" type="image/webp">
           <source srcset="baiviet1/1.jpg" type="image/jpeg">
-          <img src="baiviet1/1.png" alt="Mít sấy vàng óng, giòn thơm hấp dẫn" loading="eager" decoding="async">
+          <img src="baiviet1/1.jpg" alt="Mít sấy vàng óng, giòn thơm hấp dẫn" loading="eager" decoding="async">
         </picture>
         <figcaption>Hương vị tự nhiên, tiện lợi mọi lúc mọi nơi.</figcaption>
       </figure>
@@ -158,7 +158,7 @@ Trong bài viết này, chúng ta sẽ khám phá chi tiết về mít sấy - t
           <picture>
             <source srcset="baiviet1/2.webp" type="image/webp">
             <source srcset="baiviet1/2.jpg" type="image/jpeg">
-            <img src="baiviet1/2.png" alt="Lựa chọn múi mít chín đều, sơ chế sạch trước khi sấy" loading="lazy" decoding="async">
+            <img src="baiviet1/2.jpg" alt="Lựa chọn múi mít chín đều, sơ chế sạch trước khi sấy" loading="lazy" decoding="async">
           </picture>
           <figcaption>Chọn múi mít chín đều, thịt dày để sấy.</figcaption>
         </figure>
@@ -226,7 +226,7 @@ Trong bài viết này, chúng ta sẽ khám phá chi tiết về mít sấy - t
 document.querySelectorAll("img").forEach(function(img){
   img.addEventListener("error", function onErr(){
     const src = img.getAttribute("src");
-    const triedPng = src.endsWith(".png");
+    const triedPng = src.endsWith(".jpg");
     const triedJpg = src.endsWith(".jpg");
     const triedWebp = src.endsWith(".webp");
     if (triedWebp)      img.src = src.replace(".webp",".jpg");
