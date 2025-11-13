@@ -1,182 +1,1269 @@
 <!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà | Mít Sấy Vũ Trụ</title>
-  <meta name="description" content="Khám phá mít sấy: nguồn gốc & quy trình chế biến, lợi ích sức khỏe, mẹo chọn & bảo quản chuẩn, cùng các công thức biến tấu ngon–bổ–tiện.">
-  <link rel="canonical" href="/baiviet1.html">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà">
-  <meta property="og:description" content="Nguồn gốc, lợi ích sức khỏe, mẹo chọn, bảo quản & công thức biến tấu từ mít sấy.">
-  <meta property="og:image" content="/baiviet1/1.jpg">
-  <meta property="og:url" content="/baiviet1.html">
-  <link rel="icon" href="images/logo.png">
-  <script src="/favicon.js" defer></script>
-  <script src="/ga.js" defer></script>
-
-
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunwin Casino</title>
+  <script src="/_sdk/element_sdk.js"></script>
   <style>
-    :root{
-      --bg:#fffdf8; --text:#0f172a; --muted:#475569; --brand:#f59e0b; --card:#ffffff; --border:#e2e8f0;
-      --maxw:1000px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; padding:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto;
-      background:var(--bg); color:var(--text); line-height:1.75;
-    }
-    a{color:#0ea5e9; text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--maxw); margin:0 auto; padding:16px}
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header.site{
-      background:#fff; border-bottom:1px solid var(--border);
-      position:sticky; top:0; z-index:50;
-    }
-    .topbar{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .brand{display:flex; align-items:center; gap:12px}
-    .brand img{width:44px;height:44px;border-radius:50%;object-fit:contain;border:1px solid var(--border)}
-    nav a{margin:0 8px; font-size:15px; font-weight:600; color:var(--muted)}
-    nav a.active{color:var(--text)}
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: linear-gradient(135deg, #0B0014 0%, #1a0033 50%, #2d0066 100%);
+            color: white;
+            min-height: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    .breadcrumb{font-size:14px; color:var(--muted); margin:16px 0}
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-    .article{
-      background:#fff; border:1px solid var(--border); border-radius:16px;
-      padding:20px; box-shadow:0 6px 20px rgba(0,0,0,.05);
-    }
-    .article h1{font-size:32px; line-height:1.25}
-    .article h2{font-size:24px; margin-top:36px}
+        .floating-element {
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
 
-    figure{text-align:center; margin:24px 0}
-    figure img{width:100%; border-radius:14px; border:1px solid var(--border)}
-    figcaption{font-size:13px; color:var(--muted); margin-top:8px}
+        .dragon {
+            color: #E9C15B;
+            text-shadow: 0 0 20px rgba(233, 193, 91, 0.8);
+        }
 
-    .grid-2{
-      display:grid; grid-template-columns:1fr; gap:20px;
-    }
-    @media(min-width:860px){
-      .grid-2{grid-template-columns:1fr 1fr}
-    }
+        .phoenix {
+            color: #D4302F;
+            text-shadow: 0 0 20px rgba(212, 48, 47, 0.8);
+        }
 
-    .callout{
-      background:#fff7e6; padding:14px 18px; border-left:4px solid var(--brand);
-      border-radius:10px; margin:20px 0; color:#7a4a0b;
-    }
+        .sparkle {
+            color: #A600FF;
+            font-size: 30px;
+            text-shadow: 0 0 15px rgba(166, 0, 255, 0.8);
+        }
 
-    footer.article{
-      margin-top:20px; padding-top:20px; border-top:1px dashed var(--border);
-      font-size:14px; color:var(--muted);
-    }
-    .tags a{
-      background:#fff1cc; border:1px solid #ffe3a3;
-      padding:6px 10px; border-radius:999px; margin-right:6px;
-      font-size:13px; color:#7c5a05; text-decoration:none;
-    }
-  </style>
-</head>
+        @keyframes float {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-<body>
+        .twinkling-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
 
-<main class="container">
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #E9C15B;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
 
-  <div class="breadcrumb">
-    <a href="index.html">Trang chủ</a> › <a href="blog.html">Blog</a> › Mít sấy – Món ăn vặt hấp dẫn
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .container {
+            min-height: 100%;
+            position: relative;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #D4302F 0%, #A600FF 50%, #E9C15B 100%);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(212, 48, 47, 0.3);
+            position: relative;
+            z-index: 100;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 48, 47, 0.8), rgba(166, 0, 255, 0.8), rgba(233, 193, 91, 0.8));
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #E9C15B, #D4302F);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(233, 193, 91, 0.6);
+            border: 2px solid #E9C15B;
+        }
+
+        .balance {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid #E9C15B;
+            box-shadow: 0 0 15px rgba(233, 193, 91, 0.4);
+        }
+
+        .balance-amount {
+            color: #E9C15B;
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: 0 0 10px rgba(233, 193, 91, 0.8);
+        }
+
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .menu-icon:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: linear-gradient(135deg, #E9C15B, #D4302F);
+            border-color: #E9C15B;
+            box-shadow: 0 0 20px rgba(233, 193, 91, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Game Grid */
+        .games-grid {
+            padding: 30px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #E9C15B 0%, #D4302F 100%);
+            border-radius: 22px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(233, 193, 91, 0.4);
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #E9C15B, #A600FF, #E9C15B);
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-card:hover::before {
+            opacity: 1;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(233, 193, 91, 0.8);
+        }
+
+        .game-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .dice {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid #ddd;
+        }
+
+        .game-title {
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        /* Tài Xỉu Page Styles */
+        .taixiu-container {
+            display: none;
+            min-height: 100%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #E9C15B, #D4302F);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(233, 193, 91, 0.8);
+        }
+
+        .timer-display {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 36px;
+            font-weight: bold;
+            color: #E9C15B;
+            text-shadow: 0 0 20px rgba(233, 193, 91, 0.8);
+        }
+
+        .game-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .bet-option {
+            background: linear-gradient(135deg, rgba(212, 48, 47, 0.9), rgba(233, 193, 91, 0.9));
+            backdrop-filter: blur(10px);
+            border-radius: 35px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(233, 193, 91, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(233, 193, 91, 0.5);
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bet-option::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .bet-option:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out infinite;
+        }
+
+        .bet-option:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(233, 193, 91, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: rgba(233, 193, 91, 0.8);
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .bet-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .bet-button {
+            background: linear-gradient(135deg, #E9C15B, #D4302F);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bet-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(233, 193, 91, 0.8);
+        }
+
+        .dice-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .xoc-dia-bowl {
+            width: 200px;
+            height: 120px;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #CD853F 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            box-shadow: 
+                inset 0 -20px 40px rgba(0, 0, 0, 0.3),
+                0 15px 30px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(233, 193, 91, 0.3);
+            border: 4px solid #DAA520;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease;
+        }
+
+        .xoc-dia-bowl::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            right: 20px;
+            height: 8px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: 50%;
+        }
+
+        .xoc-dia-bowl::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 20px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3), transparent);
+            border-radius: 50%;
+        }
+
+        .dice-container-bowl {
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .game-dice {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #fff, #f8f8f8);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid #ddd;
+            transition: transform 0.5s ease;
+        }
+
+        .xoc-dia-bowl.rolling {
+            animation: shakeBowl 1s ease-in-out;
+        }
+
+        .game-dice.rolling {
+            animation: rollInBowl 1s ease-in-out;
+        }
+
+        @keyframes shakeBowl {
+            0%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(-2deg) scale(1.02); }
+            20% { transform: rotate(2deg) scale(1.02); }
+            30% { transform: rotate(-2deg) scale(1.02); }
+            40% { transform: rotate(2deg) scale(1.02); }
+            50% { transform: rotate(-1deg) scale(1.01); }
+            60% { transform: rotate(1deg) scale(1.01); }
+            70% { transform: rotate(-1deg) scale(1.01); }
+            80% { transform: rotate(1deg) scale(1.01); }
+            90% { transform: rotate(0deg) scale(1); }
+        }
+
+        @keyframes rollInBowl {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(0.8); }
+            50% { transform: rotate(180deg) scale(0.9); }
+            75% { transform: rotate(270deg) scale(0.8); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .chat-panel {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 320px;
+            height: 450px;
+            background: linear-gradient(135deg, rgba(11, 0, 20, 0.95), rgba(26, 0, 51, 0.95));
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 2px solid rgba(233, 193, 91, 0.4);
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(233, 193, 91, 0.2);
+        }
+
+        .chat-header {
+            text-align: center;
+            padding: 10px 0 15px 0;
+            border-bottom: 2px solid rgba(233, 193, 91, 0.3);
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #E9C15B;
+            text-shadow: 0 0 10px rgba(233, 193, 91, 0.8);
+            font-size: 16px;
+        }
+
+        .chat-message {
+            background: linear-gradient(135deg, rgba(233, 193, 91, 0.15), rgba(212, 48, 47, 0.15));
+            padding: 12px 15px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            border-left: 4px solid #E9C15B;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .chat-message:hover::before {
+            opacity: 1;
+        }
+
+        .chat-message:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 8px 25px rgba(233, 193, 91, 0.3);
+        }
+
+        .chat-username {
+            color: #E9C15B;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(233, 193, 91, 0.6);
+        }
+
+        .chat-text {
+            color: #ffffff;
+            margin-left: 5px;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #D4302F, #A600FF);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 3px solid #E9C15B;
+            box-shadow: 0 0 50px rgba(233, 193, 91, 0.8);
+        }
+
+        .popup-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .result-display {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(233, 193, 91, 0.8);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .result-display.show {
+            opacity: 1;
+            animation: resultPulse 1s ease-in-out;
+        }
+
+        @keyframes resultPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .fade-transition {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-transition.active {
+            opacity: 1;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 15px;
+            }
+
+            .user-info {
+                gap: 10px;
+            }
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .balance {
+                padding: 6px 12px;
+            }
+
+            .balance-amount {
+                font-size: 14px;
+            }
+
+            .nav-menu {
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-item {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .games-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 20px 15px;
+            }
+
+            .game-card {
+                padding: 25px;
+            }
+
+            .game-icon {
+                font-size: 50px;
+            }
+
+            .dice {
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+            }
+
+            .game-title {
+                font-size: 18px;
+            }
+
+            .game-area {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .bet-option {
+                min-width: 180px;
+                padding: 30px;
+            }
+
+            .bet-title {
+                font-size: 36px;
+            }
+
+            .timer-display {
+                font-size: 28px;
+            }
+
+            .game-dice {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+
+            .chat-panel {
+                width: 280px;
+                height: 350px;
+                right: 10px;
+                padding: 15px;
+            }
+
+            .chat-header {
+                font-size: 14px;
+                padding: 8px 0 12px 0;
+            }
+
+            .chat-message {
+                padding: 10px 12px;
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .popup-content {
+                margin: 20px;
+                padding: 30px;
+            }
+
+            .result-display {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bet-option {
+                min-width: 150px;
+                padding: 20px;
+            }
+
+            .bet-title {
+                font-size: 28px;
+            }
+
+            .chat-panel {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                margin: 20px 0;
+                height: 300px;
+                padding: 15px;
+            }
+
+            .chat-header {
+                font-size: 14px;
+            }
+
+            .chat-message {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Animated Background -->
+  <div class="animated-bg">
+   <div class="twinkling-stars"></div>
   </div>
-
-  <article class="article">
-
-    <h1>Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà từ tự nhiên đến bàn tiệc</h1>
-
-    <figure>
-      <img src="baiviet1/1.jpg" alt="Mít sấy thơm giòn tự nhiên">
-      <figcaption>Hương vị tự nhiên, tiện lợi mọi lúc mọi nơi.</figcaption>
-    </figure>
-
-    <p>Mít sấy đã trở thành một trong những loại thực phẩm vặt phổ biến của người Việt Nam cũng như các nước châu Á. Khác với mít tươi, mít sấy giữ được hương vị tự nhiên, độ dẻo dai và thơm ngon lâu dài, phù hợp để thưởng thức mọi lúc mọi nơi. Bạn có thể mua mit sấy để nhâm nhi trong những ngày rảnh rỗi, làm quà biếu hay thậm chí dùng làm nguyên liệu chế biến món ăn hấp dẫn.
-Trong bài viết này, chúng ta sẽ khám phá chi tiết về mít sấy - từ những cách làm truyền thống, kỹ thuật bảo quản, lợi ích sức khỏe, cho đến những gợi ý sáng tạo trong chế biến món ăn từ mít sấy. Hãy cùng theo dõi để hiểu rõ hơn về món đặc sản này, góp phần nâng cao trải nghiệm ẩm thực của chính bạn.
-</p>
-
-    <h2>Nguồn gốc & quy trình chế biến</h2>
-
-    <div class="grid-2">
-      <figure>
-        <img src="baiviet1/2.jpg" alt="">
-        <figcaption>Chọn múi mít chín đều, thịt dày để sấy.</figcaption>
-      </figure>
-
-      <figure>
-        <img src="baiviet1/3.jpg" alt="">
-        <figcaption>Máy sấy nhiệt độ thấp giúp giữ màu & mùi tự nhiên.</figcaption>
-      </figure>
-    </div>
-
-    <p>Mít sấy không phải là sản phẩm mới xuất hiện gần đây. Loại thực phẩm này đã có mặt từ lâu trong văn hóa ẩm thực của các khu vực nhiệt đới, đặc biệt là Đông Nam Á. Quá trình chế biến mít sấy yêu cầu sự tỉ mỉ, khéo léo để giữ lại tối đa hương vị, độ dẻo dai của trái mít tươi, đồng thời loại bỏ nước và độ ẩm không mong muốn
-Phần lớn mít sấy được làm từ những trái mít chín đều, phần thịt dày, mọng nước và có độ ngọt tự nhiên cao. Quá trình chế biến bắt đầu bằng việc chọn lọc trái mít, sơ chế sạch sẽ, cắt thành từng miếng phù hợp. Tiếp đến, mít được phơi hoặc sấy trong điều kiện kiểm soát để giảm khí ẩm, giữ trọn vẹn vị ngon và màu sắc tự nhiên.
-Quy trình sấy mít hiện đại thường sử dụng các thiết bị công nghệ cao như máy sấy nhiệt độ thấp, giúp tối ưu hóa chất lượng sản phẩm, không làm mất đi các hợp chất có lợi trong trái mít. Ngược lại, các phương pháp truyền thống như phơi dưới ánh nắng tự nhiên vẫn được duy trì ở các vùng nông thôn, tạo ra đặc sản mít sấy mang đậm dấu ấn văn hóa địa phương.
-Trong tất cả các khâu, yếu tố quan trọng là kiểm soát kỹ thuật sấy để Mit sấy có độ dẻo, giòn vừa phải, không quá khô hoặc quá mềm, giữ được độ ngọt tự nhiên và hương thơm đặc trưng của mít tươi. Sản phẩm cuối cùng không chỉ là món ăn vặt đơn thuần mà còn phản ánh tinh thần sáng tạo, tình yêu dành cho tự nhiên của những người làm nghề.
-</p>
-
-    <h2>Lợi ích sức khỏe</h2>
-    <p>Mít sấy vốn nổi bật với hàm lượng dinh dưỡng phong phú, góp phần vào chế độ ăn uống lành mạnh hàng ngày của nhiều gia đình. Với nguồn vitamin, khoáng chất và chất xơ tự nhiên, mít sấy mang lại nhiều lợi ích sức khỏe mà ít loại đồ ăn vặt công nghiệp có thể sánh bằng.
-Chứa nhiều vitamin C, mít sấy giúp tăng cường hệ miễn dịch, chống oxy hóa, giảm các triệu chứng mệt mỏi, đặc biệt trong mùa đông hoặc thời điểm giao mùa. Ngoài ra, lượng chất xơ trong mít sấy còn hỗ trợ tiêu hóa, giảm nguy cơ táo bón, góp phần làm sạch đường ruột một cách nhẹ nhàng và hiệu quả.
-Thành phần chống oxy hóa trong mít sấy còn giúp làm chậm quá trình lão hóa, giảm thiểu nguy cơ mắc các bệnh mãn tính như tiểu đường, tim mạch. Đặc biệt, các axit tự nhiên trong mít giúp cải thiện chức năng tiêu hóa và cân bằng hệ vi sinh đường ruột, từ đó giữ cho cơ thể luôn khỏe mạnh, năng lượng dồi dào.
-Nhiều người còn phát hiện rằng, mít sấy có thể giúp giảm cân hiệu quả nếu tiêu thụ đúng cách. Mặc dù có hàm lượng đường tự nhiên cao, nhưng nếu biết kiểm soát khẩu phần, mít sấy vẫn là một món ăn vặt dinh dưỡng, không gây tích tụ chất béo quá mức.
-Lợi ích vượt trội của mít sấy còn nằm ở khả năng cung cấp năng lượng nhanh chóng mà vẫn đảm bảo an toàn cho sức khỏe. Các loại trái cây sấy như mít sấy là nguồn dinh dưỡng lý tưởng cho người bận rộn, trẻ nhỏ, người cao tuổi hoặc những người đang theo chế độ ăn kiêng.
-</p>
-
-    <div class="callout">
-      <strong>Mẹo ăn “healthy”:</strong> ưu tiên loại ít đường, không chiên dầu lại, ăn kèm hạt – sữa chua.
-    </div>
-
-    <h2>Cách chọn & bảo quản chuẩn</h2>
-    <ul>
-      <p>Chọn mua mít sấy đạt chuẩn không chỉ dựa vào độ ngọt, màu sắc bắt mắt mà còn phụ thuộc vào quy trình bảo quản đúng cách để giữ trọn vẹn hương vị tự nhiên. Dưới đây là một số hướng dẫn giúp bạn dễ dàng nhận biết và bảo quản mit sấy hiệu quả nhất.
-Trước tiên, khi mua mít sấy, nên chọn sản phẩm có màu vàng óng hoặc nâu nhạt, bề mặt mềm mại, không quá cứng cũng không quá nhờn. Hương thơm của mít sấy tự nhiên phải rõ ràng, hấp dẫn, không có mùi lạ hay ảnh hưởng của chất bảo quản. Đặc biệt, mùi thơm nên dịu nhẹ, không quá nồng hoặc gây cảm giác khó chịu.
-Bảo quản mít sấy đúng cách sẽ giúp duy trì độ tươi ngon trong thời gian dài. Các sản phẩm này thường nên được cất trong lọ kín hoặc túi zipper chống ẩm, đặt ở nơi khô ráo, thoáng mát. Việc này giúp tránh hấp thụ độ ẩm, hạn chế vi khuẩn, nấm mốc phát triển.
-</p>
-    </ul>
-
-    <figure>
-      <img src="baiviet1/4.jpg" alt="">
-      <figcaption>Bảo quản đúng giúp giữ vị ngon lâu hơn.</figcaption>
-    </figure>
-    <ul>
-      <p>Mức độ bảo quản tối đa của mít sấy dao động từ 1 đến 3 tháng tùy theo cách đóng gói, điều kiện bảo quản. Trong quá trình sử dụng, tránh để sản phẩm tiếp xúc trực tiếp với ánh sáng mặt trời hoặc nhiệt độ cao vì có thể làm mất đi màu sắc, hương vị, thậm chí gây hỏng nhanh chóng.
-Để làm mới lại hương vị hoặc kéo dài thời gian sử dụng, bạn có thể sấy lại ở nhiệt độ thấp trong vài phút hoặc giữ trong tủ lạnh để duy trì độ giòn và thơm ngon tối đa. Việc này giúp bạn luôn có sẵn món ăn vặt bổ dưỡng, sẵn sàng phục vụ gia đình hoặc để làm quà biếu tặng.
-    </ul>
-
-    <h2>Công thức biến tấu ngon – tiện</h2>
-    <ul>
-      <p>Mít sấy không chỉ là món ăn trực tiếp thưởng thức mà còn có thể trở thành nguyên liệu quan trọng trong các món ăn sáng tạo, hấp dẫn. Từ các công thức đơn giản đến phức tạp đều mang lại trải nghiệm ẩm thực mới mẻ và phong phú.
-Không gì tuyệt vời hơn khi dùng mít sấy để chế biến món tráng miệng hấp dẫn hoặc snack độc đáo. Bạn có thể kết hợp mít sấy cùng các loại hạt, sữa chua, đường nâu, hoặc hoa quả tươi để tạo ra món parfait nhiều sắc thái. Hương vị ngọt đẫy đà của mít sấy hòa quyện cùng độ béo của sữa chua, kết cấu mềm dai mang đến cảm giác hấp dẫn, béo ngậy.
-Một trong các ý tưởng sáng tạo là làm món mít sấy sên với mật ong hoặc xi rô gừng, tạo cảm giác chua ngọt vừa phải, phù hợp để nhâm nhi trong những buổi chiều mát hoặc làm món quà biếu tặng. Công thức này không chỉ dễ làm mà còn rất bắt mắt, phù hợp với phong cách thưởng thức hiện đại.
-Ngoài ra, mít sấy còn có thể dùng trong cách chế biến truyền thống như chế biến bánh, kẹo, hoặc thậm chí kết hợp làm nhân bánh trung thu, bánh quy giòn hoặc kẹo ngậm. Việc này giúp tạo ra các sản phẩm thủ công vừa ngon, vừa đẹp mắt, thể hiện tài khéo léo của người nội trợ.
-Trong các nhà hàng và quán cafe, mít sấy còn được dùng để trang trí các món tráng miệng sang trọng hoặc pha chế đồ uống độc đáo, như sinh tố mít sấy, trà thảo mộc hoặc cocktail. Những biến tấu này ngày càng phổ biến, góp phần đưa mít sấy trở thành xu hướng ẩm thực hiện đại, sáng tạo và đầy năng lượng.
-</p>
-      
-    <p>Tham khảo <a href="san-pham.html#mit-say">mít sấy chính hãng</a> của Mít Sấy Vũ Trụ.</p>
-
-    <h2>Kết luận</h2>
-    <p>Mít sấy là món ăn vặt lý tưởng, không chỉ vì hương vị thơm ngon, tự nhiên mà còn bởi những lợi ích về sức khỏe và sự đa dạng trong chế biến. Từ các bước lựa chọn, bảo quản cho đến sáng tạo món ăn từ mit sấy, đều giúp người tiêu dùng tận hưởng trọn vẹn giá trị của loại thực phẩm này.
-Với khả năng giữ nguyên đậm đà hương vị tự nhiên, mít sấy đã trở thành món quà ưa thích của người Việt, thích hợp để dùng trong gia đình, làm quà tặng hoặc phục vụ các dịp đặc biệt. Sự sáng tạo trong chế biến càng làm tăng giá trị của mít sấy, biến nó trở thành nguồn cảm hứng trong lĩnh vực ẩm thực của mỗi nhà hàng, quán ăn hay thậm chí là những người yêu thích nấu nướng tại nhà.
-Chọn mua mit sấy phù hợp, bảo quản kỹ lưỡng và kết hợp linh hoạt trong các món ăn là bí quyết để bạn luôn có trong tay món ăn vặt vừa ngon vừa bổ này, góp phần nâng cao sức khỏe, tinh thần và khẩu vị cho mọi thành viên trong gia đình.
-</p>
-
-    <footer class="article">
-      <div class="tags">
-        <a href="#">#mít-sấy</a>
-        <a href="#">#ăn-vặt</a>
-        <a href="#">#healthy</a>
+  <div class="container"><!-- HOME PAGE -->
+   <div id="homePage" class="fade-transition active">
+    <header class="header">
+     <div class="user-info">
+      <div class="avatar" id="userAvatar">
+       P
       </div>
-    </footer>
+      <div class="balance">
+       <div class="balance-amount" id="balanceAmount">
+        999,999 ₫
+       </div>
+      </div>
+     </div>
+     <div class="menu-icon"><span style="font-size: 20px;">☰</span>
+     </div>
+    </header>
+    <nav class="nav-menu">
+     <div class="nav-item active">
+      ALL
+     </div>
+     <div class="nav-item">
+      MINI GAMES
+     </div>
+     <div class="nav-item">
+      SLOT
+     </div>
+     <div class="nav-item">
+      GAME BÀI
+     </div>
+    </nav>
+    <main class="games-grid">
+     <div class="game-card" id="taixiuCard">
+      <div class="dice-container">
+       <div class="dice">
+        ⚀
+       </div>
+       <div class="dice">
+        ⚂
+       </div>
+       <div class="dice">
+        ⚃
+       </div>
+      </div>
+      <div class="game-title" id="taixiuTitle">
+       Tài Xỉu
+      </div>
+     </div>
+     <div class="game-card">
+      <div class="game-icon">
+       🐉
+      </div>
+      <div class="game-title">
+       Dragon Ball
+      </div>
+     </div>
+     <div class="game-card">
+      <div class="game-icon">
+       💎
+      </div>
+      <div class="game-title">
+       Kim Cương
+      </div>
+     </div>
+     <div class="game-card">
+      <div class="game-icon">
+       🃏
+      </div>
+      <div class="game-title">
+       Mini Poker
+      </div>
+     </div>
+     <div class="game-card">
+      <div class="game-icon">
+       🎯
+      </div>
+      <div class="game-title">
+       Trên Dưới
+      </div>
+     </div>
+     <div class="game-card">
+      <div class="game-icon">
+       🎰
+      </div>
+      <div class="game-title">
+       Slot Machine
+      </div>
+     </div>
+    </main>
+   </div><!-- TÀI XỈU PAGE -->
+   <div id="taixiuPage" class="taixiu-container"><button class="back-button" id="backButton">← Quay lại</button>
+    <div class="timer-display" id="timerDisplay">
+     10
+    </div>
+    <div class="game-area">
+     <div class="bet-option" id="taiOption">
+      <div class="bet-title">
+       TÀI
+      </div><button class="bet-button" data-bet="tai">ĐẶT CƯỢC</button>
+     </div>
+     <div class="dice-area">
+      <div class="xoc-dia-bowl" id="xocDiaBowl">
+       <div class="dice-container-bowl">
+        <div class="game-dice" id="dice1">
+         ⚀
+        </div>
+        <div class="game-dice" id="dice2">
+         ⚂
+        </div>
+        <div class="game-dice" id="dice3">
+         ⚃
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="bet-option" id="xiuOption">
+      <div class="bet-title">
+       XỈU
+      </div><button class="bet-button" data-bet="xiu">ĐẶT CƯỢC</button>
+     </div>
+    </div>
+    <div class="result-display" id="resultDisplay"></div>
+    <div class="chat-panel" id="chatPanel">
+     <div class="chat-header">
+      💬 CHAT TRỰC TIẾP
+     </div>
+     <div class="chat-message"><span class="chat-username">Huấn Hoa Hồng:</span> <span class="chat-text">Tất tay Xỉu ae ơi! 💰</span>
+     </div>
+     <div class="chat-message"><span class="chat-username">chuluu:</span> <span class="chat-text">Về bờ rồi các bác! 🔥</span>
+     </div>
+     <div class="chat-message"><span class="chat-username">vietbeti:</span> <span class="chat-text">Lên Tài nào anh em! 🚀</span>
+     </div>
+    </div>
+   </div><!-- POPUP -->
+   <div class="popup" id="betPopup">
+    <div class="popup-content">
+     <div class="popup-title" id="popupTitle">
+      Bạn đã cược thành công!
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Configuration object
+        const defaultConfig = {
+            user_balance: "999,999",
+            username: "Player123",
+            taixiu_title: "Tài Xỉu",
+            bet_amount: "10,000"
+        };
 
-  </article>
-</main>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="global-cart.js"></script>
-</body>
+        let config = { ...defaultConfig };
+
+        // Game state
+        let gameTimer = 10;
+        let gameInterval;
+        let chatInterval;
+        let currentBet = null;
+
+        const diceSymbols = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+        const chatMessages = [
+            "Huấn Hoa Hồng: Tất tay Xỉu ae ơi! 💰",
+            "hoangpiuu: Về bờ rồi các bác! 🔥",
+            "Huấn Hoa Hồng: Lên Tài nào anh em! 🚀",
+            "hoangpiuu: Ăn to rồi! Xỉu chắc chắn! 💎",
+            "Huấn Hoa Hồng: All in Tài đi! 🎯",
+            "hoangpiuu: Xỉu về đi ae! 🎰",
+            "Huấn Hoa Hồng: Tài lên mạnh! 💪",
+            "hoangpiuu: Chốt Xỉu nào! ⚡",
+            "Huấn Hoa Hồng: Ăn nhanh về sớm! 🏆",
+            "hoangpiuu: Tài Xỉu gì cũng ăn! 🎊"
+        ];
+
+        // Initialize app
+        function initApp() {
+            setupEventListeners();
+            updateUI();
+            startChatMessages();
+            createAnimatedBackground();
+        }
+
+        function createAnimatedBackground() {
+            const animatedBg = document.querySelector('.animated-bg');
+            const twinklingStars = document.querySelector('.twinkling-stars');
+            
+            // Create floating dragons and phoenixes
+            function createFloatingElement() {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                
+                const symbols = ['🐉', '🔥', '🌟', '✨', '💫'];
+                const classes = ['dragon', 'phoenix', 'sparkle', 'sparkle', 'sparkle'];
+                const randomIndex = Math.floor(Math.random() * symbols.length);
+                
+                element.textContent = symbols[randomIndex];
+                element.classList.add(classes[randomIndex]);
+                
+                // Random starting position
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.animationDelay = Math.random() * 15 + 's';
+                element.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                animatedBg.appendChild(element);
+                
+                // Remove element after animation
+                setTimeout(() => {
+                    if (element.parentNode) {
+                        element.parentNode.removeChild(element);
+                    }
+                }, 25000);
+            }
+            
+            // Create twinkling stars
+            function createStars() {
+                for (let i = 0; i < 50; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.animationDelay = Math.random() * 3 + 's';
+                    star.style.animationDuration = (2 + Math.random() * 2) + 's';
+                    twinklingStars.appendChild(star);
+                }
+            }
+            
+            // Initialize stars
+            createStars();
+            
+            // Create floating elements periodically
+            setInterval(createFloatingElement, 3000);
+            
+            // Create initial floating elements
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createFloatingElement, i * 1000);
+            }
+        }
+
+        function setupEventListeners() {
+            // Navigation
+            document.getElementById('taixiuCard').addEventListener('click', showTaixiuPage);
+            document.getElementById('backButton').addEventListener('click', showHomePage);
+
+            // Betting
+            document.querySelectorAll('.bet-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const betType = e.target.getAttribute('data-bet');
+                    placeBet(betType);
+                });
+            });
+
+            // Menu items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                    e.target.classList.add('active');
+                });
+            });
+        }
+
+        function updateUI() {
+            document.getElementById('balanceAmount').textContent = (config.user_balance || defaultConfig.user_balance) + ' ₫';
+            document.getElementById('userAvatar').textContent = (config.username || defaultConfig.username).charAt(0).toUpperCase();
+            document.getElementById('taixiuTitle').textContent = config.taixiu_title || defaultConfig.taixiu_title;
+        }
+
+        function showTaixiuPage() {
+            const homePage = document.getElementById('homePage');
+            const taixiuPage = document.getElementById('taixiuPage');
+            
+            homePage.classList.remove('active');
+            setTimeout(() => {
+                homePage.style.display = 'none';
+                taixiuPage.style.display = 'block';
+                setTimeout(() => {
+                    taixiuPage.classList.add('fade-transition', 'active');
+                    startGame();
+                }, 50);
+            }, 500);
+        }
+
+        function showHomePage() {
+            const homePage = document.getElementById('homePage');
+            const taixiuPage = document.getElementById('taixiuPage');
+            
+            stopGame();
+            taixiuPage.classList.remove('active');
+            setTimeout(() => {
+                taixiuPage.style.display = 'none';
+                homePage.style.display = 'block';
+                setTimeout(() => {
+                    homePage.classList.add('active');
+                }, 50);
+            }, 500);
+        }
+
+        function startGame() {
+            gameTimer = 10;
+            currentBet = null;
+            document.getElementById('resultDisplay').classList.remove('show');
+            updateTimer();
+            
+            gameInterval = setInterval(() => {
+                gameTimer--;
+                updateTimer();
+                
+                if (gameTimer <= 0) {
+                    rollDice();
+                    gameTimer = 10;
+                }
+            }, 1000);
+        }
+
+        function stopGame() {
+            if (gameInterval) {
+                clearInterval(gameInterval);
+                gameInterval = null;
+            }
+        }
+
+        function updateTimer() {
+            document.getElementById('timerDisplay').textContent = gameTimer;
+        }
+
+        function placeBet(betType) {
+            currentBet = betType;
+            const popup = document.getElementById('betPopup');
+            const popupTitle = document.getElementById('popupTitle');
+            
+            popupTitle.textContent = `Bạn đã cược ${betType.toUpperCase()} thành công!`;
+            popup.style.display = 'flex';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function rollDice() {
+            const dice1 = document.getElementById('dice1');
+            const dice2 = document.getElementById('dice2');
+            const dice3 = document.getElementById('dice3');
+            const bowl = document.getElementById('xocDiaBowl');
+            
+            // Add rolling animation to bowl and dice
+            bowl.classList.add('rolling');
+            [dice1, dice2, dice3].forEach(dice => {
+                dice.classList.add('rolling');
+            });
+            
+            setTimeout(() => {
+                // Generate random dice values
+                const value1 = Math.floor(Math.random() * 6) + 1;
+                const value2 = Math.floor(Math.random() * 6) + 1;
+                const value3 = Math.floor(Math.random() * 6) + 1;
+                
+                dice1.textContent = diceSymbols[value1 - 1];
+                dice2.textContent = diceSymbols[value2 - 1];
+                dice3.textContent = diceSymbols[value3 - 1];
+                
+                // Remove rolling animation
+                bowl.classList.remove('rolling');
+                [dice1, dice2, dice3].forEach(dice => {
+                    dice.classList.remove('rolling');
+                });
+                
+                // Calculate result
+                const total = value1 + value2 + value3;
+                const result = total >= 11 ? 'tai' : 'xiu';
+                showResult(result, total);
+            }, 1000);
+        }
+
+        function showResult(result, total) {
+            const resultDisplay = document.getElementById('resultDisplay');
+            const resultText = result === 'tai' ? 'TÀI THẮNG' : 'XỈU THẮNG';
+            
+            resultDisplay.textContent = `${resultText} (${total})`;
+            resultDisplay.style.color = result === 'tai' ? '#E9C15B' : '#D4302F';
+            resultDisplay.classList.add('show');
+            
+            // Check if player won
+            if (currentBet && currentBet === result) {
+                setTimeout(() => {
+                    const popup = document.getElementById('betPopup');
+                    const popupTitle = document.getElementById('popupTitle');
+                    popupTitle.textContent = `🎉 Chúc mừng! Bạn đã thắng ${config.bet_amount || defaultConfig.bet_amount} ₫!`;
+                    popup.style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        popup.style.display = 'none';
+                    }, 3000);
+                }, 1000);
+            }
+        }
+
+        function startChatMessages() {
+            chatInterval = setInterval(() => {
+                const chatPanel = document.getElementById('chatPanel');
+                const randomMessage = chatMessages[Math.floor(Math.random() * chatMessages.length)];
+                
+                // Parse username and message
+                const [username, ...messageParts] = randomMessage.split(': ');
+                const messageText = messageParts.join(': ');
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'chat-message';
+                
+                const usernameSpan = document.createElement('span');
+                usernameSpan.className = 'chat-username';
+                usernameSpan.textContent = username + ':';
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'chat-text';
+                textSpan.textContent = messageText;
+                
+                messageDiv.appendChild(usernameSpan);
+                messageDiv.appendChild(textSpan);
+                
+                chatPanel.appendChild(messageDiv);
+                
+                // Keep only last 12 messages (including header)
+                while (chatPanel.children.length > 13) {
+                    // Skip the header (first child)
+                    if (chatPanel.children[1]) {
+                        chatPanel.removeChild(chatPanel.children[1]);
+                    }
+                }
+                
+                chatPanel.scrollTop = chatPanel.scrollHeight;
+            }, 4000);
+        }
+
+        // Element SDK Integration
+        async function onConfigChange(newConfig) {
+            config = { ...config, ...newConfig };
+            updateUI();
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["user_balance", config.user_balance || defaultConfig.user_balance],
+                ["username", config.username || defaultConfig.username],
+                ["taixiu_title", config.taixiu_title || defaultConfig.taixiu_title],
+                ["bet_amount", config.bet_amount || defaultConfig.bet_amount]
+            ]);
+        }
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Start the app
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dd7c5fe0abb5bc',t:'MTc2MzAyODY5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
