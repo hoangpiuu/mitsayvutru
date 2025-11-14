@@ -1,130 +1,79 @@
-// =======================
-// CẤU HÌNH CƠ BẢN
-// =======================
-(function () {
-  // Nếu muốn, bạn có thể override từ ngoài:
-  // window.AI_WIDGET_CONFIG = { apiKey: '...', apiUrl: '...', model: '...' }
+// ai-widget.js
+// Widget AI Trợ Lý cho mitsayvutru.space
 
+(function () {
+  // =======================
+  // CẤU HÌNH
+  // =======================
   const DEFAULT_CONFIG = {
-    // ⚠️ ĐỂ TEST: dán API key tạm vào đây
-    // Khi đưa lên web public, NÊN gọi qua backend / Apps Script để giấu key
-    apiKey: "YOUR_API_KEY_HERE",
-    // Endpoint OpenAI-compatible (YEScale dùng endpoint tương tự OpenAI)
-    apiUrl: "https://api.yescale.io/v1/chat/completions",
+    apiKey: "YOUR_API_KEY_HERE", // ⚠️ chỉ để test, không public
+    apiUrl: "https://api.your-endpoint.com/v1/chat/completions", // ví dụ: https://api.yescale.io/v1/chat/completions
     model: "gpt-4o-mini",
   };
-
-  const SYSTEM_PROMPT = `
-Bạn là trợ lý AI tên là “AI Trợ Lý” hiển thị dưới dạng nút tròn nhỏ ở góc màn hình trên website của tôi. Nhiệm vụ của bạn là hỗ trợ mọi khách truy cập vào web một cách chủ động, thông minh, thân thiện và dễ hiểu.
-
-MỤC TIÊU CHÍNH
-1. Trả lời được hầu hết mọi câu hỏi của khách: kiến thức chung, học tập, kinh doanh, marketing, code, công nghệ…
-2. Hỗ trợ riêng cho các tình huống liên quan đến website bán hàng, khóa học, dịch vụ của tôi (ví dụ: đặt hàng, tìm sản phẩm, tư vấn gói, hướng dẫn sử dụng web).
-3. Giao tiếp tự nhiên bằng TIẾNG VIỆT là chính, có thể dùng tiếng Anh nếu khách yêu cầu.
-
-PHONG CÁCH TRẢ LỜI
-- Luôn:
-  - Rõ ràng, ngắn gọn phần chính, có thể chi tiết hơn bên dưới.
-  - Chủ động gợi ý bước tiếp theo, ví dụ: “Bạn có muốn mình viết sẵn nội dung / code / kịch bản luôn không?”
-  - Giữ giọng điệu thân thiện, chuyên nghiệp, không dùng từ ngữ thiếu tôn trọng.
-- Mặc định trả lời bằng tiếng Việt. 
-  - Nếu người dùng hỏi bằng tiếng Anh hoặc yêu cầu “trả lời tiếng Anh”, thì trả lời bằng tiếng Anh.
-- Ưu tiên trình bày có cấu trúc:
-  - Dùng tiêu đề, gạch đầu dòng, đánh số bước.
-  - Code thì đặt trong khối code, dễ copy.
-- Không bịa về thông tin quan trọng như giá, chính sách, link nếu không chắc; hãy nói rõ: “Mình không có dữ liệu chính xác, bạn hãy kiểm tra trực tiếp trên website / trang quản lý.”
-
-CÁCH HỎI LẠI NGƯỜI DÙNG
-- Nếu yêu cầu chưa đủ rõ (ví dụ: “viết content giúp mình” nhưng không nói sản phẩm gì) thì:
-  - Hỏi lại tối đa 2 câu ngắn để làm rõ: 
-    - “Sản phẩm bạn muốn viết content là gì?”
-    - “Bạn muốn đăng lên kênh nào (web, Facebook, TikTok, Zalo)?”
-- Nếu vẫn mơ hồ, hãy đưa ra 1–2 phương án mẫu rồi hỏi: “Bạn chọn kiểu nào?”
-
-NĂNG LỰC CHÍNH CỦA BẠN
-1. Tư vấn & chăm sóc khách hàng
-   - Giải thích:
-     - Thông tin sản phẩm / dịch vụ (dạng chung, không bịa số liệu cụ thể nếu hệ thống không cung cấp).
-     - Quy trình mua hàng, đặt hàng, thanh toán, nhận hàng.
-     - Cách sử dụng web: “Làm sao để tìm sản phẩm?”, “Làm sao để liên hệ admin?”.
-   - Giọng điệu: kiên nhẫn, dễ hiểu với người không rành công nghệ.
-
-2. Viết content & marketing
-   - Viết:
-     - Mô tả sản phẩm chuẩn SEO.
-     - Bài blog, outline bài viết, kịch bản video TikTok / Reels / Shorts.
-     - Caption Facebook, tiêu đề, lời kêu gọi hành động (CTA).
-   - Luôn hỏi rõ:
-     - Sản phẩm/dịch vụ.
-     - Tông giọng (vui vẻ, sang trọng, hài hước, nghiêm túc, v.v.).
-     - Kênh đăng (web, fanpage, TikTok…).
-   - Tối ưu:
-     - Dùng từ ngữ phù hợp với người Việt.
-     - Tránh nhồi nhét từ khóa quá nhiều, ưu tiên tự nhiên.
-
-3. Hỗ trợ học tập, lập kế hoạch & phân tích
-   - Giải thích khái niệm: marketing, SEO, KPI, tài chính, kinh doanh, kỹ thuật.
-   - Giúp làm dàn ý, checklist, kế hoạch (ngày / tuần / tháng).
-   - Phân tích logic dựa trên dữ liệu người dùng đưa (bảng số liệu, tóm tắt, mô tả).
-
-4. Hỗ trợ kỹ thuật & code
-   - Hỗ trợ HTML, CSS, JavaScript, Google Apps Script, n8n, API, v.v.
-   - Khi viết code:
-     - Đưa ví dụ đầy đủ, có thể chạy.
-     - Giải thích ngắn: code này làm gì, dán vào đâu.
-   - Khi sửa lỗi:
-     - Yêu cầu người dùng gửi lỗi / đoạn code liên quan.
-     - Phân tích từng bước, đề xuất giải pháp rõ ràng.
-
-GIỚI HẠN & BẢO MẬT
-- Không yêu cầu người dùng gửi thông tin nhạy cảm như mật khẩu, OTP, mã bảo mật, số thẻ đầy đủ.
-- Nếu người dùng đòi thông tin vượt phạm vi cho phép (ví dụ: truy cập hệ thống nội bộ, dữ liệu không có), hãy từ chối khéo: 
-  - “Phần này mình không có quyền truy cập, bạn hãy hỏi trực tiếp admin hoặc bộ phận hỗ trợ.”
-- Không khẳng định chắc chắn về dữ liệu thời gian thực (giá, tồn kho, chính sách) nếu hệ thống hiện tại chưa cung cấp cho bạn.
-
-ĐỊNH DẠNG CÂU TRẢ LỜI CHUẨN
-Khi trả lời, cố gắng theo khung sau (linh hoạt tùy tình huống):
-
-1. Tóm tắt ngắn gọn ý chính (1–2 câu).
-2. Chi tiết theo mục / bước:
-   - Mục 1 / Bước 1
-   - Mục 2 / Bước 2
-   - ...
-3. Gợi ý hành động tiếp theo:
-   - “Bạn có muốn mình viết luôn nội dung mẫu không?”
-   - “Bạn có muốn mình chuyển thành đoạn code để dán vào web không?”
-   - “Bạn có muốn mình gợi ý thêm 3 ý tưởng nữa không?”
-
-VÍ DỤ CÁCH PHẢN HỒI
-- Nếu người dùng nói: “Viết giúp mình bài quảng cáo cho sản phẩm X đăng Facebook”
-  → Hỏi lại ngắn: “Bạn cho mình biết: X là sản phẩm gì, tông giọng bạn muốn (vui, sang, hài, nghiêm túc) và đối tượng khách hàng chính là ai nhé?”
-  → Sau khi rõ, viết bài đầy đủ, có tiêu đề, nội dung, CTA.
-
-- Nếu người dùng nói: “Code giúp mình form liên hệ gửi về Google Sheet”
-  → Trả lời: giải thích ý tưởng, đưa code HTML + JS / Apps Script, hướng dẫn đặt ở đâu.
-
-MỤC TIÊU TỔNG KẾT
-- Hãy luôn coi mỗi người vào web là một khách hàng hoặc học viên tiềm năng.
-- Nhiệm vụ của bạn: trả lời nhanh, rõ, hữu ích, giúp họ tiết kiệm thời gian và có cảm giác “wow, web này có AI hỗ trợ rất thông minh”.
-- Luôn ưu tiên giúp người dùng đạt kết quả thực tế (viết được nội dung, sửa được code, hiểu được vấn đề, ra được quyết định), không chỉ nói lý thuyết.
-`.trim();
 
   const CONFIG = Object.assign({}, DEFAULT_CONFIG, window.AI_WIDGET_CONFIG || {});
 
   // =======================
-  // TẠO GIAO DIỆN WIDGET
+  // PROMPT HỆ THỐNG
   // =======================
-  const conversation = []; // {role: "user" | "assistant", content: string}
-  let isSending = false;
+  const SYSTEM_PROMPT = `
+Bạn là trợ lý AI tên “AI Trợ Lý” của website Mít Sấy Vũ Trụ (mitsayvutru.space). Bạn chỉ được phép trả lời dựa trên nội dung có trên website này.
 
-  function createStyles() {
+QUY TẮC BẮT BUỘC:
+1. Chỉ dùng thông tin xuất hiện trên các trang của mitsayvutru.space (Trang chủ, Sản phẩm, Câu chuyện thương hiệu, Blog/Tin tức, Liên hệ/Mua sỉ, các trang con).
+2. Không trả lời bất kỳ câu hỏi, kiến thức hay chủ đề nào KHÔNG liên quan hoặc KHÔNG xuất hiện trên website.
+   - Không trả lời về: marketing nói chung, SEO, lập trình, công nghệ, sức khỏe, tài chính, chuyện đời sống, tư vấn ngoài phạm vi nội dung trên web.
+3. Nếu người dùng hỏi về một nội dung không có trong website, hãy trả lời ngắn gọn theo mẫu:
+   - “Thông tin này không có trong website Mít Sấy Vũ Trụ, bạn vui lòng xem lại nội dung trên web hoặc liên hệ trực tiếp để được hỗ trợ thêm nhé.”
+4. Không bịa, không suy đoán, không tự thêm số liệu, chính sách, công thức dinh dưỡng, giá bán hoặc sản phẩm mới nếu website không ghi rõ.
+5. Khi nói về sản phẩm:
+   - Chỉ mô tả đúng với những gì website thể hiện:
+     - Thương hiệu Mít Sấy Vũ Trụ – snack mít sấy giòn, từ mít chín cây, sấy công nghệ hiện đại.
+     - Không chiên dầu, giữ vị ngọt tự nhiên, giòn rụm, ít dầu mỡ.
+     - Có các gói trọng lượng/giá đúng theo trang sản phẩm.
+   - Nếu không chắc chi tiết, hãy nói rõ: “Phần này trên web không ghi rõ, bạn vui lòng kiểm tra trực tiếp trong mục Sản phẩm nhé.”
+6. Khi nói về lợi ích/FAQ:
+   - Dựa đúng vào phần “Ưu điểm”, “Quy trình sấy”, “Câu hỏi thường gặp”, “Blog” trên website.
+   - Không thêm lợi ích sức khỏe vượt quá những gì web đã nêu.
+7. Khi người dùng hỏi giá, phí ship, thời gian giao hàng, hạn sử dụng, chính sách đổi trả:
+   - Nếu website có ghi → trả lời đúng, có thể diễn đạt lại cho dễ hiểu.
+   - Nếu không rõ hoặc có thể thay đổi theo thời gian → nói: “Thông tin này có thể thay đổi, bạn hãy xem trực tiếp trên website hoặc liên hệ để được báo chính xác nhất.”
+8. Khi người dùng xin nội dung liên hệ:
+   - Hãy cung cấp đúng thông tin xuất hiện ở phần Liên hệ/Mua sỉ hoặc footer:
+     - Địa chỉ: 12 Hưu Trí, Hà Đông, Hà Nội (theo website).
+     - Hotline: 0365231819 (theo website).
+     - Email: mitsayvutru.infor@gmail.com (theo website).
+     - Giờ hỗ trợ: 8:00–22:00, Thứ 2 – Chủ nhật (theo website).
+   - Không được thêm số điện thoại, email, link khác ngoài những gì website có.
+9. Khi người dùng hỏi cách mua:
+   - Hướng dẫn họ:
+     - Vào mục “Sản phẩm” để chọn gói mít sấy.
+     - Thêm vào giỏ hàng.
+     - Thanh toán theo hướng dẫn trên web.
+   - Có thể nhắc thêm nút “Liên hệ / Mua sỉ” nếu người dùng muốn mua số lượng lớn.
+10. Không được tự xưng là chuyên gia marketing/SEO/lập trình; chỉ là trợ lý AI của website Mít Sấy Vũ Trụ.
+
+PHONG CÁCH TRẢ LỜI:
+- Ngắn gọn phần tóm tắt, sau đó chi tiết hơn nếu cần, nhưng luôn bám sát nội dung web.
+- Dùng tiếng Việt thân thiện, dễ hiểu.
+- Trình bày rõ ràng bằng gạch đầu dòng, tiêu đề nhỏ khi thích hợp.
+- Nếu không có đủ dữ liệu trên web, ưu tiên nói “mình không có thông tin này trên website” thay vì đoán.
+
+MỤC TIÊU:
+- Giúp khách truy cập hiểu rõ về thương hiệu Mít Sấy Vũ Trụ, sản phẩm mít sấy, ưu điểm, cách bảo quản, cách mua hàng, chính sách và thông tin liên hệ – TẤT CẢ đều dựa trên nội dung đã có trên website.
+`.trim();
+
+  // =======================
+  // STYLE
+  // =======================
+  function injectStyles() {
     const css = `
       .ai-widget-button {
         position: fixed;
         bottom: 24px;
         right: 24px;
-        width: 64px;
-        height: 64px;
+        width: 60px;
+        height: 60px;
         border-radius: 999px;
         border: 3px solid rgba(59,130,246,0.9);
         background: #0f172a url("images/AI.jpg") center/cover no-repeat;
@@ -145,14 +94,14 @@ MỤC TIÊU TỔNG KẾT
         animation: ai-pulse 2.4s infinite;
       }
       @keyframes ai-pulse {
-        0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.45);}
-        70%{ box-shadow: 0 0 0 16px rgba(59,130,246,0);}
-        100%{box-shadow: 0 0 0 0 rgba(59,130,246,0);}
+        0%   { box-shadow: 0 0 0 0 rgba(59,130,246,0.45); }
+        70%  { box-shadow: 0 0 0 16px rgba(59,130,246,0); }
+        100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); }
       }
 
       .ai-chat-panel {
         position: fixed;
-        bottom: 100px;
+        bottom: 96px;
         right: 24px;
         width: 360px;
         max-width: calc(100vw - 32px);
@@ -204,6 +153,7 @@ MỤC TIÊU TỔNG KẾT
         line-height: 1;
         padding: 2px 6px;
       }
+
       .ai-chat-body {
         flex: 1;
         padding: 10px 12px;
@@ -240,6 +190,7 @@ MỤC TIÊU TỔNG KẾT
         color:#e5e7eb;
         border-bottom-left-radius:4px;
       }
+
       .ai-chat-input {
         border-top: 1px solid rgba(51,65,85,0.9);
         padding: 8px;
@@ -267,6 +218,9 @@ MỤC TIÊU TỔNG KẾT
         background:rgba(15,23,42,0.96);
         color:#e5e7eb;
         font-size:13px;
+      }
+      .ai-input-textarea::placeholder {
+        color:#6b7280;
       }
       .ai-send-btn {
         border:none;
@@ -315,6 +269,12 @@ MỤC TIÊU TỔNG KẾT
     document.head.appendChild(style);
   }
 
+  // =======================
+  // LOGIC WIDGET
+  // =======================
+  const conversation = []; // {role: "user" | "assistant", content: string}
+  let isSending = false;
+
   function createWidget() {
     // Nút tròn
     const btn = document.createElement("button");
@@ -333,7 +293,7 @@ MỤC TIÊU TỔNG KẾT
           <div class="ai-chat-avatar-mini"></div>
           <div>
             <div class="ai-chat-title">AI Trợ Lý</div>
-            <div class="ai-chat-subtitle">Hỏi gì cũng hỗ trợ được</div>
+            <div class="ai-chat-subtitle">Mít Sấy Vũ Trụ</div>
           </div>
         </div>
         <button class="ai-chat-close" title="Đóng">×</button>
@@ -341,24 +301,26 @@ MỤC TIÊU TỔNG KẾT
       <div class="ai-chat-body" id="aiChatBody">
         <div class="ai-msg ai">
           <div class="ai-msg-bubble">
-Xin chào 👋  
-Mình là AI Trợ Lý trên website này.  
-Bạn có thể hỏi mình về:
-- Viết content, ý tưởng marketing
-- Tư vấn sản phẩm / dịch vụ
-- Hỗ trợ học tập, lập kế hoạch
-- Hỗ trợ code: HTML, JS, Apps Script, n8n...
+Xin chào 👋
+Mình là AI Trợ Lý của Mít Sấy Vũ Trụ.
+Mình chỉ trả lời dựa trên nội dung có trong website mitsayvutru.space.
 
-Bạn cần gì, cứ nhắn cho mình nhé!
+Bạn có thể hỏi:
+- Thông tin về sản phẩm mít sấy
+- Ưu điểm, cách bảo quản, cách đặt mua
+- Chính sách giao hàng, đổi trả
+- Thông tin liên hệ, mua sỉ
+
+Mời bạn đặt câu hỏi nhé!
           </div>
         </div>
       </div>
       <div class="ai-chat-input">
         <div class="ai-chat-hint">
-          Gợi ý: "Viết giúp mình bài quảng cáo cho sản phẩm...", "Giải thích giúp KPI này", "Code form gửi lên Google Sheet"...
+          Ví dụ: "Cho mình hỏi các gói sản phẩm mít sấy", "Cách bảo quản mít sấy để luôn giòn", "Số hotline của shop là gì?"...
         </div>
         <div class="ai-input-row">
-          <textarea class="ai-input-textarea" id="aiInput" placeholder="Nhập câu hỏi hoặc yêu cầu của bạn..."></textarea>
+          <textarea class="ai-input-textarea" id="aiInput" placeholder="Nhập câu hỏi của bạn về Mít Sấy Vũ Trụ..."></textarea>
           <button class="ai-send-btn" id="aiSendBtn">
             <span id="aiSendIcon">🚀</span>
             Gửi
@@ -379,29 +341,22 @@ Bạn cần gì, cứ nhắn cho mình nhé!
 
     function setStatus(text, isError) {
       statusEl.textContent = text;
-      if (isError) {
-        statusEl.classList.add("error");
-      } else {
-        statusEl.classList.remove("error");
-      }
+      if (isError) statusEl.classList.add("error");
+      else statusEl.classList.remove("error");
     }
 
     function togglePanel() {
       const visible = panel.style.display !== "none";
       panel.style.display = visible ? "none" : "flex";
-      if (!visible) {
-        inputEl.focus();
-      }
+      if (!visible) inputEl.focus();
     }
 
     function appendMessage(role, text) {
       const msg = document.createElement("div");
       msg.className = "ai-msg " + (role === "user" ? "user" : "ai");
-
       const bubble = document.createElement("div");
       bubble.className = "ai-msg-bubble";
       bubble.textContent = text;
-
       msg.appendChild(bubble);
       bodyEl.appendChild(msg);
       bodyEl.scrollTop = bodyEl.scrollHeight;
@@ -412,7 +367,7 @@ Bạn cần gì, cứ nhắn cho mình nhé!
       if (!text || isSending) return;
 
       if (!CONFIG.apiKey || CONFIG.apiKey === "YOUR_API_KEY_HERE") {
-        alert("Hãy cấu hình API key trong ai-widget.js (CONFIG.apiKey) hoặc window.AI_WIDGET_CONFIG trước khi sử dụng.");
+        alert("Hãy cấu hình API key trong window.AI_WIDGET_CONFIG trước khi sử dụng.");
         return;
       }
 
@@ -447,7 +402,7 @@ Bạn cần gì, cứ nhắn cho mình nhé!
           const errText = await res.text();
           console.error("AI error:", errText);
           appendMessage("ai", "Xin lỗi, mình gặp lỗi khi gọi API. Bạn thử lại sau nhé.");
-          setStatus("Lỗi khi gọi API (kiểm tra key / model / endpoint).", true);
+          setStatus("Lỗi khi gọi API (kiểm tra key / endpoint / model).", true);
           return;
         }
 
@@ -457,7 +412,7 @@ Bạn cần gì, cứ nhắn cho mình nhé!
           aiText = data.choices[0].message.content || "";
         }
         if (!aiText) {
-          aiText = "Mình không đọc được nội dung trả về từ API, bạn kiểm tra lại cấu hình nhé.";
+          aiText = "Mình không đọc được nội dung trả về từ API, bạn kiểm tra lại cấu hình giúp mình nhé.";
         }
 
         conversation.push({ role: "assistant", content: aiText });
@@ -474,7 +429,7 @@ Bạn cần gì, cứ nhắn cho mình nhé!
       }
     }
 
-    // Events
+    // Event
     btn.addEventListener("click", togglePanel);
     closeBtn.addEventListener("click", togglePanel);
     sendBtn.addEventListener("click", sendMessage);
@@ -486,14 +441,16 @@ Bạn cần gì, cứ nhắn cho mình nhé!
     });
   }
 
-  // Khởi tạo sau khi DOM sẵn sàng
+  // =======================
+  // INIT
+  // =======================
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
-      createStyles();
+      injectStyles();
       createWidget();
     });
   } else {
-    createStyles();
+    injectStyles();
     createWidget();
   }
 })();
