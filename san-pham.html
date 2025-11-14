@@ -7,9 +7,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/favicon.js" defer></script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script src="/ga.js" defer></script>
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/ga.js" defer></script>
 
   <style>
     body {
@@ -249,12 +249,36 @@
       transform: translateY(-1px);
       box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
     }
+
+    /* NỀN VIDEO TOÀN TRANG */
+    .video-background {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
  <body class="text-slate-800 overflow-x-hidden" style="background: linear-gradient(45deg, #fefce8, #fef3c7, #fed7aa, #fde68a, #fbbf24, #f59e0b); background-size: 600% 600%; animation: galaxyShift 12s ease infinite;">
+  <!-- VIDEO NỀN -->
+  <div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="videonen/2.mp4" type="video/mp4">
+    </video>
+  </div>
+
   <style>
     @keyframes galaxyShift {
       0% { background-position: 0% 50%; }
@@ -291,19 +315,40 @@
       90% { opacity: 0.6; }
       100% { transform: translateX(calc(100vw + 100px)) rotate(360deg); opacity: 0; }
     }
-  </style><!-- Stars and Meteors Background -->
-  <div class="stars" id="stars-container"></div><!-- Tiêu đề trang -->
+  </style>
+  <!-- Stars and Meteors Background -->
+  <div class="stars" id="stars-container"></div>
+  <!-- Tiêu đề trang -->
   <div class="relative z-10 text-center py-12 bg-gradient-to-r from-amber-100/30 via-yellow-100/30 to-orange-100/30 backdrop-blur-sm">
    <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-500 to-yellow-600 mb-4 drop-shadow-lg animate-pulse">Sản Phẩm Mít Sấy Vũ Trụ</h1>
    <p class="text-lg text-amber-700 drop-shadow-md">Khám phá bộ sưu tập mít sấy giòn ngon, healthy từ thiên nhiên</p>
-  </div><!-- Bộ lọc danh mục -->
+  </div>
+  <!-- Bộ lọc danh mục -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 py-8">
-   <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="category-btn active px-6 py-3 rounded-full font-medium" onclick="filterProducts('all')"> 🌟 Tất cả </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('single')"> 📦 Gói lẻ </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('combo')"> 🎁 Combo </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('gift')"> 🎀 Quà tặng </button> <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('healthy')"> 💚 Healthy </button>
+   <div class="flex flex-wrap justify-center gap-4 mb-12">
+    <button class="category-btn active px-6 py-3 rounded-full font-medium" onclick="filterProducts('all')">
+      🌟 Tất cả
+    </button>
+    <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('single')">
+      📦 Gói lẻ
+    </button>
+    <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('combo')">
+      🎁 Combo
+    </button>
+    <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('gift')">
+      🎀 Quà tặng
+    </button>
+    <button class="category-btn px-6 py-3 rounded-full font-medium" onclick="filterProducts('healthy')">
+      💚 Healthy
+    </button>
    </div>
-  </div><!-- Danh sách sản phẩm -->
-  <main class="relative z-10 max-w-7xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-container"><!-- Gói lẻ -->
+  </div>
+  <!-- Danh sách sản phẩm -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-container">
+   <!-- Gói lẻ -->
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="single" data-product-id="1">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy giòn nguyên chất 100g">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Mít sấy giòn nguyên chất 100g">
      <div class="product-fallback text-6xl" style="display: none;">
       🥭
      </div>
@@ -312,11 +357,18 @@
     <div class="price-tag text-xl mb-4">
      45.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit100','Mít sấy giòn nguyên chất 100g',45000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="single" data-product-id="2">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy mật ong 80g">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Mít sấy mật ong 80g">
      <div class="product-fallback text-6xl" style="display: none;">
       🍯
      </div>
@@ -325,11 +377,18 @@
     <div class="price-tag text-xl mb-4">
      52.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit80','Mít sấy mật ong 80g',52000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit80','Mít sấy mật ong 80g',52000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit80','Mít sấy mật ong 80g',52000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit80','Mít sấy mật ong 80g',52000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="single" data-product-id="3">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy organic 120g">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Mít sấy organic 120g">
      <div class="product-fallback text-6xl" style="display: none;">
       🌿
      </div>
@@ -338,11 +397,19 @@
     <div class="price-tag text-xl mb-4">
      68.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit120','Mít sấy organic 120g',68000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit120','Mít sấy organic 120g',68000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit120','Mít sấy organic 120g',68000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('mit120','Mít sấy organic 120g',68000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
-   </div><!-- Combo -->
+   </div>
+   <!-- Combo -->
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="combo" data-product-id="4">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Combo 3 vị mít sấy">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Combo 3 vị mít sấy">
      <div class="product-fallback text-6xl" style="display: none;">
       📦
      </div>
@@ -351,11 +418,18 @@
     <div class="price-tag text-xl mb-4">
      135.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo3','Combo 3 vị mít sấy',135000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo3','Combo 3 vị mít sấy',135000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo3','Combo 3 vị mít sấy',135000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo3','Combo 3 vị mít sấy',135000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="combo" data-product-id="5">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Combo gia đình 5 gói">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Combo gia đình 5 gói">
      <div class="product-fallback text-6xl" style="display: none;">
       👨‍👩‍👧‍👦
      </div>
@@ -364,11 +438,18 @@
     <div class="price-tag text-xl mb-4">
      220.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo5','Combo gia đình 5 gói',220000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo5','Combo gia đình 5 gói',220000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo5','Combo gia đình 5 gói',220000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo5','Combo gia đình 5 gói',220000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="combo" data-product-id="6">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Combo tiết kiệm 10 gói">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Combo tiết kiệm 10 gói">
      <div class="product-fallback text-6xl" style="display: none;">
       💰
      </div>
@@ -377,11 +458,19 @@
     <div class="price-tag text-xl mb-4">
      400.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo10','Combo tiết kiệm 10 gói',400000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo10','Combo tiết kiệm 10 gói',400000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo10','Combo tiết kiệm 10 gói',400000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('combo10','Combo tiết kiệm 10 gói',400000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
-   </div><!-- Quà tặng -->
+   </div>
+   <!-- Quà tặng -->
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="gift" data-product-id="7">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Hộp quà mít sấy cao cấp">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Hộp quà mít sấy cao cấp">
      <div class="product-fallback text-6xl" style="display: none;">
       🎁
      </div>
@@ -390,11 +479,18 @@
     <div class="price-tag text-xl mb-4">
      180.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('giftBox','Hộp quà mít sấy cao cấp',180000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('giftBox','Hộp quà mít sấy cao cấp',180000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('giftBox','Hộp quà mít sấy cao cấp',180000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('giftBox','Hộp quà mít sấy cao cấp',180000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="gift" data-product-id="8">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Set quà tết mít sấy">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Set quà tết mít sấy">
      <div class="product-fallback text-6xl" style="display: none;">
       🧧
      </div>
@@ -403,11 +499,18 @@
     <div class="price-tag text-xl mb-4">
      250.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('tetGift','Set quà tết mít sấy',250000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('tetGift','Set quà tết mít sấy',250000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('tetGift','Set quà tết mít sấy',250000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('tetGift','Set quà tết mít sấy',250000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="gift" data-product-id="9">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Túi quà sinh nhật">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Túi quà sinh nhật">
      <div class="product-fallback text-6xl" style="display: none;">
       🎂
      </div>
@@ -416,11 +519,19 @@
     <div class="price-tag text-xl mb-4">
      120.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('birthdayGift','Túi quà sinh nhật',120000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('birthdayGift','Túi quà sinh nhật',120000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('birthdayGift','Túi quà sinh nhật',120000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('birthdayGift','Túi quà sinh nhật',120000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
-   </div><!-- Healthy -->
+   </div>
+   <!-- Healthy -->
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="healthy" data-product-id="10">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy không đường">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Mít sấy không đường">
      <div class="product-fallback text-6xl" style="display: none;">
       💚
      </div>
@@ -429,11 +540,18 @@
     <div class="price-tag text-xl mb-4">
      58.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('sugarFree','Mít sấy không đường',58000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('sugarFree','Mít sấy không đường',58000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('sugarFree','Mít sấy không đường',58000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('sugarFree','Mít sấy không đường',58000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="healthy" data-product-id="11">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy siêu thực phẩm">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Mít sấy siêu thực phẩm">
      <div class="product-fallback text-6xl" style="display: none;">
       ⚡
      </div>
@@ -442,11 +560,18 @@
     <div class="price-tag text-xl mb-4">
      75.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('superfood','Mít sấy siêu thực phẩm',75000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('superfood','Mít sấy siêu thực phẩm',75000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('superfood','Mít sấy siêu thực phẩm',75000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('superfood','Mít sấy siêu thực phẩm',75000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
    <div class="product-card rounded-2xl p-6 flex flex-col items-center text-center" data-category="healthy" data-product-id="12">
-    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4"><img class="product-image w-40 h-40 object-contain" alt="Mít sấy protein">
+    <div class="product-image-container w-48 h-48 flex items-center justify-center mb-4">
+     <img class="product-image w-40 h-40 object-contain" alt="Mít sấy protein">
      <div class="product-fallback text-6xl" style="display: none;">
       💪
      </div>
@@ -455,7 +580,13 @@
     <div class="price-tag text-xl mb-4">
      82.000đ
     </div>
-    <div class="flex gap-3 w-full"><button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('protein','Mít sấy protein',82000); window.location.href='checkout.html';"> 🚀 Mua Ngay </button> <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('protein','Mít sấy protein',82000);"> 🛒 Thêm vào giỏ </button>
+    <div class="flex gap-3 w-full">
+     <button class="btn-primary flex-1 text-white font-semibold px-4 py-3 rounded-lg" onclick="addToCart('protein','Mít sấy protein',82000); window.location.href='checkout.html';">
+      🚀 Mua Ngay
+     </button>
+     <button class="btn-secondary flex-1 text-amber-600 font-semibold px-4 py-3 rounded-lg" onclick="addToCart('protein','Mít sấy protein',82000);">
+      🛒 Thêm vào giỏ
+     </button>
     </div>
    </div>
   </main>
@@ -643,10 +774,13 @@
       createCosmicBackground();
       loadProductImages();
     });
-  </script><!-- Gọi file dùng chung (tự động tạo header + giỏ hàng + MXH) -->
+  </script>
+  <!-- Gọi file dùng chung (tự động tạo header + giỏ hàng + MXH) -->
   <script src="global-cart.js"></script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998a181c56d2cb79',t:'MTc2MjE1NDI3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
- <script>
+  <script>
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998a181c56d2cb79',t:'MTc2MjE1NDI3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
+  </script>
+  <script>
   // Điều hướng sang trang chi tiết khi click vào card (trừ nút bấm)
   (function enableNavigateToDetail(){
     document.addEventListener('click', function(e){
@@ -668,6 +802,7 @@
       card.style.cursor = 'pointer';
     });
   })();
-</script>
+  </script>
  </body>
 </html>
+<!-- :contentReference[oaicite:0]{index=0} -->
