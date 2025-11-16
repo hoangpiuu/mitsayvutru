@@ -324,6 +324,12 @@ Mời bạn đặt câu hỏi nhé!
     `;
 
     document.body.appendChild(panel);
+    setInterval(() => {
+    const mini = document.getElementById("miniAIvideo");
+    if (mini && (mini.paused || mini.ended)) {
+    mini.play().catch(()=>{});
+    }
+    }, 200);
 
     const closeBtn = panel.querySelector(".ai-chat-close");
     const bodyEl = panel.querySelector("#aiChatBody");
