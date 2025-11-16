@@ -6,8 +6,8 @@
   // CẤU HÌNH
   // =======================
   const DEFAULT_CONFIG = {
-    apiKey: "YOUR_API_KEY_HERE", // ⚠️ chỉ để test, không public
-    apiUrl: "https://api.your-endpoint.com/v1/chat/completions", // ví dụ: https://api.yescale.io/v1/chat/completions
+    apiKey: "YOUR_API_KEY_HERE",
+    apiUrl: "https://api.your-endpoint.com/v1/chat/completions",
     model: "gpt-4o-mini",
   };
 
@@ -40,27 +40,25 @@ QUY TẮC BẮT BUỘC:
    - Nếu không rõ hoặc có thể thay đổi theo thời gian → nói: “Thông tin này có thể thay đổi, bạn hãy xem trực tiếp trên website hoặc liên hệ để được báo chính xác nhất.”
 8. Khi người dùng xin nội dung liên hệ:
    - Hãy cung cấp đúng thông tin xuất hiện ở phần Liên hệ/Mua sỉ hoặc footer:
-     - Địa chỉ: 12 Hưu Trí, Hà Đông, Hà Nội (theo website).
-     - Hotline: 0365231819 (theo website).
-     - Email: mitsayvutru.infor@gmail.com (theo website).
-     - Giờ hỗ trợ: 8:00–22:00, Thứ 2 – Chủ nhật (theo website).
-   - Không được thêm số điện thoại, email, link khác ngoài những gì website có.
+     - Địa chỉ: 12 Hưu Trí, Hà Đông, Hà Nội.
+     - Hotline: 0365231819.
+     - Email: mitsayvutru.infor@gmail.com.
+     - Giờ hỗ trợ: 8:00–22:00, Thứ 2 – Chủ nhật.
 9. Khi người dùng hỏi cách mua:
    - Hướng dẫn họ:
      - Vào mục “Sản phẩm” để chọn gói mít sấy.
      - Thêm vào giỏ hàng.
      - Thanh toán theo hướng dẫn trên web.
-   - Có thể nhắc thêm nút “Liên hệ / Mua sỉ” nếu người dùng muốn mua số lượng lớn.
 10. Không được tự xưng là chuyên gia marketing/SEO/lập trình; chỉ là trợ lý AI của website Mít Sấy Vũ Trụ.
 
 PHONG CÁCH TRẢ LỜI:
-- Ngắn gọn phần tóm tắt, sau đó chi tiết hơn nếu cần, nhưng luôn bám sát nội dung web.
-- Dùng tiếng Việt thân thiện, dễ hiểu.
-- Trình bày rõ ràng bằng gạch đầu dòng, tiêu đề nhỏ khi thích hợp.
-- Nếu không có đủ dữ liệu trên web, ưu tiên nói “mình không có thông tin này trên website” thay vì đoán.
+- Ngắn gọn phần tóm tắt, sau đó chi tiết hơn nếu cần.
+- Dùng tiếng Việt thân thiện.
+- Trình bày rõ ràng.
+- Không đoán nếu web không ghi.
 
 MỤC TIÊU:
-- Giúp khách truy cập hiểu rõ về thương hiệu Mít Sấy Vũ Trụ, sản phẩm mít sấy, ưu điểm, cách bảo quản, cách mua hàng, chính sách và thông tin liên hệ – TẤT CẢ đều dựa trên nội dung đã có trên website.
+- Giúp khách hiểu đúng thông tin về thương hiệu & sản phẩm dựa trên nội dung có sẵn trên website.
 `.trim();
 
   // =======================
@@ -70,13 +68,13 @@ MỤC TIÊU:
     const css = `
       .ai-widget-button {
         position: fixed;
-        bottom: 24px;
+        bottom: 120px; /* đưa nút lên trên */
         right: 24px;
         width: 60px;
         height: 60px;
         border-radius: 999px;
         border: 3px solid rgba(59,130,246,0.9);
-        background: #0f172a url("images/AI.jpg") center/cover no-repeat;
+        background: #0f172a;
         box-shadow: 0 12px 25px rgba(15,23,42,0.75);
         cursor: pointer;
         z-index: 999998;
@@ -85,6 +83,14 @@ MỤC TIÊU:
         justify-content: center;
         overflow: hidden;
       }
+      .ai-widget-button video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 999px;
+      }
+
       .ai-widget-button::after {
         content: "";
         position: absolute;
@@ -93,6 +99,7 @@ MỤC TIÊU:
         box-shadow: 0 0 0 0 rgba(59,130,246,0.5);
         animation: ai-pulse 2.4s infinite;
       }
+
       @keyframes ai-pulse {
         0%   { box-shadow: 0 0 0 0 rgba(59,130,246,0.45); }
         70%  { box-shadow: 0 0 0 16px rgba(59,130,246,0); }
@@ -115,6 +122,7 @@ MỤC TIÊU:
         overflow: hidden;
         z-index: 999999;
       }
+
       .ai-chat-header {
         padding: 10px 12px;
         display: flex;
@@ -123,36 +131,23 @@ MỤC TIÊU:
         border-bottom: 1px solid rgba(51,65,85,0.9);
         background: linear-gradient(135deg,#020617,#0b1120);
       }
-      .ai-chat-header-left {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
+
       .ai-chat-avatar-mini {
         width: 28px;
         height: 28px;
         border-radius: 999px;
-        background: url("images/AI.jpg") center/cover no-repeat;
+        overflow: hidden;
         border: 2px solid rgba(59,130,246,0.9);
       }
-      .ai-chat-title {
-        font-size: 13px;
-        color: #e5e7eb;
-        font-weight: 600;
+      .ai-chat-avatar-mini video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
-      .ai-chat-subtitle {
-        font-size: 11px;
-        color: #9ca3af;
-      }
-      .ai-chat-close {
-        border: none;
-        background: transparent;
-        color: #9ca3af;
-        cursor: pointer;
-        font-size: 18px;
-        line-height: 1;
-        padding: 2px 6px;
-      }
+
+      .ai-chat-title { font-size: 13px; color: #e5e7eb; font-weight: 600; }
+      .ai-chat-subtitle { font-size: 11px; color: #9ca3af; }
+      .ai-chat-close { border: none; background: transparent; color: #9ca3af; cursor: pointer; font-size: 18px; }
 
       .ai-chat-body {
         flex: 1;
@@ -160,24 +155,15 @@ MỤC TIÊU:
         overflow-y: auto;
         background: radial-gradient(circle at top left,rgba(56,189,248,0.10),transparent 60%);
       }
-      .ai-msg {
-        display: flex;
-        margin-bottom: 10px;
-        gap: 6px;
-        font-size: 13px;
-      }
-      .ai-msg.ai {
-        justify-content: flex-start;
-      }
-      .ai-msg.user {
-        justify-content: flex-end;
-      }
+
+      .ai-msg { display: flex; margin-bottom: 10px; gap: 6px; font-size: 13px; }
+      .ai-msg.user { justify-content: flex-end; }
+      .ai-msg.ai { justify-content: flex-start; }
       .ai-msg-bubble {
         max-width: 80%;
         border-radius: 14px;
         padding: 8px 10px;
         white-space: pre-wrap;
-        word-wrap: break-word;
       }
       .ai-msg.user .ai-msg-bubble {
         background: linear-gradient(135deg,#4f46e5,#8b5cf6);
@@ -199,14 +185,8 @@ MỤC TIÊU:
         flex-direction: column;
         gap: 6px;
       }
-      .ai-chat-hint {
-        font-size: 10px;
-        color:#9ca3af;
-      }
-      .ai-input-row {
-        display:flex;
-        gap:6px;
-      }
+
+      .ai-input-row { display:flex; gap:6px; }
       .ai-input-textarea {
         flex:1;
         min-height:40px;
@@ -219,9 +199,7 @@ MỤC TIÊU:
         color:#e5e7eb;
         font-size:13px;
       }
-      .ai-input-textarea::placeholder {
-        color:#6b7280;
-      }
+
       .ai-send-btn {
         border:none;
         border-radius:999px;
@@ -234,33 +212,18 @@ MỤC TIÊU:
         display:flex;
         align-items:center;
         gap:4px;
-        white-space:nowrap;
-      }
-      .ai-send-btn:disabled {
-        opacity:0.6;
-        cursor:not-allowed;
-      }
-      .ai-status {
-        font-size:10px;
-        color:#6b7280;
-      }
-      .ai-status.error {
-        color:#f97373;
       }
 
       @media (max-width: 640px) {
         .ai-chat-panel {
           right: 8px;
           left: 8px;
-          width: auto;
           height: 70vh;
           bottom: 90px;
         }
         .ai-widget-button {
           bottom: 16px;
           right: 16px;
-          width: 56px;
-          height: 56px;
         }
       }
     `;
@@ -272,17 +235,25 @@ MỤC TIÊU:
   // =======================
   // LOGIC WIDGET
   // =======================
-  const conversation = []; // {role: "user" | "assistant", content: string}
+  const conversation = [];
   let isSending = false;
 
   function createWidget() {
-    // Nút tròn
+    // NÚT TRÒN (video)
     const btn = document.createElement("button");
     btn.className = "ai-widget-button";
-    btn.setAttribute("aria-label", "Mở AI Trợ Lý");
+
+    const vid = document.createElement("video");
+    vid.src = "images/AI.mp4";
+    vid.autoplay = true;
+    vid.loop = true;
+    vid.muted = true;
+    vid.playsInline = true;
+    btn.appendChild(vid);
+
     document.body.appendChild(btn);
 
-    // Panel chat
+    // PANEL CHAT
     const panel = document.createElement("div");
     panel.className = "ai-chat-panel";
     panel.style.display = "none";
@@ -290,7 +261,9 @@ MỤC TIÊU:
     panel.innerHTML = `
       <div class="ai-chat-header">
         <div class="ai-chat-header-left">
-          <div class="ai-chat-avatar-mini"></div>
+          <div class="ai-chat-avatar-mini">
+            <video src="images/AI.mp4" autoplay loop muted playsinline></video>
+          </div>
           <div>
             <div class="ai-chat-title">AI Trợ Lý</div>
             <div class="ai-chat-subtitle">Mít Sấy Vũ Trụ</div>
@@ -298,6 +271,7 @@ MỤC TIÊU:
         </div>
         <button class="ai-chat-close" title="Đóng">×</button>
       </div>
+
       <div class="ai-chat-body" id="aiChatBody">
         <div class="ai-msg ai">
           <div class="ai-msg-bubble">
@@ -315,6 +289,7 @@ Mời bạn đặt câu hỏi nhé!
           </div>
         </div>
       </div>
+
       <div class="ai-chat-input">
         <div class="ai-chat-hint">
           Ví dụ: "Cho mình hỏi các gói sản phẩm mít sấy", "Cách bảo quản mít sấy để luôn giòn", "Số hotline của shop là gì?"...
@@ -322,8 +297,7 @@ Mời bạn đặt câu hỏi nhé!
         <div class="ai-input-row">
           <textarea class="ai-input-textarea" id="aiInput" placeholder="Nhập câu hỏi của bạn về Mít Sấy Vũ Trụ..."></textarea>
           <button class="ai-send-btn" id="aiSendBtn">
-            <span id="aiSendIcon">🚀</span>
-            Gửi
+            <span id="aiSendIcon">🚀</span> Gửi
           </button>
         </div>
         <div class="ai-status" id="aiStatus">Sẵn sàng.</div>
@@ -400,28 +374,24 @@ Mời bạn đặt câu hỏi nhé!
 
         if (!res.ok) {
           const errText = await res.text();
-          console.error("AI error:", errText);
           appendMessage("ai", "Xin lỗi, mình gặp lỗi khi gọi API. Bạn thử lại sau nhé.");
-          setStatus("Lỗi khi gọi API (kiểm tra key / endpoint / model).", true);
+          setStatus("Lỗi khi gọi API.", true);
           return;
         }
 
         const data = await res.json();
-        let aiText = "";
-        if (data.choices && data.choices[0] && data.choices[0].message) {
-          aiText = data.choices[0].message.content || "";
-        }
+        let aiText = (data.choices && data.choices[0]?.message?.content) || "";
+
         if (!aiText) {
-          aiText = "Mình không đọc được nội dung trả về từ API, bạn kiểm tra lại cấu hình giúp mình nhé.";
+          aiText = "Mình không đọc được nội dung trả về từ API.";
         }
 
         conversation.push({ role: "assistant", content: aiText });
         appendMessage("ai", aiText);
-        setStatus("Sẵn sàng. Bạn có thể hỏi tiếp.");
+        setStatus("Sẵn sàng.");
       } catch (e) {
-        console.error(e);
-        appendMessage("ai", "Có lỗi kết nối mạng hoặc lỗi không xác định: " + e.message);
-        setStatus("Lỗi kết nối mạng hoặc lỗi không xác định.", true);
+        appendMessage("ai", "Có lỗi kết nối: " + e.message);
+        setStatus("Lỗi kết nối.", true);
       } finally {
         isSending = false;
         sendBtn.disabled = false;
@@ -429,9 +399,9 @@ Mời bạn đặt câu hỏi nhé!
       }
     }
 
-    // Event
     btn.addEventListener("click", togglePanel);
     closeBtn.addEventListener("click", togglePanel);
+
     sendBtn.addEventListener("click", sendMessage);
     inputEl.addEventListener("keydown", function (e) {
       if (e.key === "Enter" && !e.shiftKey) {
@@ -441,9 +411,6 @@ Mời bạn đặt câu hỏi nhé!
     });
   }
 
-  // =======================
-  // INIT
-  // =======================
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       injectStyles();
