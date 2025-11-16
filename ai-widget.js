@@ -279,19 +279,9 @@ vid.addEventListener("ended", () => {
         <div class="ai-chat-header-left">
           <div class="ai-chat-avatar-mini">
             <video id="miniAIvideo" src="images/AI.mp4" autoplay loop muted playsinline
-  onended="this.currentTime=0; this.play();"
-  onpause="this.play();">
-</video>
-
-<script>
-// Đảm bảo avatar mini cũng chạy mãi mãi
-setInterval(() => {
-  const mini = document.getElementById("miniAIvideo");
-  if (mini && (mini.paused || mini.ended)) {
-    mini.play().catch(()=>{});
-  }
-}, 200);
-</script>
+              onended="this.currentTime=0; this.play();"
+              onpause="this.play();">
+            </video>
           </div>
           <div>
             <div class="ai-chat-title">AI Trợ Lý</div>
