@@ -68,7 +68,7 @@ MỤC TIÊU:
     const css = `
       .ai-widget-button {
         position: fixed;
-        bottom: 380px; /* đưa nút lên trên */
+        bottom: 350px; /* đưa nút lên trên */
         right: 24px;
         width: 60px;
         height: 60px;
