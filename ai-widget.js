@@ -69,7 +69,7 @@ MỤC TIÊU:
       .ai-widget-button {
         position: fixed;
         bottom: 320px; /* đưa nút lên trên */
-        right: 10px;
+        right: 11px;
         width: 60px;
         height: 60px;
         border-radius: 999px;
