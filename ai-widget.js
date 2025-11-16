@@ -250,6 +250,10 @@ MỤC TIÊU:
     vid.muted = true;
     vid.playsInline = true;
     btn.appendChild(vid);
+    vid.addEventListener("ended", () => {
+  vid.currentTime = 0;
+  vid.play();
+});
 
     document.body.appendChild(btn);
 
