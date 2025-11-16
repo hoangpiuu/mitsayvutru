@@ -244,15 +244,27 @@ MỤC TIÊU:
     btn.className = "ai-widget-button";
 
     const vid = document.createElement("video");
-    vid.src = "images/AI.mp4";
-    vid.autoplay = true;
-    vid.loop = true;
-    vid.muted = true;
-    vid.playsInline = true;
-    btn.appendChild(vid);
-    vid.addEventListener("ended", () => {
+vid.src = "images/AI.mp4";
+vid.autoplay = true;
+vid.loop = true;
+vid.muted = true;
+vid.playsInline = true;
+btn.appendChild(vid);
+
+// Bảo đảm video chạy liên tục trên mọi thiết bị
+function ensurePlaying(v) {
+  if (v.paused || v.ended) {
+    v.play().catch(() => {});
+  }
+}
+
+// Auto kiểm tra mỗi 200ms
+setInterval(() => ensurePlaying(vid), 200);
+
+// Khi kết thúc thì reset thủ công
+vid.addEventListener("ended", () => {
   vid.currentTime = 0;
-  vid.play();
+  vid.play().catch(()=>{});
 });
 
     document.body.appendChild(btn);
