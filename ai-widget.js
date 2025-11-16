@@ -266,7 +266,8 @@ MỤC TIÊU:
       <div class="ai-chat-header">
         <div class="ai-chat-header-left">
           <div class="ai-chat-avatar-mini">
-            <video src="images/AI.mp4" autoplay loop muted playsinline></video>
+            <video src="images/AI.mp4" autoplay loop muted playsinline
+  onended="this.currentTime=0; this.play();"></video>
           </div>
           <div>
             <div class="ai-chat-title">AI Trợ Lý</div>
