@@ -1,182 +1,624 @@
 <!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà | Mít Sấy Vũ Trụ</title>
-  <meta name="description" content="Khám phá mít sấy: nguồn gốc & quy trình chế biến, lợi ích sức khỏe, mẹo chọn & bảo quản chuẩn, cùng các công thức biến tấu ngon–bổ–tiện.">
-  <link rel="canonical" href="/baiviet1.html">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà">
-  <meta property="og:description" content="Nguồn gốc, lợi ích sức khỏe, mẹo chọn, bảo quản & công thức biến tấu từ mít sấy.">
-  <meta property="og:image" content="/baiviet1/1.jpg">
-  <meta property="og:url" content="/baiviet1.html">
-  <link rel="icon" href="images/logo.png">
-  <script src="/favicon.js" defer></script>
-  <script src="/ga.js" defer></script>
-
-
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang chủ - Nội thất cao cấp</title>
   <style>
-    :root{
-      --bg:#fffdf8; --text:#0f172a; --muted:#475569; --brand:#f59e0b; --card:#ffffff; --border:#e2e8f0;
-      --maxw:1000px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; padding:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto;
-      background:var(--bg); color:var(--text); line-height:1.75;
-    }
-    a{color:#0ea5e9; text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--maxw); margin:0 auto; padding:16px}
-
-    header.site{
-      background:#fff; border-bottom:1px solid var(--border);
-      position:sticky; top:0; z-index:50;
-    }
-    .topbar{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .brand{display:flex; align-items:center; gap:12px}
-    .brand img{width:44px;height:44px;border-radius:50%;object-fit:contain;border:1px solid var(--border)}
-    nav a{margin:0 8px; font-size:15px; font-weight:600; color:var(--muted)}
-    nav a.active{color:var(--text)}
-
-    .breadcrumb{font-size:14px; color:var(--muted); margin:16px 0}
-
-    .article{
-      background:#fff; border:1px solid var(--border); border-radius:16px;
-      padding:20px; box-shadow:0 6px 20px rgba(0,0,0,.05);
-    }
-    .article h1{font-size:32px; line-height:1.25}
-    .article h2{font-size:24px; margin-top:36px}
-
-    figure{text-align:center; margin:24px 0}
-    figure img{width:100%; border-radius:14px; border:1px solid var(--border)}
-    figcaption{font-size:13px; color:var(--muted); margin-top:8px}
-
-    .grid-2{
-      display:grid; grid-template-columns:1fr; gap:20px;
-    }
-    @media(min-width:860px){
-      .grid-2{grid-template-columns:1fr 1fr}
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      font-size: 14px;
+      line-height: 1.6;
+      width: 100%;
+      height: 100%;
     }
 
-    .callout{
-      background:#fff7e6; padding:14px 18px; border-left:4px solid var(--brand);
-      border-radius:10px; margin:20px 0; color:#7a4a0b;
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
 
-    footer.article{
-      margin-top:20px; padding-top:20px; border-top:1px dashed var(--border);
-      font-size:14px; color:var(--muted);
+    .app-wrapper {
+      width: 100%;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
     }
-    .tags a{
-      background:#fff1cc; border:1px solid #ffe3a3;
-      padding:6px 10px; border-radius:999px; margin-right:6px;
-      font-size:13px; color:#7c5a05; text-decoration:none;
+
+    /* Header */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      width: 100%;
+      position: relative;
+      z-index: 100;
+    }
+
+    .header-top {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 8px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #333;
+    }
+
+    .header-contact svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .header-menu {
+      display: flex;
+      gap: 16px;
+      color: #666;
+    }
+
+    .header-menu a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .header-menu a:hover {
+      color: #000;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .header-icons svg {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .header-icons svg:hover {
+      opacity: 0.7;
+    }
+
+    .header-main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      background-color: #5a7a5e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 10px;
+      text-align: center;
+      line-height: 1.2;
+      padding: 8px;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 28px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    .main-nav-item {
+      position: relative;
+    }
+
+    .main-nav-item > a {
+      color: #000;
+      text-decoration: none;
+      transition: color 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .main-nav-item > a:hover {
+      color: #e53935;
+    }
+
+    .dropdown-arrow {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.2s;
+    }
+
+    .main-nav-item:hover .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 20px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .main-nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 14px 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f8f8f8;
+      color: #e53935;
+      padding-left: 24px;
+    }
+
+    .dropdown-menu a.highlight {
+      background-color: #fff5f5;
+      color: #e53935;
+      font-weight: 600;
+    }
+
+    .dropdown-menu a.highlight:hover {
+      background-color: #e53935;
+      color: #ffffff;
+    }
+
+    .dropdown-menu a .badge {
+      display: inline-block;
+      background-color: #e53935;
+      color: #ffffff;
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      margin-left: 8px;
+      font-weight: 600;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      background-color: #f8f8f8;
+      border-radius: 24px;
+      padding: 8px 16px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .search-container input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 13px;
+      width: 200px;
+      color: #333;
+    }
+
+    .search-container input::placeholder {
+      color: #999;
+    }
+
+    .search-container button {
+      background: #ffffff;
+      border: 1px solid #d0d0d0;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      padding: 0;
+    }
+
+    .search-container button:hover {
+      background: #f0f0f0;
+    }
+
+    .search-container svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      width: 100%;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8eef3 100%);
+      padding: 80px 40px;
+    }
+
+    .hero-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 56px;
+      font-weight: 700;
+      color: #000;
+      margin: 0 0 24px 0;
+      line-height: 1.2;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #666;
+      margin: 0 0 32px 0;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: 16px 40px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      border: none;
+    }
+
+    .hero-btn-primary {
+      background-color: #e53935;
+      color: #ffffff;
+    }
+
+    .hero-btn-primary:hover {
+      background-color: #c62828;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
+    }
+
+    .hero-btn-secondary {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .hero-btn-secondary:hover {
+      background-color: #333333;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 600;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Features Section */
+    .features-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #000;
+      margin: 0 0 16px 0;
+    }
+
+    .section-header p {
+      font-size: 16px;
+      color: #666;
+      margin: 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 40px 24px;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      transition: all 0.3s;
+      background-color: #ffffff;
+    }
+
+    .feature-card:hover {
+      border-color: #e53935;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      background-color: #fff5f5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-icon svg {
+      width: 32px;
+      height: 32px;
+      color: #e53935;
+    }
+
+    .feature-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #000;
+      margin: 0 0 12px 0;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      width: 100%;
+      background-color: #000000;
+      padding: 80px 40px;
+      margin-top: 80px;
+    }
+
+    .cta-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-content h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 24px 0;
+    }
+
+    .cta-content p {
+      font-size: 18px;
+      color: #cccccc;
+      margin: 0 0 40px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-top,
+      .header-main {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .search-container {
+        display: none;
+      }
+
+      .hero-content {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-size: 32px;
+      }
+
+      .cta-content h2 {
+        font-size: 32px;
+      }
     }
   </style>
-</head>
-
-<body>
-
-<main class="container">
-
-  <div class="breadcrumb">
-    <a href="index.html">Trang chủ</a> › <a href="blog.html">Blog</a> › Mít sấy – Món ăn vặt hấp dẫn
-  </div>
-
-  <article class="article">
-
-    <h1>Mít sấy – Món ăn vặt hấp dẫn cho mọi nhà từ tự nhiên đến bàn tiệc</h1>
-
-    <figure>
-      <img src="baiviet1/1.jpg" alt="Mít sấy thơm giòn tự nhiên">
-      <figcaption>Hương vị tự nhiên, tiện lợi mọi lúc mọi nơi.</figcaption>
-    </figure>
-
-    <p>Mít sấy đã trở thành một trong những loại thực phẩm vặt phổ biến của người Việt Nam cũng như các nước châu Á. Khác với mít tươi, mít sấy giữ được hương vị tự nhiên, độ dẻo dai và thơm ngon lâu dài, phù hợp để thưởng thức mọi lúc mọi nơi. Bạn có thể mua mit sấy để nhâm nhi trong những ngày rảnh rỗi, làm quà biếu hay thậm chí dùng làm nguyên liệu chế biến món ăn hấp dẫn.
-Trong bài viết này, chúng ta sẽ khám phá chi tiết về mít sấy - từ những cách làm truyền thống, kỹ thuật bảo quản, lợi ích sức khỏe, cho đến những gợi ý sáng tạo trong chế biến món ăn từ mít sấy. Hãy cùng theo dõi để hiểu rõ hơn về món đặc sản này, góp phần nâng cao trải nghiệm ẩm thực của chính bạn.
-</p>
-
-    <h2>Nguồn gốc & quy trình chế biến</h2>
-
-    <div class="grid-2">
-      <figure>
-        <img src="baiviet1/2.jpg" alt="">
-        <figcaption>Chọn múi mít chín đều, thịt dày để sấy.</figcaption>
-      </figure>
-
-      <figure>
-        <img src="baiviet1/3.jpg" alt="">
-        <figcaption>Máy sấy nhiệt độ thấp giúp giữ màu & mùi tự nhiên.</figcaption>
-      </figure>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="app-wrapper">
+   <header>
+    <div class="header-top">
+     <div class="header-contact">
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      </svg><span>0903 884 358</span>
+     </div>
+     <nav class="header-menu"><a href="#">Giới thiệu</a> <span>|</span> <a href="#">Khuyến mãi</a> <span>|</span> <a href="#">Giảm giá đặc biệt</a>
+     </nav>
+     <div class="header-icons">
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path> <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      </svg>
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path> <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle> <circle cx="20" cy="21" r="1"></circle> <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+     </div>
     </div>
-
-    <p>Mít sấy không phải là sản phẩm mới xuất hiện gần đây. Loại thực phẩm này đã có mặt từ lâu trong văn hóa ẩm thực của các khu vực nhiệt đới, đặc biệt là Đông Nam Á. Quá trình chế biến mít sấy yêu cầu sự tỉ mỉ, khéo léo để giữ lại tối đa hương vị, độ dẻo dai của trái mít tươi, đồng thời loại bỏ nước và độ ẩm không mong muốn
-Phần lớn mít sấy được làm từ những trái mít chín đều, phần thịt dày, mọng nước và có độ ngọt tự nhiên cao. Quá trình chế biến bắt đầu bằng việc chọn lọc trái mít, sơ chế sạch sẽ, cắt thành từng miếng phù hợp. Tiếp đến, mít được phơi hoặc sấy trong điều kiện kiểm soát để giảm khí ẩm, giữ trọn vẹn vị ngon và màu sắc tự nhiên.
-Quy trình sấy mít hiện đại thường sử dụng các thiết bị công nghệ cao như máy sấy nhiệt độ thấp, giúp tối ưu hóa chất lượng sản phẩm, không làm mất đi các hợp chất có lợi trong trái mít. Ngược lại, các phương pháp truyền thống như phơi dưới ánh nắng tự nhiên vẫn được duy trì ở các vùng nông thôn, tạo ra đặc sản mít sấy mang đậm dấu ấn văn hóa địa phương.
-Trong tất cả các khâu, yếu tố quan trọng là kiểm soát kỹ thuật sấy để Mit sấy có độ dẻo, giòn vừa phải, không quá khô hoặc quá mềm, giữ được độ ngọt tự nhiên và hương thơm đặc trưng của mít tươi. Sản phẩm cuối cùng không chỉ là món ăn vặt đơn thuần mà còn phản ánh tinh thần sáng tạo, tình yêu dành cho tự nhiên của những người làm nghề.
-</p>
-
-    <h2>Lợi ích sức khỏe</h2>
-    <p>Mít sấy vốn nổi bật với hàm lượng dinh dưỡng phong phú, góp phần vào chế độ ăn uống lành mạnh hàng ngày của nhiều gia đình. Với nguồn vitamin, khoáng chất và chất xơ tự nhiên, mít sấy mang lại nhiều lợi ích sức khỏe mà ít loại đồ ăn vặt công nghiệp có thể sánh bằng.
-Chứa nhiều vitamin C, mít sấy giúp tăng cường hệ miễn dịch, chống oxy hóa, giảm các triệu chứng mệt mỏi, đặc biệt trong mùa đông hoặc thời điểm giao mùa. Ngoài ra, lượng chất xơ trong mít sấy còn hỗ trợ tiêu hóa, giảm nguy cơ táo bón, góp phần làm sạch đường ruột một cách nhẹ nhàng và hiệu quả.
-Thành phần chống oxy hóa trong mít sấy còn giúp làm chậm quá trình lão hóa, giảm thiểu nguy cơ mắc các bệnh mãn tính như tiểu đường, tim mạch. Đặc biệt, các axit tự nhiên trong mít giúp cải thiện chức năng tiêu hóa và cân bằng hệ vi sinh đường ruột, từ đó giữ cho cơ thể luôn khỏe mạnh, năng lượng dồi dào.
-Nhiều người còn phát hiện rằng, mít sấy có thể giúp giảm cân hiệu quả nếu tiêu thụ đúng cách. Mặc dù có hàm lượng đường tự nhiên cao, nhưng nếu biết kiểm soát khẩu phần, mít sấy vẫn là một món ăn vặt dinh dưỡng, không gây tích tụ chất béo quá mức.
-Lợi ích vượt trội của mít sấy còn nằm ở khả năng cung cấp năng lượng nhanh chóng mà vẫn đảm bảo an toàn cho sức khỏe. Các loại trái cây sấy như mít sấy là nguồn dinh dưỡng lý tưởng cho người bận rộn, trẻ nhỏ, người cao tuổi hoặc những người đang theo chế độ ăn kiêng.
-</p>
-
-    <div class="callout">
-      <strong>Mẹo ăn “healthy”:</strong> ưu tiên loại ít đường, không chiên dầu lại, ăn kèm hạt – sữa chua.
+    <div class="header-main">
+     <div class="logo">
+      NỘI<br>
+      THẤT
+     </div>
+     <nav class="main-nav">
+      <div class="main-nav-item"><a> SẢN PHẨM 
+        <svg class="dropdown-arrow" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline>
+        </svg></a>
+       <div class="dropdown-menu"><a href="thuphong.html" class="highlight"> 🤖 Mô phỏng AI <span class="badge">MỚI</span> </a> <a href="#">Sofa &amp; Ghế</a> <a href="#">Bàn ăn</a> <a href="#">Giường ngủ</a> <a href="#">Tủ quần áo</a> <a href="#">Bàn làm việc</a> <a href="#">Kệ &amp; Tủ trang trí</a> <a href="#">Ghế văn phòng</a> <a href="#">Đồ trang trí</a>
+       </div>
+      </div><a href="#">PHÒNG</a> <a href="#">BỘ SƯU TẬP</a> <a href="#">THIẾT KẾ NỘI THẤT</a> <a href="#">GÓC CẢM HỨNG</a>
+     </nav>
+     <div class="search-container"><input type="text" placeholder="Tìm sản phẩm"> <button type="button" aria-label="Tìm kiếm">
+       <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle> <path d="m21 21-4.35-4.35"></path>
+       </svg></button>
+     </div>
     </div>
-
-    <h2>Cách chọn & bảo quản chuẩn</h2>
-    <ul>
-      <p>Chọn mua mít sấy đạt chuẩn không chỉ dựa vào độ ngọt, màu sắc bắt mắt mà còn phụ thuộc vào quy trình bảo quản đúng cách để giữ trọn vẹn hương vị tự nhiên. Dưới đây là một số hướng dẫn giúp bạn dễ dàng nhận biết và bảo quản mit sấy hiệu quả nhất.
-Trước tiên, khi mua mít sấy, nên chọn sản phẩm có màu vàng óng hoặc nâu nhạt, bề mặt mềm mại, không quá cứng cũng không quá nhờn. Hương thơm của mít sấy tự nhiên phải rõ ràng, hấp dẫn, không có mùi lạ hay ảnh hưởng của chất bảo quản. Đặc biệt, mùi thơm nên dịu nhẹ, không quá nồng hoặc gây cảm giác khó chịu.
-Bảo quản mít sấy đúng cách sẽ giúp duy trì độ tươi ngon trong thời gian dài. Các sản phẩm này thường nên được cất trong lọ kín hoặc túi zipper chống ẩm, đặt ở nơi khô ráo, thoáng mát. Việc này giúp tránh hấp thụ độ ẩm, hạn chế vi khuẩn, nấm mốc phát triển.
-</p>
-    </ul>
-
-    <figure>
-      <img src="baiviet1/4.jpg" alt="">
-      <figcaption>Bảo quản đúng giúp giữ vị ngon lâu hơn.</figcaption>
-    </figure>
-    <ul>
-      <p>Mức độ bảo quản tối đa của mít sấy dao động từ 1 đến 3 tháng tùy theo cách đóng gói, điều kiện bảo quản. Trong quá trình sử dụng, tránh để sản phẩm tiếp xúc trực tiếp với ánh sáng mặt trời hoặc nhiệt độ cao vì có thể làm mất đi màu sắc, hương vị, thậm chí gây hỏng nhanh chóng.
-Để làm mới lại hương vị hoặc kéo dài thời gian sử dụng, bạn có thể sấy lại ở nhiệt độ thấp trong vài phút hoặc giữ trong tủ lạnh để duy trì độ giòn và thơm ngon tối đa. Việc này giúp bạn luôn có sẵn món ăn vặt bổ dưỡng, sẵn sàng phục vụ gia đình hoặc để làm quà biếu tặng.
-    </ul>
-
-    <h2>Công thức biến tấu ngon – tiện</h2>
-    <ul>
-      <p>Mít sấy không chỉ là món ăn trực tiếp thưởng thức mà còn có thể trở thành nguyên liệu quan trọng trong các món ăn sáng tạo, hấp dẫn. Từ các công thức đơn giản đến phức tạp đều mang lại trải nghiệm ẩm thực mới mẻ và phong phú.
-Không gì tuyệt vời hơn khi dùng mít sấy để chế biến món tráng miệng hấp dẫn hoặc snack độc đáo. Bạn có thể kết hợp mít sấy cùng các loại hạt, sữa chua, đường nâu, hoặc hoa quả tươi để tạo ra món parfait nhiều sắc thái. Hương vị ngọt đẫy đà của mít sấy hòa quyện cùng độ béo của sữa chua, kết cấu mềm dai mang đến cảm giác hấp dẫn, béo ngậy.
-Một trong các ý tưởng sáng tạo là làm món mít sấy sên với mật ong hoặc xi rô gừng, tạo cảm giác chua ngọt vừa phải, phù hợp để nhâm nhi trong những buổi chiều mát hoặc làm món quà biếu tặng. Công thức này không chỉ dễ làm mà còn rất bắt mắt, phù hợp với phong cách thưởng thức hiện đại.
-Ngoài ra, mít sấy còn có thể dùng trong cách chế biến truyền thống như chế biến bánh, kẹo, hoặc thậm chí kết hợp làm nhân bánh trung thu, bánh quy giòn hoặc kẹo ngậm. Việc này giúp tạo ra các sản phẩm thủ công vừa ngon, vừa đẹp mắt, thể hiện tài khéo léo của người nội trợ.
-Trong các nhà hàng và quán cafe, mít sấy còn được dùng để trang trí các món tráng miệng sang trọng hoặc pha chế đồ uống độc đáo, như sinh tố mít sấy, trà thảo mộc hoặc cocktail. Những biến tấu này ngày càng phổ biến, góp phần đưa mít sấy trở thành xu hướng ẩm thực hiện đại, sáng tạo và đầy năng lượng.
-</p>
-      
-    <p>Tham khảo <a href="san-pham.html#mit-say">mít sấy chính hãng</a> của Mít Sấy Vũ Trụ.</p>
-
-    <h2>Kết luận</h2>
-    <p>Mít sấy là món ăn vặt lý tưởng, không chỉ vì hương vị thơm ngon, tự nhiên mà còn bởi những lợi ích về sức khỏe và sự đa dạng trong chế biến. Từ các bước lựa chọn, bảo quản cho đến sáng tạo món ăn từ mit sấy, đều giúp người tiêu dùng tận hưởng trọn vẹn giá trị của loại thực phẩm này.
-Với khả năng giữ nguyên đậm đà hương vị tự nhiên, mít sấy đã trở thành món quà ưa thích của người Việt, thích hợp để dùng trong gia đình, làm quà tặng hoặc phục vụ các dịp đặc biệt. Sự sáng tạo trong chế biến càng làm tăng giá trị của mít sấy, biến nó trở thành nguồn cảm hứng trong lĩnh vực ẩm thực của mỗi nhà hàng, quán ăn hay thậm chí là những người yêu thích nấu nướng tại nhà.
-Chọn mua mit sấy phù hợp, bảo quản kỹ lưỡng và kết hợp linh hoạt trong các món ăn là bí quyết để bạn luôn có trong tay món ăn vặt vừa ngon vừa bổ này, góp phần nâng cao sức khỏe, tinh thần và khẩu vị cho mọi thành viên trong gia đình.
-</p>
-
-    <footer class="article">
-      <div class="tags">
-        <a href="#">#mít-sấy</a>
-        <a href="#">#ăn-vặt</a>
-        <a href="#">#healthy</a>
+   </header>
+   <main><!-- Hero Section -->
+    <section class="hero-section">
+     <div class="hero-content">
+      <div class="hero-text">
+       <h1>Nội thất cao cấp cho ngôi nhà của bạn</h1>
+       <p>Khám phá bộ sưu tập nội thất hiện đại, sang trọng với công nghệ mô phỏng AI giúp bạn hình dung không gian trước khi mua.</p>
+       <div class="hero-buttons"><a href="thuphong.html" class="hero-btn hero-btn-primary">THỬ MÔ PHỎNG AI NGAY</a> <a href="#" class="hero-btn hero-btn-secondary">XEM SẢN PHẨM</a>
+       </div>
       </div>
-    </footer>
-
-  </article>
-</main>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="global-cart.js"></script>
-</body>
+      <div class="hero-image">
+       <div class="hero-image-placeholder">
+        Hình ảnh Hero
+       </div>
+      </div>
+     </div>
+    </section><!-- Features Section -->
+    <section class="features-section">
+     <div class="section-header">
+      <h2>Tại sao chọn chúng tôi?</h2>
+      <p>Mang đến trải nghiệm mua sắm nội thất hoàn hảo nhất</p>
+     </div>
+     <div class="features-grid">
+      <div class="feature-card">
+       <div class="feature-icon">
+        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path> <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+       </div>
+       <h3>Mô phỏng AI thông minh</h3>
+       <p>Công nghệ AI giúp bạn xem trước nội thất trong chính căn phòng của mình trước khi quyết định mua.</p>
+      </div>
+      <div class="feature-card">
+       <div class="feature-icon">
+        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"></path> <path d="M14 17H5"></path> <circle cx="17" cy="17" r="3"></circle> <circle cx="7" cy="7" r="3"></circle>
+        </svg>
+       </div>
+       <h3>Chất lượng cao cấp</h3>
+       <p>Sản phẩm được tuyển chọn kỹ lưỡng từ các thương hiệu nội thất uy tín trong và ngoài nước.</p>
+      </div>
+      <div class="feature-card">
+       <div class="feature-icon">
+        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path> <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+       </div>
+       <h3>Giao hàng &amp; lắp đặt</h3>
+       <p>Dịch vụ giao hàng tận nơi và lắp đặt chuyên nghiệp, đảm bảo nội thất hoàn hảo trong ngôi nhà bạn.</p>
+      </div>
+      <div class="feature-card">
+       <div class="feature-icon">
+        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path> <polyline points="14 2 14 8 20 8"></polyline> <line x1="16" y1="13" x2="8" y2="13"></line> <line x1="16" y1="17" x2="8" y2="17"></line> <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+       </div>
+       <h3>Tư vấn thiết kế</h3>
+       <p>Đội ngũ kiến trúc sư và nhà thiết kế nội thất chuyên nghiệp sẵn sàng tư vấn miễn phí.</p>
+      </div>
+     </div>
+    </section><!-- CTA Section -->
+    <section class="cta-section">
+     <div class="cta-content">
+      <h2>Sẵn sàng tạo không gian sống mơ ước?</h2>
+      <p>Bắt đầu với công nghệ mô phỏng AI và khám phá ngôi nhà lý tưởng của bạn</p>
+      <div class="hero-buttons"><a href="thuphong.html" class="hero-btn hero-btn-primary">THỬ NGAY</a> <a href="#" class="hero-btn hero-btn-secondary" style="background-color: #ffffff; color: #000000;">LIÊN HỆ TƯ VẤN</a>
+      </div>
+     </div>
+    </section>
+   </main>
+  </div>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a9bdd863034b473',t:'MTc2NTAyNDk2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
