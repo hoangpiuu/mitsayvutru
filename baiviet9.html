@@ -861,38 +861,41 @@
     }
 
     // Sample products data - 30 products
-    const products = [
-      { id: 1, name: 'Sofa Nancy 2 chỗ màu hồng', price: '23,120,000₫' },
-      { id: 2, name: 'Bàn ăn Bridge gỗ 6 chỗ', price: '39,672,000₫' },
-      { id: 3, name: 'Giường ngủ Milan 1m8 bọc nỉ', price: '13,515,000₫' },
-      { id: 4, name: 'Tủ áo Atlas 3 cánh trượt', price: '18,900,000₫' },
-      { id: 5, name: 'Bàn làm việc Minimal gỗ sồi', price: '8,450,000₫' },
-      { id: 6, name: 'Kệ sách Nordic 5 tầng', price: '12,300,000₫' },
-      { id: 7, name: 'Ghế ăn Bella đệm êm', price: '3,200,000₫' },
-      { id: 8, name: 'Tủ giày thông minh 4 tầng', price: '5,600,000₫' },
-      { id: 9, name: 'Bàn sofa mặt đá marble', price: '7,800,000₫' },
-      { id: 10, name: 'Ghế thư giãn Eames hiện đại', price: '15,400,000₫' },
-      { id: 11, name: 'Tủ tivi Paris 2m rộng', price: '11,200,000₫' },
-      { id: 12, name: 'Sofa góc Valencia 3 chỗ', price: '32,500,000₫' },
-      { id: 13, name: 'Giường tầng trẻ em Kiddo', price: '19,800,000₫' },
-      { id: 14, name: 'Tủ bếp gỗ công nghiệp MDF', price: '45,000,000₫' },
-      { id: 15, name: 'Kệ trang trí treo tường', price: '4,300,000₫' },
-      { id: 16, name: 'Ghế văn phòng ergonomic', price: '6,700,000₫' },
-      { id: 17, name: 'Bàn console cổ điển', price: '9,100,000₫' },
-      { id: 18, name: 'Giường đơn Scandic 1m2', price: '8,900,000₫' },
-      { id: 19, name: 'Tủ đầu giường Vintage', price: '3,800,000₫' },
-      { id: 20, name: 'Sofa đơn Accent Chair', price: '12,600,000₫' },
-      { id: 21, name: 'Bàn ăn tròn Harmony 4 chỗ', price: '24,500,000₫' },
-      { id: 22, name: 'Kệ sách tường liền bàn làm việc', price: '16,900,000₫' },
-      { id: 23, name: 'Ghế sofa thư giãn massage', price: '28,000,000₫' },
-      { id: 24, name: 'Tủ rượu gỗ tự nhiên 8 ngăn', price: '21,300,000₫' },
-      { id: 25, name: 'Bàn trang điểm có đèn LED', price: '7,500,000₫' },
-      { id: 26, name: 'Giường cao cấp King 2m', price: '25,800,000₫' },
-      { id: 27, name: 'Tủ âm tường phòng ngủ', price: '34,200,000₫' },
-      { id: 28, name: 'Ghế bar cao cấp da PU', price: '4,900,000₫' },
-      { id: 29, name: 'Kệ để giày dép thông minh', price: '3,600,000₫' },
-      { id: 30, name: 'Sofa giường đa năng 3in1', price: '18,700,000₫' }
-    ];
+const products = [
+  // === 15 TRANH TREO TƯỜNG (1–15) ===
+  { id: 1, name: 'Tranh Sơn Dầu Hùng Vĩ Dãy Alps', price: '8,900,000₫' },
+  { id: 2, name: 'Tranh Ngựa Hoang Đại Ngàn', price: '7,200,000₫' },
+  { id: 3, name: 'Tranh Đại Bàng Tung Cánh', price: '9,500,000₫' },
+  { id: 4, name: 'Tranh Phong Cảnh Bắc Âu Tĩnh Lặng', price: '6,800,000₫' },
+  { id: 5, name: 'Tranh Trừu Tượng “Sức Mạnh Vũ Trụ”', price: '12,300,000₫' },
+  { id: 6, name: 'Tranh Rừng Xanh Huyền Bí', price: '6,500,000₫' },
+  { id: 7, name: 'Tranh Sóng Lớn Kanagawa Hiện Đại', price: '8,400,000₫' },
+  { id: 8, name: 'Tranh Thành Phố Tokyo Đêm', price: '7,600,000₫' },
+  { id: 9, name: 'Tranh Sư Tử Vương Giả', price: '10,200,000₫' },
+  { id: 10, name: 'Tranh Thiên Hà Ngân Hà 3D', price: '11,900,000₫' },
+  { id: 11, name: 'Tranh Phượng Hoàng Rực Cháy', price: '9,800,000₫' },
+  { id: 12, name: 'Tranh Núi Lửa Iceland Bùng Nổ', price: '12,700,000₫' },
+  { id: 13, name: 'Tranh Con Đường Ánh Sáng Châu Âu', price: '7,950,000₫' },
+  { id: 14, name: 'Tranh Trừu Tượng “Hào Quang Bình Minh”', price: '8,700,000₫' },
+  { id: 15, name: 'Tranh Hồ Gương Lặng Sóng', price: '6,900,000₫' },
+
+  // === 15 LỌ HOA + BÀN GHẾ DECOR (16–30) ===
+  { id: 16, name: 'Lọ Hoa Gốm Sứ Nordic Trắng', price: '1,200,000₫' },
+  { id: 17, name: 'Lọ Hoa Pha Lê Diamond', price: '2,450,000₫' },
+  { id: 18, name: 'Bàn Cafe Tròn Mặt Gỗ Walnut', price: '4,900,000₫' },
+  { id: 19, name: 'Ghế Accent Chair Bọc Nỉ Cao Cấp', price: '6,200,000₫' },
+  { id: 20, name: 'Lọ Hoa Gốm Men Rạn Cổ Điển', price: '1,800,000₫' },
+  { id: 21, name: 'Bàn Console Khung Sắt Mặt Đá', price: '9,400,000₫' },
+  { id: 22, name: 'Ghế Bar Da PU Hiện Đại', price: '3,900,000₫' },
+  { id: 23, name: 'Lọ Hoa Trang Trí Minimalist', price: '1,150,000₫' },
+  { id: 24, name: 'Bàn Sofa Mặt Kính Khói', price: '7,800,000₫' },
+  { id: 25, name: 'Ghế Đôn Trang Trí Len Dệt', price: '2,300,000₫' },
+  { id: 26, name: 'Lọ Hoa Thuỷ Tinh Dài Art Deco', price: '1,600,000₫' },
+  { id: 27, name: 'Bàn Trang Điểm Mini Nordic', price: '5,400,000₫' },
+  { id: 28, name: 'Ghế Lounge Gỗ Sồi Tự Nhiên', price: '8,300,000₫' },
+  { id: 29, name: 'Lọ Hoa Ceramic Hai Tông Màu', price: '1,450,000₫' },
+  { id: 30, name: 'Bàn Decor Mặt Đá Marble Trắng', price: '6,900,000₫' }
+];
 
     // Helper function to get product image path
     function getProductImagePath(id) {
